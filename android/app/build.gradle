@@ -61,6 +61,20 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    flavorDimensions 'flavor'
+    productFlavors {
+        dev {
+            dimension 'flavor'
+            applicationIdSuffix '.dev'
+            manifestPlaceholders = [appName: '(d)Mood Trend']
+        }
+        prod {
+            dimension 'flavor'
+            applicationIdSuffix ''
+            manifestPlaceholders = [appName: 'Mood Trend']
+        }
+    }
 }
 
 flutter {
