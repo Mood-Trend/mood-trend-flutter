@@ -1,22 +1,29 @@
 {
     "version": "0.2.0",
     "configurations": [
-        {
-            "name": "mood-trend-flutter",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "mood-trend-flutter (profile mode)",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "profile"
-        },
-        {
-            "name": "mood-trend-flutter (release mode)",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "release"
-        }
+      {
+        "name": "mood-trend-dev",
+        "type": "dart",
+        "request": "launch",
+        "flutterMode": "debug",
+        "program": "lib/main.dart",
+        "args": [
+          "--flavor",
+          "dev",
+          "--dart-define=FLAVOR=dev",
+        ]
+      },
+      {
+        "name": "mood-trend-prod",
+        "type": "dart",
+        "request": "launch",
+        "flutterMode": "debug",
+        "program": "lib/main.dart",
+        "args": [
+          "--flavor",
+          "prod",
+          "--dart-define=FLAVOR=prod",
+        ]
+      }
     ]
-}
+  }
