@@ -1,6 +1,31 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+import 'package:mood_trend_flutter/firebase_options_dev.dart' as dev;
+import 'package:mood_trend_flutter/firebase_options_prod.dart' as prod;
+
+const flavor = String.fromEnvironment('FLAVOR');
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final firebaseOptions = flavor == 'prod'
+      ? prod.DefaultFirebaseOptions.currentPlatform
+      : dev.DefaultFirebaseOptions.currentPlatform;
+
+  await Firebase.initializeApp(
+    options: firebaseOptions,
+  );
+
+  final firebaseUser = await FirebaseAuth.instance.userChanges().first;
+  print('uid = ${firebaseUser?.uid}');
+  if (firebaseUser == null) {
+    final credential = await FirebaseAuth.instance.signInAnonymously();
+    final uid = credential.user!.uid;
+    print('Signed in: uid = $uid');
+  }
+
   runApp(const MyApp());
 }
 
