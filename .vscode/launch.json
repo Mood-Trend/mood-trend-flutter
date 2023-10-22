@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "name": "mood-trend-dev",
+        "name": "app-dev",
         "type": "dart",
         "request": "launch",
         "flutterMode": "debug",
@@ -14,7 +14,7 @@
         ]
       },
       {
-        "name": "mood-trend-prod",
+        "name": "app-prod",
         "type": "dart",
         "request": "launch",
         "flutterMode": "debug",
