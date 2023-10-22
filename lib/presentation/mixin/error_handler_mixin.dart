@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/app_exception.dart';
-import '../components/failure_snackbar.dart';
-import '../components/success_snackbar.dart';
+import '../components/snackbars.dart';
 
 /// プレゼンテーション層用のエラーハンドリングをラップした共通処理 Mixin
 mixin ErrorHandlerMixin {
