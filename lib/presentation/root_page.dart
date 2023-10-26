@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mood_trend_flutter/infrastructure/firebase/app_user/user_repository.dart';
 import 'package:mood_trend_flutter/presentation/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/home_page.dart';
-import 'package:mood_trend_flutter/usecase/auth_usecase.dart';
 
 import '../infrastructure/firebase/authentication/auth_repository.dart';
 
@@ -17,7 +17,13 @@ class RootPage extends HookConsumerWidget {
     useEffect(
       () {
         WidgetsBinding.instance.addPostFrameCallback((_) async {
-          await ref.read(authUsecaseProvider).signInAnonymously();
+          final uid = await ref
+              .read(firebaseAuthRepositoryProvider)
+              .signinAnonymously();
+          // 匿名認証でサインインしたユーザーが Firestore に登録されるまで待つ
+          await ref
+              .read(firebaseUserRepositoryProvider)
+              .waitUntilUserCreated(uid);
         });
         return;
       },
