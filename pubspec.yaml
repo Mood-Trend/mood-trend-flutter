@@ -23,6 +23,7 @@ dependencies:
   flutter_hooks: ^0.20.3
   google_fonts: ^6.1.0
   flutter_localization: ^0.1.14
+  gap: ^3.0.1
 
 dev_dependencies:
   flutter_test:
