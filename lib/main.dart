@@ -11,7 +11,6 @@ import 'package:mood_trend_flutter/presentation/components/dialog.dart';
 import 'package:mood_trend_flutter/presentation/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/components/snackbars.dart';
 import 'package:mood_trend_flutter/presentation/root_page.dart';
-import 'package:mood_trend_flutter/usecase/run_usecase_mixin.dart';
 import 'package:mood_trend_flutter/utils/constants.dart';
 import 'package:package_info/package_info.dart';
 
