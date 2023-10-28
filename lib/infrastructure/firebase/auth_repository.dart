@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../domain/exceptions.dart';
+import '../../domain/exceptions.dart';
 
 /// [FirebaseAuth] のインスタンスを提供する [Provider].
 final _authProvider = Provider<FirebaseAuth>((_) => FirebaseAuth.instance);
