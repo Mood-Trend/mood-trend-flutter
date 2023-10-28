@@ -18,7 +18,7 @@ final firebaseUserRepositoryProvider = Provider<FirebaseUserRepository>(
 final userCollectionRefProvider = Provider(
   (ref) => ref
       .watch(firebaseFirestoreProvider)
-      .collection('user')
+      .collection('users')
       .withConverter<UserDocument>(
         fromFirestore: (snapshot, _) => UserDocument.fromJson(
           snapshot.id,
@@ -122,18 +122,18 @@ class UserDocument {
   factory UserDocument.fromJson(String uid, Map<String, dynamic> json) =>
       UserDocument(
         uid: uid,
-        displayName: json['displayName'] as String,
-        imageUrl: json['imageUrl'] as String,
-        createdAt: (json['createdAt'] as Timestamp).toDate(),
-        updatedAt: (json['updatedAt'] as Timestamp).toDate(),
+        displayName: json['display_name'] as String,
+        imageUrl: json['image_url'] as String,
+        createdAt: (json['created_at'] as Timestamp).toDate(),
+        updatedAt: (json['updated_at'] as Timestamp).toDate(),
       );
 
   /// TimeStampConver を使う
   Map<String, dynamic> toJson() => {
-        'displayName': displayName,
-        'imageUrl': imageUrl,
-        'createdAt': createdAt,
-        'updatedAt': FieldValue.serverTimestamp(),
+        'display_name': displayName,
+        'image_url': imageUrl,
+        'created_at': createdAt,
+        'updated_at': FieldValue.serverTimestamp(),
       };
 }
 
