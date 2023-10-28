@@ -105,7 +105,6 @@ class ConfDocument {
         updatedAt: (json['updated_at'] as Timestamp).toDate(),
       );
 
-  /// TimeStampConver を使う
   Map<String, dynamic> toJson() => {
         'max_planned_volume': maxPlannedVolume,
         'created_at': createdAt,

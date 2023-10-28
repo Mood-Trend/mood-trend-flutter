@@ -128,7 +128,6 @@ class UserDocument {
         updatedAt: (json['updated_at'] as Timestamp).toDate(),
       );
 
-  /// TimeStampConver を使う
   Map<String, dynamic> toJson() => {
         'display_name': displayName,
         'image_url': imageUrl,
