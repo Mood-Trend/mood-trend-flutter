@@ -21,9 +21,7 @@ class RootPage extends HookConsumerWidget {
               .read(firebaseAuthRepositoryProvider)
               .signinAnonymously();
           // 匿名認証でサインインしたユーザーが Firestore に登録されるまで待つ
-          await ref
-              .read(firebaseUserRepositoryProvider)
-              .waitUntilUserCreated(uid);
+          await ref.read(userRepositoryProvider).waitUntilUserCreated(uid);
         });
         return;
       },

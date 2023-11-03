@@ -9,9 +9,9 @@ import 'package:mood_trend_flutter/utils/constants.dart';
 import '../../domain/app_exception.dart';
 import 'firebase_provider.dart';
 
-/// [FirebaseConfRepository] のインスタンスを提供する [Provider]
-final firebaseConfRepositoryProvider = Provider<FirebaseConfRepository>(
-  (ref) => FirebaseConfRepository(
+/// [ConfRepository] のインスタンスを提供する [Provider]
+final confRepositoryProvider = Provider<ConfRepository>(
+  (ref) => ConfRepository(
     confCollectionRef: ref.read(confCollectionRefProvider),
   ),
 );
@@ -33,8 +33,8 @@ final confCollectionRefProvider = Provider(
 );
 
 /// Conf コレクションのドキュメントを操作する Repository
-class FirebaseConfRepository {
-  FirebaseConfRepository({
+class ConfRepository {
+  ConfRepository({
     required this.confCollectionRef,
   });
 
