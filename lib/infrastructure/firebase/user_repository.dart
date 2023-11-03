@@ -137,7 +137,7 @@ class UserDocument {
 }
 
 /// [UserDocument] の拡張
-extension _UserDocumentEx on UserDocument {
+extension on UserDocument {
   /// UserDocument -> AppUser
   AppUser toAppUser() => AppUser(
         uid: uid,
