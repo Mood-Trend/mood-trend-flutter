@@ -41,8 +41,8 @@ class ConfRepository {
   final CollectionReference<ConfDocument> confCollectionRef;
 
   /// Conf ドキュメントを更新する。
-  Future<void> update(
-    String confId, {
+  Future<void> update({
+    required String confId,
     int? maxPlannedVolume,
   }) async {
     final confDoc = ConfDocument(
@@ -59,7 +59,7 @@ class ConfRepository {
   }
 
   /// Conf のドキュメントを取得する。
-  Future<Conf?> get(String confId) async {
+  Future<Conf?> get() async {
     try {
       final querySnapshot = await confCollectionRef.limit(1).get();
       final docSnapshot = querySnapshot.docs.first;
