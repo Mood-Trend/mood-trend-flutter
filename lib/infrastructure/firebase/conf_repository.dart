@@ -61,21 +61,12 @@ class ConfRepository {
   /// Conf のドキュメントを取得する。
   Future<Conf?> get(String confId) async {
     try {
-      final doc = await confCollectionRef.doc(confId).get();
-      return doc.data()?.toConf();
+      final querySnapshot = await confCollectionRef.limit(1).get();
+      final docSnapshot = querySnapshot.docs.first;
+      if (!docSnapshot.exists) throw const AppException('ドキュメントが見つかりませんでした');
+      return docSnapshot.data().toConf();
     } on FirebaseException catch (e) {
       throw AppException('Firestore の取得処理でエラーが発生しました: ${e.code}');
-    } catch (e) {
-      throw AppException('予期しないエラーが発生しました: $e');
-    }
-  }
-
-  /// Conf のドキュメントを削除する。
-  Future<void> delete(String confId) async {
-    try {
-      await confCollectionRef.doc(confId).delete();
-    } on FirebaseException catch (e) {
-      throw AppException('Firestore の削除処理でエラーが発生しました: ${e.code}');
     } catch (e) {
       throw AppException('予期しないエラーが発生しました: $e');
     }
