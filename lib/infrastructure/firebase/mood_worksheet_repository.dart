@@ -38,8 +38,8 @@ class MoodWorksheetRepository {
   final CollectionReference<MoodWorksheetDocument> moodWorksheetCollectionRef;
 
   /// MoodWorksheet ドキュメントを更新する。
-  Future<void> update(
-    String worksheetId, {
+  Future<void> update({
+    required String worksheetId,
     String? minus_5,
     String? minus_4,
     String? minus_3,
