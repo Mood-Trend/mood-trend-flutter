@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../domain/app_exception.dart';
+import '../../domain/mood_point.dart';
 import 'auth_repository.dart';
 import 'firebase_provider.dart';
 
@@ -94,10 +95,11 @@ class MoodPointRepository {
   }
 
   /// MoodPoint のドキュメントを取得する。
-  Future<MoodPointDocument?> get({required String pointId}) async {
+  Future<MoodPoint> get({required String pointId}) async {
     try {
       final doc = await moodPointsCollectionRef.doc(pointId).get();
-      return doc.data();
+      if (!doc.exists) throw const AppException('ドキュメントが見つかりませんでした');
+      return doc.data()!.toMoodPoint();
     } on FirebaseException catch (e) {
       throw AppException('Firestore の取得処理でエラーが発生しました: ${e.code}');
     } catch (e) {
@@ -106,10 +108,10 @@ class MoodPointRepository {
   }
 
   /// MoodPoint のドキュメントを全取得する。
-  Future<List<MoodPointDocument>> getAll() async {
+  Future<List<MoodPoint>> getAll() async {
     try {
       final querySnapshot = await moodPointsCollectionRef.get();
-      return querySnapshot.docs.map((doc) => doc.data()).toList();
+      return querySnapshot.docs.map((doc) => doc.data().toMoodPoint()).toList();
     } on FirebaseException catch (e) {
       throw AppException('Firestore の取得処理でエラーが発生しました: ${e.code}');
     } catch (e) {
@@ -160,4 +162,12 @@ class MoodPointDocument {
 }
 
 /// [MoodPointDocument] の拡張
-extension on MoodPointDocument {}
+extension on MoodPointDocument {
+  /// [MoodPointDocument] を [MoodPoint] に変換する。
+  MoodPoint toMoodPoint() => MoodPoint(
+        pointId: pointId,
+        point: point,
+        plannedVolume: plannedVolume,
+        moodDate: moodDate,
+      );
+}
