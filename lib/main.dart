@@ -11,6 +11,7 @@ import 'package:mood_trend_flutter/presentation/components/dialog.dart';
 import 'package:mood_trend_flutter/presentation/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/components/snackbars.dart';
 import 'package:mood_trend_flutter/presentation/root_page.dart';
+import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/constants.dart';
 import 'package:package_info/package_info.dart';
 
@@ -46,12 +47,14 @@ class App extends ConsumerWidget {
       title: 'Mood Trend',
       theme: ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: Colors.green,
+        colorSchemeSeed: AppColors.green,
+        textTheme: TextTheme(
+          bodyLarge: TextStyle(color: AppColors.grey),
+          bodyMedium: TextStyle(color: AppColors.grey),
+          bodySmall: TextStyle(color: AppColors.grey),
+        ),
         sliderTheme: SliderThemeData(
           overlayShape: SliderComponentShape.noOverlay,
-        ),
-        textTheme: GoogleFonts.notoSansJpTextTheme(
-          Theme.of(context).textTheme,
         ),
         fontFamily: 'Noto Sans JP',
         fontFamilyFallback: const ['Noto Sans JP'],

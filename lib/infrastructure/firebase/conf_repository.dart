@@ -9,9 +9,9 @@ import 'package:mood_trend_flutter/utils/constants.dart';
 import '../../domain/app_exception.dart';
 import 'firebase_provider.dart';
 
-/// [FirebaseConfRepository] のインスタンスを提供する [Provider]
-final firebaseConfRepositoryProvider = Provider<FirebaseConfRepository>(
-  (ref) => FirebaseConfRepository(
+/// [ConfRepository] のインスタンスを提供する [Provider]
+final confRepositoryProvider = Provider<ConfRepository>(
+  (ref) => ConfRepository(
     confCollectionRef: ref.read(confCollectionRefProvider),
   ),
 );
@@ -33,16 +33,16 @@ final confCollectionRefProvider = Provider(
 );
 
 /// Conf コレクションのドキュメントを操作する Repository
-class FirebaseConfRepository {
-  FirebaseConfRepository({
+class ConfRepository {
+  ConfRepository({
     required this.confCollectionRef,
   });
 
   final CollectionReference<ConfDocument> confCollectionRef;
 
   /// Conf ドキュメントを更新する。
-  Future<void> update(
-    String confId, {
+  Future<void> update({
+    required String confId,
     int? maxPlannedVolume,
   }) async {
     final confDoc = ConfDocument(
@@ -59,23 +59,14 @@ class FirebaseConfRepository {
   }
 
   /// Conf のドキュメントを取得する。
-  Future<Conf?> get(String confId) async {
+  Future<Conf?> get() async {
     try {
-      final doc = await confCollectionRef.doc(confId).get();
-      return doc.data()?.toConf();
+      final querySnapshot = await confCollectionRef.limit(1).get();
+      final docSnapshot = querySnapshot.docs.first;
+      if (!docSnapshot.exists) throw const AppException('ドキュメントが見つかりませんでした');
+      return docSnapshot.data().toConf();
     } on FirebaseException catch (e) {
       throw AppException('Firestore の取得処理でエラーが発生しました: ${e.code}');
-    } catch (e) {
-      throw AppException('予期しないエラーが発生しました: $e');
-    }
-  }
-
-  /// Conf のドキュメントを削除する。
-  Future<void> delete(String confId) async {
-    try {
-      await confCollectionRef.doc(confId).delete();
-    } on FirebaseException catch (e) {
-      throw AppException('Firestore の削除処理でエラーが発生しました: ${e.code}');
     } catch (e) {
       throw AppException('予期しないエラーが発生しました: $e');
     }

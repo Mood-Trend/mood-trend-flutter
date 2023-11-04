@@ -24,6 +24,8 @@ dependencies:
   google_fonts: ^6.1.0
   flutter_localization: ^0.1.14
   gap: ^3.0.1
+  url_launcher: ^6.1.14
+  hexcolor: ^3.0.1
 
 dev_dependencies:
   flutter_test:

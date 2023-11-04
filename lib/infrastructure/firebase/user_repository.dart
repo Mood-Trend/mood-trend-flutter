@@ -7,9 +7,9 @@ import 'package:mood_trend_flutter/domain/app_user.dart';
 import '../../domain/app_exception.dart';
 import 'firebase_provider.dart';
 
-/// [FirebaseUserRepository] のインスタンスを提供する [Provider]
-final firebaseUserRepositoryProvider = Provider<FirebaseUserRepository>(
-  (ref) => FirebaseUserRepository(
+/// [UserRepository] のインスタンスを提供する [Provider]
+final userRepositoryProvider = Provider<UserRepository>(
+  (ref) => UserRepository(
     userCollectionRef: ref.watch(userCollectionRefProvider),
   ),
 );
@@ -29,8 +29,8 @@ final userCollectionRefProvider = Provider(
 );
 
 /// ユーザーコレクションのドキュメントを操作する Repository
-class FirebaseUserRepository {
-  FirebaseUserRepository({
+class UserRepository {
+  UserRepository({
     required this.userCollectionRef,
   });
 
@@ -137,7 +137,7 @@ class UserDocument {
 }
 
 /// [UserDocument] の拡張
-extension _UserDocumentEx on UserDocument {
+extension on UserDocument {
   /// UserDocument -> AppUser
   AppUser toAppUser() => AppUser(
         uid: uid,
