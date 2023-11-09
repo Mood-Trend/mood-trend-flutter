@@ -38,84 +38,66 @@ class InputModal extends StatefulWidget {
 
 class _MyWidgetState extends State<InputModal> {
   double _value = 0.0;
-  double _startValue = 0.0;
-  double _endValue = 0.0;
 
   int moodNum = 1;
   void _changeSlider(double e) => setState(() {
         _value = e;
       });
-  void _startSlider(double e) => setState(() {
-        _startValue = e;
-      });
-  void _endSlider(double e) => setState(() {
-        _endValue = e;
+  double _moodValue = 1.0;
+
+  void _moodChangeSlider(double e) => setState(() {
+        _moodValue = e;
       });
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: 350,
       child: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
           const Padding(
             padding: EdgeInsets.all(8.0),
             child: Text('2023/11/1'),
           ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(56, 32, 56, 0),
+            child: Slider(
+              label: _moodValue != 0 ? _value.round().toString() : '選択できません',
+              min: -5,
+              max: 5,
+              value: _moodValue,
+              activeColor: Colors.green,
+              inactiveColor: Colors.grey,
+              divisions: 10,
+              onChanged: _moodChangeSlider,
+            ),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              IconButton(
-                  color: moodNum == -5 ? Colors.grey : Colors.green,
-                  onPressed: () {
-                    setState(() {
-                      if (moodNum == 1) {
-                        moodNum -= 2;
-                      } else if (moodNum > -5) {
-                        moodNum--;
-                      }
-                    });
-                  },
-                  icon: const Icon(Icons.remove)),
-              const SizedBox(width: 10),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    '気分値',
+                    '気分値 ',
                     style: TextStyle(fontSize: 24),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
-                    child: SizedBox(
-                      width: 50,
-                      child: Center(
-                        child: Text(
-                          moodNum.toString(),
-                          style: const TextStyle(fontSize: 52),
-                        ),
+                  SizedBox(
+                    width: 50,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
+                      child: Text(
+                        _moodValue.toInt().toString(),
+                        style: const TextStyle(fontSize: 52),
                       ),
                     ),
                   ),
                 ],
               ),
-              IconButton(
-                  color: moodNum == 5 ? Colors.grey : Colors.green,
-                  onPressed: () {
-                    setState(() {
-                      if (moodNum == -1) {
-                        moodNum += 2;
-                      } else if (moodNum < 5) {
-                        moodNum++;
-                      }
-                    });
-                  },
-                  icon: const Icon(Icons.add)),
             ],
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(56, 32, 56, 0),
             child: Slider(
-              label: _value != 5 ? _value.round().toString() : null,
+              label: _value.toString(),
               min: 0,
               max: 16,
               value: _value,
@@ -123,8 +105,6 @@ class _MyWidgetState extends State<InputModal> {
               inactiveColor: Colors.grey,
               divisions: 16,
               onChanged: _changeSlider,
-              onChangeStart: _startSlider,
-              onChangeEnd: _endSlider,
             ),
           ),
           Row(
