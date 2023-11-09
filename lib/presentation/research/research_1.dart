@@ -115,7 +115,7 @@ class _MyWidgetState extends State<InputModal> {
           Padding(
             padding: const EdgeInsets.fromLTRB(56, 32, 56, 0),
             child: Slider(
-              label: _value.toString(),
+              label: _value != 5 ? _value.round().toString() : null,
               min: 0,
               max: 16,
               value: _value,
