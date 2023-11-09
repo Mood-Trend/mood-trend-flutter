@@ -104,9 +104,11 @@ class _MyWidgetState extends State<InputModal> {
                     width: 50,
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
-                      child: Text(
-                        _moodValue.toInt().toString(),
-                        style: const TextStyle(fontSize: 52),
+                      child: Center(
+                        child: Text(
+                          _moodValue.toInt().toString(),
+                          style: const TextStyle(fontSize: 52),
+                        ),
                       ),
                     ),
                   ),
