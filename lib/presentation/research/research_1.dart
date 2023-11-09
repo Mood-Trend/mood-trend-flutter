@@ -54,104 +54,63 @@ class _MyWidgetState extends State<InputModal> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 350,
+      height: 300,
       child: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
           const Padding(
             padding: EdgeInsets.all(8.0),
             child: Text('2023/11/1'),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8, 24, 8, 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                FaceButton(
-                  imageUrl: 'images/minus5.png',
-                  ontap: () {
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                  color: moodNum == -5 ? Colors.grey : Colors.green,
+                  onPressed: () {
                     setState(() {
-                      moodNum = -5;
+                      if (moodNum == 1) {
+                        moodNum -= 2;
+                      } else if (moodNum > -5) {
+                        moodNum--;
+                      }
                     });
                   },
-                ),
-                FaceButton(
-                  imageUrl: 'images/minus4.png',
-                  ontap: () {
+                  icon: const Icon(Icons.remove)),
+              const SizedBox(width: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    '気分値',
+                    style: TextStyle(fontSize: 24),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
+                    child: SizedBox(
+                      width: 50,
+                      child: Center(
+                        child: Text(
+                          moodNum.toString(),
+                          style: const TextStyle(fontSize: 52),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              IconButton(
+                  color: moodNum == 5 ? Colors.grey : Colors.green,
+                  onPressed: () {
                     setState(() {
-                      moodNum = -4;
+                      if (moodNum == -1) {
+                        moodNum += 2;
+                      } else if (moodNum < 5) {
+                        moodNum++;
+                      }
                     });
                   },
-                ),
-                FaceButton(
-                  imageUrl: 'images/minus3.png',
-                  ontap: () {
-                    setState(() {
-                      moodNum = -3;
-                    });
-                  },
-                ),
-                FaceButton(
-                  imageUrl: 'images/minus2.png',
-                  ontap: () {
-                    setState(() {
-                      moodNum = -2;
-                    });
-                  },
-                ),
-                FaceButton(
-                  imageUrl: 'images/minus1.png',
-                  ontap: () {
-                    setState(() {
-                      moodNum = -1;
-                    });
-                  },
-                ),
-                FaceButton(
-                  imageUrl: 'images/plus1.png',
-                  ontap: () {
-                    setState(() {
-                      moodNum = 1;
-                    });
-                  },
-                ),
-                FaceButton(
-                  imageUrl: 'images/plus2.png',
-                  ontap: () {
-                    setState(() {
-                      moodNum = 2;
-                    });
-                  },
-                ),
-                FaceButton(
-                  imageUrl: 'images/plus3.png',
-                  ontap: () {
-                    setState(() {
-                      moodNum = 3;
-                    });
-                  },
-                ),
-                FaceButton(
-                  imageUrl: 'images/plus4.png',
-                  ontap: () {
-                    setState(() {
-                      moodNum = 4;
-                    });
-                  },
-                ),
-                FaceButton(
-                  imageUrl: 'images/plus5.png',
-                  ontap: () {
-                    setState(() {
-                      moodNum = 5;
-                    });
-                  },
-                ),
-              ],
-            ),
-          ),
-          Text(
-            moodNum.toString(),
-            style: const TextStyle(fontSize: 52),
+                  icon: const Icon(Icons.add)),
+            ],
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(56, 32, 56, 0),
@@ -175,7 +134,7 @@ class _MyWidgetState extends State<InputModal> {
               Row(
                 children: [
                   const Text(
-                    '予定数',
+                    '予定数 ',
                     style: TextStyle(fontSize: 24),
                   ),
                   Padding(
@@ -201,23 +160,5 @@ class _MyWidgetState extends State<InputModal> {
         ]),
       ),
     );
-  }
-}
-
-class FaceButton extends StatelessWidget {
-  const FaceButton({
-    super.key,
-    required this.imageUrl,
-    required this.ontap,
-  });
-  final String imageUrl;
-  final VoidCallback ontap;
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: () {
-          ontap();
-        },
-        child: SizedBox(width: 32, child: Image.asset(imageUrl)));
   }
 }
