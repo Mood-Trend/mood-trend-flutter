@@ -53,12 +53,12 @@ class _MyWidgetState extends State<InputModal> {
       });
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 350,
       child: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text('2023/11/1'),
           ),
           Padding(
@@ -151,12 +151,12 @@ class _MyWidgetState extends State<InputModal> {
           ),
           Text(
             moodNum.toString(),
-            style: TextStyle(fontSize: 52),
+            style: const TextStyle(fontSize: 52),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(56, 32, 56, 0),
             child: Slider(
-              label: '${_value}',
+              label: _value.toString(),
               min: 0,
               max: 16,
               value: _value,
@@ -171,18 +171,18 @@ class _MyWidgetState extends State<InputModal> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(width: 72),
+              const SizedBox(width: 72),
               Row(
                 children: [
-                  Text(
+                  const Text(
                     '予定数',
                     style: TextStyle(fontSize: 24),
                   ),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, 15),
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
                     child: Text(
                       _value.toInt().toString(),
-                      style: TextStyle(fontSize: 52),
+                      style: const TextStyle(fontSize: 52),
                     ),
                   ),
                 ],
@@ -193,7 +193,7 @@ class _MyWidgetState extends State<InputModal> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: Text('保存'),
+                  child: const Text('保存'),
                 ),
               ),
             ],
