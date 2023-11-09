@@ -1,4 +1,10 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../infrastructure/firebase/mood_point_repository.dart';
+import '../mixin/error_handler_mixin.dart';
 
 class Research1 extends StatelessWidget {
   const Research1({super.key});
@@ -29,14 +35,14 @@ class Research1 extends StatelessWidget {
   }
 }
 
-class InputModal extends StatefulWidget {
+class InputModal extends ConsumerStatefulWidget {
   const InputModal({super.key});
 
   @override
-  State<InputModal> createState() => _MyWidgetState();
+  ConsumerState<InputModal> createState() => _MyWidgetState();
 }
 
-class _MyWidgetState extends State<InputModal> {
+class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
   double _value = 0.0;
 
   int moodNum = 1;
@@ -44,10 +50,6 @@ class _MyWidgetState extends State<InputModal> {
         _value = e;
       });
   double _moodValue = 1.0;
-
-  void _moodChangeSlider(double e) => setState(() {
-        _moodValue = e;
-      });
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -151,8 +153,24 @@ class _MyWidgetState extends State<InputModal> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 56, 16, 0),
                 child: TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
+                  onPressed: () async {
+                    execute(
+                      context,
+                      ref,
+                      action: () async {
+                        // mood_points コレクションにドキュメントを追加
+                        await ref.read(moodPointRepositoryProvider).add(
+                              point: 2,
+                              plannedVolume: 3,
+                              moodDate: DateTime.now(),
+                            );
+
+                        // モーダルを閉じる
+                        // ignore: use_build_context_synchronously
+                        Navigator.pop(context);
+                      },
+                      successMessage: '気分値と予定数の登録が完了しました',
+                    );
                   },
                   child: const Text('保存'),
                 ),
