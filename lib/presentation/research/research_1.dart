@@ -61,14 +61,34 @@ class _MyWidgetState extends State<InputModal> {
           Padding(
             padding: const EdgeInsets.fromLTRB(56, 32, 56, 0),
             child: Slider(
-              label: _moodValue != 0 ? _value.round().toString() : '選択できません',
-              min: -5,
-              max: 5,
               value: _moodValue,
+              min: -5.0,
+              max: 5.0,
+              divisions: 10,
               activeColor: Colors.green,
               inactiveColor: Colors.grey,
-              divisions: 10,
-              onChanged: _moodChangeSlider,
+              onChangeStart: (value) {
+                if (value == 0.0) {
+                  setState(() {
+                    _moodValue = _moodValue > 0 ? 1.0 : -1.0;
+                  });
+                }
+              },
+              label: _moodValue.toString(),
+              onChanged: (value) {
+                if (value != 0.0) {
+                  setState(() {
+                    _moodValue = value;
+                  });
+                }
+              },
+              onChangeEnd: (value) {
+                if (value == 0.0) {
+                  setState(() {
+                    _moodValue = _moodValue > 0 ? 1.0 : -1.0;
+                  });
+                }
+              },
             ),
           ),
           Row(
