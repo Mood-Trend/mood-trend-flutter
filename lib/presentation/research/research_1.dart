@@ -74,7 +74,7 @@ class _MyWidgetState extends State<InputModal> {
                   });
                 }
               },
-              label: _moodValue.toString(),
+              label: _moodValue.toInt().toString(),
               onChanged: (value) {
                 if (value != 0.0) {
                   setState(() {
@@ -117,7 +117,7 @@ class _MyWidgetState extends State<InputModal> {
           Padding(
             padding: const EdgeInsets.fromLTRB(56, 32, 56, 0),
             child: Slider(
-              label: _value.toString(),
+              label: _value.toInt().toString(),
               min: 0,
               max: 16,
               value: _value,
