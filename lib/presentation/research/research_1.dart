@@ -41,12 +41,12 @@ class InputModal extends ConsumerStatefulWidget {
 }
 
 class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
-  double _value = 0.0;
+  double _plannedValue = 0.0;
   DateTime date = DateTime.now();
 
   int moodNum = 1;
   void _changeSlider(double e) => setState(() {
-        _value = e;
+        _plannedValue = e;
       });
   double _moodValue = 1.0;
   @override
@@ -137,10 +137,10 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
           Padding(
             padding: const EdgeInsets.fromLTRB(56, 32, 56, 0),
             child: Slider(
-              label: _value.toInt().toString(),
+              label: _plannedValue.toInt().toString(),
               min: 0,
               max: 16,
-              value: _value,
+              value: _plannedValue,
               activeColor: Colors.green,
               inactiveColor: Colors.grey,
               divisions: 16,
@@ -163,7 +163,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
                       child: Center(
                         child: Text(
-                          _value.toInt().toString(),
+                          _plannedValue.toInt().toString(),
                           style: const TextStyle(fontSize: 52),
                         ),
                       ),
@@ -181,9 +181,9 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       action: () async {
                         // mood_points コレクションにドキュメントを追加
                         await ref.read(moodPointRepositoryProvider).add(
-                              point: 2,
-                              plannedVolume: 3,
-                              moodDate: DateTime.now(),
+                              point: _moodValue.toInt(),
+                              plannedVolume: _plannedValue.toInt(),
+                              moodDate: date,
                             );
 
                         // モーダルを閉じる
