@@ -42,6 +42,7 @@ class InputModal extends ConsumerStatefulWidget {
 
 class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
   double _value = 0.0;
+  DateTime date = DateTime.now();
 
   int moodNum = 1;
   void _changeSlider(double e) => setState(() {
@@ -51,12 +52,29 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 350,
+      height: 400,
       child: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text('2023/11/1'),
+          const SizedBox(
+            height: 8,
+          ),
+          TextButton.icon(
+            onPressed: () async {
+              final selectedDate = await showDatePicker(
+                context: context,
+                initialDate: date,
+                firstDate: DateTime(2000),
+                lastDate: DateTime.now(),
+              );
+              if (selectedDate != null) {
+                setState(() {
+                  date = selectedDate;
+                });
+              }
+            },
+            icon: const Icon(Icons.calendar_month),
+            label: Text(
+                "${date.year.toString()}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}"),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(56, 32, 56, 0),
