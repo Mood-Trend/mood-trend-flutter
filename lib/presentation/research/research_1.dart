@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -99,11 +97,11 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
               Row(
                 children: [
                   const Text(
-                    '気分値 ',
+                    '気分値',
                     style: TextStyle(fontSize: 24),
                   ),
                   SizedBox(
-                    width: 50,
+                    width: 75,
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
                       child: Center(
@@ -134,18 +132,23 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const SizedBox(width: 72),
+              const SizedBox(width: 80),
               Row(
                 children: [
                   const Text(
-                    '予定数 ',
+                    '予定数',
                     style: TextStyle(fontSize: 24),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
-                    child: Text(
-                      _value.toInt().toString(),
-                      style: const TextStyle(fontSize: 52),
+                  SizedBox(
+                    width: 75,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
+                      child: Center(
+                        child: Text(
+                          _value.toInt().toString(),
+                          style: const TextStyle(fontSize: 52),
+                        ),
+                      ),
                     ),
                   ),
                 ],
