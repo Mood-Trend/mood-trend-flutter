@@ -14,7 +14,6 @@ class Research1 extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Mood Trend'),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         backgroundColor: colors.primary,
         foregroundColor: colors.onPrimary,
@@ -56,7 +55,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 400,
+      height: 410,
       child: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
           const SizedBox(
