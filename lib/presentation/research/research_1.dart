@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
 import '../../infrastructure/firebase/mood_point_repository.dart';
 import '../mixin/error_handler_mixin.dart';
@@ -76,8 +77,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
               }
             },
             icon: const Icon(Icons.calendar_month),
-            label: Text(
-                "${date.year.toString()}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}"),
+            label: Text(DateFormat('yyyy-MM-dd').format(date)),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(56, 48, 56, 0),
