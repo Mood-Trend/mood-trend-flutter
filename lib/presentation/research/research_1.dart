@@ -9,14 +9,18 @@ class Research1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Mood Trend'),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
+        backgroundColor: colors.primary,
+        foregroundColor: colors.onPrimary,
         onPressed: () {
           showModalBottomSheet(
+            backgroundColor: colors.background,
             isScrollControlled: true,
             context: context,
             builder: (context) {
@@ -56,7 +60,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
       child: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
           const SizedBox(
-            height: 8,
+            height: 16,
           ),
           TextButton.icon(
             onPressed: () async {
@@ -77,14 +81,12 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                 "${date.year.toString()}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}"),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(56, 32, 56, 0),
+            padding: const EdgeInsets.fromLTRB(56, 48, 56, 0),
             child: Slider(
               value: _moodValue,
               min: -5.0,
               max: 5.0,
               divisions: 10,
-              activeColor: Colors.green,
-              inactiveColor: Colors.grey,
               onChangeStart: (value) {
                 if (value == 0.0) {
                   setState(() {
@@ -135,14 +137,12 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(56, 32, 56, 0),
+            padding: const EdgeInsets.fromLTRB(56, 24, 56, 0),
             child: Slider(
               label: _plannedValue.toInt().toString(),
               min: 0,
               max: 16,
               value: _plannedValue,
-              activeColor: Colors.green,
-              inactiveColor: Colors.grey,
               divisions: 16,
               onChanged: _changeSlider,
             ),
@@ -193,7 +193,10 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       successMessage: '気分値と予定数の登録が完了しました',
                     );
                   },
-                  child: const Text('保存'),
+                  child: const Text(
+                    '保存',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ],

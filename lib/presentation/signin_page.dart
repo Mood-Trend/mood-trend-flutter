@@ -15,14 +15,17 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final colors = Theme.of(context).colorScheme;
     return Scaffold(
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              AppColors.green,
-              AppColors.yellow,
+              colors.primary,
+              colors.primaryContainer,
+              // AppColors.green
+              // AppColors.yellow,
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -66,7 +69,8 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
                   textAlign: TextAlign.center,
                   text: TextSpan(
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Theme.of(context).colorScheme.surface,
+                          // color: Theme.of(context).colorScheme.surface,
+                          color: colors.surface,
                           fontWeight: FontWeight.bold,
                         ),
                     children: [
@@ -80,7 +84,7 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
                       ),
                       TextSpan(
                         text: ' と ',
-                        style: TextStyle(color: AppColors.grey),
+                        style: TextStyle(color: colors.outline),
                       ),
                       TextSpan(
                         text: 'プライバシーポリシー',
@@ -92,7 +96,7 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
                       ),
                       TextSpan(
                         text: ' に\n同意の上ご利用ください',
-                        style: TextStyle(color: AppColors.grey),
+                        style: TextStyle(color: colors.outline),
                       ),
                     ],
                   ),
