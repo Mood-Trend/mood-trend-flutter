@@ -26,6 +26,7 @@ dependencies:
   gap: ^3.0.1
   url_launcher: ^6.1.14
   hexcolor: ^3.0.1
+  syncfusion_flutter_charts: ^23.1.44
 
 dev_dependencies:
   flutter_test:
