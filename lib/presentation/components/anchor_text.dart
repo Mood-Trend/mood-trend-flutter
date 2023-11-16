@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mood_trend_flutter/utils/app_colors.dart';
 
 /// アンカーテキスト
 class AnchorText extends StatelessWidget {
