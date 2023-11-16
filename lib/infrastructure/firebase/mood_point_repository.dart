@@ -118,6 +118,15 @@ class MoodPointRepository {
       throw AppException('予期しないエラーが発生しました: $e');
     }
   }
+
+  /// [MoodPoint] のドキュメントを購読する。
+  Stream<List<MoodPoint>> subscribeMoodPoints() {
+    return moodPointsCollectionRef.snapshots().map(
+      (snapshot) {
+        return snapshot.docs.map((doc) => doc.data().toMoodPoint()).toList();
+      },
+    );
+  }
 }
 
 /// Firebase Firestore に保存される気分数値（予定数含む）のドキュメントモデル
