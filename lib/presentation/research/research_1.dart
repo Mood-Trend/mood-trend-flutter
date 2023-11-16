@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../infrastructure/firebase/mood_point_repository.dart';
 import '../mixin/error_handler_mixin.dart';
+
+class ChartData {
+  ChartData(this.date, this.y);
+  final DateTime date;
+  final int y;
+}
 
 class Research1 extends StatelessWidget {
   const Research1({super.key});
@@ -29,8 +36,32 @@ class Research1 extends StatelessWidget {
         },
         child: const Icon(Icons.add),
       ),
-      body: const Center(
-        child: Text('Research1'),
+      body: Center(
+        child: SfCartesianChart(
+          primaryXAxis: DateTimeAxis(),
+          primaryYAxis: NumericAxis(maximumLabels: 1),
+          series: <ChartSeries>[
+            // 塗りつぶす部分を描画するためのエリアチャート
+            SplineAreaSeries<ChartData, DateTime>(
+              dataSource: [
+                ChartData(DateTime(2023, 11, 1), -5),
+                ChartData(DateTime(2023, 11, 2), -3),
+                ChartData(DateTime(2023, 11, 3), -1),
+                ChartData(DateTime(2023, 11, 4), 1),
+                ChartData(DateTime(2023, 11, 5), -2),
+                ChartData(DateTime(2023, 11, 6), 3),
+                ChartData(DateTime(2023, 11, 7), 5),
+                ChartData(DateTime(2023, 11, 8), 2),
+                ChartData(DateTime(2023, 11, 9), 1),
+                ChartData(DateTime(2023, 11, 10), -2),
+              ],
+              xValueMapper: (ChartData value, _) => value.date,
+              yValueMapper: (ChartData value, _) => value.y,
+              color: colors.secondaryContainer,
+              borderDrawMode: BorderDrawMode.excludeBottom,
+            ),
+          ],
+        ),
       ),
     );
   }
