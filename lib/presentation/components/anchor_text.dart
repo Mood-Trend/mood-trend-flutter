@@ -9,7 +9,7 @@ class AnchorText extends StatelessWidget {
 
   static TextStyle anchorStyleText(BuildContext context) => TextStyle(
         decoration: TextDecoration.underline,
-        color: AppColors.grey,
+        color: Theme.of(context).colorScheme.outline,
       );
 
   @override

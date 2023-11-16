@@ -1,7 +1,6 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
 import '../../infrastructure/firebase/mood_point_repository.dart';
 import '../mixin/error_handler_mixin.dart';
@@ -11,14 +10,17 @@ class Research1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Mood Trend'),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
+        backgroundColor: colors.primary,
+        foregroundColor: colors.onPrimary,
         onPressed: () {
           showModalBottomSheet(
+            backgroundColor: colors.background,
             isScrollControlled: true,
             context: context,
             builder: (context) {
@@ -43,32 +45,47 @@ class InputModal extends ConsumerStatefulWidget {
 }
 
 class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
-  double _value = 0.0;
+  double _plannedValue = 0.0;
+  DateTime date = DateTime.now();
 
   int moodNum = 1;
   void _changeSlider(double e) => setState(() {
-        _value = e;
+        _plannedValue = e;
       });
   double _moodValue = 1.0;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 350,
+      height: 410,
       child: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text('2023/11/1'),
+          const SizedBox(
+            height: 16,
+          ),
+          TextButton.icon(
+            onPressed: () async {
+              final selectedDate = await showDatePicker(
+                context: context,
+                initialDate: date,
+                firstDate: DateTime(2000),
+                lastDate: DateTime.now(),
+              );
+              if (selectedDate != null) {
+                setState(() {
+                  date = selectedDate;
+                });
+              }
+            },
+            icon: const Icon(Icons.calendar_month),
+            label: Text(DateFormat('yyyy-MM-dd').format(date)),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(56, 32, 56, 0),
+            padding: const EdgeInsets.fromLTRB(56, 48, 56, 0),
             child: Slider(
               value: _moodValue,
               min: -5.0,
               max: 5.0,
               divisions: 10,
-              activeColor: Colors.green,
-              inactiveColor: Colors.grey,
               onChangeStart: (value) {
                 if (value == 0.0) {
                   setState(() {
@@ -99,11 +116,11 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
               Row(
                 children: [
                   const Text(
-                    '気分値 ',
+                    '気分値',
                     style: TextStyle(fontSize: 24),
                   ),
                   SizedBox(
-                    width: 50,
+                    width: 75,
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
                       child: Center(
@@ -119,14 +136,12 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(56, 32, 56, 0),
+            padding: const EdgeInsets.fromLTRB(56, 24, 56, 0),
             child: Slider(
-              label: _value.toInt().toString(),
+              label: _plannedValue.toInt().toString(),
               min: 0,
               max: 16,
-              value: _value,
-              activeColor: Colors.green,
-              inactiveColor: Colors.grey,
+              value: _plannedValue,
               divisions: 16,
               onChanged: _changeSlider,
             ),
@@ -134,18 +149,23 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const SizedBox(width: 72),
+              const SizedBox(width: 80),
               Row(
                 children: [
                   const Text(
-                    '予定数 ',
+                    '予定数',
                     style: TextStyle(fontSize: 24),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
-                    child: Text(
-                      _value.toInt().toString(),
-                      style: const TextStyle(fontSize: 52),
+                  SizedBox(
+                    width: 75,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
+                      child: Center(
+                        child: Text(
+                          _plannedValue.toInt().toString(),
+                          style: const TextStyle(fontSize: 52),
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -160,9 +180,9 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       action: () async {
                         // mood_points コレクションにドキュメントを追加
                         await ref.read(moodPointRepositoryProvider).add(
-                              point: 2,
-                              plannedVolume: 3,
-                              moodDate: DateTime.now(),
+                              point: _moodValue.toInt(),
+                              plannedVolume: _plannedValue.toInt(),
+                              moodDate: date,
                             );
 
                         // モーダルを閉じる
@@ -172,7 +192,10 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       successMessage: '気分値と予定数の登録が完了しました',
                     );
                   },
-                  child: const Text('保存'),
+                  child: const Text(
+                    '保存',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ],
