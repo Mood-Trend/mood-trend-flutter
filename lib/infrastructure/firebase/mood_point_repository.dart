@@ -9,7 +9,7 @@ import 'firebase_provider.dart';
 /// [MoodPointRepository] のインスタンスを提供する [Provider]
 final moodPointRepositoryProvider = Provider<MoodPointRepository>(
   (ref) => MoodPointRepository(
-    moodPointsCollectionRef: ref.read(moodPointsCollectionRefProvider),
+    moodPointsCollectionRef: ref.watch(moodPointsCollectionRefProvider),
   ),
 );
 
@@ -18,7 +18,7 @@ final moodPointsCollectionRefProvider = Provider(
   (ref) => ref
       .watch(firebaseFirestoreProvider)
       .collection('users')
-      .doc(ref.read(userIdProvider)!)
+      .doc(ref.watch(userIdProvider)!)
       .collection('mood_points')
       .withConverter<MoodPointDocument>(
         fromFirestore: (snapshot, _) => MoodPointDocument.fromJson(
