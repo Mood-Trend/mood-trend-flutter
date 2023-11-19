@@ -80,17 +80,27 @@ class Research2State extends ConsumerState<Research2> {
               visibleMinimum: visibleMinimum,
               visibleMaximum: visibleMaximum,
             ),
-            primaryYAxis: NumericAxis(minimum: -5, maximum: 5),
+            primaryYAxis: NumericAxis(minimum: -6, maximum: 6),
             title: ChartTitle(text: 'Monthly Mood Trend'),
             legend: const Legend(isVisible: false),
             tooltipBehavior: tooltipBehavior,
-            series: <LineSeries<MoodData, DateTime>>[
-              LineSeries<MoodData, DateTime>(
+            // series: <LineSeries<MoodData, DateTime>>[
+            //   LineSeries<MoodData, DateTime>(
+            //     dataSource: moodDataList,
+            //     xValueMapper: (MoodData sales, _) => sales.date,
+            //     yValueMapper: (MoodData sales, _) => sales.points,
+            //     dataLabelSettings: const DataLabelSettings(isVisible: false),
+            //   )
+            // ],
+            series: <ChartSeries>[
+              // 塗りつぶす部分を描画するためのエリアチャート
+              SplineAreaSeries<MoodData, DateTime>(
                 dataSource: moodDataList,
-                xValueMapper: (MoodData sales, _) => sales.date,
-                yValueMapper: (MoodData sales, _) => sales.points,
-                dataLabelSettings: const DataLabelSettings(isVisible: false),
-              )
+                xValueMapper: (MoodData value, _) => value.date,
+                yValueMapper: (MoodData value, _) => value.points,
+                //color: colors.secondaryContainer,
+                borderDrawMode: BorderDrawMode.excludeBottom,
+              ),
             ],
           ),
         ),
