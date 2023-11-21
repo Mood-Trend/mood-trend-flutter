@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/domain/mood_point.dart';
 import 'package:mood_trend_flutter/presentation/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/components/loading.dart';
+import 'package:mood_trend_flutter/presentation/setting_page.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -32,9 +33,14 @@ class HomePage extends ConsumerWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () async {
-              // TODO: 設定画面を作成する
-              await PageNavigator.push(context, const SizedBox());
+            onPressed: () {
+              showModalBottomSheet(
+                isScrollControlled: true,
+                context: context,
+                builder: (context) {
+                  return const SettingModal();
+                },
+              );
             },
             icon: const Icon(Icons.settings),
           ),
