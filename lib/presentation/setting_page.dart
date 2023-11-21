@@ -17,7 +17,7 @@ class _SettingModalState extends State<SettingModal> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Text("設定"),
+        title: const Text("設定"),
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).pop();
@@ -28,46 +28,52 @@ class _SettingModalState extends State<SettingModal> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
+          const Padding(
+            padding: EdgeInsets.all(16.0),
             child: Row(
               children: [
                 Text("編集"),
               ],
             ),
           ),
-          Container(
-            color: colors.onPrimary,
-            width: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                "症状ワークシート",
-                style: TextStyle(fontSize: 16),
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              color: colors.onPrimary,
+              width: double.infinity,
+              child: const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Text(
+                  "症状ワークシート",
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
+          const Padding(
+            padding: EdgeInsets.all(16.0),
             child: Row(
               children: [
                 Text("サポート"),
               ],
             ),
           ),
-          Container(
-            color: colors.onPrimary,
-            width: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                "お問い合わせ",
-                style: TextStyle(fontSize: 16),
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              color: colors.onPrimary,
+              width: double.infinity,
+              child: const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Text(
+                  "お問い合わせ",
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
+          const Padding(
+            padding: EdgeInsets.all(16.0),
             child: Row(
               children: [
                 Text("アプリについて"),
@@ -76,25 +82,53 @@ class _SettingModalState extends State<SettingModal> {
           ),
           Column(
             children: [
-              Container(
-                color: colors.onPrimary,
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-                  child: Text(
-                    "アプリを評価する",
-                    style: TextStyle(fontSize: 16),
-                  ),
+              GestureDetector(
+                onTap: () {},
+                child: Column(
+                  children: [
+                    Container(
+                      color: colors.onPrimary,
+                      width: double.infinity,
+                      child: const Padding(
+                        padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
+                        child: Text(
+                          "アプリを評価する",
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      color: colors.onPrimary,
+                      width: double.infinity,
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                        child: Text(
+                          "レビューしてもらえると開発者が小躍りします",
+                          style: TextStyle(color: colors.outline),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              Container(
-                color: colors.onPrimary,
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                  child: Text(
-                    "レビューしてもらえると開発者が小躍りします",
-                    style: TextStyle(color: colors.outline),
+              Divider(
+                height: 0,
+                thickness: 1,
+                indent: 20,
+                endIndent: 20,
+                color: colors.surfaceVariant,
+              ),
+              GestureDetector(
+                onTap: () {},
+                child: Container(
+                  color: colors.onPrimary,
+                  width: double.infinity,
+                  child: const Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Text(
+                      "サービス利用規約",
+                      style: TextStyle(fontSize: 16),
+                    ),
                   ),
                 ),
               ),
@@ -105,53 +139,41 @@ class _SettingModalState extends State<SettingModal> {
                 endIndent: 20,
                 color: colors.surfaceVariant,
               ),
-              Container(
-                color: colors.onPrimary,
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    "サービス利用規約",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-              ),
-              Divider(
-                height: 0,
-                thickness: 1,
-                indent: 20,
-                endIndent: 20,
-                color: colors.surfaceVariant,
-              ),
-              Container(
-                color: colors.onPrimary,
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    "プライバシーポリシー",
-                    style: TextStyle(fontSize: 16),
+              GestureDetector(
+                onTap: () {},
+                child: Container(
+                  color: colors.onPrimary,
+                  width: double.infinity,
+                  child: const Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Text(
+                      "プライバシーポリシー",
+                      style: TextStyle(fontSize: 16),
+                    ),
                   ),
                 ),
               ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
+          const Padding(
+            padding: EdgeInsets.all(16.0),
             child: Row(
               children: [
                 Text("その他"),
               ],
             ),
           ),
-          Container(
-            color: colors.onPrimary,
-            width: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                "退会する",
-                style: TextStyle(color: colors.error, fontSize: 16),
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              color: colors.onPrimary,
+              width: double.infinity,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  "退会する",
+                  style: TextStyle(color: colors.error, fontSize: 16),
+                ),
               ),
             ),
           )
