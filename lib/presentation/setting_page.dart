@@ -114,8 +114,8 @@ class _SettingModalState extends State<SettingModal> {
               Divider(
                 height: 0,
                 thickness: 1,
-                indent: 20,
-                endIndent: 20,
+                indent: 16,
+                endIndent: 16,
                 color: colors.surfaceVariant,
               ),
               GestureDetector(
@@ -135,8 +135,8 @@ class _SettingModalState extends State<SettingModal> {
               Divider(
                 height: 0,
                 thickness: 1,
-                indent: 20,
-                endIndent: 20,
+                indent: 16,
+                endIndent: 16,
                 color: colors.surfaceVariant,
               ),
               GestureDetector(
