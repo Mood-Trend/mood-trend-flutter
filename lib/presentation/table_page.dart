@@ -17,7 +17,7 @@ class _TableModalState extends State<TableModal> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Text("症状ワークシート"),
+        title: const Text("症状ワークシート"),
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).pop();
@@ -102,7 +102,7 @@ class TableCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     return Card(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       color: colors.onPrimary,
       child: Row(
         children: [
@@ -110,7 +110,7 @@ class TableCard extends StatelessWidget {
             height: 80,
             width: 50,
             decoration: BoxDecoration(
-              color: colors.inverseSurface,
+              color: colors.secondaryContainer,
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(10.0),
                 bottomLeft: Radius.circular(10.0),
@@ -119,15 +119,24 @@ class TableCard extends StatelessWidget {
             child: Center(
                 child: Text(
               moodValue,
-              style: TextStyle(color: colors.onPrimary, fontSize: 21),
+              style: TextStyle(color: colors.outline, fontSize: 22),
             )),
           ),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                actionText,
-                textAlign: TextAlign.left,
+            child: SizedBox(
+              // これがないと文字数が多い時にUIが崩れる
+              height: 80,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  child: Text(
+                    actionText,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: colors.inverseSurface,
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
