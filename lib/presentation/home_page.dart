@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/domain/mood_point.dart';
 import 'package:mood_trend_flutter/presentation/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/components/loading.dart';
+import 'package:mood_trend_flutter/presentation/table_page.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -208,7 +209,16 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
               Padding(
                 padding: const EdgeInsets.fromLTRB(18, 56, 18, 0),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showModalBottomSheet(
+                      backgroundColor: colors.background,
+                      isScrollControlled: true,
+                      context: context,
+                      builder: (context) {
+                        return const TableModal();
+                      },
+                    );
+                  },
                   icon: Icon(
                     Icons.align_horizontal_left,
                     color: colors.primary,
