@@ -36,6 +36,9 @@ class _TableModalState extends State<TableModal> {
       body: Center(
         child: ListView(
           children: const [
+            SizedBox(
+              height: 16,
+            ),
             TableCard(
               moodValue: "+5",
               actionText: "アイデアが湧いてきて止まらない。実現に向けて実際に向けて動く。",
