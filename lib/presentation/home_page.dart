@@ -14,12 +14,6 @@ final subscribeMoodPointsProvider = StreamProvider<List<MoodPoint>>(
   (ref) => ref.watch(moodPointRepositoryProvider).subscribeMoodPoints(),
 );
 
-class ChartData {
-  ChartData(this.date, this.y);
-  final DateTime date;
-  final int y;
-}
-
 class HomePage extends ConsumerWidget {
   const HomePage({super.key, required this.userId});
 
@@ -27,6 +21,9 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    DateTime visibleMinimum = DateTime(2023, 11, 1);
+    DateTime visibleMaximum = DateTime(2023, 11, 30);
+
     final colors = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
@@ -46,25 +43,20 @@ class HomePage extends ConsumerWidget {
           builder: (moodPoints) {
             return Center(
               child: SfCartesianChart(
-                primaryXAxis: DateTimeAxis(),
-                primaryYAxis: NumericAxis(maximumLabels: 1),
+                primaryXAxis: DateTimeAxis(
+                  visibleMinimum: visibleMinimum,
+                  visibleMaximum: visibleMaximum,
+                ),
+                primaryYAxis: NumericAxis(minimum: -6, maximum: 6),
                 series: <ChartSeries>[
                   // 塗りつぶす部分を描画するためのエリアチャート
-                  SplineAreaSeries<ChartData, DateTime>(
-                    dataSource: [
-                      ChartData(DateTime(2023, 11, 1), -5),
-                      ChartData(DateTime(2023, 11, 2), -3),
-                      ChartData(DateTime(2023, 11, 3), -1),
-                      ChartData(DateTime(2023, 11, 4), 1),
-                      ChartData(DateTime(2023, 11, 5), -2),
-                      ChartData(DateTime(2023, 11, 6), 3),
-                      ChartData(DateTime(2023, 11, 7), 5),
-                      ChartData(DateTime(2023, 11, 8), 2),
-                      ChartData(DateTime(2023, 11, 9), 1),
-                      ChartData(DateTime(2023, 11, 10), -2),
-                    ],
-                    xValueMapper: (ChartData value, _) => value.date,
-                    yValueMapper: (ChartData value, _) => value.y,
+                  SplineAreaSeries<MoodPoint, DateTime>(
+                    dataSource: moodPoints,
+                    xValueMapper: (MoodPoint value, _) => DateTime(
+                        value.moodDate.year,
+                        value.moodDate.month,
+                        value.moodDate.day),
+                    yValueMapper: (MoodPoint value, _) => value.point,
                     color: colors.secondaryContainer,
                     borderDrawMode: BorderDrawMode.excludeBottom,
                   ),
