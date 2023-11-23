@@ -109,6 +109,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
   double _moodValue = 1.0;
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     return SizedBox(
       height: 410,
       child: Center(
@@ -204,7 +205,16 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const SizedBox(width: 80),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(18, 56, 18, 0),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.align_horizontal_left,
+                    color: colors.primary,
+                  ),
+                ),
+              ),
               Row(
                 children: [
                   const Text(
