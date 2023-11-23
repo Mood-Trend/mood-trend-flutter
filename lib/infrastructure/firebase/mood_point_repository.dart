@@ -123,7 +123,10 @@ class MoodPointRepository {
   Stream<List<MoodPoint>> subscribeMoodPoints() {
     return moodPointsCollectionRef.snapshots().map(
       (snapshot) {
-        return snapshot.docs.map((doc) => doc.data().toMoodPoint()).toList();
+        var moodPointList =
+            snapshot.docs.map((doc) => doc.data().toMoodPoint()).toList();
+        moodPointList.sort((a, b) => a.moodDate.compareTo(b.moodDate));
+        return moodPointList;
       },
     );
   }
