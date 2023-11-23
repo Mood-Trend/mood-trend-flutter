@@ -33,15 +33,7 @@ class HomePage extends ConsumerWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () {
-              showModalBottomSheet(
-                isScrollControlled: true,
-                context: context,
-                builder: (context) {
-                  return const SettingModal();
-                },
-              );
-            },
+            onPressed: () => PageNavigator.push(context, const SettingPage()),
             icon: const Icon(Icons.settings),
           ),
         ],

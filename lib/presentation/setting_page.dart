@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-class SettingModal extends StatefulWidget {
-  const SettingModal({super.key});
+class SettingPage extends StatelessWidget {
+  const SettingPage({super.key});
 
-  @override
-  State<SettingModal> createState() => _SettingModalState();
-}
-
-class _SettingModalState extends State<SettingModal> {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
@@ -18,12 +13,6 @@ class _SettingModalState extends State<SettingModal> {
         backgroundColor: colors.onInverseSurface,
         centerTitle: true,
         title: const Text("設定"),
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          icon: const Icon(Icons.close),
-        ),
       ),
       body: ListView(
         children: [
