@@ -10,6 +10,7 @@ import 'package:mood_trend_flutter/utils/page_navigator.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../infrastructure/firebase/mood_point_repository.dart';
+import '../utils/app_colors.dart';
 import 'mixin/error_handler_mixin.dart';
 
 // グラフ表示期間を示す
@@ -60,8 +61,51 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
+
+    final selectedTerm = ref.watch(selectedTermProvider);
+    ButtonStyle buttonStyle(Term term) {
+      return TextButton.styleFrom(
+        foregroundColor: selectedTerm == term ? Colors.white : Colors.black,
+        backgroundColor:
+            selectedTerm == term ? AppColors.green : AppColors.white,
+        side: BorderSide(
+          color: AppColors.green,
+          width: 1,
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextButton(
+              onPressed: () => ref
+                  .read(selectedTermProvider.notifier)
+                  .update((state) => Term.year),
+              style: buttonStyle(Term.year),
+              child: const Text('1年'),
+            ),
+            const SizedBox(width: 10),
+            TextButton(
+              onPressed: () => ref
+                  .read(selectedTermProvider.notifier)
+                  .update((state) => Term.halfYear),
+              style: buttonStyle(Term.halfYear),
+              child: const Text('半年'),
+            ),
+            const SizedBox(width: 10),
+            TextButton(
+              onPressed: () => ref
+                  .read(selectedTermProvider.notifier)
+                  .update((state) => Term.month),
+              style: buttonStyle(Term.month),
+              child: const Text('1ヶ月'),
+            ),
+          ],
+        ),
         actions: [
           IconButton(
             onPressed: () => PageNavigator.push(context, const SettingPage()),
