@@ -12,10 +12,10 @@ class _SettingModalState extends State<SettingModal> {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     return Scaffold(
-      backgroundColor: colors.surfaceVariant,
+      backgroundColor: colors.onInverseSurface,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.transparent,
+        backgroundColor: colors.onInverseSurface,
         centerTitle: true,
         title: const Text("設定"),
         leading: IconButton(
@@ -30,13 +30,13 @@ class _SettingModalState extends State<SettingModal> {
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.all(20.0),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 30, 16, 8),
                 child: Row(
                   children: [
                     Text(
                       "編集",
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 16, color: colors.outline),
                     ),
                   ],
                 ),
@@ -47,7 +47,7 @@ class _SettingModalState extends State<SettingModal> {
                   color: colors.onPrimary,
                   width: double.infinity,
                   child: const Padding(
-                    padding: EdgeInsets.all(20.0),
+                    padding: EdgeInsets.fromLTRB(16, 20, 16, 20),
                     child: Text(
                       "症状ワークシート",
                       style: TextStyle(fontSize: 18),
@@ -55,13 +55,13 @@ class _SettingModalState extends State<SettingModal> {
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.all(16.0),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 20, 20, 8),
                 child: Row(
                   children: [
                     Text(
                       "サポート",
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 16, color: colors.outline),
                     ),
                   ],
                 ),
@@ -72,7 +72,7 @@ class _SettingModalState extends State<SettingModal> {
                   color: colors.onPrimary,
                   width: double.infinity,
                   child: const Padding(
-                    padding: EdgeInsets.all(20.0),
+                    padding: EdgeInsets.fromLTRB(16, 20, 16, 20),
                     child: Text(
                       "お問い合わせ",
                       style: TextStyle(fontSize: 18),
@@ -80,13 +80,13 @@ class _SettingModalState extends State<SettingModal> {
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.all(20.0),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 20, 20, 8),
                 child: Row(
                   children: [
                     Text(
                       "アプリについて",
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 16, color: colors.outline),
                     ),
                   ],
                 ),
@@ -101,7 +101,7 @@ class _SettingModalState extends State<SettingModal> {
                           color: colors.onPrimary,
                           width: double.infinity,
                           child: const Padding(
-                            padding: EdgeInsets.fromLTRB(20, 20, 20, 8),
+                            padding: EdgeInsets.fromLTRB(16, 20, 16, 8),
                             child: Text(
                               "アプリを評価する",
                               style: TextStyle(fontSize: 18),
@@ -112,7 +112,7 @@ class _SettingModalState extends State<SettingModal> {
                           color: colors.onPrimary,
                           width: double.infinity,
                           child: Padding(
-                            padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                            padding: const EdgeInsets.fromLTRB(16, 0, 16, 20),
                             child: Text(
                               "レビューしてもらえると開発者が小躍りします",
                               style: TextStyle(
@@ -136,7 +136,7 @@ class _SettingModalState extends State<SettingModal> {
                       color: colors.onPrimary,
                       width: double.infinity,
                       child: const Padding(
-                        padding: EdgeInsets.all(20.0),
+                        padding: EdgeInsets.fromLTRB(16, 20, 16, 20),
                         child: Text(
                           "サービス利用規約",
                           style: TextStyle(fontSize: 18),
@@ -157,7 +157,7 @@ class _SettingModalState extends State<SettingModal> {
                       color: colors.onPrimary,
                       width: double.infinity,
                       child: const Padding(
-                        padding: EdgeInsets.all(20.0),
+                        padding: EdgeInsets.fromLTRB(16, 20, 16, 20),
                         child: Text(
                           "プライバシーポリシー",
                           style: TextStyle(fontSize: 18),
@@ -167,13 +167,13 @@ class _SettingModalState extends State<SettingModal> {
                   ),
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.all(20.0),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 20, 16, 8),
                 child: Row(
                   children: [
                     Text(
                       "その他",
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 16, color: colors.outline),
                     ),
                   ],
                 ),
@@ -184,7 +184,7 @@ class _SettingModalState extends State<SettingModal> {
                   color: colors.onPrimary,
                   width: double.infinity,
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
                     child: Text(
                       "退会する",
                       style: TextStyle(color: colors.error, fontSize: 18),
@@ -192,7 +192,7 @@ class _SettingModalState extends State<SettingModal> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               )
             ],
