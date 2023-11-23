@@ -4,6 +4,7 @@ import 'package:mood_trend_flutter/domain/mood_point.dart';
 import 'package:mood_trend_flutter/presentation/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/setting_page.dart';
+import 'package:mood_trend_flutter/presentation/table_page.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -99,6 +100,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
   double _moodValue = 1.0;
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     return SizedBox(
       height: 410,
       child: Center(
@@ -194,7 +196,25 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const SizedBox(width: 80),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(18, 56, 18, 0),
+                child: IconButton(
+                  onPressed: () {
+                    showModalBottomSheet(
+                      backgroundColor: colors.background,
+                      isScrollControlled: true,
+                      context: context,
+                      builder: (context) {
+                        return const TableModal();
+                      },
+                    );
+                  },
+                  icon: Icon(
+                    Icons.align_horizontal_left,
+                    color: colors.primary,
+                  ),
+                ),
+              ),
               Row(
                 children: [
                   const Text(
