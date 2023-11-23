@@ -21,10 +21,8 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              colors.primary,
               colors.primaryContainer,
-              // AppColors.green
-              // AppColors.yellow,
+              colors.primary,
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
