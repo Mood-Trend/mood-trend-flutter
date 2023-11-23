@@ -65,9 +65,14 @@ class HomePage extends ConsumerWidget {
     final selectedTerm = ref.watch(selectedTermProvider);
     ButtonStyle buttonStyle(Term term) {
       return TextButton.styleFrom(
+        /// 文字色は選択されている場合は白、そうでない場合は黒
         foregroundColor: selectedTerm == term ? Colors.white : Colors.black,
+
+        /// 背景色は選択されている場合は緑、そうでない場合は白
         backgroundColor:
             selectedTerm == term ? AppColors.green : AppColors.white,
+
+        /// 枠線は緑に固定
         side: BorderSide(
           color: AppColors.green,
           width: 1,
