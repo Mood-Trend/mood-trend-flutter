@@ -5,15 +5,51 @@ import 'package:mood_trend_flutter/presentation/components/async_value_handler.d
 import 'package:mood_trend_flutter/presentation/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/setting_page.dart';
 import 'package:mood_trend_flutter/presentation/table_page.dart';
+import 'package:mood_trend_flutter/utils/datetime_extension.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../infrastructure/firebase/mood_point_repository.dart';
 import 'mixin/error_handler_mixin.dart';
 
+// グラフ表示期間を示す
+enum Term {
+  /// 1 ヶ月
+  month,
+
+  /// 半年
+  halfYear,
+
+  /// 1 年
+  year,
+}
+
 /// [MoodPoint] を購読する [StreamProvider]
 final subscribeMoodPointsProvider = StreamProvider<List<MoodPoint>>(
   (ref) => ref.watch(moodPointRepositoryProvider).subscribeMoodPoints(),
+);
+
+/// 表示期間選択状態を示す [StateProvider]
+final selectedTermProvider = StateProvider<Term>((_) => Term.month);
+
+/// グラフの最小値を保持する [StateProvider]
+final visibleMinimumProvider = StateProvider<DateTime>(
+  (ref) => ref.watch(selectedTermProvider) == Term.month
+      ? ref.watch(visibleMaximumProvider).subtract(
+            const Duration(days: 30),
+          )
+      : ref.watch(selectedTermProvider) == Term.halfYear
+          ? ref.watch(visibleMaximumProvider).subtract(
+                const Duration(days: 182),
+              )
+          : ref.watch(visibleMaximumProvider).subtract(
+                const Duration(days: 365),
+              ),
+);
+
+/// グラフの最大値を保持する [StateProvider]
+final visibleMaximumProvider = StateProvider<DateTime>(
+  (ref) => DateTime.now().toToday(),
 );
 
 class HomePage extends ConsumerWidget {
@@ -23,9 +59,6 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    DateTime visibleMinimum = DateTime(2023, 11, 1);
-    DateTime visibleMaximum = DateTime(2023, 11, 30);
-
     final colors = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
@@ -43,18 +76,16 @@ class HomePage extends ConsumerWidget {
             return Center(
               child: SfCartesianChart(
                 primaryXAxis: DateTimeAxis(
-                  visibleMinimum: visibleMinimum,
-                  visibleMaximum: visibleMaximum,
+                  visibleMinimum: ref.watch(visibleMinimumProvider),
+                  visibleMaximum: ref.watch(visibleMaximumProvider),
                 ),
                 primaryYAxis: NumericAxis(minimum: -6, maximum: 6),
                 series: <ChartSeries>[
                   // 塗りつぶす部分を描画するためのエリアチャート
                   SplineAreaSeries<MoodPoint, DateTime>(
                     dataSource: moodPoints,
-                    xValueMapper: (MoodPoint value, _) => DateTime(
-                        value.moodDate.year,
-                        value.moodDate.month,
-                        value.moodDate.day),
+                    xValueMapper: (MoodPoint value, _) =>
+                        DateTime.now().toToday(),
                     yValueMapper: (MoodPoint value, _) => value.point,
                     color: colors.secondaryContainer,
                     borderDrawMode: BorderDrawMode.excludeBottom,
