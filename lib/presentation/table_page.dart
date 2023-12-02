@@ -210,7 +210,7 @@ class _MyWidgetState extends ConsumerState<EditModal> with ErrorHandlerMixin {
               children: [
                 Row(
                   children: [
-                    const SizedBox(width: 20),
+                    const SizedBox(width: 24),
                     const Text(
                       '気分値',
                       style: TextStyle(fontSize: 18),
