@@ -164,17 +164,18 @@ class EditModal extends ConsumerStatefulWidget {
 
 class _MyWidgetState extends ConsumerState<EditModal> with ErrorHandlerMixin {
   double _moodValue = 1;
+  final controller = TextEditingController(text: '');
+
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
     return AlertDialog(
-      title: Text("編集"),
+      title: const Text("編集"),
       content: SizedBox(
         height: 300,
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(56, 48, 56, 0),
+              padding: const EdgeInsets.fromLTRB(52, 48, 52, 0),
               child: Slider(
                 value: _moodValue,
                 min: -5.0,
@@ -238,6 +239,7 @@ class _MyWidgetState extends ConsumerState<EditModal> with ErrorHandlerMixin {
               ),
             ),
             TextFormField(
+              controller: controller,
               maxLines: 3,
               decoration: const InputDecoration(border: OutlineInputBorder()),
             ),
