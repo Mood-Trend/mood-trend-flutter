@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
+import 'package:mood_trend_flutter/infrastructure/firebase/mood_worksheet_repository.dart';
 import 'package:mood_trend_flutter/presentation/mixin/error_handler_mixin.dart';
 import 'package:mood_trend_flutter/utils/url_launcher_service.dart';
 
@@ -47,6 +48,9 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
                             await ref
                                 .read(firebaseAuthRepositoryProvider)
                                 .signinAnonymously();
+                            await ref
+                                .read(moodWorksheetRepositoryProvider)
+                                .create();
                           },
                           successMessage: 'サインインが完了しました',
                         );
