@@ -282,14 +282,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                 child: IconButton(
                   onPressed: () {
                     PageNavigator.push(context, TablePage());
-                    // showModalBottomSheet(
-                    //   backgroundColor: colors.background,
-                    //   isScrollControlled: true,
-                    //   context: context,
-                    //   builder: (context) {
-                    //     return const TableModal();
-                    //   },
-                    // );
                   },
                   icon: Icon(
                     Icons.align_horizontal_left,
