@@ -11,5 +11,8 @@ class Conf with _$Conf {
 
     /// ユーザーが入力できる最大の予定数
     required int maxPlannedVolume,
+
+    /// オンボーディング完了済みかどうか
+    required bool isOnboardingCompleted,
   }) = _Conf;
 }
