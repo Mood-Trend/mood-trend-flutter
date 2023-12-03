@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/presentation/components/async_value_handler.dart';
+import 'package:mood_trend_flutter/presentation/components/loading.dart';
+import 'package:mood_trend_flutter/presentation/table_page.dart';
+import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
-class SettingPage extends StatelessWidget {
+class SettingPage extends ConsumerWidget {
   const SettingPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
     return Scaffold(
       backgroundColor: colors.onInverseSurface,
@@ -28,7 +33,24 @@ class SettingPage extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AsyncValueHandler(
+                      value: ref.watch(worksheetProvider),
+                      loading: () => const OverlayLoading(),
+                      builder: (worksheet) {
+                        return EditDialog(
+                          worksheet: worksheet,
+                          controller: TextEditingController(
+                            text: worksheet.plus_1,
+                          ),
+                        );
+                      });
+                },
+              );
+            },
             child: Container(
               color: colors.onPrimary,
               width: double.infinity,
