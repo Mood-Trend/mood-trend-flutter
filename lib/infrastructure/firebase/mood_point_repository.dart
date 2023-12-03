@@ -9,7 +9,7 @@ import 'firebase_provider.dart';
 /// [MoodPointRepository] のインスタンスを提供する [Provider]
 final moodPointRepositoryProvider = Provider<MoodPointRepository>(
   (ref) => MoodPointRepository(
-    moodPointsCollectionRef: ref.read(moodPointsCollectionRefProvider),
+    moodPointsCollectionRef: ref.watch(moodPointsCollectionRefProvider),
   ),
 );
 
@@ -18,7 +18,7 @@ final moodPointsCollectionRefProvider = Provider(
   (ref) => ref
       .watch(firebaseFirestoreProvider)
       .collection('users')
-      .doc(ref.read(userIdProvider)!)
+      .doc(ref.watch(userIdProvider)!)
       .collection('mood_points')
       .withConverter<MoodPointDocument>(
         fromFirestore: (snapshot, _) => MoodPointDocument.fromJson(
@@ -117,6 +117,18 @@ class MoodPointRepository {
     } catch (e) {
       throw AppException('予期しないエラーが発生しました: $e');
     }
+  }
+
+  /// [MoodPoint] のドキュメントを購読する。
+  Stream<List<MoodPoint>> subscribeMoodPoints() {
+    return moodPointsCollectionRef.snapshots().map(
+      (snapshot) {
+        var moodPointList =
+            snapshot.docs.map((doc) => doc.data().toMoodPoint()).toList();
+        moodPointList.sort((a, b) => a.moodDate.compareTo(b.moodDate));
+        return moodPointList;
+      },
+    );
   }
 }
 

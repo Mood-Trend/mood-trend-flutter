@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
 import 'package:mood_trend_flutter/presentation/mixin/error_handler_mixin.dart';
-import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/url_launcher_service.dart';
 
 import 'components/anchor_text.dart';
@@ -22,10 +21,8 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              colors.primary,
               colors.primaryContainer,
-              // AppColors.green
-              // AppColors.yellow,
+              colors.primary,
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
