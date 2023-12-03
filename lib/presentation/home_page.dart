@@ -10,7 +10,6 @@ import 'package:mood_trend_flutter/utils/page_navigator.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../infrastructure/firebase/mood_point_repository.dart';
-import '../utils/app_colors.dart';
 import 'mixin/error_handler_mixin.dart';
 
 // グラフ表示期間を示す

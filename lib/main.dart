@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mood_trend_flutter/firebase_options_dev.dart' as dev;
 import 'package:mood_trend_flutter/firebase_options_prod.dart' as prod;
 import 'package:mood_trend_flutter/presentation/components/dialog.dart';
