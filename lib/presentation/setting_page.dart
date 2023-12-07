@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/utils/url_launcher_service.dart';
 
-class SettingPage extends StatelessWidget {
+class SettingPage extends ConsumerWidget {
   const SettingPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
     return Scaffold(
       backgroundColor: colors.onInverseSurface,
@@ -53,7 +55,9 @@ class SettingPage extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () async {
+              await ref.read(urlLauncherServiceProvider).launch('');
+            },
             child: Container(
               color: colors.onPrimary,
               width: double.infinity,
@@ -80,7 +84,9 @@ class SettingPage extends StatelessWidget {
           Column(
             children: [
               GestureDetector(
-                onTap: () {},
+                onTap: () async {
+                  await ref.read(urlLauncherServiceProvider).launch('');
+                },
                 child: Column(
                   children: [
                     Container(
@@ -116,7 +122,9 @@ class SettingPage extends StatelessWidget {
                 color: colors.surfaceVariant,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () async {
+                  await ref.read(urlLauncherServiceProvider).launch('');
+                },
                 child: Container(
                   color: colors.onPrimary,
                   width: double.infinity,
@@ -137,7 +145,9 @@ class SettingPage extends StatelessWidget {
                 color: colors.surfaceVariant,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () async {
+                  await ref.read(urlLauncherServiceProvider).launch('');
+                },
                 child: Container(
                   color: colors.onPrimary,
                   width: double.infinity,
@@ -164,7 +174,27 @@ class SettingPage extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: const Text("退会しますか？"),
+                    content: const Text("データは全て削除され復元できません"),
+                    actions: [
+                      TextButton(
+                        child: const Text("キャンセル"),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                      TextButton(
+                        child: const Text("退会する"),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
             child: Container(
               color: colors.onPrimary,
               width: double.infinity,
