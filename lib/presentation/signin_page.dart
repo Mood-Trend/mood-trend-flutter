@@ -49,10 +49,6 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
                             await ref
                                 .read(firebaseAuthRepositoryProvider)
                                 .signinAnonymously();
-                            await ref
-                                .read(moodWorksheetRepositoryProvider)
-                                .create();
-                            await ref.read(confRepositoryProvider).create();
                           },
                           successMessage: 'サインインが完了しました',
                         );
