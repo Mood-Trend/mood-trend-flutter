@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/presentation/components/async_value_handler.dart';
-import 'package:mood_trend_flutter/presentation/components/loading.dart';
-import 'package:mood_trend_flutter/presentation/table_page.dart';
+
+import 'edit_dialog.dart';
 
 class SettingPage extends ConsumerWidget {
   const SettingPage({super.key});
@@ -36,18 +35,7 @@ class SettingPage extends ConsumerWidget {
               showDialog(
                 context: context,
                 builder: (context) {
-                  // TODO: 値がズレるので要確認
-                  return AsyncValueHandler(
-                      value: ref.watch(worksheetProvider),
-                      loading: () => const OverlayLoading(),
-                      builder: (worksheet) {
-                        return EditDialog(
-                          worksheet: worksheet,
-                          controller: TextEditingController(
-                            text: worksheet.plus_1,
-                          ),
-                        );
-                      });
+                  return const EditDialog();
                 },
               );
             },
