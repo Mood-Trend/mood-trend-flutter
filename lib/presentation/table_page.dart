@@ -8,7 +8,8 @@ import 'package:mood_trend_flutter/presentation/components/loading.dart';
 import 'edit_dialog.dart';
 
 final worksheetProvider = StreamProvider<MoodWorksheet>(
-    (ref) => ref.watch(moodWorksheetRepositoryProvider).subscribe());
+  (ref) => ref.watch(moodWorksheetRepositoryProvider).subscribe(),
+);
 
 class TablePage extends ConsumerWidget {
   const TablePage({super.key});
