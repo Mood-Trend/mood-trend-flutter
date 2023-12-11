@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/presentation/table_page.dart';
+import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
-class SettingPage extends StatelessWidget {
+class SettingPage extends ConsumerWidget {
   const SettingPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
     return Scaffold(
       backgroundColor: colors.onInverseSurface,
@@ -28,7 +31,8 @@ class SettingPage extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () =>
+                PageNavigator.push(context, const TablePage(isEditMode: true)),
             child: Container(
               color: colors.onPrimary,
               width: double.infinity,

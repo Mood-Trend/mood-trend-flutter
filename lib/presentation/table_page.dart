@@ -1,90 +1,112 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/domain/mood_worksheet.dart';
+import 'package:mood_trend_flutter/infrastructure/firebase/mood_worksheet_repository.dart';
+import 'package:mood_trend_flutter/presentation/components/async_value_handler.dart';
+import 'package:mood_trend_flutter/presentation/components/loading.dart';
 
-class TableModal extends StatefulWidget {
-  const TableModal({super.key});
+import 'edit_dialog.dart';
+
+final worksheetProvider = StreamProvider<MoodWorksheet>(
+  (ref) => ref.watch(moodWorksheetRepositoryProvider).subscribe(),
+);
+
+class TablePage extends ConsumerWidget {
+  const TablePage({super.key, required this.isEditMode});
+  final bool isEditMode;
 
   @override
-  State<TableModal> createState() => _TableModalState();
-}
-
-class _TableModalState extends State<TableModal> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
-    return Scaffold(
-      backgroundColor: colors.surfaceVariant,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        centerTitle: true,
-        title: const Text("症状ワークシート"),
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          icon: const Icon(Icons.close),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: colors.primary,
-        onPressed: () {},
-        child: Icon(
-          Icons.mode_edit,
-          color: colors.onPrimary,
-        ),
-      ),
-      body: Center(
-        child: ListView(
-          children: const [
-            SizedBox(
-              height: 16,
+    return AsyncValueHandler(
+      value: ref.watch(worksheetProvider),
+      loading: () => const OverlayLoading(),
+      builder: (worksheet) {
+        return Scaffold(
+          backgroundColor: colors.surfaceVariant,
+          appBar: AppBar(
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            centerTitle: true,
+            title: const Text("症状ワークシート"),
+            leading: IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              icon: const Icon(Icons.close),
             ),
-            TableCard(
-              moodValue: "+5",
-              actionText: "アイデアが湧いてきて止まらない。実現に向けて実際に向けて動く。",
+          ),
+          floatingActionButton: isEditMode
+              ? FloatingActionButton(
+                  backgroundColor: colors.primary,
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return const EditDialog();
+                      },
+                    );
+                  },
+                  child: Icon(
+                    Icons.mode_edit,
+                    color: colors.onPrimary,
+                  ),
+                )
+              : const SizedBox(),
+          body: Center(
+            child: ListView(
+              children: [
+                const SizedBox(
+                  height: 16,
+                ),
+                TableCard(
+                  moodValue: "+5",
+                  actionText: worksheet.plus_5,
+                ),
+                TableCard(
+                  moodValue: "+4",
+                  actionText: worksheet.plus_4,
+                ),
+                TableCard(
+                  moodValue: "+3",
+                  actionText: worksheet.plus_3,
+                ),
+                TableCard(
+                  moodValue: "+2",
+                  actionText: worksheet.plus_2,
+                ),
+                TableCard(
+                  moodValue: "+1",
+                  actionText: worksheet.plus_1,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                TableCard(
+                  moodValue: "-1",
+                  actionText: worksheet.minus_1,
+                ),
+                TableCard(
+                  moodValue: "-2",
+                  actionText: worksheet.minus_2,
+                ),
+                TableCard(
+                  moodValue: "-3",
+                  actionText: worksheet.minus_3,
+                ),
+                TableCard(
+                  moodValue: "-4",
+                  actionText: worksheet.minus_4,
+                ),
+                TableCard(
+                  moodValue: "-5",
+                  actionText: worksheet.minus_5,
+                ),
+              ],
             ),
-            TableCard(
-              moodValue: "+4",
-              actionText: "",
-            ),
-            TableCard(
-              moodValue: "+3",
-              actionText: "何かしたくてたまらない",
-            ),
-            TableCard(
-              moodValue: "+2",
-              actionText: "",
-            ),
-            TableCard(
-              moodValue: "+1",
-              actionText: "朝目覚めて前向きな気持ちがする",
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            TableCard(
-              moodValue: "-1",
-              actionText: "朝目覚めて後ろ向きな気持ちがする",
-            ),
-            TableCard(
-              moodValue: "-2",
-              actionText: "",
-            ),
-            TableCard(
-              moodValue: "-3",
-              actionText: "色々なことやめたくなる。何をする気力も自信もない。",
-            ),
-            TableCard(
-              moodValue: "-4",
-              actionText: "",
-            ),
-            TableCard(
-              moodValue: "-5",
-              actionText: "自分に価値はなく、迷惑な存在と思う。死を考える。",
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
@@ -143,5 +165,60 @@ class TableCard extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+MoodWorksheet updateMoodWorksheet(
+    int moodValue, MoodWorksheet oldWorkSheet, String inputValue) {
+  switch (moodValue) {
+    case -5:
+      return oldWorkSheet.copyWith(minus_5: inputValue);
+    case -4:
+      return oldWorkSheet.copyWith(minus_4: inputValue);
+    case -3:
+      return oldWorkSheet.copyWith(minus_3: inputValue);
+    case -2:
+      return oldWorkSheet.copyWith(minus_2: inputValue);
+    case -1:
+      return oldWorkSheet.copyWith(minus_1: inputValue);
+    case 1:
+      return oldWorkSheet.copyWith(plus_1: inputValue);
+    case 2:
+      return oldWorkSheet.copyWith(plus_2: inputValue);
+    case 3:
+      return oldWorkSheet.copyWith(plus_3: inputValue);
+    case 4:
+      return oldWorkSheet.copyWith(plus_4: inputValue);
+    case 5:
+      return oldWorkSheet.copyWith(plus_5: inputValue);
+    default:
+      return oldWorkSheet;
+  }
+}
+
+String confirmMoodWorksheet(int moodValue, MoodWorksheet oldWorkSheet) {
+  switch (moodValue) {
+    case -5:
+      return oldWorkSheet.minus_5;
+    case -4:
+      return oldWorkSheet.minus_4;
+    case -3:
+      return oldWorkSheet.minus_3;
+    case -2:
+      return oldWorkSheet.minus_2;
+    case -1:
+      return oldWorkSheet.minus_1;
+    case 1:
+      return oldWorkSheet.plus_1;
+    case 2:
+      return oldWorkSheet.plus_2;
+    case 3:
+      return oldWorkSheet.plus_3;
+    case 4:
+      return oldWorkSheet.plus_4;
+    case 5:
+      return oldWorkSheet.plus_5;
+    default:
+      return '';
   }
 }
