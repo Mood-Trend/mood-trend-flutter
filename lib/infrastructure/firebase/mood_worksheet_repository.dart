@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -7,7 +9,7 @@ import 'auth_repository.dart';
 import 'firebase_provider.dart';
 
 /// [MoodWorksheetRepository] のインスタンスを提供する [Provider]
-final confRepositoryProvider = Provider<MoodWorksheetRepository>(
+final moodWorksheetRepositoryProvider = Provider<MoodWorksheetRepository>(
   (ref) => MoodWorksheetRepository(
     moodWorksheetCollectionRef: ref.read(moodWorksheetCollectionRefProvider),
   ),
@@ -25,7 +27,7 @@ final moodWorksheetCollectionRefProvider = Provider(
           snapshot.id,
           snapshot.data()!,
         ),
-        toFirestore: (confDoc, options) => confDoc.toJson(),
+        toFirestore: (worksheetDoc, options) => worksheetDoc.toJson(),
       ),
 );
 
@@ -76,14 +78,52 @@ class MoodWorksheetRepository {
   }
 
   /// MoodWorksheet のドキュメントを取得する。
-  Future<MoodWorksheet> get() async {
+  Stream<MoodWorksheet> subscribe() {
+    // StreamController のインスタンスを作成
+    final controller = StreamController<MoodWorksheet>();
+
+    // Firestore のドキュメント変更をリッスン
+    moodWorksheetCollectionRef.limit(1).snapshots().listen(
+      (snapshot) {
+        if (snapshot.docs.isNotEmpty) {
+          // ドキュメントを MoodWorksheet に変換してストリームに追加
+          try {
+            final moodWorksheet = snapshot.docs.first.data().toMoodWorksheet();
+            controller.add(moodWorksheet);
+          } catch (error) {
+            controller.addError(error);
+          }
+        } else {
+          controller.addError(const AppException('ドキュメントが見つかりませんでした'));
+        }
+      },
+      onError: (error) => controller
+          .addError(AppException('Firestore の取得処理でエラーが発生しました: $error')),
+    );
+
+    // 作成した StreamController のストリームを返す
+    return controller.stream;
+  }
+
+  Future<void> create() async {
     try {
-      final querySnapshot = await moodWorksheetCollectionRef.limit(1).get();
-      final docSnapshot = querySnapshot.docs.first;
-      if (!docSnapshot.exists) throw const AppException('ドキュメントが見つかりませんでした');
-      return docSnapshot.data().toMoodWorksheet();
+      await moodWorksheetCollectionRef.add(
+        MoodWorksheetDocument(
+          worksheetId: '',
+          minus_5: '',
+          minus_4: '',
+          minus_3: '',
+          minus_2: '',
+          minus_1: '',
+          plus_1: '',
+          plus_2: '',
+          plus_3: '',
+          plus_4: '',
+          plus_5: '',
+        ),
+      );
     } on FirebaseException catch (e) {
-      throw AppException('Firestore の取得処理でエラーが発生しました: ${e.code}');
+      throw AppException('Firestore の追加処理でエラーが発生しました: ${e.code}');
     } catch (e) {
       throw AppException('予期しないエラーが発生しました: $e');
     }

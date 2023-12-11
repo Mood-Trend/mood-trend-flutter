@@ -44,10 +44,12 @@ class ConfRepository {
   Future<void> update({
     required String confId,
     int? maxPlannedVolume,
+    required bool isOnboardingCompleted,
   }) async {
     final confDoc = ConfDocument(
       confId: confId,
       maxPlannedVolume: maxPlannedVolume ?? defaultMaxPlannedVolume,
+      isOnboardingCompleted: isOnboardingCompleted,
     );
     try {
       await confCollectionRef.doc(confDoc.confId).update(confDoc.toJson());
@@ -71,6 +73,22 @@ class ConfRepository {
       throw AppException('予期しないエラーが発生しました: $e');
     }
   }
+
+  Future<void> create() async {
+    try {
+      await confCollectionRef.add(
+        ConfDocument(
+          confId: '',
+          maxPlannedVolume: 15,
+          isOnboardingCompleted: false,
+        ),
+      );
+    } on FirebaseException catch (e) {
+      throw AppException('Firestore の追加処理でエラーが発生しました: ${e.code}');
+    } catch (e) {
+      throw AppException('予期しないエラーが発生しました: $e');
+    }
+  }
 }
 
 /// Firebase Firestore に保存される Conf のドキュメントモデル
@@ -78,6 +96,7 @@ class ConfDocument {
   ConfDocument({
     required this.confId,
     required this.maxPlannedVolume,
+    required this.isOnboardingCompleted,
     DateTime? createdAt,
     DateTime? updatedAt,
   })  : createdAt = createdAt ?? DateTime.now(),
@@ -85,6 +104,7 @@ class ConfDocument {
 
   final String confId;
   final int maxPlannedVolume;
+  final bool isOnboardingCompleted;
   final DateTime createdAt;
   final DateTime updatedAt;
 
@@ -92,12 +112,14 @@ class ConfDocument {
       ConfDocument(
         confId: confId,
         maxPlannedVolume: json['max_planned_volume'] as int,
+        isOnboardingCompleted: json['is_onboarding_completed'] as bool,
         createdAt: (json['created_at'] as Timestamp).toDate(),
         updatedAt: (json['updated_at'] as Timestamp).toDate(),
       );
 
   Map<String, dynamic> toJson() => {
         'max_planned_volume': maxPlannedVolume,
+        'is_onboarding_completed': isOnboardingCompleted,
         'created_at': createdAt,
         'updated_at': FieldValue.serverTimestamp(),
       };
@@ -109,5 +131,6 @@ extension on ConfDocument {
   Conf toConf() => Conf(
         confId: confId,
         maxPlannedVolume: maxPlannedVolume,
+        isOnboardingCompleted: isOnboardingCompleted,
       );
 }

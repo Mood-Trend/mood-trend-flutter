@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/utils/url_launcher_service.dart';
+import 'package:mood_trend_flutter/presentation/table_page.dart';
+import 'package:mood_trend_flutter/utils/page_navigator.dart';
+
+import '../utils/url_launcher_service.dart';
 
 class SettingPage extends ConsumerWidget {
   const SettingPage({super.key});
@@ -30,7 +33,8 @@ class SettingPage extends ConsumerWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () =>
+                PageNavigator.push(context, const TablePage(isEditMode: true)),
             child: Container(
               color: colors.onPrimary,
               width: double.infinity,

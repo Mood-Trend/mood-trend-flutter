@@ -22,6 +22,9 @@ mixin _$Conf {
   /// ユーザーが入力できる最大の予定数
   int get maxPlannedVolume => throw _privateConstructorUsedError;
 
+  /// オンボーディング完了済みかどうか
+  bool get isOnboardingCompleted => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $ConfCopyWith<Conf> get copyWith => throw _privateConstructorUsedError;
 }
@@ -31,7 +34,7 @@ abstract class $ConfCopyWith<$Res> {
   factory $ConfCopyWith(Conf value, $Res Function(Conf) then) =
       _$ConfCopyWithImpl<$Res, Conf>;
   @useResult
-  $Res call({String confId, int maxPlannedVolume});
+  $Res call({String confId, int maxPlannedVolume, bool isOnboardingCompleted});
 }
 
 /// @nodoc
@@ -49,6 +52,7 @@ class _$ConfCopyWithImpl<$Res, $Val extends Conf>
   $Res call({
     Object? confId = null,
     Object? maxPlannedVolume = null,
+    Object? isOnboardingCompleted = null,
   }) {
     return _then(_value.copyWith(
       confId: null == confId
@@ -59,6 +63,10 @@ class _$ConfCopyWithImpl<$Res, $Val extends Conf>
           ? _value.maxPlannedVolume
           : maxPlannedVolume // ignore: cast_nullable_to_non_nullable
               as int,
+      isOnboardingCompleted: null == isOnboardingCompleted
+          ? _value.isOnboardingCompleted
+          : isOnboardingCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -70,7 +78,7 @@ abstract class _$$ConfImplCopyWith<$Res> implements $ConfCopyWith<$Res> {
       __$$ConfImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String confId, int maxPlannedVolume});
+  $Res call({String confId, int maxPlannedVolume, bool isOnboardingCompleted});
 }
 
 /// @nodoc
@@ -85,6 +93,7 @@ class __$$ConfImplCopyWithImpl<$Res>
   $Res call({
     Object? confId = null,
     Object? maxPlannedVolume = null,
+    Object? isOnboardingCompleted = null,
   }) {
     return _then(_$ConfImpl(
       confId: null == confId
@@ -95,6 +104,10 @@ class __$$ConfImplCopyWithImpl<$Res>
           ? _value.maxPlannedVolume
           : maxPlannedVolume // ignore: cast_nullable_to_non_nullable
               as int,
+      isOnboardingCompleted: null == isOnboardingCompleted
+          ? _value.isOnboardingCompleted
+          : isOnboardingCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -102,7 +115,10 @@ class __$$ConfImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ConfImpl implements _Conf {
-  const _$ConfImpl({required this.confId, required this.maxPlannedVolume});
+  const _$ConfImpl(
+      {required this.confId,
+      required this.maxPlannedVolume,
+      required this.isOnboardingCompleted});
 
   /// Conf ID
   @override
@@ -112,9 +128,13 @@ class _$ConfImpl implements _Conf {
   @override
   final int maxPlannedVolume;
 
+  /// オンボーディング完了済みかどうか
+  @override
+  final bool isOnboardingCompleted;
+
   @override
   String toString() {
-    return 'Conf(confId: $confId, maxPlannedVolume: $maxPlannedVolume)';
+    return 'Conf(confId: $confId, maxPlannedVolume: $maxPlannedVolume, isOnboardingCompleted: $isOnboardingCompleted)';
   }
 
   @override
@@ -124,11 +144,14 @@ class _$ConfImpl implements _Conf {
             other is _$ConfImpl &&
             (identical(other.confId, confId) || other.confId == confId) &&
             (identical(other.maxPlannedVolume, maxPlannedVolume) ||
-                other.maxPlannedVolume == maxPlannedVolume));
+                other.maxPlannedVolume == maxPlannedVolume) &&
+            (identical(other.isOnboardingCompleted, isOnboardingCompleted) ||
+                other.isOnboardingCompleted == isOnboardingCompleted));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, confId, maxPlannedVolume);
+  int get hashCode =>
+      Object.hash(runtimeType, confId, maxPlannedVolume, isOnboardingCompleted);
 
   @JsonKey(ignore: true)
   @override
@@ -140,7 +163,8 @@ class _$ConfImpl implements _Conf {
 abstract class _Conf implements Conf {
   const factory _Conf(
       {required final String confId,
-      required final int maxPlannedVolume}) = _$ConfImpl;
+      required final int maxPlannedVolume,
+      required final bool isOnboardingCompleted}) = _$ConfImpl;
 
   @override
 
@@ -150,6 +174,10 @@ abstract class _Conf implements Conf {
 
   /// ユーザーが入力できる最大の予定数
   int get maxPlannedVolume;
+  @override
+
+  /// オンボーディング完了済みかどうか
+  bool get isOnboardingCompleted;
   @override
   @JsonKey(ignore: true)
   _$$ConfImplCopyWith<_$ConfImpl> get copyWith =>
