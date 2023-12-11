@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'edit_dialog.dart';
+import 'package:mood_trend_flutter/presentation/table_page.dart';
+import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 class SettingPage extends ConsumerWidget {
   const SettingPage({super.key});
@@ -31,14 +31,8 @@ class SettingPage extends ConsumerWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return const EditDialog();
-                },
-              );
-            },
+            onTap: () =>
+                PageNavigator.push(context, const TablePage(isEditMode: true)),
             child: Container(
               color: colors.onPrimary,
               width: double.infinity,

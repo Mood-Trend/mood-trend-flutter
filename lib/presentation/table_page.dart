@@ -12,7 +12,8 @@ final worksheetProvider = StreamProvider<MoodWorksheet>(
 );
 
 class TablePage extends ConsumerWidget {
-  const TablePage({super.key});
+  const TablePage({super.key, required this.isEditMode});
+  final bool isEditMode;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -35,21 +36,23 @@ class TablePage extends ConsumerWidget {
               icon: const Icon(Icons.close),
             ),
           ),
-          floatingActionButton: FloatingActionButton(
-            backgroundColor: colors.primary,
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return const EditDialog();
-                },
-              );
-            },
-            child: Icon(
-              Icons.mode_edit,
-              color: colors.onPrimary,
-            ),
-          ),
+          floatingActionButton: isEditMode
+              ? FloatingActionButton(
+                  backgroundColor: colors.primary,
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return const EditDialog();
+                      },
+                    );
+                  },
+                  child: Icon(
+                    Icons.mode_edit,
+                    color: colors.onPrimary,
+                  ),
+                )
+              : const SizedBox(),
           body: Center(
             child: ListView(
               children: [
