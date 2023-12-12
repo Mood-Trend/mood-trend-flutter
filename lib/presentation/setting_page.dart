@@ -199,7 +199,7 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                             await ref
                                 .read(firebaseAuthRepositoryProvider)
                                 .delete();
-                          }, successMessage: '');
+                          }, successMessage: 'ご利用いただきありがとうございました');
                         },
                       ),
                     ],
