@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
+import 'package:mood_trend_flutter/presentation/mixin/error_handler_mixin.dart';
 import 'package:mood_trend_flutter/presentation/table_page.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../utils/url_launcher_service.dart';
 
-class SettingPage extends ConsumerWidget {
+class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
   const SettingPage({super.key});
 
   @override
@@ -192,7 +194,13 @@ class SettingPage extends ConsumerWidget {
                       ),
                       TextButton(
                         child: const Text("退会する"),
-                        onPressed: () => Navigator.pop(context),
+                        onPressed: () {
+                          execute(context, ref, action: () async {
+                            await ref
+                                .read(firebaseAuthRepositoryProvider)
+                                .delete();
+                          }, successMessage: '');
+                        },
                       ),
                     ],
                   );
