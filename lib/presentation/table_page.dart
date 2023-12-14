@@ -28,7 +28,7 @@ class TablePage extends ConsumerWidget {
             elevation: 0,
             backgroundColor: Colors.transparent,
             centerTitle: true,
-            title: const Text("症状ワークシート"),
+            title: const Text("気分値目安表"),
             leading: IconButton(
               onPressed: () {
                 Navigator.of(context).pop();

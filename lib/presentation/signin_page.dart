@@ -5,15 +5,32 @@ import 'package:gap/gap.dart';
 import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
 import 'package:mood_trend_flutter/presentation/mixin/error_handler_mixin.dart';
 import 'package:mood_trend_flutter/utils/url_launcher_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'components/anchor_text.dart';
+import 'onboardhing_page.dart';
 
 /// サインイン画面
 class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
   const SigninPage({super.key});
+  void _showTutorial(BuildContext context) async {
+    final pref = await SharedPreferences.getInstance();
+
+    if (pref.getBool('isAlreadyFirstLaunch') != true) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => OverboardingPage(),
+          fullscreenDialog: true,
+        ),
+      );
+      pref.setBool('isAlreadyFirstLaunch', true);
+    }
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    WidgetsBinding.instance.addPostFrameCallback((_) => _showTutorial(context));
     final colors = Theme.of(context).colorScheme;
     return Scaffold(
       body: Container(
@@ -21,8 +38,8 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              colors.primaryContainer,
-              colors.primary,
+              colors.onInverseSurface,
+              colors.surfaceVariant,
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -39,6 +56,9 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
                     height: 48,
                     width: double.infinity,
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: colors.primary, //ボタンの背景色
+                      ),
                       onPressed: () async {
                         execute(
                           context,
@@ -51,9 +71,10 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
                           successMessage: 'サインインが完了しました',
                         );
                       },
-                      child: const Text(
+                      child: Text(
                         '同意して始める',
                         style: TextStyle(
+                          color: colors.onPrimary,
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),

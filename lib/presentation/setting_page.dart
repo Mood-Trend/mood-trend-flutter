@@ -39,7 +39,7 @@ class SettingPage extends ConsumerWidget {
               child: const Padding(
                 padding: EdgeInsets.fromLTRB(16, 20, 16, 20),
                 child: Text(
-                  "症状ワークシート",
+                  "気分値目安表",
                   style: TextStyle(fontSize: 18),
                 ),
               ),
