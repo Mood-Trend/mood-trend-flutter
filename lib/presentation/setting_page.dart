@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/presentation/table_page.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
+import '../utils/url_launcher_service.dart';
+
 class SettingPage extends ConsumerWidget {
   const SettingPage({super.key});
 
@@ -120,14 +122,17 @@ class SettingPage extends ConsumerWidget {
                 color: colors.surfaceVariant,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () async {
+                  await ref.read(urlLauncherServiceProvider).launch(
+                      'https://daffodil-cabin-d84.notion.site/de8c281a43e04c3199b1c60a067f3f2f');
+                },
                 child: Container(
                   color: colors.onPrimary,
                   width: double.infinity,
                   child: const Padding(
                     padding: EdgeInsets.fromLTRB(16, 20, 16, 20),
                     child: Text(
-                      "サービス利用規約",
+                      "利用規約",
                       style: TextStyle(fontSize: 18),
                     ),
                   ),
@@ -141,7 +146,10 @@ class SettingPage extends ConsumerWidget {
                 color: colors.surfaceVariant,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () async {
+                  await ref.read(urlLauncherServiceProvider).launch(
+                      'https://daffodil-cabin-d84.notion.site/7c662f7f695a46ee99e679418e3b8083');
+                },
                 child: Container(
                   color: colors.onPrimary,
                   width: double.infinity,
