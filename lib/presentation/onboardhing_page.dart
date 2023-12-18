@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_overboard/flutter_overboard.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
 
-class OverboardingPage extends StatelessWidget {
+import 'mixin/error_handler_mixin.dart';
+
+class OverboardingPage extends ConsumerWidget with ErrorHandlerMixin {
   const OverboardingPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colors = Theme.of(context).colorScheme;
     return Scaffold(
       body: OverBoard(
@@ -46,14 +50,16 @@ class OverboardingPage extends StatelessWidget {
           ),
         ],
         showBullets: true,
-        skipCallback: () {
-          // when user select SKIP
-          Navigator.pop(context);
-        },
-        finishCallback: () {
-          // when user select NEXT
-          Navigator.pop(context);
-        },
+        skipCallback: () async => await execute(context, ref,
+            action: () async => await ref
+                .read(firebaseAuthRepositoryProvider)
+                .signinAnonymously(),
+            successMessage: '気分グラフへようこそ！'),
+        finishCallback: () async => await execute(context, ref,
+            action: () async => await ref
+                .read(firebaseAuthRepositoryProvider)
+                .signinAnonymously(),
+            successMessage: '気分グラフへようこそ！'),
       ),
     );
   }

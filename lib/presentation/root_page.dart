@@ -1,8 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mood_trend_flutter/presentation/home_page.dart';
-import 'package:mood_trend_flutter/presentation/signin_page.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../infrastructure/firebase/auth_repository.dart';
 import 'onboardhing_page.dart';
@@ -11,31 +11,15 @@ final rootPageKey = Provider((ref) => GlobalKey<NavigatorState>());
 
 class RootPage extends HookConsumerWidget {
   const RootPage({super.key});
-  void _showTutorial(BuildContext context) async {
-    final pref = await SharedPreferences.getInstance();
-
-    if (pref.getBool('isAlreadyFirstLaunch') != true) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => OverboardingPage(),
-          fullscreenDialog: true,
-        ),
-      );
-      pref.setBool('isAlreadyFirstLaunch', true);
-    }
-  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    WidgetsBinding.instance.addPostFrameCallback((_) => _showTutorial(context));
-
     return Scaffold(
       key: ref.watch(rootPageKey),
       body: AuthDependentBuilder(onAuthenticated: (userId) {
         return HomePage(userId: userId);
       }, onUnAuthenticated: () {
-        return const SigninPage();
+        return const OverboardingPage();
       }),
     );
   }
