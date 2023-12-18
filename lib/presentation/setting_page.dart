@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
+import 'package:mood_trend_flutter/presentation/mixin/error_handler_mixin.dart';
 import 'package:mood_trend_flutter/presentation/table_page.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
-class SettingPage extends ConsumerWidget {
+import '../utils/url_launcher_service.dart';
+
+class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
   const SettingPage({super.key});
 
   @override
@@ -57,7 +61,9 @@ class SettingPage extends ConsumerWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () async {
+              await ref.read(urlLauncherServiceProvider).launch('');
+            },
             child: Container(
               color: colors.onPrimary,
               width: double.infinity,
@@ -84,7 +90,9 @@ class SettingPage extends ConsumerWidget {
           Column(
             children: [
               GestureDetector(
-                onTap: () {},
+                onTap: () async {
+                  await ref.read(urlLauncherServiceProvider).launch('');
+                },
                 child: Column(
                   children: [
                     Container(
@@ -120,7 +128,9 @@ class SettingPage extends ConsumerWidget {
                 color: colors.surfaceVariant,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () async {
+                  await ref.read(urlLauncherServiceProvider).launch('');
+                },
                 child: Container(
                   color: colors.onPrimary,
                   width: double.infinity,
@@ -141,7 +151,9 @@ class SettingPage extends ConsumerWidget {
                 color: colors.surfaceVariant,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () async {
+                  await ref.read(urlLauncherServiceProvider).launch('');
+                },
                 child: Container(
                   color: colors.onPrimary,
                   width: double.infinity,
@@ -168,7 +180,33 @@ class SettingPage extends ConsumerWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: const Text("退会しますか？"),
+                    content: const Text("データは全て削除され復元できません"),
+                    actions: [
+                      TextButton(
+                        child: const Text("キャンセル"),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                      TextButton(
+                        child: const Text("退会する"),
+                        onPressed: () {
+                          execute(context, ref, action: () async {
+                            await ref
+                                .read(firebaseAuthRepositoryProvider)
+                                .delete();
+                          }, successMessage: 'ご利用いただきありがとうございました');
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
             child: Container(
               color: colors.onPrimary,
               width: double.infinity,

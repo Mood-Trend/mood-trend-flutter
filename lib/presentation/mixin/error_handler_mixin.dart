@@ -13,19 +13,16 @@ mixin ErrorHandlerMixin {
     required Future<void> Function() action,
     required String successMessage,
   }) async {
-    final scaffoldMessenger = ScaffoldMessenger.of(context);
+    final scaffoldMessenger =
+        ref.read(scaffoldMessengerKeyProvider).currentState;
     ref.read(overlayLoadingProvider.notifier).update((_) => true);
     try {
       await action();
-      SuccessSnackBar.show(
-        scaffoldMessenger,
-        message: successMessage,
-      );
+      if (scaffoldMessenger == null) return;
+      SuccessSnackBar.show(scaffoldMessenger, message: successMessage);
     } on AppException catch (e) {
-      FailureSnackBar.show(
-        scaffoldMessenger,
-        message: e.toString(),
-      );
+      if (scaffoldMessenger == null) return;
+      FailureSnackBar.show(scaffoldMessenger, message: e.toString());
     } finally {
       ref.read(overlayLoadingProvider.notifier).update((_) => false);
     }
