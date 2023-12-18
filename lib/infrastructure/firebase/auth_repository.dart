@@ -54,6 +54,12 @@ class FirebaseAuthRepository {
     // Firebase Auth からログアウトする
     await auth.signOut();
   }
+
+  /// 認証ユーザーを削除する
+  Future<void> delete() async {
+    // Firebase Auth から現在のユーザーを削除する
+    await auth.currentUser?.delete();
+  }
 }
 
 /// [FirebaseAuthException] を [AuthException] に変換する拡張メソッド
