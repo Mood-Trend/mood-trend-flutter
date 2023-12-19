@@ -50,17 +50,17 @@ class OnboardingPage extends ConsumerWidget with ErrorHandlerMixin {
           ),
         ],
         showBullets: true,
-        skipCallback: () async => await execute(context, ref,
-            action: () async => await ref
-                .read(firebaseAuthRepositoryProvider)
-                .signinAnonymously(),
-            successMessage: '気分グラフへようこそ！'),
-        finishCallback: () async => await execute(context, ref,
-            action: () async => await ref
-                .read(firebaseAuthRepositoryProvider)
-                .signinAnonymously(),
-            successMessage: '気分グラフへようこそ！'),
+        skipCallback: () async => await _signinAnonymously(context, ref),
+        finishCallback: () async => await _signinAnonymously(context, ref),
       ),
     );
+  }
+
+  // execute() メソッドを呼び出して共通の処理を行う関数を定義
+  Future<void> _signinAnonymously(BuildContext context, WidgetRef ref) async {
+    await execute(context, ref,
+        action: () async =>
+            await ref.read(firebaseAuthRepositoryProvider).signinAnonymously(),
+        successMessage: '気分グラフへようこそ！');
   }
 }
