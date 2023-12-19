@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
+import 'package:mood_trend_flutter/presentation/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/mixin/error_handler_mixin.dart';
 import 'package:mood_trend_flutter/presentation/table_page.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
@@ -184,24 +185,30 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
               showDialog(
                 context: context,
                 builder: (context) {
-                  return AlertDialog(
-                    title: const Text("退会しますか？"),
-                    content: const Text("データは全て削除され復元できません"),
-                    actions: [
-                      TextButton(
-                        child: const Text("キャンセル"),
-                        onPressed: () => Navigator.pop(context),
+                  return Stack(
+                    children: [
+                      AlertDialog(
+                        title: const Text("退会しますか？"),
+                        content: const Text("データは全て削除され復元できません"),
+                        actions: [
+                          TextButton(
+                            child: const Text("キャンセル"),
+                            onPressed: () => Navigator.pop(context),
+                          ),
+                          TextButton(
+                            child: const Text("退会する"),
+                            onPressed: () {
+                              execute(context, ref, action: () async {
+                                await ref
+                                    .read(firebaseAuthRepositoryProvider)
+                                    .delete();
+                              }, successMessage: 'ご利用いただきありがとうございました');
+                            },
+                          ),
+                        ],
                       ),
-                      TextButton(
-                        child: const Text("退会する"),
-                        onPressed: () {
-                          execute(context, ref, action: () async {
-                            await ref
-                                .read(firebaseAuthRepositoryProvider)
-                                .delete();
-                          }, successMessage: 'ご利用いただきありがとうございました');
-                        },
-                      ),
+                      if (ref.watch(overlayLoadingProvider))
+                        const OverlayLoading(),
                     ],
                   );
                 },
