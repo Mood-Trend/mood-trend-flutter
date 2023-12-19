@@ -5,8 +5,8 @@ import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart'
 
 import 'mixin/error_handler_mixin.dart';
 
-class OverboardingPage extends ConsumerWidget with ErrorHandlerMixin {
-  const OverboardingPage({super.key});
+class OnboardingPage extends ConsumerWidget with ErrorHandlerMixin {
+  const OnboardingPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

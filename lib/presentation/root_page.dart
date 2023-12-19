@@ -3,9 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mood_trend_flutter/presentation/home_page.dart';
+import 'package:mood_trend_flutter/presentation/onboarding_page.dart';
 
 import '../infrastructure/firebase/auth_repository.dart';
-import 'onboardhing_page.dart';
 
 final rootPageKey = Provider((ref) => GlobalKey<NavigatorState>());
 
@@ -19,7 +19,7 @@ class RootPage extends ConsumerWidget {
       body: AuthDependentBuilder(onAuthenticated: (userId) {
         return HomePage(userId: userId);
       }, onUnAuthenticated: () {
-        return const OverboardingPage();
+        return const OnboardingPage();
       }),
     );
   }

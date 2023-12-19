@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
 import 'package:mood_trend_flutter/presentation/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/mixin/error_handler_mixin.dart';
-import 'package:mood_trend_flutter/presentation/onboardhing_page.dart';
+import 'package:mood_trend_flutter/presentation/onboarding_page.dart';
 import 'package:mood_trend_flutter/presentation/table_page.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
@@ -207,7 +207,7 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                                     .delete();
                                 await PageNavigator.pushReplacement(
                                   context,
-                                  const OverboardingPage(),
+                                  const OnboardingPage(),
                                 );
                               }, successMessage: 'ご利用いただきありがとうございました');
                             },
