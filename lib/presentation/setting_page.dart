@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
 import 'package:mood_trend_flutter/presentation/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/mixin/error_handler_mixin.dart';
-import 'package:mood_trend_flutter/presentation/onboarding_page.dart';
+import 'package:mood_trend_flutter/presentation/root_page.dart';
 import 'package:mood_trend_flutter/presentation/table_page.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
@@ -186,7 +186,7 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
           GestureDetector(
             onTap: () {
               showDialog(
-                context: context,
+                context: ref.read(rootPageKey).currentContext!,
                 builder: (context) {
                   return Stack(
                     children: [
@@ -205,10 +205,9 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                                 await ref
                                     .read(firebaseAuthRepositoryProvider)
                                     .delete();
-                                await PageNavigator.pushReplacement(
-                                  context,
-                                  const OnboardingPage(),
-                                );
+                                await PageNavigator.popUntilRoot(context);
+                                await PageNavigator.popUntilRoot(
+                                    ref.read(rootPageKey).currentContext!);
                               }, successMessage: 'ご利用いただきありがとうございました');
                             },
                           ),
