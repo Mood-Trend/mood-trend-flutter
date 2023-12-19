@@ -9,7 +9,7 @@ import 'onboardhing_page.dart';
 
 final rootPageKey = Provider((ref) => GlobalKey<NavigatorState>());
 
-class RootPage extends HookConsumerWidget {
+class RootPage extends ConsumerWidget {
   const RootPage({super.key});
 
   @override
