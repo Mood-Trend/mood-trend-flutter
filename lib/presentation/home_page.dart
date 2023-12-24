@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:mood_trend_flutter/domain/mood_point.dart';
 import 'package:mood_trend_flutter/presentation/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/components/loading.dart';
@@ -125,10 +126,16 @@ class HomePage extends ConsumerWidget {
             return Center(
               child: SfCartesianChart(
                 primaryXAxis: DateTimeAxis(
+                  dateFormat: DateFormat('MM/dd', 'ja_JP'),
                   visibleMinimum: ref.watch(visibleMinimumProvider),
                   visibleMaximum: ref.watch(visibleMaximumProvider),
                 ),
-                primaryYAxis: NumericAxis(minimum: -6, maximum: 6),
+                primaryYAxis: NumericAxis(
+                  minimum: -5,
+                  maximum: 5,
+                  interval: 1,
+                  numberFormat: NumberFormat('0'),
+                ),
                 series: <ChartSeries>[
                   // 塗りつぶす部分を描画するためのエリアチャート
                   SplineAreaSeries<MoodPoint, DateTime>(
