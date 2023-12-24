@@ -11,8 +11,6 @@ import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../utils/url_launcher_service.dart';
 
-import '../utils/url_launcher_service.dart';
-
 class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
   const SettingPage({super.key});
 
