@@ -1,13 +1,15 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mood_trend_flutter/presentation/home_page.dart';
-import 'package:mood_trend_flutter/presentation/signin_page.dart';
+import 'package:mood_trend_flutter/presentation/onboarding_page.dart';
 
 import '../infrastructure/firebase/auth_repository.dart';
 
 final rootPageKey = Provider((ref) => GlobalKey<NavigatorState>());
 
-class RootPage extends HookConsumerWidget {
+class RootPage extends ConsumerWidget {
   const RootPage({super.key});
 
   @override
@@ -17,7 +19,7 @@ class RootPage extends HookConsumerWidget {
       body: AuthDependentBuilder(onAuthenticated: (userId) {
         return HomePage(userId: userId);
       }, onUnAuthenticated: () {
-        return const SigninPage();
+        return const OnboardingPage();
       }),
     );
   }

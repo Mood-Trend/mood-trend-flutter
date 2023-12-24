@@ -21,8 +21,8 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              colors.primaryContainer,
-              colors.primary,
+              colors.onInverseSurface,
+              colors.surfaceVariant,
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -39,6 +39,9 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
                     height: 48,
                     width: double.infinity,
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: colors.primary, //ボタンの背景色
+                      ),
                       onPressed: () async {
                         execute(
                           context,
@@ -51,9 +54,10 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
                           successMessage: 'サインインが完了しました',
                         );
                       },
-                      child: const Text(
+                      child: Text(
                         '同意して始める',
                         style: TextStyle(
+                          color: colors.onPrimary,
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),

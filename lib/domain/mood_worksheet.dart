@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'mood_worksheet.freezed.dart';
 
-/// 症状ワークシート
+/// 気分値目安表
 @freezed
 class MoodWorksheet with _$MoodWorksheet {
   const factory MoodWorksheet({
