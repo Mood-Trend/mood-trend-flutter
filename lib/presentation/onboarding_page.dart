@@ -15,7 +15,7 @@ class OnboardingPage extends ConsumerWidget with ErrorHandlerMixin {
       body: OverBoard(
         skipText: "スキップ",
         nextText: "次へ",
-        finishText: "終わる",
+        finishText: "はじめる",
         allowScroll: true,
         buttonColor: colors.secondary,
         activeBulletColor: colors.secondary,
