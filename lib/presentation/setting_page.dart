@@ -65,9 +65,12 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
             ),
           ),
           GestureDetector(
-            onTap: () async {
-              await ref.read(urlLauncherServiceProvider).launch('');
-            },
+            onTap: () async => await execute(
+              context,
+              ref,
+              action: () async =>
+                  await ref.read(urlLauncherServiceProvider).launch(''),
+            ),
             child: Container(
               color: colors.onPrimary,
               width: double.infinity,
@@ -94,9 +97,12 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
           Column(
             children: [
               GestureDetector(
-                onTap: () async {
-                  await ref.read(urlLauncherServiceProvider).launch('');
-                },
+                onTap: () async => await execute(
+                  context,
+                  ref,
+                  action: () async =>
+                      await ref.read(urlLauncherServiceProvider).launch(''),
+                ),
                 child: Column(
                   children: [
                     Container(
@@ -132,10 +138,14 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                 color: colors.surfaceVariant,
               ),
               GestureDetector(
-                onTap: () async {
-                  await ref.read(urlLauncherServiceProvider).launch(
-                      'https://daffodil-cabin-d84.notion.site/de8c281a43e04c3199b1c60a067f3f2f');
-                },
+                onTap: () async => await execute(
+                  context,
+                  ref,
+                  action: () async =>
+                      await ref.read(urlLauncherServiceProvider).launch(
+                            'https://daffodil-cabin-d84.notion.site/de8c281a43e04c3199b1c60a067f3f2f',
+                          ),
+                ),
                 child: Container(
                   color: colors.onPrimary,
                   width: double.infinity,
@@ -156,10 +166,14 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                 color: colors.surfaceVariant,
               ),
               GestureDetector(
-                onTap: () async {
-                  await ref.read(urlLauncherServiceProvider).launch(
-                      'https://daffodil-cabin-d84.notion.site/7c662f7f695a46ee99e679418e3b8083');
-                },
+                onTap: () async => await execute(
+                  context,
+                  ref,
+                  action: () async =>
+                      await ref.read(urlLauncherServiceProvider).launch(
+                            'https://daffodil-cabin-d84.notion.site/7c662f7f695a46ee99e679418e3b8083',
+                          ),
+                ),
                 child: Container(
                   color: colors.onPrimary,
                   width: double.infinity,
