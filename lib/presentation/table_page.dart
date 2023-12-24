@@ -61,7 +61,9 @@ class TablePage extends ConsumerWidget {
                 ),
                 TableCard(
                   moodValue: "+5",
-                  actionText: worksheet.plus_5,
+                  actionText: worksheet.plus_5.isEmpty
+                      ? "アイデアを実行に移すために実際に行動する"
+                      : worksheet.plus_5,
                 ),
                 TableCard(
                   moodValue: "+4",
@@ -69,7 +71,9 @@ class TablePage extends ConsumerWidget {
                 ),
                 TableCard(
                   moodValue: "+3",
-                  actionText: worksheet.plus_3,
+                  actionText: worksheet.plus_3.isEmpty
+                      ? "アイデアが湧き出て止まらない"
+                      : worksheet.plus_3,
                 ),
                 TableCard(
                   moodValue: "+2",
@@ -77,14 +81,18 @@ class TablePage extends ConsumerWidget {
                 ),
                 TableCard(
                   moodValue: "+1",
-                  actionText: worksheet.plus_1,
+                  actionText: worksheet.plus_1.isEmpty
+                      ? "起きた時にどちらかと言うと前向き"
+                      : worksheet.plus_1,
                 ),
                 const SizedBox(
                   height: 30,
                 ),
                 TableCard(
                   moodValue: "-1",
-                  actionText: worksheet.minus_1,
+                  actionText: worksheet.minus_1.isEmpty
+                      ? "起きた時にどちらかと言うと後ろ向き"
+                      : worksheet.minus_1,
                 ),
                 TableCard(
                   moodValue: "-2",
@@ -92,7 +100,9 @@ class TablePage extends ConsumerWidget {
                 ),
                 TableCard(
                   moodValue: "-3",
-                  actionText: worksheet.minus_3,
+                  actionText: worksheet.minus_3.isEmpty
+                      ? "何もできる元気がない"
+                      : worksheet.minus_3,
                 ),
                 TableCard(
                   moodValue: "-4",
@@ -100,7 +110,9 @@ class TablePage extends ConsumerWidget {
                 ),
                 TableCard(
                   moodValue: "-5",
-                  actionText: worksheet.minus_5,
+                  actionText: worksheet.minus_5.isEmpty
+                      ? "消えてしまわないといけないと思う"
+                      : worksheet.minus_5,
                 ),
               ],
             ),
