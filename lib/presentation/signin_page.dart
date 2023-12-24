@@ -81,7 +81,8 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
                         recognizer: TapGestureRecognizer()
                           ..onTap = () async => await ref
                               .read(urlLauncherServiceProvider)
-                              .launch(''),
+                              .launch(
+                                  'https://daffodil-cabin-d84.notion.site/de8c281a43e04c3199b1c60a067f3f2f'),
                       ),
                       TextSpan(
                         text: ' と ',
@@ -93,7 +94,8 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
                         recognizer: TapGestureRecognizer()
                           ..onTap = () async => await ref
                               .read(urlLauncherServiceProvider)
-                              .launch(''),
+                              .launch(
+                                  'https://daffodil-cabin-d84.notion.site/7c662f7f695a46ee99e679418e3b8083'),
                       ),
                       TextSpan(
                         text: ' に\n同意の上ご利用ください',

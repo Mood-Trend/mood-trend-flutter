@@ -11,7 +11,7 @@ mixin ErrorHandlerMixin {
     BuildContext context,
     WidgetRef ref, {
     required Future<void> Function() action,
-    required String successMessage,
+    String? successMessage,
   }) async {
     final scaffoldMessenger =
         ref.read(scaffoldMessengerKeyProvider).currentState;
@@ -19,6 +19,7 @@ mixin ErrorHandlerMixin {
     try {
       await action();
       if (scaffoldMessenger == null) return;
+      if (successMessage == null) return;
       SuccessSnackBar.show(scaffoldMessenger, message: successMessage);
     } on AppException catch (e) {
       if (scaffoldMessenger == null) return;
