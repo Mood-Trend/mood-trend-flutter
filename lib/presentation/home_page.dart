@@ -49,7 +49,7 @@ final visibleMinimumProvider = StateProvider<DateTime>(
 
 /// グラフの最大値を保持する [StateProvider]
 final visibleMaximumProvider = StateProvider<DateTime>(
-  (ref) => DateTime.now().toToday(),
+  (ref) => DateTime.now().toDateOnly(),
 );
 
 class HomePage extends ConsumerWidget {
@@ -134,7 +134,7 @@ class HomePage extends ConsumerWidget {
                   SplineAreaSeries<MoodPoint, DateTime>(
                     dataSource: moodPoints,
                     xValueMapper: (MoodPoint value, _) =>
-                        DateTime.now().toToday(),
+                        value.moodDate.toDateOnly(),
                     yValueMapper: (MoodPoint value, _) => value.point,
                     color: colors.secondaryContainer,
                     borderDrawMode: BorderDrawMode.excludeBottom,

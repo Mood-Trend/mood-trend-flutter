@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final scaffoldMessengerKeyProvider =
-    Provider((_) => GlobalKey<ScaffoldMessengerState>());
+final scaffoldMessengerKeyProvider = Provider(
+  (_) => GlobalKey<ScaffoldMessengerState>(),
+);
 
 /// 処理成功用の [SnackBar]
 class SuccessSnackBar extends SnackBar {

@@ -130,7 +130,7 @@ class MoodWorksheetRepository {
   }
 }
 
-/// Firebase Firestore に保存される症状ワークシートのドキュメントモデル
+/// Firebase Firestore に保存される気分値目安表のドキュメントモデル
 class MoodWorksheetDocument {
   MoodWorksheetDocument({
     required this.worksheetId,

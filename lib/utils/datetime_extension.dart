@@ -1,7 +1,3 @@
 extension DateTimeExtension on DateTime {
-  DateTime toToday() => DateTime(
-        DateTime.now().year,
-        DateTime.now().month,
-        DateTime.now().day,
-      );
+  DateTime toDateOnly() => DateTime(year, month, day);
 }
