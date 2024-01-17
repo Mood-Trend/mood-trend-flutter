@@ -43,23 +43,6 @@ class TablePage extends ConsumerWidget {
               icon: const Icon(Icons.close),
             ),
           ),
-          floatingActionButton: isEditMode
-              ? FloatingActionButton(
-                  backgroundColor: AppColors.black,
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return const EditDialog();
-                      },
-                    );
-                  },
-                  child: Icon(
-                    Icons.mode_edit,
-                    color: AppColors.white,
-                  ),
-                )
-              : const SizedBox(),
           body: Center(
             child: Column(
               children: [
