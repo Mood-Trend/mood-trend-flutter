@@ -120,7 +120,7 @@ class HomePage extends ConsumerWidget {
           builder: (moodPoints) {
             return Center(
               child: SfCartesianChart(
-                legend: Legend(isVisible: true), // 凡例の表示
+                legend: const Legend(isVisible: true), // 凡例の表示
                 backgroundColor: AppColors.white,
                 primaryXAxis: DateTimeAxis(
                   dateFormat: DateFormat('MM/dd', 'ja_JP'),

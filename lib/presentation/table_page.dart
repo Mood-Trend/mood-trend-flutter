@@ -6,8 +6,6 @@ import 'package:mood_trend_flutter/presentation/components/async_value_handler.d
 import 'package:mood_trend_flutter/presentation/components/loading.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 
-import 'edit_dialog.dart';
-
 enum MoodState {
   depression,
   manic,
