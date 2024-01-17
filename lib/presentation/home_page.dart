@@ -11,6 +11,7 @@ import 'package:mood_trend_flutter/utils/page_navigator.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../infrastructure/firebase/mood_point_repository.dart';
+import '../utils/app_colors.dart';
 import 'mixin/error_handler_mixin.dart';
 
 // グラフ表示期間を示す
@@ -60,29 +61,23 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colors = Theme.of(context).colorScheme;
-
     final selectedTerm = ref.watch(selectedTermProvider);
     ButtonStyle buttonStyle(Term term) {
       return TextButton.styleFrom(
         /// 文字色は選択されている場合は白、そうでない場合は黒
         foregroundColor:
-            selectedTerm == term ? colors.onSecondary : colors.onBackground,
+            selectedTerm == term ? AppColors.white : AppColors.black,
 
-        /// 背景色は選択されている場合は緑、そうでない場合は白
+        /// 背景色は選択されている場合は緑、そうでない場合は透明
         backgroundColor:
-            selectedTerm == term ? colors.primary : colors.background,
-
-        /// 枠線は緑に固定
-        side: BorderSide(
-          color: colors.secondary,
-          width: 1,
-        ),
+            selectedTerm == term ? AppColors.green : Colors.transparent,
       );
     }
 
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
+        backgroundColor: AppColors.white,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
@@ -125,6 +120,8 @@ class HomePage extends ConsumerWidget {
           builder: (moodPoints) {
             return Center(
               child: SfCartesianChart(
+                legend: const Legend(isVisible: true), // 凡例の表示
+                backgroundColor: AppColors.white,
                 primaryXAxis: DateTimeAxis(
                   dateFormat: DateFormat('MM/dd', 'ja_JP'),
                   visibleMinimum: ref.watch(visibleMinimumProvider),
@@ -135,27 +132,62 @@ class HomePage extends ConsumerWidget {
                   maximum: 5,
                   interval: 1,
                   numberFormat: NumberFormat('0'),
+                  plotBands: <PlotBand>[
+                    PlotBand(
+                      isVisible: true,
+                      start: double.infinity,
+                      end: 0,
+                      color: Colors.white,
+                    ),
+                    PlotBand(
+                      isVisible: true,
+                      start: -double.infinity,
+                      end: 0,
+                      color: const Color.fromRGBO(249, 249, 249, 1),
+                    ),
+                  ],
                 ),
+                axes: [
+                  NumericAxis(
+                    minimum: 0,
+                    maximum: 16,
+                    interval: 1,
+                    name: 'yAxis',
+                    opposedPosition: true,
+                  ),
+                ],
                 series: <ChartSeries>[
                   // 塗りつぶす部分を描画するためのエリアチャート
-                  SplineAreaSeries<MoodPoint, DateTime>(
+                  LineSeries<MoodPoint, DateTime>(
+                    name: '気分値', // 凡例の名前
                     dataSource: moodPoints,
                     xValueMapper: (MoodPoint value, _) =>
                         value.moodDate.toDateOnly(),
                     yValueMapper: (MoodPoint value, _) => value.point,
-                    color: colors.secondaryContainer,
-                    borderDrawMode: BorderDrawMode.excludeBottom,
+                    color: AppColors.green.withOpacity(0.5),
+                    markerSettings: const MarkerSettings(isVisible: true),
+                    // borderDrawMode: RangeAreaBorderMode.excludeSides,
+                  ),
+                  LineSeries<MoodPoint, DateTime>(
+                    name: '予定数', // 凡例の名前
+                    dataSource: moodPoints,
+                    xValueMapper: (MoodPoint value, _) =>
+                        value.moodDate.toDateOnly(),
+                    yValueMapper: (MoodPoint value, _) => value.plannedVolume,
+                    color: AppColors.blue.withOpacity(0.5),
+                    markerSettings: const MarkerSettings(isVisible: true),
+                    yAxisName: 'yAxis',
                   ),
                 ],
               ),
             );
           }),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: colors.primary,
-        foregroundColor: colors.onPrimary,
+        backgroundColor: AppColors.black,
+        foregroundColor: AppColors.grey,
         onPressed: () {
           showModalBottomSheet(
-            backgroundColor: colors.background,
+            backgroundColor: AppColors.white,
             isScrollControlled: true,
             context: context,
             builder: (context) {
@@ -163,7 +195,7 @@ class HomePage extends ConsumerWidget {
             },
           );
         },
-        child: const Icon(Icons.add),
+        child: Icon(Icons.add, color: AppColors.white),
       ),
     );
   }
@@ -187,8 +219,11 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
   double _moodValue = 1.0;
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
-    return SizedBox(
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        color: AppColors.white,
+      ),
       height: 410,
       child: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
@@ -202,6 +237,21 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                 initialDate: date,
                 firstDate: DateTime(2000),
                 lastDate: DateTime.now(),
+                builder: (context, child) {
+                  return Theme(
+                    data: Theme.of(context).copyWith(
+                      colorScheme: ColorScheme.light(
+                        primary:
+                            AppColors.green, // 背景色のテーマや選択時の背景色、キャンセルOKボタンの色
+                        onPrimary: AppColors.white, // 選択時のテキストカラー
+                        surface: AppColors.white, // カレンダーの背景色
+                        onSurface: AppColors.black, // カレンダーのテキストカラー
+                        surfaceTint: Colors.transparent, // カレンダーの背景にうっすらかかる色
+                      ),
+                    ),
+                    child: child!,
+                  );
+                },
               );
               if (selectedDate != null) {
                 setState(() {
@@ -209,9 +259,16 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                 });
               }
             },
-            icon: const Icon(Icons.calendar_month),
+            icon: Icon(
+              Icons.calendar_month,
+              color: AppColors.green,
+            ),
             label: Text(
-                "${date.year.toString()}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}"),
+              "${date.year.toString()}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}",
+              style: TextStyle(
+                color: AppColors.black,
+              ),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(56, 48, 56, 0),
@@ -292,7 +349,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   ),
                   icon: Icon(
                     Icons.align_horizontal_left,
-                    color: colors.primary,
+                    color: AppColors.green,
                   ),
                 ),
               ),
@@ -338,9 +395,12 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       successMessage: '気分値と予定数の登録が完了しました',
                     );
                   },
-                  child: const Text(
+                  child: Text(
                     '保存',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.green,
+                    ),
                   ),
                 ),
               ),

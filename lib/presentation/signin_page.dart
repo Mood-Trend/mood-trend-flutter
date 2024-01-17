@@ -6,6 +6,7 @@ import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart'
 import 'package:mood_trend_flutter/presentation/mixin/error_handler_mixin.dart';
 import 'package:mood_trend_flutter/utils/url_launcher_service.dart';
 
+import '../utils/app_colors.dart';
 import 'components/anchor_text.dart';
 
 /// サインイン画面
@@ -14,15 +15,14 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colors = Theme.of(context).colorScheme;
     return Scaffold(
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              colors.onInverseSurface,
-              colors.surfaceVariant,
+              AppColors.green,
+              AppColors.white,
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -40,7 +40,7 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
                     width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: colors.primary, //ボタンの背景色
+                        backgroundColor: AppColors.green, //ボタンの背景色
                       ),
                       onPressed: () async {
                         execute(
@@ -57,7 +57,7 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
                       child: Text(
                         '同意して始める',
                         style: TextStyle(
-                          color: colors.onPrimary,
+                          color: AppColors.white,
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
@@ -71,7 +71,7 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
                   text: TextSpan(
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           // color: Theme.of(context).colorScheme.surface,
-                          color: colors.surface,
+                          color: AppColors.grey,
                           fontWeight: FontWeight.bold,
                         ),
                     children: [
@@ -86,7 +86,7 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
                       ),
                       TextSpan(
                         text: ' と ',
-                        style: TextStyle(color: colors.outline),
+                        style: TextStyle(color: AppColors.black),
                       ),
                       TextSpan(
                         text: 'プライバシーポリシー',
@@ -99,7 +99,7 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
                       ),
                       TextSpan(
                         text: ' に\n同意の上ご利用ください',
-                        style: TextStyle(color: colors.outline),
+                        style: TextStyle(color: AppColors.black),
                       ),
                     ],
                   ),

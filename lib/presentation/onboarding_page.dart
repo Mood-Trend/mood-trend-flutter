@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_overboard/flutter_overboard.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
+import 'package:mood_trend_flutter/utils/app_colors.dart';
 
 import 'mixin/error_handler_mixin.dart';
 
@@ -10,39 +11,38 @@ class OnboardingPage extends ConsumerWidget with ErrorHandlerMixin {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colors = Theme.of(context).colorScheme;
     return Scaffold(
       body: OverBoard(
         skipText: "スキップ",
-        nextText: "次へ",
-        finishText: "終わる",
+        nextText: "　つぎへ",
+        finishText: "はじめる",
         allowScroll: true,
-        buttonColor: colors.secondary,
-        activeBulletColor: colors.secondary,
-        inactiveBulletColor: colors.secondaryContainer,
+        buttonColor: AppColors.black,
+        activeBulletColor: AppColors.black,
+        inactiveBulletColor: AppColors.grey,
         pages: [
           PageModel(
-            titleColor: colors.secondary,
-            bodyColor: colors.secondary,
-            color: colors.onInverseSurface,
+            titleColor: AppColors.black,
+            bodyColor: AppColors.black,
+            color: AppColors.white,
             imageAssetPath: 'assets/logo.png',
             title: 'ようこそ',
             body: '気分を記録し、穏やかな日々をサポートします',
             doAnimateImage: true,
           ),
           PageModel(
-            titleColor: colors.secondary,
-            bodyColor: colors.secondary,
-            color: colors.onInverseSurface,
+            titleColor: AppColors.black,
+            bodyColor: AppColors.black,
+            color: AppColors.white,
             imageAssetPath: 'assets/graph.png',
             title: '気分を記録',
             body: '積み重ねてグラフで確認',
             doAnimateImage: true,
           ),
           PageModel(
-            titleColor: colors.secondary,
-            bodyColor: colors.secondary,
-            color: colors.onInverseSurface,
+            titleColor: AppColors.black,
+            bodyColor: AppColors.black,
+            color: AppColors.white,
             imageAssetPath: 'assets/table.png',
             title: '気分値目安表',
             body: '編集して自分専用の表を作ろう',

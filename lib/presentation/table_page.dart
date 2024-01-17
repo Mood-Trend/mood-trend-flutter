@@ -4,12 +4,18 @@ import 'package:mood_trend_flutter/domain/mood_worksheet.dart';
 import 'package:mood_trend_flutter/infrastructure/firebase/mood_worksheet_repository.dart';
 import 'package:mood_trend_flutter/presentation/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/components/loading.dart';
+import 'package:mood_trend_flutter/utils/app_colors.dart';
 
-import 'edit_dialog.dart';
+enum MoodState {
+  depression,
+  manic,
+}
 
 final worksheetProvider = StreamProvider<MoodWorksheet>(
   (ref) => ref.watch(moodWorksheetRepositoryProvider).subscribe(),
 );
+final moodButtonStateProvider =
+    StateProvider<MoodState>((_) => MoodState.manic);
 
 class TablePage extends ConsumerWidget {
   const TablePage({super.key, required this.isEditMode});
@@ -17,13 +23,12 @@ class TablePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colors = Theme.of(context).colorScheme;
     return AsyncValueHandler(
       value: ref.watch(worksheetProvider),
       loading: () => const OverlayLoading(),
       builder: (worksheet) {
         return Scaffold(
-          backgroundColor: colors.surfaceVariant,
+          backgroundColor: AppColors.white,
           appBar: AppBar(
             elevation: 0,
             backgroundColor: Colors.transparent,
@@ -36,72 +41,188 @@ class TablePage extends ConsumerWidget {
               icon: const Icon(Icons.close),
             ),
           ),
-          floatingActionButton: isEditMode
-              ? FloatingActionButton(
-                  backgroundColor: colors.primary,
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return const EditDialog();
-                      },
-                    );
-                  },
-                  child: Icon(
-                    Icons.mode_edit,
-                    color: colors.onPrimary,
-                  ),
-                )
-              : const SizedBox(),
           body: Center(
-            child: ListView(
+            child: Column(
               children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          ref.read(moodButtonStateProvider.notifier).state =
+                              MoodState.depression;
+                        },
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                ref.watch(moodButtonStateProvider) ==
+                                        MoodState.depression
+                                    ? AppColors.green
+                                    : Colors.transparent)),
+                        child: Text(
+                          "鬱状態",
+                          style: TextStyle(
+                              color: ref.watch(moodButtonStateProvider) ==
+                                      MoodState.depression
+                                  ? AppColors.white
+                                  : AppColors.black,
+                              fontSize: 20),
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          ref.read(moodButtonStateProvider.notifier).state =
+                              MoodState.manic;
+                        },
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                ref.watch(moodButtonStateProvider) ==
+                                        MoodState.manic
+                                    ? AppColors.green
+                                    : Colors.transparent)),
+                        child: Text(
+                          "躁状態",
+                          style: TextStyle(
+                              color: ref.watch(moodButtonStateProvider) ==
+                                      MoodState.manic
+                                  ? AppColors.white
+                                  : AppColors.black,
+                              fontSize: 20),
+                        )),
+                  ],
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 350,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: AppColors.green.withOpacity(0.5),
+                        ),
+                        child: Column(
+                            children: ref.watch(moodButtonStateProvider) ==
+                                    MoodState.manic
+                                ? [
+                                    TableCell(
+                                      moodValue: '+5',
+                                      actionText: worksheet.plus_5,
+                                    ),
+                                    Divider(
+                                      height: 0,
+                                      thickness: 2,
+                                      indent: 16,
+                                      endIndent: 16,
+                                      color: AppColors.white,
+                                    ),
+                                    TableCell(
+                                      moodValue: '+4',
+                                      actionText: worksheet.plus_4,
+                                    ),
+                                    Divider(
+                                      height: 0,
+                                      thickness: 2,
+                                      indent: 16,
+                                      endIndent: 16,
+                                      color: AppColors.white,
+                                    ),
+                                    TableCell(
+                                      moodValue: '+3',
+                                      actionText: worksheet.plus_3,
+                                    ),
+                                    Divider(
+                                      height: 0,
+                                      thickness: 2,
+                                      indent: 16,
+                                      endIndent: 16,
+                                      color: AppColors.white,
+                                    ),
+                                    TableCell(
+                                      moodValue: '+2',
+                                      actionText: worksheet.plus_2,
+                                    ),
+                                    Divider(
+                                      height: 0,
+                                      thickness: 2,
+                                      indent: 16,
+                                      endIndent: 16,
+                                      color: AppColors.white,
+                                    ),
+                                    TableCell(
+                                      moodValue: '+1',
+                                      actionText: worksheet.plus_1,
+                                    ),
+                                  ]
+                                : [
+                                    TableCell(
+                                      moodValue: '-1',
+                                      actionText: worksheet.minus_1,
+                                    ),
+                                    Divider(
+                                      height: 0,
+                                      thickness: 2,
+                                      indent: 16,
+                                      endIndent: 16,
+                                      color: AppColors.white,
+                                    ),
+                                    TableCell(
+                                      moodValue: '-2',
+                                      actionText: worksheet.minus_2,
+                                    ),
+                                    Divider(
+                                      height: 0,
+                                      thickness: 2,
+                                      indent: 16,
+                                      endIndent: 16,
+                                      color: AppColors.white,
+                                    ),
+                                    TableCell(
+                                      moodValue: '-3',
+                                      actionText: worksheet.minus_3,
+                                    ),
+                                    Divider(
+                                      height: 0,
+                                      thickness: 2,
+                                      indent: 16,
+                                      endIndent: 16,
+                                      color: AppColors.white,
+                                    ),
+                                    TableCell(
+                                      moodValue: '-4',
+                                      actionText: worksheet.minus_4,
+                                    ),
+                                    Divider(
+                                      height: 0,
+                                      thickness: 2,
+                                      indent: 16,
+                                      endIndent: 16,
+                                      color: AppColors.white,
+                                    ),
+                                    TableCell(
+                                      moodValue: '-5',
+                                      actionText: worksheet.minus_5,
+                                    ),
+                                  ]),
+                      ),
+                    ],
+                  ),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.green,
+                    foregroundColor: AppColors.white,
+                  ),
+                  onPressed: () {},
+                  child: const Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Text(
+                      '気分値目安表を編集する',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ),
                 const SizedBox(
-                  height: 16,
-                ),
-                TableCard(
-                  moodValue: "+5",
-                  actionText: worksheet.plus_5,
-                ),
-                TableCard(
-                  moodValue: "+4",
-                  actionText: worksheet.plus_4,
-                ),
-                TableCard(
-                  moodValue: "+3",
-                  actionText: worksheet.plus_3,
-                ),
-                TableCard(
-                  moodValue: "+2",
-                  actionText: worksheet.plus_2,
-                ),
-                TableCard(
-                  moodValue: "+1",
-                  actionText: worksheet.plus_1,
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                TableCard(
-                  moodValue: "-1",
-                  actionText: worksheet.minus_1,
-                ),
-                TableCard(
-                  moodValue: "-2",
-                  actionText: worksheet.minus_2,
-                ),
-                TableCard(
-                  moodValue: "-3",
-                  actionText: worksheet.minus_3,
-                ),
-                TableCard(
-                  moodValue: "-4",
-                  actionText: worksheet.minus_4,
-                ),
-                TableCard(
-                  moodValue: "-5",
-                  actionText: worksheet.minus_5,
-                ),
+                  height: 60,
+                )
               ],
             ),
           ),
@@ -111,59 +232,44 @@ class TablePage extends ConsumerWidget {
   }
 }
 
-class TableCard extends StatelessWidget {
-  const TableCard({
+class TableCell extends StatelessWidget {
+  const TableCell({
     super.key,
     required this.moodValue,
     required this.actionText,
   });
-
   final String moodValue;
   final String actionText;
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
-    return Card(
-      margin: const EdgeInsets.all(10),
-      color: colors.onPrimary,
-      child: Row(
-        children: [
-          Container(
-            height: 80,
-            width: 50,
-            decoration: BoxDecoration(
-              color: colors.secondaryContainer,
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(10.0),
-                bottomLeft: Radius.circular(10.0),
-              ),
-            ),
-            child: Center(
-                child: Text(
-              moodValue,
-              style: TextStyle(color: colors.outline, fontSize: 22),
-            )),
+    return Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Text(
+            moodValue,
+            style: const TextStyle(fontSize: 24),
           ),
-          Expanded(
-            child: SizedBox(
-              // これがないと文字数が多い時にUIが崩れる
-              height: 80,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Center(
-                  child: Text(
-                    actionText,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: colors.inverseSurface,
-                    ),
+        ),
+        Expanded(
+          child: SizedBox(
+            // これがないと文字数が多い時にUIが崩れる
+            height: 80,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                child: Text(
+                  actionText,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: AppColors.black,
                   ),
                 ),
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
