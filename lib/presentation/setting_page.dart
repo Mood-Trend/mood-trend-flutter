@@ -215,15 +215,23 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                   return Stack(
                     children: [
                       AlertDialog(
+                        surfaceTintColor: Colors.transparent,
+                        backgroundColor: AppColors.white,
                         title: const Text("退会しますか？"),
                         content: const Text("データは全て削除され復元できません"),
                         actions: [
                           TextButton(
-                            child: const Text("キャンセル"),
+                            child: Text(
+                              "キャンセル",
+                              style: TextStyle(color: AppColors.black),
+                            ),
                             onPressed: () => Navigator.pop(context),
                           ),
                           TextButton(
-                            child: const Text("退会する"),
+                            child: Text(
+                              "退会する",
+                              style: TextStyle(color: AppColors.red),
+                            ),
                             onPressed: () {
                               execute(context, ref, action: () async {
                                 await ref
