@@ -142,7 +142,7 @@ class HomePage extends ConsumerWidget {
                       isVisible: true,
                       start: -double.infinity,
                       end: 0,
-                      color: Color.fromRGBO(249, 249, 249, 1),
+                      color: const Color.fromRGBO(249, 249, 249, 1),
                     ),
                   ],
                 ),
@@ -238,16 +238,12 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   return Theme(
                     data: Theme.of(context).copyWith(
                       colorScheme: ColorScheme.light(
-                        primary: AppColors.green, // 選択された日付の背景色
-                        onPrimary: AppColors.white,
+                        primary:
+                            AppColors.green, // 背景色のテーマや選択時の背景色、キャンセルOKボタンの色
+                        onPrimary: AppColors.white, // 選択時のテキストカラー
                         surface: AppColors.white, // カレンダーの背景色
                         onSurface: AppColors.black, // カレンダーのテキストカラー
-                      ),
-                      dialogBackgroundColor: AppColors.white, //カレンダーの背景色
-                      textButtonTheme: TextButtonThemeData(
-                        style: TextButton.styleFrom(
-                          foregroundColor: AppColors.green, // ボタンのテキスト
-                        ),
+                        surfaceTint: Colors.transparent, // カレンダーの背景にうっすらかかる色
                       ),
                     ),
                     child: child!,
