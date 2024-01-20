@@ -345,7 +345,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                 child: IconButton(
                   onPressed: () => PageNavigator.push(
                     context,
-                    const TablePage(isEditMode: false),
+                    const TablePage(),
                   ),
                   icon: Icon(
                     Icons.align_horizontal_left,

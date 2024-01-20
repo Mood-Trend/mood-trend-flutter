@@ -4,7 +4,10 @@ import 'package:mood_trend_flutter/domain/mood_worksheet.dart';
 import 'package:mood_trend_flutter/infrastructure/firebase/mood_worksheet_repository.dart';
 import 'package:mood_trend_flutter/presentation/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/components/loading.dart';
+import 'package:mood_trend_flutter/presentation/manic_type_diagnosis.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
+
+import '../utils/page_navigator.dart';
 
 enum MoodState {
   depression,
@@ -18,8 +21,7 @@ final moodButtonStateProvider =
     StateProvider<MoodState>((_) => MoodState.manic);
 
 class TablePage extends ConsumerWidget {
-  const TablePage({super.key, required this.isEditMode});
-  final bool isEditMode;
+  const TablePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -97,7 +99,7 @@ class TablePage extends ConsumerWidget {
                         width: 350,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: AppColors.green.withOpacity(0.5),
+                          color: AppColors.green.withOpacity(0.4),
                         ),
                         child: Column(
                             children: ref.watch(moodButtonStateProvider) ==
@@ -210,18 +212,21 @@ class TablePage extends ConsumerWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.green,
                     foregroundColor: AppColors.white,
+                    fixedSize: const Size(330, 60),
                   ),
-                  onPressed: () {},
-                  child: const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Text(
-                      '気分値目安表を編集する',
-                      style: TextStyle(fontSize: 20),
+                  onPressed: () {
+                    PageNavigator.push(context, const ManicTypeDiagnosis());
+                  },
+                  child: const Text(
+                    '気分値目安表の設定をはじめる',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
                 const SizedBox(
-                  height: 60,
+                  height: 80,
                 )
               ],
             ),

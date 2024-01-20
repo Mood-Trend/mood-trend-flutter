@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
 import 'package:mood_trend_flutter/presentation/components/loading.dart';
+import 'package:mood_trend_flutter/presentation/manic_type_diagnosis.dart';
 import 'package:mood_trend_flutter/presentation/mixin/error_handler_mixin.dart';
 import 'package:mood_trend_flutter/presentation/root_page.dart';
-import 'package:mood_trend_flutter/presentation/table_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
@@ -42,7 +42,7 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
           ),
           GestureDetector(
             onTap: () =>
-                PageNavigator.push(context, const TablePage(isEditMode: true)),
+                PageNavigator.push(context, const ManicTypeDiagnosis()),
             child: Container(
               color: AppColors.white,
               width: double.infinity,
