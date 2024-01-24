@@ -12,6 +12,13 @@ enum ManicType {
   other,
 }
 
+enum DepressionType {
+  sadness,
+  anxiety,
+  fatigue,
+  other,
+}
+
 final selectedManicTypeProvider =
     StateProvider<ManicType>((_) => ManicType.other);
 
