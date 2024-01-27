@@ -263,12 +263,19 @@ class TableCell extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Center(
-                child: Text(
-                  actionText,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: AppColors.black,
-                  ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        textAlign: TextAlign.left,
+                        actionText,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: AppColors.black,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

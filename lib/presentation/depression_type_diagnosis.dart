@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/presentation/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/components/loading.dart';
+import 'package:mood_trend_flutter/presentation/depression_type_table.dart';
 import 'package:mood_trend_flutter/presentation/table_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
+import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 enum DepressionType {
   melancholy,
@@ -151,14 +153,20 @@ class DepressionTypeDignosis extends ConsumerWidget {
                     height: 80,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      PageNavigator.push(
+                          context,
+                          DepressionTypeTable(
+                            depressionType: selectedDepressionType,
+                          ));
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.green,
                       foregroundColor: AppColors.white,
                       fixedSize: const Size(300, 60),
                     ),
                     child: const Text(
-                      '次へ',
+                      '同意して次へ',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,

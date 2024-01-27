@@ -163,7 +163,7 @@ class ManicTypeDiagnosis extends ConsumerWidget {
                       fixedSize: const Size(300, 60),
                     ),
                     child: const Text(
-                      '次へ',
+                      '同意して次へ',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
