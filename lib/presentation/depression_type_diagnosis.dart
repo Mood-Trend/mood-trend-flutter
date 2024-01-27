@@ -2,38 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/presentation/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/components/loading.dart';
-import 'package:mood_trend_flutter/presentation/manic_type_table.dart';
 import 'package:mood_trend_flutter/presentation/table_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
-import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
-enum ManicType {
-  idea,
-  elation,
-  activity,
+enum DepressionType {
+  melancholy,
+  poorThinking,
+  sleepDisorders,
   other,
 }
 
-final selectedManicTypeProvider =
-    StateProvider<ManicType>((_) => ManicType.other);
+final selectedDepressionTypeProvider =
+    StateProvider<DepressionType>((_) => DepressionType.other);
 
-class ManicTypeDiagnosis extends ConsumerWidget {
-  const ManicTypeDiagnosis({super.key});
+class DepressionTypeDignosis extends ConsumerWidget {
+  const DepressionTypeDignosis({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedManicType = ref.watch(selectedManicTypeProvider);
-    ButtonStyle buttonStyle(ManicType manicType) {
+    final selectedDepressionType = ref.watch(selectedDepressionTypeProvider);
+    ButtonStyle buttonStyle(DepressionType depressionType) {
       return OutlinedButton.styleFrom(
-        backgroundColor: selectedManicType == manicType
+        backgroundColor: selectedDepressionType == depressionType
             ? AppColors.green.withOpacity(0.3)
             : Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
         ),
         side: BorderSide(
-          color:
-              selectedManicType == manicType ? AppColors.green : AppColors.grey,
+          color: selectedDepressionType == depressionType
+              ? AppColors.green
+              : AppColors.grey,
           width: 1,
         ),
         fixedSize: const Size(130, 130),
@@ -60,7 +59,7 @@ class ManicTypeDiagnosis extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   const Text(
-                    'あなたの躁のタイプは？',
+                    'あなたの鬱のタイプは？',
                     style: TextStyle(
                       fontSize: 26,
                     ),
@@ -75,12 +74,13 @@ class ManicTypeDiagnosis extends ConsumerWidget {
                         padding: const EdgeInsets.all(16.0),
                         child: OutlinedButton(
                           onPressed: () {
-                            ref.read(selectedManicTypeProvider.notifier).state =
-                                ManicType.idea;
+                            ref
+                                .read(selectedDepressionTypeProvider.notifier)
+                                .state = DepressionType.melancholy;
                           },
-                          style: buttonStyle(ManicType.idea),
+                          style: buttonStyle(DepressionType.melancholy),
                           child: const Text(
-                            'アイデア',
+                            '憂鬱',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 18,
@@ -93,12 +93,12 @@ class ManicTypeDiagnosis extends ConsumerWidget {
                         child: OutlinedButton(
                             onPressed: () {
                               ref
-                                  .read(selectedManicTypeProvider.notifier)
-                                  .state = ManicType.elation;
+                                  .read(selectedDepressionTypeProvider.notifier)
+                                  .state = DepressionType.poorThinking;
                             },
-                            style: buttonStyle(ManicType.elation),
+                            style: buttonStyle(DepressionType.poorThinking),
                             child: const Text(
-                              '気分高揚',
+                              '思考力\n低下',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 18,
@@ -115,12 +115,12 @@ class ManicTypeDiagnosis extends ConsumerWidget {
                         child: OutlinedButton(
                             onPressed: () {
                               ref
-                                  .read(selectedManicTypeProvider.notifier)
-                                  .state = ManicType.activity;
+                                  .read(selectedDepressionTypeProvider.notifier)
+                                  .state = DepressionType.sleepDisorders;
                             },
-                            style: buttonStyle(ManicType.activity),
+                            style: buttonStyle(DepressionType.sleepDisorders),
                             child: const Text(
-                              '活動性',
+                              '睡眠障害',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 18,
@@ -131,10 +131,11 @@ class ManicTypeDiagnosis extends ConsumerWidget {
                         padding: const EdgeInsets.all(16.0),
                         child: OutlinedButton(
                           onPressed: () {
-                            ref.read(selectedManicTypeProvider.notifier).state =
-                                ManicType.other;
+                            ref
+                                .read(selectedDepressionTypeProvider.notifier)
+                                .state = DepressionType.other;
                           },
-                          style: buttonStyle(ManicType.other),
+                          style: buttonStyle(DepressionType.other),
                           child: const Text(
                             '独自に\n入力',
                             style: TextStyle(
@@ -150,13 +151,7 @@ class ManicTypeDiagnosis extends ConsumerWidget {
                     height: 80,
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      PageNavigator.push(
-                          context,
-                          ManicTypeTable(
-                            manicType: selectedManicType,
-                          ));
-                    },
+                    onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.green,
                       foregroundColor: AppColors.white,
