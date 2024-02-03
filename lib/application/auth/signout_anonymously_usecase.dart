@@ -25,7 +25,8 @@ class SignoutAnonymouslyUseCase with UsecaseMixin {
   Future<void> execute() async {
     await run(
       ref,
-      () async => await ref.read(firebaseAuthRepositoryProvider).delete(),
+      action: () async =>
+          await ref.read(firebaseAuthRepositoryProvider).delete(),
     );
   }
 }

@@ -29,7 +29,7 @@ class AddMoodPointUseCase with UsecaseMixin {
   }) async {
     await run(
       ref,
-      () async => await ref.read(moodPointRepositoryProvider).add(
+      action: () async => await ref.read(moodPointRepositoryProvider).add(
             point: point,
             plannedVolume: plannedVolume,
             moodDate: moodDate,

@@ -25,7 +25,7 @@ class SigninAnonymouslyUseCase with UsecaseMixin {
   Future<void> execute() async {
     await run(
       ref,
-      () async =>
+      action: () async =>
           await ref.read(firebaseAuthRepositoryProvider).signinAnonymously(),
     );
   }
