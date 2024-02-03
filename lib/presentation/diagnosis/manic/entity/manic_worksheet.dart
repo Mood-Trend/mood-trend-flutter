@@ -23,6 +23,7 @@ class ManicWorksheetFactory {
       case ManicType.activity:
         return ActivityTypeWorksheet();
       case ManicType.other:
+        return OtherManicTypeWorksheet();
       default:
         throw AppException('Unsupported ManicType: $type');
     }
@@ -92,4 +93,18 @@ class ActivityTypeWorksheet extends ManicWorksheet {
   String get plus_2 => '普段よりも活発に動く気分である';
   @override
   String get plus_1 => '活動が可能である';
+}
+
+/// [ManicWorksheet] を具象化したその他のワークシート
+class OtherManicTypeWorksheet extends ManicWorksheet {
+  @override
+  String get plus_5 => '';
+  @override
+  String get plus_4 => '';
+  @override
+  String get plus_3 => '';
+  @override
+  String get plus_2 => '';
+  @override
+  String get plus_1 => '';
 }

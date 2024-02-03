@@ -24,6 +24,7 @@ class DepressionWorksheetFactory {
       case DepressionType.sleepDisorders:
         return SleepDisordersTypeWorksheet();
       case DepressionType.other:
+        return OtherDepressionTypeWorksheet();
       default:
         throw AppException('Unsupported ManicType: $type');
     }
@@ -79,4 +80,18 @@ class SleepDisordersTypeWorksheet extends DepressionWorksheet {
   String get minus_4 => '睡眠が極端に不足、または過度に寝ており、日中の機能が著しく低下している';
   @override
   String get minus_5 => '眠れずに常に過度の不眠状態で、日中も強い疲労感がある。または日中のほとんどを寝て過ごしている';
+}
+
+/// [DepressionWorksheet] を具象化したその他のワークシート
+class OtherDepressionTypeWorksheet extends DepressionWorksheet {
+  @override
+  String get minus_1 => '';
+  @override
+  String get minus_2 => '';
+  @override
+  String get minus_3 => '';
+  @override
+  String get minus_4 => '';
+  @override
+  String get minus_5 => '';
 }
