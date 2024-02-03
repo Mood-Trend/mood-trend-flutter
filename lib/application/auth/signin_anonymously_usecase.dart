@@ -23,7 +23,7 @@ class SigninAnonymouslyUseCase with UsecaseMixin {
 
   /// 匿名サインインユースケースの実行
   Future<void> execute() async {
-    run(
+    await run(
       ref,
       () async =>
           await ref.read(firebaseAuthRepositoryProvider).signinAnonymously(),

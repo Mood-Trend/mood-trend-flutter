@@ -23,7 +23,7 @@ class SignoutAnonymouslyUseCase with UsecaseMixin {
 
   /// 匿名サインアウトユースケースの実行
   Future<void> signout() async {
-    run(
+    await run(
       ref,
       () async => await ref.read(firebaseAuthRepositoryProvider).delete(),
     );
