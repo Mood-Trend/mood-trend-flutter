@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'common/overlay_loading_provider.dart';
+import 'common/state/overlay_loading_provider.dart';
 
 /// ユースケース実行のためのメソッドを備えた Mixin
 mixin UsecaseMixin {

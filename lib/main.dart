@@ -14,7 +14,7 @@ import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/constants.dart';
 import 'package:package_info/package_info.dart';
 
-import 'application/common/overlay_loading_provider.dart';
+import 'application/common/state/overlay_loading_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

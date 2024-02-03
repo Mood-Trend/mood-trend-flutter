@@ -9,7 +9,7 @@ import 'package:mood_trend_flutter/utils/datetime_extension.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../../application/graph/state.dart';
+import '../../application/graph/state/subscribe_mood_points_provider.dart';
 import '../../utils/app_colors.dart';
 import 'input_modal.dart';
 
