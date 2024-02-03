@@ -1,7 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/application/graph/add_mood_point_usecase.dart';
 
-import '../../infrastructure/firebase/mood_point_repository.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/page_navigator.dart';
 import '../common/mixin/error_handler_mixin.dart';
@@ -188,14 +190,11 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       ref,
                       action: () async {
                         // mood_points コレクションにドキュメントを追加
-                        await ref.read(moodPointRepositoryProvider).add(
+                        await ref.read(addMoodPointUseCaseProvider).execute(
                               point: _moodValue.toInt(),
                               plannedVolume: _plannedValue.toInt(),
                               moodDate: date,
                             );
-
-                        // モーダルを閉じる
-                        // ignore: use_build_context_synchronously
                         Navigator.pop(context);
                       },
                       successMessage: '気分値と予定数の登録が完了しました',
