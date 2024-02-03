@@ -39,7 +39,7 @@ abstract class DepressionWorksheet {
   String get minus_5;
 }
 
-/// [ManicWorksheet] を具象化した憂鬱のワークシート
+/// [DepressionWorksheet] を具象化した憂鬱のワークシート
 class MelancholyTypeWorksheet extends DepressionWorksheet {
   @override
   String get minus_1 => 'どちらかというと後ろ向きである';
@@ -53,7 +53,7 @@ class MelancholyTypeWorksheet extends DepressionWorksheet {
   String get minus_5 => '完全に絶望的で、生きることが苦痛でしかない。日常の動作がままならない';
 }
 
-/// [ManicWorksheet] を具象化した思考力低下のワークシート
+/// [DepressionWorksheet] を具象化した思考力低下のワークシート
 class PoorThinkingTypeWorksheet extends DepressionWorksheet {
   @override
   String get minus_1 => 'ものを考えるのが少し億劫に感じる時もある';
@@ -67,7 +67,7 @@ class PoorThinkingTypeWorksheet extends DepressionWorksheet {
   String get minus_5 => '思考がまったく機能しておらず、ほとんどのことが理解できない';
 }
 
-/// [ManicWorksheet] を具象化した睡眠障害のワークシート
+/// [DepressionWorksheet] を具象化した睡眠障害のワークシート
 class SleepDisordersTypeWorksheet extends DepressionWorksheet {
   @override
   String get minus_1 => '寝起きがスッキリしない';
