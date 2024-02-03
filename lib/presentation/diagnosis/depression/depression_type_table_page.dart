@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/presentation/common/mixin/error_handler_mixin.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/depression/entity/depression_worksheet.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
+import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../../../application/diagnosis/register_depression_mood_worksheet_usecase.dart';
 import 'depression_type_diagnosis_page.dart';
@@ -124,6 +125,8 @@ class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                   },
                   successMessage: '鬱状態の気分値目安を登録しました',
                 );
+                // ignore: use_build_context_synchronously
+                PageNavigator.popUntilRoot(context);
               },
               child: const Text(
                 '完了',

@@ -40,7 +40,9 @@ class DepressionTypeDignosisPage extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: AppColors.white,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
