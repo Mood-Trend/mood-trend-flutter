@@ -10,7 +10,7 @@ import 'package:mood_trend_flutter/presentation/auth/root_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
-import '../../application/common/state/overlay_loading_provider.dart';
+import '../../application/common/states/overlay_loading_provider.dart';
 import '../../application/common/url_launcher_service.dart';
 
 class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
