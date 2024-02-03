@@ -48,6 +48,7 @@ final visibleMaximumProvider = StateProvider<DateTime>(
   (ref) => DateTime.now().toDateOnly(),
 );
 
+/// グラフを表示するメインの画面
 class HomePage extends ConsumerWidget {
   const HomePage({super.key, required this.userId});
 

@@ -7,6 +7,7 @@ import '../../utils/page_navigator.dart';
 import '../common/mixin/error_handler_mixin.dart';
 import '../diagnosis/table_page.dart';
 
+/// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
   const InputModal({super.key});
 
