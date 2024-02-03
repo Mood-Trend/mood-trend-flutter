@@ -5,7 +5,7 @@ import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart'
 /// [SignoutAnonymouslyUseCase] のインスタンスを作成するためのプロバイダ
 ///
 /// UI 層にユースケースを注入するために使用され、認証プロセスを抽象化する
-final signinAnonymouslyUseCaseProvider = Provider<SignoutAnonymouslyUseCase>(
+final signoutAnonymouslyUseCaseProvider = Provider<SignoutAnonymouslyUseCase>(
   SignoutAnonymouslyUseCase.new,
 );
 
