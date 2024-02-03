@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/manic_type_diagnosis.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 
 import '../../application/diagnosis/states/subscribe_mood_work_sheet_provider.dart';
 import '../../utils/page_navigator.dart';
+import 'manic/manic_type_diagnosis_page.dart';
 
 /// [MoodState] は、気分値目安表の状態を表す
 enum MoodState {
@@ -28,7 +28,7 @@ class TablePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AsyncValueHandler(
-      value: ref.watch(worksheetProvider),
+      value: ref.watch(subscribeMoodWorksheetProvider),
       loading: () => const OverlayLoading(),
       builder: (worksheet) {
         return Scaffold(
@@ -230,7 +230,7 @@ class TablePage extends ConsumerWidget {
                     fixedSize: const Size(330, 60),
                   ),
                   onPressed: () {
-                    PageNavigator.push(context, const ManicTypeDiagnosis());
+                    PageNavigator.push(context, const ManicTypeDiagnosisPage());
                   },
                   child: const Text(
                     '気分値目安表の設定をはじめる',

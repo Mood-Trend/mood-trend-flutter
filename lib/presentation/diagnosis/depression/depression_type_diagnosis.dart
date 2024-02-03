@@ -3,20 +3,27 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/depression_type_table.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/table_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
+/// 鬱のタイプを示す列挙体
 enum DepressionType {
+  // 憂鬱
   melancholy,
+  // 思考力低下
   poorThinking,
+  // 睡眠障害
   sleepDisorders,
+  // その他
   other,
 }
 
-final selectedDepressionTypeProvider =
-    StateProvider<DepressionType>((_) => DepressionType.other);
+/// 選択された鬱のタイプを提供する [StateProvider]
+final selectedDepressionTypeProvider = StateProvider<DepressionType>(
+  (_) => DepressionType.other,
+);
 
+/// 鬱のタイプの診断画面
 class DepressionTypeDignosis extends ConsumerWidget {
   const DepressionTypeDignosis({super.key});
 
