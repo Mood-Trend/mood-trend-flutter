@@ -1,5 +1,5 @@
-/// 躁状態のワークシートの抽象クラス
-abstract class ManicWorkSheet {
+/// 躁のタイプのワークシートを抽象化したクラス
+abstract class ManicWorksheet {
   late final String plus_5;
   late final String plus_4;
   late final String plus_3;
@@ -7,8 +7,8 @@ abstract class ManicWorkSheet {
   late final String plus_1;
 }
 
-/// [ManicWorkSheet] を具象化したアイデアのワークシート
-class IdeaType extends ManicWorkSheet {
+/// [ManicWorksheet] を具象化したアイデアのワークシート
+class IdeaTypeWorksheet extends ManicWorksheet {
   @override
   String get plus_5 => 'アイデアが成功すると確信し、実現に向けて実際に動く';
   @override
@@ -21,8 +21,8 @@ class IdeaType extends ManicWorkSheet {
   String get plus_1 => 'アイデアを考えようと思えば可能である';
 }
 
-/// [ManicWorkSheet] を具象化した気分高揚のワークシート
-class ElationType extends ManicWorkSheet {
+/// [ManicWorksheet] を具象化した気分高揚のワークシート
+class ElationTypeWorksheet extends ManicWorksheet {
   @override
   String get plus_5 => '自分は絶対に正しく、すべてが上手くいくと確信する';
   @override
@@ -35,8 +35,8 @@ class ElationType extends ManicWorkSheet {
   String get plus_1 => '普段より前向きな気分である';
 }
 
-/// [ManicWorkSheet] を具象化した活動性のワークシート
-class ActivityType extends ManicWorkSheet {
+/// [ManicWorksheet] を具象化した活動性のワークシート
+class ActivityTypeWorksheet extends ManicWorksheet {
   @override
   String get plus_5 => '何日も1日中活動を続けているが、疲れを感じずに精力的に行動している';
   @override

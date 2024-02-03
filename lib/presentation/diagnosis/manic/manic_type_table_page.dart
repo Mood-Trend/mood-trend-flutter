@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/manic/entity/manic_worksheet.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
-import 'entity/manic_worksheet.dart';
+import '../depression/depression_type_diagnosis_page.dart';
 import 'manic_type_diagnosis_page.dart';
 
 /// 躁のタイプを表示するテーブル画面
@@ -13,11 +14,11 @@ class ManicTypeTablePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final ManicWorkSheet worksheet = manicType == ManicType.idea
-        ? IdeaType()
+    final ManicWorksheet worksheet = manicType == ManicType.idea
+        ? IdeaTypeWorksheet()
         : manicType == ManicType.elation
-            ? ElationType()
-            : ActivityType();
+            ? ElationTypeWorksheet()
+            : ActivityTypeWorksheet();
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(

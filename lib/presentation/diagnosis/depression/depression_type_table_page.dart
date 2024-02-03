@@ -1,67 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/depression_type_diagnosis.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/depression/entity/depression_worksheet.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
-import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
-abstract class ManicWorkSheet {
-  late final String minus_1;
-  late final String minus_2;
-  late final String minus_3;
-  late final String minus_4;
-  late final String minus_5;
-}
+import 'depression_type_diagnosis_page.dart';
 
-class MelancholyType extends ManicWorkSheet {
-  @override
-  String get minus_1 => 'どちらかというと後ろ向きである';
-  @override
-  String get minus_2 => '軽度の憂鬱感があり、日常の中でやりたくないことが増えている';
-  @override
-  String get minus_3 => '憂鬱感が強く、生活が厳しい。普段の活動に対する興味をほとんど持てない';
-  @override
-  String get minus_4 => '強い憂鬱感があり、生活に支障が出ている。日常の機能に影響を与えている';
-  @override
-  String get minus_5 => '完全に絶望的で、生きることが苦痛でしかない。日常の動作がままならない';
-}
-
-class PoorThinkingType extends ManicWorkSheet {
-  @override
-  String get minus_1 => 'ものを考えるのが少し億劫に感じる時もある';
-  @override
-  String get minus_2 => '軽度の思考の鈍さがある';
-  @override
-  String get minus_3 => '思考が鈍く、問題解決や判断力が著しく低下している';
-  @override
-  String get minus_4 => '思考が著しく低下しており、集中や記憶に大きな問題がある';
-  @override
-  String get minus_5 => '思考がまったく機能しておらず、ほとんどのことが理解できない';
-}
-
-class SleepDisordersType extends ManicWorkSheet {
-  @override
-  String get minus_1 => '寝起きがスッキリしない';
-  @override
-  String get minus_2 => '睡眠の質が低く、日中の眠気や疲労感がある';
-  @override
-  String get minus_3 => '睡眠が乱れ、十分な休息を得られていない。日中の眠気が強い';
-  @override
-  String get minus_4 => '睡眠が極端に不足、または過度に寝ており、日中の機能が著しく低下している';
-  @override
-  String get minus_5 => '眠れずに常に過度の不眠状態で、日中も強い疲労感がある。または日中のほとんどを寝て過ごしている';
-}
-
-class DepressionTypeTable extends ConsumerWidget {
-  const DepressionTypeTable({super.key, required this.depressionType});
+/// 鬱のタイプを表示するテーブル画面
+class DepressionTypeTablePage extends ConsumerWidget {
+  const DepressionTypeTablePage({super.key, required this.depressionType});
   final DepressionType depressionType;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final ManicWorkSheet worksheet = depressionType == DepressionType.melancholy
-        ? MelancholyType()
+    final ManicWorksheet worksheet = depressionType == DepressionType.melancholy
+        ? MelancholyTypeWorksheet()
         : depressionType == DepressionType.poorThinking
-            ? PoorThinkingType()
-            : SleepDisordersType();
+            ? PoorThinkingTypeWorksheet()
+            : SleepDisordersTypeWorksheet();
 
     return Scaffold(
       backgroundColor: AppColors.white,
