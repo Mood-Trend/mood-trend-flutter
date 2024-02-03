@@ -1,68 +1,68 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/presentation/depression_type_diagnosis.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/depression_type_diagnosis.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/manic_type_diagnosis.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 abstract class ManicWorkSheet {
-  late final String minus_1;
-  late final String minus_2;
-  late final String minus_3;
-  late final String minus_4;
-  late final String minus_5;
+  late final String plus_5;
+  late final String plus_4;
+  late final String plus_3;
+  late final String plus_2;
+  late final String plus_1;
 }
 
-class MelancholyType extends ManicWorkSheet {
+class IdeaType extends ManicWorkSheet {
   @override
-  String get minus_1 => 'どちらかというと後ろ向きである';
+  String get plus_5 => 'アイデアが成功すると確信し、実現に向けて実際に動く';
   @override
-  String get minus_2 => '軽度の憂鬱感があり、日常の中でやりたくないことが増えている';
+  String get plus_4 => '次々と湧き上がるアイデアを具現化しようと奮闘する';
   @override
-  String get minus_3 => '憂鬱感が強く、生活が厳しい。普段の活動に対する興味をほとんど持てない';
+  String get plus_3 => 'アイデアが湧き上がり、絶え間なく考え続ける';
   @override
-  String get minus_4 => '強い憂鬱感があり、生活に支障が出ている。日常の機能に影響を与えている';
+  String get plus_2 => 'アイデアを簡単に思いつくことができる';
   @override
-  String get minus_5 => '完全に絶望的で、生きることが苦痛でしかない。日常の動作がままならない';
+  String get plus_1 => 'アイデアを考えようと思えば可能である';
 }
 
-class PoorThinkingType extends ManicWorkSheet {
+class ElationType extends ManicWorkSheet {
   @override
-  String get minus_1 => 'ものを考えるのが少し億劫に感じる時もある';
+  String get plus_5 => '自分は絶対に正しく、すべてが上手くいくと確信する';
   @override
-  String get minus_2 => '軽度の思考の鈍さがある';
+  String get plus_4 => 'どんなことでも自分は成功すると確信している';
   @override
-  String get minus_3 => '思考が鈍く、問題解決や判断力が著しく低下している';
+  String get plus_3 => 'どんな状況でも上手くいく感覚が強い';
   @override
-  String get minus_4 => '思考が著しく低下しており、集中や記憶に大きな問題がある';
+  String get plus_2 => '前向きで挑戦的な気持ちがあり、ポジティブなエネルギーを感じる';
   @override
-  String get minus_5 => '思考がまったく機能しておらず、ほとんどのことが理解できない';
+  String get plus_1 => '普段より前向きな気分である';
 }
 
-class SleepDisordersType extends ManicWorkSheet {
+class ActivityType extends ManicWorkSheet {
   @override
-  String get minus_1 => '寝起きがスッキリしない';
+  String get plus_5 => '何日も1日中活動を続けているが、疲れを感じずに精力的に行動している';
   @override
-  String get minus_2 => '睡眠の質が低く、日中の眠気や疲労感がある';
+  String get plus_4 => '1日が予定でいっぱいである';
   @override
-  String get minus_3 => '睡眠が乱れ、十分な休息を得られていない。日中の眠気が強い';
+  String get plus_3 => '積極的でエネルギッシュな気分で、予定をたくさん詰める';
   @override
-  String get minus_4 => '睡眠が極端に不足、または過度に寝ており、日中の機能が著しく低下している';
+  String get plus_2 => '普段よりも活発に動く気分である';
   @override
-  String get minus_5 => '眠れずに常に過度の不眠状態で、日中も強い疲労感がある。または日中のほとんどを寝て過ごしている';
+  String get plus_1 => '活動が可能である';
 }
 
-class DepressionTypeTable extends ConsumerWidget {
-  const DepressionTypeTable({super.key, required this.depressionType});
-  final DepressionType depressionType;
+class ManicTypeTable extends ConsumerWidget {
+  const ManicTypeTable({super.key, required this.manicType});
+  final ManicType manicType;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final ManicWorkSheet worksheet = depressionType == DepressionType.melancholy
-        ? MelancholyType()
-        : depressionType == DepressionType.poorThinking
-            ? PoorThinkingType()
-            : SleepDisordersType();
-
+    final ManicWorkSheet worksheet = manicType == ManicType.idea
+        ? IdeaType()
+        : manicType == ManicType.elation
+            ? ElationType()
+            : ActivityType();
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
@@ -97,7 +97,7 @@ class DepressionTypeTable extends ConsumerWidget {
                     child: Column(children: [
                       TableCell(
                         moodValue: '+5',
-                        actionText: worksheet.minus_1,
+                        actionText: worksheet.plus_5,
                       ),
                       Divider(
                         height: 0,
@@ -108,7 +108,7 @@ class DepressionTypeTable extends ConsumerWidget {
                       ),
                       TableCell(
                         moodValue: '+4',
-                        actionText: worksheet.minus_2,
+                        actionText: worksheet.plus_4,
                       ),
                       Divider(
                         height: 0,
@@ -119,7 +119,7 @@ class DepressionTypeTable extends ConsumerWidget {
                       ),
                       TableCell(
                         moodValue: '+3',
-                        actionText: worksheet.minus_3,
+                        actionText: worksheet.plus_3,
                       ),
                       Divider(
                         height: 0,
@@ -130,7 +130,7 @@ class DepressionTypeTable extends ConsumerWidget {
                       ),
                       TableCell(
                         moodValue: '+2',
-                        actionText: worksheet.minus_4,
+                        actionText: worksheet.plus_2,
                       ),
                       Divider(
                         height: 0,
@@ -141,7 +141,7 @@ class DepressionTypeTable extends ConsumerWidget {
                       ),
                       TableCell(
                         moodValue: '+1',
-                        actionText: worksheet.minus_5,
+                        actionText: worksheet.plus_1,
                       ),
                     ]),
                   ),
@@ -154,9 +154,11 @@ class DepressionTypeTable extends ConsumerWidget {
                 foregroundColor: AppColors.white,
                 fixedSize: const Size(330, 60),
               ),
-              onPressed: () {},
+              onPressed: () {
+                PageNavigator.push(context, const DepressionTypeDignosis());
+              },
               child: const Text(
-                '完了',
+                '同意して次へ',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,

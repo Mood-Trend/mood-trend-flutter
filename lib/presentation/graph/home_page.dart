@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:mood_trend_flutter/domain/mood_point.dart';
-import 'package:mood_trend_flutter/presentation/components/async_value_handler.dart';
-import 'package:mood_trend_flutter/presentation/components/loading.dart';
-import 'package:mood_trend_flutter/presentation/setting_page.dart';
-import 'package:mood_trend_flutter/presentation/table_page.dart';
+import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
+import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
+import 'package:mood_trend_flutter/presentation/common/setting_page.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/table_page.dart';
 import 'package:mood_trend_flutter/utils/datetime_extension.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../infrastructure/firebase/mood_point_repository.dart';
-import '../utils/app_colors.dart';
-import 'mixin/error_handler_mixin.dart';
+import '../../infrastructure/firebase/mood_point_repository.dart';
+import '../../utils/app_colors.dart';
+import '../common/mixin/error_handler_mixin.dart';
 
 // グラフ表示期間を示す
 enum Term {

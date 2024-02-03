@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/presentation/components/async_value_handler.dart';
-import 'package:mood_trend_flutter/presentation/components/loading.dart';
-import 'package:mood_trend_flutter/presentation/depression_type_table.dart';
-import 'package:mood_trend_flutter/presentation/table_page.dart';
+import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
+import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/depression_type_table.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/table_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 

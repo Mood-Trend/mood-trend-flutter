@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/presentation/components/loading.dart';
+import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 
-import '../../domain/app_exception.dart';
+import '../../../domain/app_exception.dart';
 import '../components/snackbars.dart';
 
 /// プレゼンテーション層用のエラーハンドリングをラップした共通処理 Mixin

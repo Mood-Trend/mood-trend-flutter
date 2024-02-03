@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:mood_trend_flutter/presentation/home_page.dart';
-import 'package:mood_trend_flutter/presentation/onboarding_page.dart';
+import 'package:mood_trend_flutter/presentation/graph/home_page.dart';
+import 'package:mood_trend_flutter/presentation/common/onboarding_page.dart';
 
-import '../infrastructure/firebase/auth_repository.dart';
+import '../../infrastructure/firebase/auth_repository.dart';
 
 final rootPageKey = Provider((ref) => GlobalKey<NavigatorState>());
 

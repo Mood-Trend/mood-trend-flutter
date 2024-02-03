@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/domain/mood_worksheet.dart';
 import 'package:mood_trend_flutter/infrastructure/firebase/mood_worksheet_repository.dart';
-import 'package:mood_trend_flutter/presentation/components/async_value_handler.dart';
-import 'package:mood_trend_flutter/presentation/components/loading.dart';
-import 'package:mood_trend_flutter/presentation/manic_type_diagnosis.dart';
+import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
+import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/manic_type_diagnosis.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 
-import '../utils/page_navigator.dart';
+import '../../utils/page_navigator.dart';
 
 enum MoodState {
   depression,

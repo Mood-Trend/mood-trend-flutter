@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
-import 'package:mood_trend_flutter/presentation/mixin/error_handler_mixin.dart';
+import 'package:mood_trend_flutter/presentation/common/mixin/error_handler_mixin.dart';
 import 'package:mood_trend_flutter/utils/url_launcher_service.dart';
 
-import '../utils/app_colors.dart';
-import 'components/anchor_text.dart';
+import '../../utils/app_colors.dart';
+import '../common/components/anchor_text.dart';
 
 /// サインイン画面
 class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
