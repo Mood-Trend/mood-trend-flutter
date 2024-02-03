@@ -21,6 +21,7 @@ final selectedMoodButtonStateProvider = StateProvider<MoodState>(
   (_) => MoodState.manic,
 );
 
+/// 気分値目安表を表示するページ
 class TablePage extends ConsumerWidget {
   const TablePage({super.key});
 
@@ -251,6 +252,7 @@ class TablePage extends ConsumerWidget {
   }
 }
 
+/// 気分値目安表のセル
 class TableCell extends StatelessWidget {
   const TableCell({
     super.key,
