@@ -16,8 +16,10 @@ enum MoodState {
   manic,
 }
 
-final moodButtonStateProvider =
-    StateProvider<MoodState>((_) => MoodState.manic);
+/// 選択された気分値目安表の状態を保持する [StateProvider]
+final selectedMoodButtonStateProvider = StateProvider<MoodState>(
+  (_) => MoodState.manic,
+);
 
 class TablePage extends ConsumerWidget {
   const TablePage({super.key});
@@ -50,44 +52,55 @@ class TablePage extends ConsumerWidget {
                   children: [
                     TextButton(
                         onPressed: () {
-                          ref.read(moodButtonStateProvider.notifier).state =
-                              MoodState.depression;
+                          ref
+                              .read(selectedMoodButtonStateProvider.notifier)
+                              .update(
+                                (_) => MoodState.depression,
+                              );
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
-                                ref.watch(moodButtonStateProvider) ==
+                                ref.watch(selectedMoodButtonStateProvider) ==
                                         MoodState.depression
                                     ? AppColors.green
                                     : Colors.transparent)),
                         child: Text(
                           "鬱状態",
                           style: TextStyle(
-                              color: ref.watch(moodButtonStateProvider) ==
-                                      MoodState.depression
-                                  ? AppColors.white
-                                  : AppColors.black,
+                              color:
+                                  ref.watch(selectedMoodButtonStateProvider) ==
+                                          MoodState.depression
+                                      ? AppColors.white
+                                      : AppColors.black,
                               fontSize: 20),
                         )),
                     TextButton(
-                        onPressed: () {
-                          ref.read(moodButtonStateProvider.notifier).state =
-                              MoodState.manic;
-                        },
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                                ref.watch(moodButtonStateProvider) ==
-                                        MoodState.manic
-                                    ? AppColors.green
-                                    : Colors.transparent)),
-                        child: Text(
-                          "躁状態",
-                          style: TextStyle(
-                              color: ref.watch(moodButtonStateProvider) ==
-                                      MoodState.manic
-                                  ? AppColors.white
-                                  : AppColors.black,
-                              fontSize: 20),
-                        )),
+                      onPressed: () {
+                        ref
+                            .read(selectedMoodButtonStateProvider.notifier)
+                            .update(
+                              (_) => MoodState.manic,
+                            );
+                      },
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                          ref.watch(selectedMoodButtonStateProvider) ==
+                                  MoodState.manic
+                              ? AppColors.green
+                              : Colors.transparent,
+                        ),
+                      ),
+                      child: Text(
+                        "躁状態",
+                        style: TextStyle(
+                          color: ref.watch(selectedMoodButtonStateProvider) ==
+                                  MoodState.manic
+                              ? AppColors.white
+                              : AppColors.black,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
                 Expanded(
@@ -101,108 +114,110 @@ class TablePage extends ConsumerWidget {
                           color: AppColors.green.withOpacity(0.4),
                         ),
                         child: Column(
-                            children: ref.watch(moodButtonStateProvider) ==
-                                    MoodState.manic
-                                ? [
-                                    TableCell(
-                                      moodValue: '+5',
-                                      actionText: worksheet.plus_5,
-                                    ),
-                                    Divider(
-                                      height: 0,
-                                      thickness: 2,
-                                      indent: 16,
-                                      endIndent: 16,
-                                      color: AppColors.white,
-                                    ),
-                                    TableCell(
-                                      moodValue: '+4',
-                                      actionText: worksheet.plus_4,
-                                    ),
-                                    Divider(
-                                      height: 0,
-                                      thickness: 2,
-                                      indent: 16,
-                                      endIndent: 16,
-                                      color: AppColors.white,
-                                    ),
-                                    TableCell(
-                                      moodValue: '+3',
-                                      actionText: worksheet.plus_3,
-                                    ),
-                                    Divider(
-                                      height: 0,
-                                      thickness: 2,
-                                      indent: 16,
-                                      endIndent: 16,
-                                      color: AppColors.white,
-                                    ),
-                                    TableCell(
-                                      moodValue: '+2',
-                                      actionText: worksheet.plus_2,
-                                    ),
-                                    Divider(
-                                      height: 0,
-                                      thickness: 2,
-                                      indent: 16,
-                                      endIndent: 16,
-                                      color: AppColors.white,
-                                    ),
-                                    TableCell(
-                                      moodValue: '+1',
-                                      actionText: worksheet.plus_1,
-                                    ),
-                                  ]
-                                : [
-                                    TableCell(
-                                      moodValue: '-1',
-                                      actionText: worksheet.minus_1,
-                                    ),
-                                    Divider(
-                                      height: 0,
-                                      thickness: 2,
-                                      indent: 16,
-                                      endIndent: 16,
-                                      color: AppColors.white,
-                                    ),
-                                    TableCell(
-                                      moodValue: '-2',
-                                      actionText: worksheet.minus_2,
-                                    ),
-                                    Divider(
-                                      height: 0,
-                                      thickness: 2,
-                                      indent: 16,
-                                      endIndent: 16,
-                                      color: AppColors.white,
-                                    ),
-                                    TableCell(
-                                      moodValue: '-3',
-                                      actionText: worksheet.minus_3,
-                                    ),
-                                    Divider(
-                                      height: 0,
-                                      thickness: 2,
-                                      indent: 16,
-                                      endIndent: 16,
-                                      color: AppColors.white,
-                                    ),
-                                    TableCell(
-                                      moodValue: '-4',
-                                      actionText: worksheet.minus_4,
-                                    ),
-                                    Divider(
-                                      height: 0,
-                                      thickness: 2,
-                                      indent: 16,
-                                      endIndent: 16,
-                                      color: AppColors.white,
-                                    ),
-                                    TableCell(
-                                      moodValue: '-5',
-                                      actionText: worksheet.minus_5,
-                                    ),
-                                  ]),
+                          children:
+                              ref.watch(selectedMoodButtonStateProvider) ==
+                                      MoodState.manic
+                                  ? [
+                                      TableCell(
+                                        moodValue: '+5',
+                                        actionText: worksheet.plus_5,
+                                      ),
+                                      Divider(
+                                        height: 0,
+                                        thickness: 2,
+                                        indent: 16,
+                                        endIndent: 16,
+                                        color: AppColors.white,
+                                      ),
+                                      TableCell(
+                                        moodValue: '+4',
+                                        actionText: worksheet.plus_4,
+                                      ),
+                                      Divider(
+                                        height: 0,
+                                        thickness: 2,
+                                        indent: 16,
+                                        endIndent: 16,
+                                        color: AppColors.white,
+                                      ),
+                                      TableCell(
+                                        moodValue: '+3',
+                                        actionText: worksheet.plus_3,
+                                      ),
+                                      Divider(
+                                        height: 0,
+                                        thickness: 2,
+                                        indent: 16,
+                                        endIndent: 16,
+                                        color: AppColors.white,
+                                      ),
+                                      TableCell(
+                                        moodValue: '+2',
+                                        actionText: worksheet.plus_2,
+                                      ),
+                                      Divider(
+                                        height: 0,
+                                        thickness: 2,
+                                        indent: 16,
+                                        endIndent: 16,
+                                        color: AppColors.white,
+                                      ),
+                                      TableCell(
+                                        moodValue: '+1',
+                                        actionText: worksheet.plus_1,
+                                      ),
+                                    ]
+                                  : [
+                                      TableCell(
+                                        moodValue: '-1',
+                                        actionText: worksheet.minus_1,
+                                      ),
+                                      Divider(
+                                        height: 0,
+                                        thickness: 2,
+                                        indent: 16,
+                                        endIndent: 16,
+                                        color: AppColors.white,
+                                      ),
+                                      TableCell(
+                                        moodValue: '-2',
+                                        actionText: worksheet.minus_2,
+                                      ),
+                                      Divider(
+                                        height: 0,
+                                        thickness: 2,
+                                        indent: 16,
+                                        endIndent: 16,
+                                        color: AppColors.white,
+                                      ),
+                                      TableCell(
+                                        moodValue: '-3',
+                                        actionText: worksheet.minus_3,
+                                      ),
+                                      Divider(
+                                        height: 0,
+                                        thickness: 2,
+                                        indent: 16,
+                                        endIndent: 16,
+                                        color: AppColors.white,
+                                      ),
+                                      TableCell(
+                                        moodValue: '-4',
+                                        actionText: worksheet.minus_4,
+                                      ),
+                                      Divider(
+                                        height: 0,
+                                        thickness: 2,
+                                        indent: 16,
+                                        endIndent: 16,
+                                        color: AppColors.white,
+                                      ),
+                                      TableCell(
+                                        moodValue: '-5',
+                                        actionText: worksheet.minus_5,
+                                      ),
+                                    ],
+                        ),
                       ),
                     ],
                   ),
