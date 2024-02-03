@@ -1,3 +1,34 @@
+import 'package:mood_trend_flutter/domain/app_exception.dart';
+
+/// 躁のタイプを示す列挙体
+enum ManicType {
+  // アイデア
+  idea,
+  // 気分高揚
+  elation,
+  // 活動性
+  activity,
+  // その他
+  other,
+}
+
+/// [ManicWorksheet] を生成するファクトリクラス
+class ManicWorksheetFactory {
+  static ManicWorksheet create(ManicType type) {
+    switch (type) {
+      case ManicType.idea:
+        return IdeaTypeWorksheet();
+      case ManicType.elation:
+        return ElationTypeWorksheet();
+      case ManicType.activity:
+        return ActivityTypeWorksheet();
+      case ManicType.other:
+      default:
+        throw AppException('Unsupported ManicType: $type');
+    }
+  }
+}
+
 /// 躁のタイプのワークシートを抽象化したクラス
 abstract class ManicWorksheet {
   late final String plus_5;
@@ -5,6 +36,20 @@ abstract class ManicWorksheet {
   late final String plus_3;
   late final String plus_2;
   late final String plus_1;
+
+  ManicWorksheet createWorksheet(ManicType type) {
+    switch (type) {
+      case ManicType.idea:
+        return IdeaTypeWorksheet();
+      case ManicType.elation:
+        return ElationTypeWorksheet();
+      case ManicType.activity:
+        return ActivityTypeWorksheet();
+      case ManicType.other:
+      default:
+        throw AppException('Unsupported ManicType: $type');
+    }
+  }
 }
 
 /// [ManicWorksheet] を具象化したアイデアのワークシート

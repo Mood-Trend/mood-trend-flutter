@@ -2,23 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
-
 import 'depression_type_table_page.dart';
-
-/// 鬱のタイプを示す列挙体
-enum DepressionType {
-  // 憂鬱
-  melancholy,
-  // 思考力低下
-  poorThinking,
-  // 睡眠障害
-  sleepDisorders,
-  // その他
-  other,
-}
+import 'entity/depression_worksheet.dart';
 
 /// 選択された鬱のタイプを提供する [StateProvider]
-final selectedDepressionTypeProvider = StateProvider<DepressionType>(
+final selectedDepressionTypeProvider =
+    StateProvider.autoDispose<DepressionType>(
   (_) => DepressionType.other,
 );
 
@@ -151,10 +140,9 @@ class DepressionTypeDignosisPage extends ConsumerWidget {
             ElevatedButton(
               onPressed: () {
                 PageNavigator.push(
-                    context,
-                    DepressionTypeTablePage(
-                      depressionType: selectedDepressionType,
-                    ));
+                  context,
+                  const DepressionTypeTablePage(),
+                );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.green,

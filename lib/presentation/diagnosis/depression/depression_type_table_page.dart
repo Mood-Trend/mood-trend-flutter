@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/presentation/common/mixin/error_handler_mixin.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/depression/entity/depression_worksheet.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 
+import '../../../application/diagnosis/register_depression_mood_worksheet_usecase.dart';
 import 'depression_type_diagnosis_page.dart';
 
 /// 鬱のタイプを表示するテーブル画面
-class DepressionTypeTablePage extends ConsumerWidget {
-  const DepressionTypeTablePage({super.key, required this.depressionType});
-  final DepressionType depressionType;
+class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
+  const DepressionTypeTablePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final ManicWorksheet worksheet = depressionType == DepressionType.melancholy
-        ? MelancholyTypeWorksheet()
-        : depressionType == DepressionType.poorThinking
-            ? PoorThinkingTypeWorksheet()
-            : SleepDisordersTypeWorksheet();
+    final worksheet = DepressionWorksheetFactory.create(
+      ref.watch(selectedDepressionTypeProvider),
+    );
 
     return Scaffold(
       backgroundColor: AppColors.white,
@@ -109,7 +108,23 @@ class DepressionTypeTablePage extends ConsumerWidget {
                 foregroundColor: AppColors.white,
                 fixedSize: const Size(330, 60),
               ),
-              onPressed: () {},
+              onPressed: () async {
+                await run(
+                  ref,
+                  action: () async {
+                    await ref
+                        .read(registerDepressionMoodWorksheetUseCaseProvider)
+                        .execute(
+                          minus_5: worksheet.minus_5,
+                          minus_4: worksheet.minus_4,
+                          minus_3: worksheet.minus_3,
+                          minus_2: worksheet.minus_2,
+                          minus_1: worksheet.minus_1,
+                        );
+                  },
+                  successMessage: '鬱状態の気分値目安を登録しました',
+                );
+              },
               child: const Text(
                 '完了',
                 style: TextStyle(

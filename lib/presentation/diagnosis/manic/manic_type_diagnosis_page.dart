@@ -2,23 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
-
+import 'entity/manic_worksheet.dart';
 import 'manic_type_table_page.dart';
 
-/// 躁のタイプを示す列挙体
-enum ManicType {
-  // アイデア
-  idea,
-  // 気分高揚
-  elation,
-  // 活動性
-  activity,
-  // その他
-  other,
-}
-
 /// 選択された躁のタイプを提供する [StateProvider]
-final selectedManicTypeProvider = StateProvider<ManicType>(
+final selectedManicTypeProvider = StateProvider.autoDispose<ManicType>(
   (_) => ManicType.other,
 );
 
@@ -151,9 +139,7 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
               onPressed: () {
                 PageNavigator.push(
                   context,
-                  ManicTypeTablePage(
-                    manicType: selectedManicType,
-                  ),
+                  const ManicTypeTablePage(),
                 );
               },
               style: ElevatedButton.styleFrom(

@@ -41,7 +41,6 @@ class MoodWorksheetRepository {
 
   /// MoodWorksheet ドキュメントを更新する。
   Future<void> update({
-    required String worksheetId,
     String? minus_5,
     String? minus_4,
     String? minus_3,
@@ -53,8 +52,9 @@ class MoodWorksheetRepository {
     String? plus_4,
     String? plus_5,
   }) async {
+    final id = await getWorksheetId();
     final moodWorksheetDoc = MoodWorksheetDocument(
-      worksheetId: worksheetId,
+      worksheetId: id,
       minus_5: minus_5 ?? '',
       minus_4: minus_4 ?? '',
       minus_3: minus_3 ?? '',
@@ -68,7 +68,7 @@ class MoodWorksheetRepository {
     );
     try {
       await moodWorksheetCollectionRef
-          .doc(worksheetId)
+          .doc(id)
           .update(moodWorksheetDoc.toJson());
     } on FirebaseException catch (e) {
       throw AppException('Firestore の更新処理でエラーが発生しました: ${e.code}');
@@ -103,6 +103,19 @@ class MoodWorksheetRepository {
 
     // 作成した StreamController のストリームを返す
     return controller.stream;
+  }
+
+  /// MoodWorksheet の ID を取得する。
+  Future<String> getWorksheetId() async {
+    try {
+      final snapshot = await moodWorksheetCollectionRef.limit(1).get();
+      if (snapshot.docs.isEmpty) throw const AppException('ドキュメントが見つかりませんでした');
+      return snapshot.docs.first.id;
+    } on FirebaseException catch (e) {
+      throw AppException('Firestore の取得処理でエラーが発生しました: ${e.code}');
+    } catch (e) {
+      throw AppException('予期しないエラーが発生しました: $e');
+    }
   }
 
   Future<void> create() async {

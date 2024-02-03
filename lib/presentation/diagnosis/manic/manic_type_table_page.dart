@@ -4,21 +4,21 @@ import 'package:mood_trend_flutter/presentation/diagnosis/manic/entity/manic_wor
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
+import '../../../application/diagnosis/register_manic_mood_worksheet_usecase.dart';
+import '../../common/mixin/error_handler_mixin.dart';
 import '../depression/depression_type_diagnosis_page.dart';
 import 'manic_type_diagnosis_page.dart';
 
 /// 躁のタイプを表示するテーブル画面
-class ManicTypeTablePage extends ConsumerWidget {
-  const ManicTypeTablePage({super.key, required this.manicType});
-  final ManicType manicType;
+class ManicTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
+  const ManicTypeTablePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final ManicWorksheet worksheet = manicType == ManicType.idea
-        ? IdeaTypeWorksheet()
-        : manicType == ManicType.elation
-            ? ElationTypeWorksheet()
-            : ActivityTypeWorksheet();
+    final worksheet = ManicWorksheetFactory.create(
+      ref.watch(selectedManicTypeProvider),
+    );
+
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
@@ -110,8 +110,27 @@ class ManicTypeTablePage extends ConsumerWidget {
                 foregroundColor: AppColors.white,
                 fixedSize: const Size(330, 60),
               ),
-              onPressed: () {
-                PageNavigator.push(context, const DepressionTypeDignosisPage());
+              onPressed: () async {
+                await run(
+                  ref,
+                  action: () async {
+                    await ref
+                        .read(registerManicMoodWorksheetUseCaseProvider)
+                        .execute(
+                          plus_1: worksheet.plus_1,
+                          plus_2: worksheet.plus_2,
+                          plus_3: worksheet.plus_3,
+                          plus_4: worksheet.plus_4,
+                          plus_5: worksheet.plus_5,
+                        );
+                    // ignore: use_build_context_synchronously
+                    PageNavigator.push(
+                      context,
+                      const DepressionTypeDignosisPage(),
+                    );
+                  },
+                  successMessage: '躁状態の気分値目安を登録しました',
+                );
               },
               child: const Text(
                 '同意して次へ',

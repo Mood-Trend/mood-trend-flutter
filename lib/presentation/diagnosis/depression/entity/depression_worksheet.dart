@@ -1,14 +1,46 @@
+import '../../../../domain/app_exception.dart';
+
+/// 鬱のタイプを示す列挙体
+enum DepressionType {
+  // 憂鬱
+  melancholy,
+  // 思考力低下
+  poorThinking,
+  // 睡眠障害
+  sleepDisorders,
+  // その他
+  other,
+}
+
+/// [DepressionWorksheet] を生成するファクトリクラス
+class DepressionWorksheetFactory {
+  /// [DepressionType] に応じた [DepressionWorksheet] を生成する
+  static DepressionWorksheet create(DepressionType type) {
+    switch (type) {
+      case DepressionType.melancholy:
+        return MelancholyTypeWorksheet();
+      case DepressionType.poorThinking:
+        return PoorThinkingTypeWorksheet();
+      case DepressionType.sleepDisorders:
+        return SleepDisordersTypeWorksheet();
+      case DepressionType.other:
+      default:
+        throw AppException('Unsupported ManicType: $type');
+    }
+  }
+}
+
 /// 鬱のタイプのワークシートを抽象化したクラス
-abstract class ManicWorksheet {
-  late final String minus_1;
-  late final String minus_2;
-  late final String minus_3;
-  late final String minus_4;
-  late final String minus_5;
+abstract class DepressionWorksheet {
+  String get minus_1;
+  String get minus_2;
+  String get minus_3;
+  String get minus_4;
+  String get minus_5;
 }
 
 /// [ManicWorksheet] を具象化した憂鬱のワークシート
-class MelancholyTypeWorksheet extends ManicWorksheet {
+class MelancholyTypeWorksheet extends DepressionWorksheet {
   @override
   String get minus_1 => 'どちらかというと後ろ向きである';
   @override
@@ -22,7 +54,7 @@ class MelancholyTypeWorksheet extends ManicWorksheet {
 }
 
 /// [ManicWorksheet] を具象化した思考力低下のワークシート
-class PoorThinkingTypeWorksheet extends ManicWorksheet {
+class PoorThinkingTypeWorksheet extends DepressionWorksheet {
   @override
   String get minus_1 => 'ものを考えるのが少し億劫に感じる時もある';
   @override
@@ -36,7 +68,7 @@ class PoorThinkingTypeWorksheet extends ManicWorksheet {
 }
 
 /// [ManicWorksheet] を具象化した睡眠障害のワークシート
-class SleepDisordersTypeWorksheet extends ManicWorksheet {
+class SleepDisordersTypeWorksheet extends DepressionWorksheet {
   @override
   String get minus_1 => '寝起きがスッキリしない';
   @override
