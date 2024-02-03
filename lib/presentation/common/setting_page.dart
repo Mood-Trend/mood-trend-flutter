@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
+import 'package:mood_trend_flutter/application/auth/signout_anonymously_usecase.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic_type_diagnosis.dart';
 import 'package:mood_trend_flutter/presentation/common/mixin/error_handler_mixin.dart';
@@ -234,14 +234,18 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                               style: TextStyle(color: AppColors.red),
                             ),
                             onPressed: () {
-                              run(ref, action: () async {
-                                await ref
-                                    .read(firebaseAuthRepositoryProvider)
-                                    .delete();
-                                await PageNavigator.popUntilRoot(context);
-                                await PageNavigator.popUntilRoot(
-                                    ref.read(rootPageKey).currentContext!);
-                              }, successMessage: 'ご利用いただきありがとうございました');
+                              run(
+                                ref,
+                                action: () async {
+                                  await ref
+                                      .read(signoutAnonymouslyUseCaseProvider)
+                                      .execute();
+                                  await PageNavigator.popUntilRoot(context);
+                                  await PageNavigator.popUntilRoot(
+                                      ref.read(rootPageKey).currentContext!);
+                                },
+                                successMessage: 'ご利用いただきありがとうございました',
+                              );
                             },
                           ),
                         ],
