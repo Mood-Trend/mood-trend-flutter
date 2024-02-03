@@ -377,8 +377,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                 padding: const EdgeInsets.fromLTRB(0, 56, 16, 0),
                 child: TextButton(
                   onPressed: () async {
-                    execute(
-                      context,
+                    run(
                       ref,
                       action: () async {
                         // mood_points コレクションにドキュメントを追加

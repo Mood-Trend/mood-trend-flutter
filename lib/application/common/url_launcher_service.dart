@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../domain/app_exception.dart';
-import '../../presentation/common/components/loading.dart';
+import 'overlay_loading_provider.dart';
 
 /// URL起動サービスプロバイダー
 final urlLauncherServiceProvider = Provider(
