@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
 import 'package:mood_trend_flutter/presentation/common/mixin/error_handler_mixin.dart';
-import 'package:mood_trend_flutter/utils/url_launcher_service.dart';
+import 'package:mood_trend_flutter/application/common/url_launcher_service.dart';
 
 import '../../utils/app_colors.dart';
 import '../common/components/anchor_text.dart';
@@ -43,8 +43,7 @@ class SigninPage extends ConsumerWidget with ErrorHandlerMixin {
                         backgroundColor: AppColors.green, //ボタンの背景色
                       ),
                       onPressed: () async {
-                        execute(
-                          context,
+                        run(
                           ref,
                           action: () async {
                             await ref

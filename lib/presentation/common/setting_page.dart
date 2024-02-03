@@ -10,7 +10,7 @@ import 'package:mood_trend_flutter/presentation/auth/root_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
-import '../../utils/url_launcher_service.dart';
+import '../../application/common/url_launcher_service.dart';
 
 class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
   const SettingPage({super.key});
@@ -69,11 +69,11 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
             ),
           ),
           GestureDetector(
-            onTap: () async => await execute(
-              context,
+            onTap: () async => await run(
               ref,
               action: () async =>
                   await ref.read(urlLauncherServiceProvider).launch(''),
+              successMessage: '',
             ),
             child: Container(
               color: AppColors.white,
@@ -103,11 +103,11 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
           Column(
             children: [
               GestureDetector(
-                onTap: () async => await execute(
-                  context,
+                onTap: () async => await run(
                   ref,
                   action: () async =>
                       await ref.read(urlLauncherServiceProvider).launch(''),
+                  successMessage: '',
                 ),
                 child: Column(
                   children: [
@@ -144,13 +144,13 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                 color: AppColors.grey,
               ),
               GestureDetector(
-                onTap: () async => await execute(
-                  context,
+                onTap: () async => await run(
                   ref,
                   action: () async =>
                       await ref.read(urlLauncherServiceProvider).launch(
                             'https://daffodil-cabin-d84.notion.site/de8c281a43e04c3199b1c60a067f3f2f',
                           ),
+                  successMessage: '',
                 ),
                 child: Container(
                   color: AppColors.white,
@@ -172,13 +172,13 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                 color: AppColors.grey,
               ),
               GestureDetector(
-                onTap: () async => await execute(
-                  context,
+                onTap: () async => await run(
                   ref,
                   action: () async =>
                       await ref.read(urlLauncherServiceProvider).launch(
                             'https://daffodil-cabin-d84.notion.site/7c662f7f695a46ee99e679418e3b8083',
                           ),
+                  successMessage: '',
                 ),
                 child: Container(
                   color: AppColors.white,
@@ -233,11 +233,11 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                               style: TextStyle(color: AppColors.red),
                             ),
                             onPressed: () {
-                              execute(context, ref, action: () async {
+                              run(ref, action: () async {
                                 await ref
                                     .read(firebaseAuthRepositoryProvider)
                                     .delete();
-                                await PageNavigator.popUntilRoot(context);
+                                // await PageNavigator.popUntilRoot(context);
                                 await PageNavigator.popUntilRoot(
                                     ref.read(rootPageKey).currentContext!);
                               }, successMessage: 'ご利用いただきありがとうございました');
