@@ -20,15 +20,12 @@ class UrlLauncherService {
     String urlString, {
     LaunchMode mode = LaunchMode.platformDefault,
   }) async {
-    ref.read(overlayLoadingProvider.notifier).update((_) => true);
     try {
       final url = Uri.parse(urlString);
       final result = await launchUrl(url, mode: mode);
       if (!result) throw const AppException('指定された URL が起動できませんでした');
     } catch (e) {
       throw AppException('URL 起動時にエラーが発生しました: $e');
-    } finally {
-      ref.read(overlayLoadingProvider.notifier).update((_) => false);
     }
   }
 }
