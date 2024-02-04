@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
-import 'package:mood_trend_flutter/presentation/common/mixin/error_handler_mixin.dart';
+import 'package:mood_trend_flutter/presentation/common/error_handler_mixin.dart';
 import 'package:mood_trend_flutter/application/common/url_launcher_service.dart';
 
 import '../../utils/app_colors.dart';

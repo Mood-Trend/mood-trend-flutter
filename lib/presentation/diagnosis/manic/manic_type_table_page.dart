@@ -5,7 +5,7 @@ import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../../../application/diagnosis/register_manic_mood_worksheet_usecase.dart';
-import '../../common/mixin/error_handler_mixin.dart';
+import '../../common/error_handler_mixin.dart';
 import '../depression/depression_type_diagnosis_page.dart';
 import 'manic_type_diagnosis_page.dart';
 

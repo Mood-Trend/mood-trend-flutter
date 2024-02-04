@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 
 import '../../application/auth/signin_anonymously_usecase.dart';
-import '../common/mixin/error_handler_mixin.dart';
+import '../common/error_handler_mixin.dart';
 
 class OnboardingPage extends ConsumerWidget with ErrorHandlerMixin {
   const OnboardingPage({super.key});

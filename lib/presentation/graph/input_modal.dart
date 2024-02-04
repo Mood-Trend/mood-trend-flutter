@@ -6,7 +6,7 @@ import 'package:mood_trend_flutter/application/graph/add_mood_point_usecase.dart
 
 import '../../utils/app_colors.dart';
 import '../../utils/page_navigator.dart';
-import '../common/mixin/error_handler_mixin.dart';
+import '../common/error_handler_mixin.dart';
 import '../diagnosis/table_page.dart';
 
 /// グラフ情報入力の画面

@@ -6,7 +6,7 @@ import 'package:mood_trend_flutter/presentation/diagnosis/depression/depression_
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
-import '../common/mixin/error_handler_mixin.dart';
+import '../common/error_handler_mixin.dart';
 
 /// 躁・鬱の状態入力で「独自に入力」を選択した場合の画面
 class SelfInputPage extends ConsumerWidget with ErrorHandlerMixin {

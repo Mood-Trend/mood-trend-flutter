@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/application/auth/signout_anonymously_usecase.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
-import 'package:mood_trend_flutter/presentation/common/mixin/error_handler_mixin.dart';
+import 'package:mood_trend_flutter/presentation/common/error_handler_mixin.dart';
 import 'package:mood_trend_flutter/presentation/auth/root_page.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/manic_type_diagnosis_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';

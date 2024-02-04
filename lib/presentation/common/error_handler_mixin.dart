@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../domain/app_exception.dart';
-import '../components/snackbars.dart';
+import '../../domain/app_exception.dart';
+import 'components/snackbars.dart';
 
 /// プレゼンテーション層用のエラーハンドリングをラップした共通処理 Mixin
 mixin ErrorHandlerMixin {
