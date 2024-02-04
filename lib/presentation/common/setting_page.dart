@@ -238,7 +238,7 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                                 ref,
                                 action: () async {
                                   await ref
-                                      .read(signoutAnonymouslyUseCaseProvider)
+                                      .read(signoutAnonymouslyUsecaseProvider)
                                       .execute();
                                   await PageNavigator.popUntilRoot(context);
                                   await PageNavigator.popUntilRoot(
