@@ -61,7 +61,7 @@ class OnboardingPage extends ConsumerWidget with ErrorHandlerMixin {
     await run(
       ref,
       action: () async =>
-          await ref.read(signinAnonymouslyUseCaseProvider).execute(),
+          await ref.read(signinAnonymouslyUsecaseProvider).execute(),
       successMessage: '気分グラフへようこそ！',
     );
   }
