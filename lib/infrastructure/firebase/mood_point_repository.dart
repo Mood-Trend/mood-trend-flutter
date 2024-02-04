@@ -107,6 +107,34 @@ class MoodPointRepository {
     }
   }
 
+  /// MoodPoint のドキュメントを日付指定で取得する。
+  Future<MoodPoint> getByDate({required DateTime moodDate}) async {
+    try {
+      // 時間情報を削除して日付のみの Timestamp を作成
+      final dateOnly = DateTime(moodDate.year, moodDate.month, moodDate.day);
+      final startOfDay = Timestamp.fromDate(dateOnly);
+      final endOfDay = Timestamp.fromDate(
+        dateOnly.add(const Duration(days: 1)).subtract(
+              const Duration(seconds: 1),
+            ),
+      );
+
+      final querySnapshot = await moodPointsCollectionRef
+          .where('mood_date', isGreaterThanOrEqualTo: startOfDay)
+          .where('mood_date', isLessThanOrEqualTo: endOfDay)
+          .get();
+
+      if (querySnapshot.docs.isEmpty) {
+        throw const AppException('ドキュメントが見つかりませんでした');
+      }
+      return querySnapshot.docs.first.data().toMoodPoint();
+    } on FirebaseException catch (e) {
+      throw AppException('Firestore の取得処理でエラーが発生しました: ${e.code}');
+    } catch (e) {
+      throw AppException('予期しないエラーが発生しました: $e');
+    }
+  }
+
   /// MoodPoint のドキュメントを全取得する。
   Future<List<MoodPoint>> getAll() async {
     try {
@@ -129,6 +157,31 @@ class MoodPointRepository {
         return moodPointList;
       },
     );
+  }
+
+  /// 指定された日付の [MoodPoint] が既に存在するか確認する。
+  Future<bool> isExist({required DateTime moodDate}) async {
+    try {
+      // 時間情報を削除して日付のみの Timestamp を作成
+      final dateOnly = DateTime(moodDate.year, moodDate.month, moodDate.day);
+      final startOfDay = Timestamp.fromDate(dateOnly);
+      final endOfDay = Timestamp.fromDate(
+        dateOnly.add(const Duration(days: 1)).subtract(
+              const Duration(seconds: 1),
+            ),
+      );
+
+      final querySnapshot = await moodPointsCollectionRef
+          .where('mood_date', isGreaterThanOrEqualTo: startOfDay)
+          .where('mood_date', isLessThanOrEqualTo: endOfDay)
+          .get();
+
+      return querySnapshot.docs.isNotEmpty;
+    } on FirebaseException catch (e) {
+      throw AppException('Firestore の取得処理でエラーが発生しました: ${e.code}');
+    } catch (e) {
+      throw AppException('予期しないエラーが発生しました: $e');
+    }
   }
 }
 
