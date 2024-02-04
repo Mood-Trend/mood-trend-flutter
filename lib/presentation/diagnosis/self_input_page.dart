@@ -392,7 +392,7 @@ class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
                     ref,
                     action: () async {
                       await ref
-                          .read(registerDepressionMoodWorksheetUseCaseProvider)
+                          .read(registerDepressionMoodWorksheetUsecaseProvider)
                           .execute(
                             minus_1: minus1TextController.text,
                             minus_2: minus2TextController.text,

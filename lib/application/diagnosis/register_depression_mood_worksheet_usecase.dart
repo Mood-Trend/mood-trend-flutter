@@ -4,22 +4,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../infrastructure/firebase/mood_worksheet_repository.dart';
 import '../usecase_mixin.dart';
 
-/// [RegisterDepressionMoodWorksheetUseCase] のインスタンスを作成するためのプロバイダ
+/// [RegisterDepressionMoodWorksheetUsecase] のインスタンスを作成するためのプロバイダ
 ///
 /// UI 層にユースケースを注入するために使用され、鬱状態を登録する
-final registerDepressionMoodWorksheetUseCaseProvider =
-    Provider<RegisterDepressionMoodWorksheetUseCase>(
-  RegisterDepressionMoodWorksheetUseCase.new,
+final registerDepressionMoodWorksheetUsecaseProvider =
+    Provider<RegisterDepressionMoodWorksheetUsecase>(
+  RegisterDepressionMoodWorksheetUsecase.new,
 );
 
-/// [RegisterDepressionMoodWorksheetUseCase] は、鬱状態を登録するプロセスをカプセル化する
-class RegisterDepressionMoodWorksheetUseCase with UsecaseMixin {
+/// [RegisterDepressionMoodWorksheetUsecase] は、鬱状態を登録するプロセスをカプセル化する
+class RegisterDepressionMoodWorksheetUsecase with UsecaseMixin {
   final Ref ref;
 
-  /// 指定された [Ref] を使用して [RegisterDepressionMoodWorksheetUseCase] を構築する
+  /// 指定された [Ref] を使用して [RegisterDepressionMoodWorksheetUsecase] を構築する
   ///
   /// [Ref] は必要なプロバイダーを読み取るために使用される
-  RegisterDepressionMoodWorksheetUseCase(this.ref);
+  RegisterDepressionMoodWorksheetUsecase(this.ref);
 
   /// 鬱状態を登録するユースケースの実行
   Future<void> execute({

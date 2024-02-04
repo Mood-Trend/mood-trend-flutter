@@ -114,7 +114,7 @@ class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                   ref,
                   action: () async {
                     await ref
-                        .read(registerDepressionMoodWorksheetUseCaseProvider)
+                        .read(registerDepressionMoodWorksheetUsecaseProvider)
                         .execute(
                           minus_5: worksheet.minus_5,
                           minus_4: worksheet.minus_4,
