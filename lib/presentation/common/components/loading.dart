@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-/// [OverlayLoading] を表示するかどうかを管理するプロバイダー
-final overlayLoadingProvider = StateProvider.autoDispose<bool>((ref) => false);
 
 /// ローディング表示用ウィジェット
 class OverlayLoading extends StatelessWidget {

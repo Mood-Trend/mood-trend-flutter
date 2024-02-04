@@ -6,13 +6,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:mood_trend_flutter/firebase_options_dev.dart' as dev;
 import 'package:mood_trend_flutter/firebase_options_prod.dart' as prod;
-import 'package:mood_trend_flutter/presentation/components/dialog.dart';
-import 'package:mood_trend_flutter/presentation/components/loading.dart';
-import 'package:mood_trend_flutter/presentation/components/snackbars.dart';
-import 'package:mood_trend_flutter/presentation/root_page.dart';
+import 'package:mood_trend_flutter/presentation/common/components/dialog.dart';
+import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
+import 'package:mood_trend_flutter/presentation/common/components/snackbars.dart';
+import 'package:mood_trend_flutter/presentation/auth/root_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/constants.dart';
 import 'package:package_info/package_info.dart';
+
+import 'application/common/states/overlay_loading_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

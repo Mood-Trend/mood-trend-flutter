@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_overboard/flutter_overboard.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 
-import 'mixin/error_handler_mixin.dart';
+import '../../application/auth/signin_anonymously_usecase.dart';
+import '../common/error_handler_mixin.dart';
 
 class OnboardingPage extends ConsumerWidget with ErrorHandlerMixin {
   const OnboardingPage({super.key});
@@ -58,9 +58,11 @@ class OnboardingPage extends ConsumerWidget with ErrorHandlerMixin {
 
   // execute() メソッドを呼び出して共通の処理を行う関数を定義
   Future<void> _signinAnonymously(BuildContext context, WidgetRef ref) async {
-    await execute(context, ref,
-        action: () async =>
-            await ref.read(firebaseAuthRepositoryProvider).signinAnonymously(),
-        successMessage: '気分グラフへようこそ！');
+    await run(
+      ref,
+      action: () async =>
+          await ref.read(signinAnonymouslyUsecaseProvider).execute(),
+      successMessage: '気分グラフへようこそ！',
+    );
   }
 }

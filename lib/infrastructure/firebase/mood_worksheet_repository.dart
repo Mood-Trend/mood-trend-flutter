@@ -41,7 +41,6 @@ class MoodWorksheetRepository {
 
   /// MoodWorksheet ドキュメントを更新する。
   Future<void> update({
-    required String worksheetId,
     String? minus_5,
     String? minus_4,
     String? minus_3,
@@ -53,22 +52,23 @@ class MoodWorksheetRepository {
     String? plus_4,
     String? plus_5,
   }) async {
+    final currentWorksheet = await fetch();
     final moodWorksheetDoc = MoodWorksheetDocument(
-      worksheetId: worksheetId,
-      minus_5: minus_5 ?? '',
-      minus_4: minus_4 ?? '',
-      minus_3: minus_3 ?? '',
-      minus_2: minus_2 ?? '',
-      minus_1: minus_1 ?? '',
-      plus_1: plus_1 ?? '',
-      plus_2: plus_2 ?? '',
-      plus_3: plus_3 ?? '',
-      plus_4: plus_4 ?? '',
-      plus_5: plus_5 ?? '',
+      worksheetId: currentWorksheet.worksheetId,
+      minus_5: minus_5 ?? currentWorksheet.minus_5,
+      minus_4: minus_4 ?? currentWorksheet.minus_4,
+      minus_3: minus_3 ?? currentWorksheet.minus_3,
+      minus_2: minus_2 ?? currentWorksheet.minus_2,
+      minus_1: minus_1 ?? currentWorksheet.minus_1,
+      plus_1: plus_1 ?? currentWorksheet.plus_1,
+      plus_2: plus_2 ?? currentWorksheet.plus_2,
+      plus_3: plus_3 ?? currentWorksheet.plus_3,
+      plus_4: plus_4 ?? currentWorksheet.plus_4,
+      plus_5: plus_5 ?? currentWorksheet.plus_5,
     );
     try {
       await moodWorksheetCollectionRef
-          .doc(worksheetId)
+          .doc(currentWorksheet.worksheetId)
           .update(moodWorksheetDoc.toJson());
     } on FirebaseException catch (e) {
       throw AppException('Firestore の更新処理でエラーが発生しました: ${e.code}');
@@ -103,6 +103,22 @@ class MoodWorksheetRepository {
 
     // 作成した StreamController のストリームを返す
     return controller.stream;
+  }
+
+  /// MoodWorksheet を取得する。
+  Future<MoodWorksheet> fetch() async {
+    try {
+      final snapshot = await moodWorksheetCollectionRef.limit(1).get();
+      if (snapshot.docs.isNotEmpty) {
+        return snapshot.docs.first.data().toMoodWorksheet();
+      } else {
+        throw const AppException('ドキュメントが見つかりませんでした');
+      }
+    } on FirebaseException catch (e) {
+      throw AppException('Firestore の取得処理でエラーが発生しました: ${e.code}');
+    } catch (e) {
+      throw AppException('予期しないエラーが発生しました: $e');
+    }
   }
 
   Future<void> create() async {

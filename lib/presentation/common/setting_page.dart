@@ -2,15 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
-import 'package:mood_trend_flutter/presentation/components/loading.dart';
-import 'package:mood_trend_flutter/presentation/mixin/error_handler_mixin.dart';
-import 'package:mood_trend_flutter/presentation/root_page.dart';
-import 'package:mood_trend_flutter/presentation/table_page.dart';
+import 'package:mood_trend_flutter/application/auth/signout_anonymously_usecase.dart';
+import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
+import 'package:mood_trend_flutter/presentation/common/error_handler_mixin.dart';
+import 'package:mood_trend_flutter/presentation/auth/root_page.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/manic/manic_type_diagnosis_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
-import '../utils/url_launcher_service.dart';
+import '../../application/common/states/overlay_loading_provider.dart';
+import '../../application/common/url_launcher_service.dart';
 
 class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
   const SettingPage({super.key});
@@ -42,7 +43,7 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
           ),
           GestureDetector(
             onTap: () =>
-                PageNavigator.push(context, const TablePage(isEditMode: true)),
+                PageNavigator.push(context, const ManicTypeDiagnosisPage()),
             child: Container(
               color: AppColors.white,
               width: double.infinity,
@@ -69,11 +70,11 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
             ),
           ),
           GestureDetector(
-            onTap: () async => await execute(
-              context,
+            onTap: () async => await run(
               ref,
               action: () async =>
                   await ref.read(urlLauncherServiceProvider).launch(''),
+              successMessage: '',
             ),
             child: Container(
               color: AppColors.white,
@@ -103,11 +104,11 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
           Column(
             children: [
               GestureDetector(
-                onTap: () async => await execute(
-                  context,
+                onTap: () async => await run(
                   ref,
                   action: () async =>
                       await ref.read(urlLauncherServiceProvider).launch(''),
+                  successMessage: '',
                 ),
                 child: Column(
                   children: [
@@ -144,13 +145,13 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                 color: AppColors.grey,
               ),
               GestureDetector(
-                onTap: () async => await execute(
-                  context,
+                onTap: () async => await run(
                   ref,
                   action: () async =>
                       await ref.read(urlLauncherServiceProvider).launch(
                             'https://daffodil-cabin-d84.notion.site/de8c281a43e04c3199b1c60a067f3f2f',
                           ),
+                  successMessage: '',
                 ),
                 child: Container(
                   color: AppColors.white,
@@ -172,13 +173,13 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                 color: AppColors.grey,
               ),
               GestureDetector(
-                onTap: () async => await execute(
-                  context,
+                onTap: () async => await run(
                   ref,
                   action: () async =>
                       await ref.read(urlLauncherServiceProvider).launch(
                             'https://daffodil-cabin-d84.notion.site/7c662f7f695a46ee99e679418e3b8083',
                           ),
+                  successMessage: '',
                 ),
                 child: Container(
                   color: AppColors.white,
@@ -233,14 +234,18 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                               style: TextStyle(color: AppColors.red),
                             ),
                             onPressed: () {
-                              execute(context, ref, action: () async {
-                                await ref
-                                    .read(firebaseAuthRepositoryProvider)
-                                    .delete();
-                                await PageNavigator.popUntilRoot(context);
-                                await PageNavigator.popUntilRoot(
-                                    ref.read(rootPageKey).currentContext!);
-                              }, successMessage: 'ご利用いただきありがとうございました');
+                              run(
+                                ref,
+                                action: () async {
+                                  await ref
+                                      .read(signoutAnonymouslyUsecaseProvider)
+                                      .execute();
+                                  await PageNavigator.popUntilRoot(context);
+                                  await PageNavigator.popUntilRoot(
+                                      ref.read(rootPageKey).currentContext!);
+                                },
+                                successMessage: 'ご利用いただきありがとうございました',
+                              );
                             },
                           ),
                         ],
