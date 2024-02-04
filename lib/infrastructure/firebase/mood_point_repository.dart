@@ -130,6 +130,20 @@ class MoodPointRepository {
       },
     );
   }
+
+  /// 指定された日付の [MoodPoint] が既に存在するか確認する。
+  Future<bool> isExist({required DateTime moodDate}) async {
+    try {
+      final querySnapshot = await moodPointsCollectionRef
+          .where('mood_date', isEqualTo: moodDate)
+          .get();
+      return querySnapshot.docs.isNotEmpty;
+    } on FirebaseException catch (e) {
+      throw AppException('Firestore の取得処理でエラーが発生しました: ${e.code}');
+    } catch (e) {
+      throw AppException('予期しないエラーが発生しました: $e');
+    }
+  }
 }
 
 /// Firebase Firestore に保存される気分数値（予定数含む）のドキュメントモデル
