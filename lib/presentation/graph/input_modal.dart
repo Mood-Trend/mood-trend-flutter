@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:mood_trend_flutter/application/graph/add_mood_point_usecase.dart';
 
 import '../../utils/app_colors.dart';
@@ -73,7 +74,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
               color: AppColors.green,
             ),
             label: Text(
-              "${date.year.toString()}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}",
+              "${date.year.toString()}年${date.month.toString().padLeft(2)}月${date.day.toString().padLeft(2)}日",
               style: TextStyle(
                 color: AppColors.black,
               ),
@@ -190,11 +191,14 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       ref,
                       action: () async {
                         // mood_points コレクションにドキュメントを追加
-                        await ref.read(addMoodPointUsecaseProvider).execute(
-                              point: _moodValue.toInt(),
-                              plannedVolume: _plannedValue.toInt(),
-                              moodDate: date,
-                            );
+                        final result =
+                            await ref.read(addMoodPointUsecaseProvider).execute(
+                                  point: _moodValue.toInt(),
+                                  plannedVolume: _plannedValue.toInt(),
+                                  moodDate: date,
+                                );
+                        // 同じ日付に既に登録されている場合は上書きされる旨の確認ダイアログを表示
+                        if (!result) return _showConfirmDialog(date: date);
                         Navigator.pop(context);
                       },
                       successMessage: '気分値と予定数の登録が完了しました',
@@ -213,6 +217,42 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
           ),
         ]),
       ),
+    );
+  }
+
+  /// 同じ日付に既に登録されている場合の確認ダイアログの表示処理
+  Future<void> _showConfirmDialog({
+    required DateTime date,
+  }) async {
+    await showDialog(
+      context: context,
+      builder: (context) {
+        final formattedDate = DateFormat('yyyy年M月d日').format(date);
+        return AlertDialog(
+          // 対象日付には既に登録されている旨のメッセージを表示
+          title: Text('$formattedDateには既に登録されています'),
+          content: const Text('上書きしてもよろしいですか？'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                PageNavigator.pop(context);
+              },
+              child: const Text('キャンセル'),
+            ),
+            TextButton(
+              onPressed: () async {
+                await ref.read(addMoodPointUsecaseProvider).executeForContinue(
+                      point: _moodValue.toInt(),
+                      plannedVolume: _plannedValue.toInt(),
+                      moodDate: date,
+                    );
+                Navigator.pop(context);
+              },
+              child: const Text('上書き'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
