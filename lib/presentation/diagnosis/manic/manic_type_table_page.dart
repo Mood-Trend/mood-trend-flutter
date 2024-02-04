@@ -172,7 +172,7 @@ class TableCell extends StatelessWidget {
         Expanded(
           child: SizedBox(
             // これがないと文字数が多い時にUIが崩れる
-            height: 80,
+            height: 90,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Center(

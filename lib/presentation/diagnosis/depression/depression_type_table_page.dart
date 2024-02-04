@@ -51,7 +51,7 @@ class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                     ),
                     child: Column(children: [
                       TableCell(
-                        moodValue: '+5',
+                        moodValue: '-1',
                         actionText: worksheet.minus_1,
                       ),
                       Divider(
@@ -62,7 +62,7 @@ class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                         color: AppColors.white,
                       ),
                       TableCell(
-                        moodValue: '+4',
+                        moodValue: '-2',
                         actionText: worksheet.minus_2,
                       ),
                       Divider(
@@ -73,7 +73,7 @@ class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                         color: AppColors.white,
                       ),
                       TableCell(
-                        moodValue: '+3',
+                        moodValue: '-3',
                         actionText: worksheet.minus_3,
                       ),
                       Divider(
@@ -84,7 +84,7 @@ class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                         color: AppColors.white,
                       ),
                       TableCell(
-                        moodValue: '+2',
+                        moodValue: '-4',
                         actionText: worksheet.minus_4,
                       ),
                       Divider(
@@ -95,7 +95,7 @@ class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                         color: AppColors.white,
                       ),
                       TableCell(
-                        moodValue: '+1',
+                        moodValue: '-5',
                         actionText: worksheet.minus_5,
                       ),
                     ]),
@@ -168,7 +168,7 @@ class TableCell extends StatelessWidget {
         Expanded(
           child: SizedBox(
             // これがないと文字数が多い時にUIが崩れる
-            height: 80,
+            height: 90,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Center(

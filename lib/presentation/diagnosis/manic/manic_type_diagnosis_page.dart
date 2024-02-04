@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/self_input_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 import 'entity/manic_worksheet.dart';
@@ -141,7 +142,9 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
               onPressed: () {
                 PageNavigator.push(
                   context,
-                  const ManicTypeTablePage(),
+                  ref.read(selectedManicTypeProvider) == ManicType.other
+                      ? const SelfInputPage(isManic: true)
+                      : const ManicTypeTablePage(),
                 );
               },
               style: ElevatedButton.styleFrom(

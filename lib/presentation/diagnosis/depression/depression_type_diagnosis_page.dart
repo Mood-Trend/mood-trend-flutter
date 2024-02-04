@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/self_input_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 import 'depression_type_table_page.dart';
@@ -143,7 +144,10 @@ class DepressionTypeDignosisPage extends ConsumerWidget {
               onPressed: () {
                 PageNavigator.push(
                   context,
-                  const DepressionTypeTablePage(),
+                  ref.read(selectedDepressionTypeProvider) ==
+                          DepressionType.other
+                      ? const SelfInputPage(isManic: false)
+                      : const DepressionTypeTablePage(),
                 );
               },
               style: ElevatedButton.styleFrom(

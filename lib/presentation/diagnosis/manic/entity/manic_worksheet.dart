@@ -37,20 +37,6 @@ abstract class ManicWorksheet {
   late final String plus_3;
   late final String plus_2;
   late final String plus_1;
-
-  ManicWorksheet createWorksheet(ManicType type) {
-    switch (type) {
-      case ManicType.idea:
-        return IdeaTypeWorksheet();
-      case ManicType.elation:
-        return ElationTypeWorksheet();
-      case ManicType.activity:
-        return ActivityTypeWorksheet();
-      case ManicType.other:
-      default:
-        throw AppException('Unsupported ManicType: $type');
-    }
-  }
 }
 
 /// [ManicWorksheet] を具象化したアイデアのワークシート
