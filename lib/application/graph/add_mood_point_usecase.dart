@@ -23,8 +23,13 @@ class AddMoodPointUsecase with UsecaseMixin {
 
   /// 気分値、予定数の登録
   Future<void> execute({
+    /// 気分値
     required int point,
+
+    /// 予定数
     required int plannedVolume,
+
+    /// 気分値の日付
     required DateTime moodDate,
   }) async {
     await run(
