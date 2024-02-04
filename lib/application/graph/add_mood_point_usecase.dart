@@ -2,24 +2,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../infrastructure/firebase/mood_point_repository.dart';
 import '../usecase_mixin.dart';
 
-/// [AddMoodPointUseCase] のインスタンスを作成するためのプロバイダ
+/// [AddMoodPointUsecase] のインスタンスを作成するためのプロバイダ
 ///
 /// UI 層にユースケースを注入するために使用され、認証プロセスを抽象化する
-final addMoodPointUseCaseProvider = Provider<AddMoodPointUseCase>(
-  AddMoodPointUseCase.new,
+final addMoodPointUsecaseProvider = Provider<AddMoodPointUsecase>(
+  AddMoodPointUsecase.new,
 );
 
-/// [AddMoodPointUseCase] は、匿名でサインインするプロセスをカプセル化する
+/// [AddMoodPointUsecase] は、匿名でサインインするプロセスをカプセル化する
 ///
 /// 気分値追加を [MoodPointRepository] を通じて行う
 /// さらに、ローディング管理を [UsecaseMixin] にて隠蔽している
-class AddMoodPointUseCase with UsecaseMixin {
+class AddMoodPointUsecase with UsecaseMixin {
   final Ref ref;
 
-  /// 指定された [Ref] を使用して [AddMoodPointUseCase] を構築する
+  /// 指定された [Ref] を使用して [AddMoodPointUsecase] を構築する
   ///
   /// [Ref] は必要なプロバイダーを読み取るために使用される
-  AddMoodPointUseCase(this.ref);
+  AddMoodPointUsecase(this.ref);
 
   /// 気分値、予定数の登録
   Future<void> execute({

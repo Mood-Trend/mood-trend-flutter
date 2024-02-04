@@ -190,7 +190,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       ref,
                       action: () async {
                         // mood_points コレクションにドキュメントを追加
-                        await ref.read(addMoodPointUseCaseProvider).execute(
+                        await ref.read(addMoodPointUsecaseProvider).execute(
                               point: _moodValue.toInt(),
                               plannedVolume: _plannedValue.toInt(),
                               moodDate: date,
