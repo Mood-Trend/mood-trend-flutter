@@ -241,7 +241,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
             ),
             TextButton(
               onPressed: () async {
-                await ref.read(addMoodPointUsecaseProvider).executeForContinue(
+                await ref.read(addMoodPointUsecaseProvider).executeForUpdate(
                       point: _moodValue.toInt(),
                       plannedVolume: _plannedValue.toInt(),
                       moodDate: date,
