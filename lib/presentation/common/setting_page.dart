@@ -73,7 +73,9 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
             onTap: () async => await run(
               ref,
               action: () async =>
-                  await ref.read(urlLauncherServiceProvider).launch(''),
+                  await ref.read(urlLauncherServiceProvider).launch(
+                        'https://docs.google.com/forms/d/e/1FAIpQLScJx5NC4RWnZaAbTld5_0lE1y6gjAx5_KkkjeWbFFFRLGsq3g/viewform?usp=sf_link',
+                      ),
               successMessage: '',
             ),
             child: Container(
