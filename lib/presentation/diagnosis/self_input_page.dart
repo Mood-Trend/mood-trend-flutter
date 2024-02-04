@@ -195,7 +195,7 @@ class _SelfInputForManic extends ConsumerWidget with ErrorHandlerMixin {
                   ref,
                   action: () async {
                     await ref
-                        .read(registerManicMoodWorksheetUseCaseProvider)
+                        .read(registerManicMoodWorksheetUsecaseProvider)
                         .execute(
                           plus_1: plus1TextController.text,
                           plus_2: plus2TextController.text,

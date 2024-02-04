@@ -115,7 +115,7 @@ class ManicTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                   ref,
                   action: () async {
                     await ref
-                        .read(registerManicMoodWorksheetUseCaseProvider)
+                        .read(registerManicMoodWorksheetUsecaseProvider)
                         .execute(
                           plus_1: worksheet.plus_1,
                           plus_2: worksheet.plus_2,

@@ -4,22 +4,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/infrastructure/firebase/mood_worksheet_repository.dart';
 import '../usecase_mixin.dart';
 
-/// [RegisterManicMoodWorksheetUseCase] のインスタンスを作成するためのプロバイダ
+/// [RegisterManicMoodWorksheetUsecase] のインスタンスを作成するためのプロバイダ
 ///
 /// UI 層にユースケースを注入するために使用され、躁状態を登録する
-final registerManicMoodWorksheetUseCaseProvider =
-    Provider<RegisterManicMoodWorksheetUseCase>(
-  (ref) => RegisterManicMoodWorksheetUseCase(ref),
+final registerManicMoodWorksheetUsecaseProvider =
+    Provider<RegisterManicMoodWorksheetUsecase>(
+  (ref) => RegisterManicMoodWorksheetUsecase(ref),
 );
 
-/// [RegisterManicMoodWorksheetUseCase] は、躁状態を登録するプロセスをカプセル化する
-class RegisterManicMoodWorksheetUseCase with UsecaseMixin {
+/// [RegisterManicMoodWorksheetUsecase] は、躁状態を登録するプロセスをカプセル化する
+class RegisterManicMoodWorksheetUsecase with UsecaseMixin {
   final Ref ref;
 
-  /// 指定された [Ref] を使用して [RegisterManicMoodWorksheetUseCase] を構築する
+  /// 指定された [Ref] を使用して [RegisterManicMoodWorksheetUsecase] を構築する
   ///
   /// [Ref] は必要なプロバイダーを読み取るために使用される
-  RegisterManicMoodWorksheetUseCase(this.ref);
+  RegisterManicMoodWorksheetUsecase(this.ref);
 
   /// 躁状態を登録するユースケースの実行
   Future<void> execute({
