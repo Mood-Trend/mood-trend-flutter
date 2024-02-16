@@ -31,118 +31,119 @@ class ManicTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
       body: Center(
         child: Column(
           children: [
-            const Text(
-              '提案',
-              style: TextStyle(
-                fontSize: 26,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 350,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColors.green.withOpacity(0.4),
-                    ),
-                    child: Column(children: [
-                      TableCell(
-                        moodValue: '+5',
-                        actionText: worksheet.plus_5,
-                      ),
-                      Divider(
-                        height: 0,
-                        thickness: 2,
-                        indent: 16,
-                        endIndent: 16,
-                        color: AppColors.white,
-                      ),
-                      TableCell(
-                        moodValue: '+4',
-                        actionText: worksheet.plus_4,
-                      ),
-                      Divider(
-                        height: 0,
-                        thickness: 2,
-                        indent: 16,
-                        endIndent: 16,
-                        color: AppColors.white,
-                      ),
-                      TableCell(
-                        moodValue: '+3',
-                        actionText: worksheet.plus_3,
-                      ),
-                      Divider(
-                        height: 0,
-                        thickness: 2,
-                        indent: 16,
-                        endIndent: 16,
-                        color: AppColors.white,
-                      ),
-                      TableCell(
-                        moodValue: '+2',
-                        actionText: worksheet.plus_2,
-                      ),
-                      Divider(
-                        height: 0,
-                        thickness: 2,
-                        indent: 16,
-                        endIndent: 16,
-                        color: AppColors.white,
-                      ),
-                      TableCell(
-                        moodValue: '+1',
-                        actionText: worksheet.plus_1,
-                      ),
-                    ]),
+            const Flexible(
+              child: Center(
+                child: Text(
+                  '提案',
+                  style: TextStyle(
+                    fontSize: 26,
                   ),
-                ],
-              ),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.green,
-                foregroundColor: AppColors.white,
-                fixedSize: const Size(330, 60),
-              ),
-              onPressed: () async {
-                await run(
-                  ref,
-                  action: () async {
-                    await ref
-                        .read(registerManicMoodWorksheetUsecaseProvider)
-                        .execute(
-                          plus_1: worksheet.plus_1,
-                          plus_2: worksheet.plus_2,
-                          plus_3: worksheet.plus_3,
-                          plus_4: worksheet.plus_4,
-                          plus_5: worksheet.plus_5,
-                        );
-                    // ignore: use_build_context_synchronously
-                    PageNavigator.push(
-                      context,
-                      const DepressionTypeDignosisPage(),
-                    );
-                  },
-                  successMessage: '躁状態の気分値目安を登録しました',
-                );
-              },
-              child: const Text(
-                '同意して次へ',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-            const SizedBox(
-              height: 80,
-            )
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  width: 350,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: AppColors.green.withOpacity(0.4),
+                  ),
+                  child: Column(children: [
+                    TableCell(
+                      moodValue: '+5',
+                      actionText: worksheet.plus_5,
+                    ),
+                    Divider(
+                      height: 0,
+                      thickness: 2,
+                      indent: 16,
+                      endIndent: 16,
+                      color: AppColors.white,
+                    ),
+                    TableCell(
+                      moodValue: '+4',
+                      actionText: worksheet.plus_4,
+                    ),
+                    Divider(
+                      height: 0,
+                      thickness: 2,
+                      indent: 16,
+                      endIndent: 16,
+                      color: AppColors.white,
+                    ),
+                    TableCell(
+                      moodValue: '+3',
+                      actionText: worksheet.plus_3,
+                    ),
+                    Divider(
+                      height: 0,
+                      thickness: 2,
+                      indent: 16,
+                      endIndent: 16,
+                      color: AppColors.white,
+                    ),
+                    TableCell(
+                      moodValue: '+2',
+                      actionText: worksheet.plus_2,
+                    ),
+                    Divider(
+                      height: 0,
+                      thickness: 2,
+                      indent: 16,
+                      endIndent: 16,
+                      color: AppColors.white,
+                    ),
+                    TableCell(
+                      moodValue: '+1',
+                      actionText: worksheet.plus_1,
+                    ),
+                  ]),
+                ),
+              ],
+            ),
+            Flexible(
+              child: Center(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.green,
+                    foregroundColor: AppColors.white,
+                    fixedSize: const Size(330, 60),
+                  ),
+                  onPressed: () async {
+                    await run(
+                      ref,
+                      action: () async {
+                        await ref
+                            .read(registerManicMoodWorksheetUsecaseProvider)
+                            .execute(
+                              plus_1: worksheet.plus_1,
+                              plus_2: worksheet.plus_2,
+                              plus_3: worksheet.plus_3,
+                              plus_4: worksheet.plus_4,
+                              plus_5: worksheet.plus_5,
+                            );
+                        // ignore: use_build_context_synchronously
+                        PageNavigator.push(
+                          context,
+                          const DepressionTypeDignosisPage(),
+                        );
+                      },
+                      successMessage: '躁状態の気分値目安を登録しました',
+                    );
+                  },
+                  child: const Text(
+                    '同意して次へ',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
