@@ -72,6 +72,7 @@ class HomePage extends ConsumerWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: AppColors.white,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -104,6 +105,12 @@ class HomePage extends ConsumerWidget {
         ),
         actions: [
           IconButton(
+            onPressed: () => ref
+                .watch(visibleMaximumProvider.notifier)
+                .update((_) => DateTime.now().toDateOnly()),
+            icon: const Icon(Icons.refresh),
+          ),
+          IconButton(
             onPressed: () => PageNavigator.push(context, const SettingPage()),
             icon: const Icon(Icons.settings),
           ),
@@ -113,67 +120,85 @@ class HomePage extends ConsumerWidget {
           value: ref.watch(subscribeMoodPointsProvider),
           loading: () => const OverlayLoading(),
           builder: (moodPoints) {
+            final term = ref.watch(selectedTermProvider) == Term.month
+                ? const Duration(days: 30)
+                : ref.watch(selectedTermProvider) == Term.halfYear
+                    ? const Duration(days: 182)
+                    : const Duration(days: 365);
             return Center(
-              child: SfCartesianChart(
-                legend: const Legend(isVisible: true), // 凡例の表示
-                backgroundColor: AppColors.white,
-                primaryXAxis: DateTimeAxis(
-                  dateFormat: DateFormat('MM/dd', 'ja_JP'),
-                  visibleMinimum: ref.watch(visibleMinimumProvider),
-                  visibleMaximum: ref.watch(visibleMaximumProvider),
-                ),
-                primaryYAxis: NumericAxis(
-                  minimum: -5,
-                  maximum: 5,
-                  interval: 1,
-                  numberFormat: NumberFormat('0'),
-                  plotBands: <PlotBand>[
-                    PlotBand(
-                      isVisible: true,
-                      start: double.infinity,
-                      end: 0,
-                      color: Colors.white,
+              child: GestureDetector(
+                onHorizontalDragEnd: (details) {
+                  if (details.primaryVelocity! > 0) {
+                    ref
+                        .watch(visibleMaximumProvider.notifier)
+                        .update((state) => state.subtract(term));
+                  } else {
+                    ref
+                        .watch(visibleMaximumProvider.notifier)
+                        .update((state) => state.add(term));
+                  }
+                },
+                child: SfCartesianChart(
+                  legend: const Legend(isVisible: true), // 凡例の表示
+                  backgroundColor: AppColors.white,
+                  primaryXAxis: DateTimeAxis(
+                    dateFormat: DateFormat('MM/dd', 'ja_JP'),
+                    visibleMinimum: ref.watch(visibleMinimumProvider),
+                    visibleMaximum: ref.watch(visibleMaximumProvider),
+                  ),
+                  primaryYAxis: NumericAxis(
+                    minimum: -5,
+                    maximum: 5,
+                    interval: 1,
+                    numberFormat: NumberFormat('0'),
+                    plotBands: <PlotBand>[
+                      PlotBand(
+                        isVisible: true,
+                        start: double.infinity,
+                        end: 0,
+                        color: Colors.white,
+                      ),
+                      PlotBand(
+                        isVisible: true,
+                        start: -double.infinity,
+                        end: 0,
+                        color: const Color.fromRGBO(249, 249, 249, 1),
+                      ),
+                    ],
+                  ),
+                  axes: [
+                    NumericAxis(
+                      minimum: 0,
+                      maximum: 16,
+                      interval: 1,
+                      name: 'yAxis',
+                      opposedPosition: true,
                     ),
-                    PlotBand(
-                      isVisible: true,
-                      start: -double.infinity,
-                      end: 0,
-                      color: const Color.fromRGBO(249, 249, 249, 1),
+                  ],
+                  series: <ChartSeries>[
+                    // 塗りつぶす部分を描画するためのエリアチャート
+                    LineSeries<MoodPoint, DateTime>(
+                      name: '気分値', // 凡例の名前
+                      dataSource: moodPoints,
+                      xValueMapper: (MoodPoint value, _) =>
+                          value.moodDate.toDateOnly(),
+                      yValueMapper: (MoodPoint value, _) => value.point,
+                      color: AppColors.green.withOpacity(0.5),
+                      markerSettings: const MarkerSettings(isVisible: true),
+                      // borderDrawMode: RangeAreaBorderMode.excludeSides,
+                    ),
+                    LineSeries<MoodPoint, DateTime>(
+                      name: '予定数', // 凡例の名前
+                      dataSource: moodPoints,
+                      xValueMapper: (MoodPoint value, _) =>
+                          value.moodDate.toDateOnly(),
+                      yValueMapper: (MoodPoint value, _) => value.plannedVolume,
+                      color: AppColors.blue.withOpacity(0.5),
+                      markerSettings: const MarkerSettings(isVisible: true),
+                      yAxisName: 'yAxis',
                     ),
                   ],
                 ),
-                axes: [
-                  NumericAxis(
-                    minimum: 0,
-                    maximum: 16,
-                    interval: 1,
-                    name: 'yAxis',
-                    opposedPosition: true,
-                  ),
-                ],
-                series: <ChartSeries>[
-                  // 塗りつぶす部分を描画するためのエリアチャート
-                  LineSeries<MoodPoint, DateTime>(
-                    name: '気分値', // 凡例の名前
-                    dataSource: moodPoints,
-                    xValueMapper: (MoodPoint value, _) =>
-                        value.moodDate.toDateOnly(),
-                    yValueMapper: (MoodPoint value, _) => value.point,
-                    color: AppColors.green.withOpacity(0.5),
-                    markerSettings: const MarkerSettings(isVisible: true),
-                    // borderDrawMode: RangeAreaBorderMode.excludeSides,
-                  ),
-                  LineSeries<MoodPoint, DateTime>(
-                    name: '予定数', // 凡例の名前
-                    dataSource: moodPoints,
-                    xValueMapper: (MoodPoint value, _) =>
-                        value.moodDate.toDateOnly(),
-                    yValueMapper: (MoodPoint value, _) => value.plannedVolume,
-                    color: AppColors.blue.withOpacity(0.5),
-                    markerSettings: const MarkerSettings(isVisible: true),
-                    yAxisName: 'yAxis',
-                  ),
-                ],
               ),
             );
           }),
