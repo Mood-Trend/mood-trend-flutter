@@ -30,7 +30,7 @@ class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
       body: Center(
         child: Column(
           children: [
-            Flexible(
+            const Flexible(
               child: Center(
                 child: Text(
                   '提案',
