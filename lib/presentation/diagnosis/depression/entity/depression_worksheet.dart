@@ -1,3 +1,5 @@
+// ignore_for_file: overridden_fields
+
 import '../../../../domain/app_exception.dart';
 
 /// 鬱のタイプを示す列挙体
@@ -46,11 +48,11 @@ class DepressionWorksheetFactory {
 
 /// 鬱のタイプのワークシートを抽象化したクラス
 abstract class DepressionWorksheet {
-  String get minus_1;
-  String get minus_2;
-  String get minus_3;
-  String get minus_4;
-  String get minus_5;
+  late final String minus_1;
+  late final String minus_2;
+  late final String minus_3;
+  late final String minus_4;
+  late final String minus_5;
 }
 
 /// [DepressionWorksheet] を具象化した憂鬱のワークシート
