@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/application/diagnosis/register_depression_mood_worksheet_usecase.dart';
-import 'package:mood_trend_flutter/application/diagnosis/register_manic_mood_worksheet_usecase.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/depression/depression_type_diagnosis_page.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/register_manic_entity_provider.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
