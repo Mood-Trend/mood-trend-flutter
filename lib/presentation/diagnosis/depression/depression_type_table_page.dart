@@ -30,115 +30,116 @@ class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
       body: Center(
         child: Column(
           children: [
-            const Text(
-              '提案',
-              style: TextStyle(
-                fontSize: 26,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 350,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColors.green.withOpacity(0.4),
-                    ),
-                    child: Column(children: [
-                      TableCell(
-                        moodValue: '-1',
-                        actionText: worksheet.minus_1,
-                      ),
-                      Divider(
-                        height: 0,
-                        thickness: 2,
-                        indent: 16,
-                        endIndent: 16,
-                        color: AppColors.white,
-                      ),
-                      TableCell(
-                        moodValue: '-2',
-                        actionText: worksheet.minus_2,
-                      ),
-                      Divider(
-                        height: 0,
-                        thickness: 2,
-                        indent: 16,
-                        endIndent: 16,
-                        color: AppColors.white,
-                      ),
-                      TableCell(
-                        moodValue: '-3',
-                        actionText: worksheet.minus_3,
-                      ),
-                      Divider(
-                        height: 0,
-                        thickness: 2,
-                        indent: 16,
-                        endIndent: 16,
-                        color: AppColors.white,
-                      ),
-                      TableCell(
-                        moodValue: '-4',
-                        actionText: worksheet.minus_4,
-                      ),
-                      Divider(
-                        height: 0,
-                        thickness: 2,
-                        indent: 16,
-                        endIndent: 16,
-                        color: AppColors.white,
-                      ),
-                      TableCell(
-                        moodValue: '-5',
-                        actionText: worksheet.minus_5,
-                      ),
-                    ]),
+            Flexible(
+              child: Center(
+                child: Text(
+                  '提案',
+                  style: TextStyle(
+                    fontSize: 26,
                   ),
-                ],
-              ),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.green,
-                foregroundColor: AppColors.white,
-                fixedSize: const Size(330, 60),
-              ),
-              onPressed: () async {
-                await run(
-                  ref,
-                  action: () async {
-                    await ref
-                        .read(registerDepressionMoodWorksheetUsecaseProvider)
-                        .execute(
-                          minus_5: worksheet.minus_5,
-                          minus_4: worksheet.minus_4,
-                          minus_3: worksheet.minus_3,
-                          minus_2: worksheet.minus_2,
-                          minus_1: worksheet.minus_1,
-                        );
-                  },
-                  successMessage: '鬱状態の気分値目安を登録しました',
-                );
-                // ignore: use_build_context_synchronously
-                PageNavigator.popUntilRoot(context);
-              },
-              child: const Text(
-                '完了',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-            const SizedBox(
-              height: 80,
-            )
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 350,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: AppColors.green.withOpacity(0.4),
+                  ),
+                  child: Column(children: [
+                    TableCell(
+                      moodValue: '-1',
+                      actionText: worksheet.minus_1,
+                    ),
+                    Divider(
+                      height: 0,
+                      thickness: 2,
+                      indent: 16,
+                      endIndent: 16,
+                      color: AppColors.white,
+                    ),
+                    TableCell(
+                      moodValue: '-2',
+                      actionText: worksheet.minus_2,
+                    ),
+                    Divider(
+                      height: 0,
+                      thickness: 2,
+                      indent: 16,
+                      endIndent: 16,
+                      color: AppColors.white,
+                    ),
+                    TableCell(
+                      moodValue: '-3',
+                      actionText: worksheet.minus_3,
+                    ),
+                    Divider(
+                      height: 0,
+                      thickness: 2,
+                      indent: 16,
+                      endIndent: 16,
+                      color: AppColors.white,
+                    ),
+                    TableCell(
+                      moodValue: '-4',
+                      actionText: worksheet.minus_4,
+                    ),
+                    Divider(
+                      height: 0,
+                      thickness: 2,
+                      indent: 16,
+                      endIndent: 16,
+                      color: AppColors.white,
+                    ),
+                    TableCell(
+                      moodValue: '-5',
+                      actionText: worksheet.minus_5,
+                    ),
+                  ]),
+                ),
+              ],
+            ),
+            Flexible(
+              child: Center(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.green,
+                    foregroundColor: AppColors.white,
+                    fixedSize: const Size(330, 60),
+                  ),
+                  onPressed: () async {
+                    await run(
+                      ref,
+                      action: () async {
+                        await ref
+                            .read(
+                                registerDepressionMoodWorksheetUsecaseProvider)
+                            .execute(
+                              minus_5: worksheet.minus_5,
+                              minus_4: worksheet.minus_4,
+                              minus_3: worksheet.minus_3,
+                              minus_2: worksheet.minus_2,
+                              minus_1: worksheet.minus_1,
+                            );
+                      },
+                      successMessage: '鬱状態の気分値目安を登録しました',
+                    );
+                    // ignore: use_build_context_synchronously
+                    PageNavigator.popUntilRoot(context);
+                  },
+                  child: const Text(
+                    '完了',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

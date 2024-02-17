@@ -245,6 +245,7 @@ class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
     final TextEditingController minus5TextController = TextEditingController();
 
     return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         const Text(
           '鬱の症状を入力',
@@ -253,173 +254,174 @@ class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
           ),
         ),
         const SizedBox(
-          height: 32,
+          height: 8,
         ),
-        const Row(
+        Column(
           children: [
-            Text(
-              '-1',
-              textAlign: TextAlign.left,
-            ),
-          ],
-        ),
-        TextFormField(
-          controller: minus1TextController,
-          decoration: InputDecoration(
-            labelText: '症状を入力してください',
-            border: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: AppColors.lightGrey,
-                width: 5,
-              ),
-              borderRadius: const BorderRadius.all(
-                Radius.circular(10),
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(
-          height: 16,
-        ),
-        const Row(
-          children: [
-            Text(
-              '-2',
-              textAlign: TextAlign.left,
-            ),
-          ],
-        ),
-        TextFormField(
-          controller: minus2TextController,
-          decoration: InputDecoration(
-            labelText: '症状を入力してください',
-            border: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: AppColors.lightGrey,
-                width: 5,
-              ),
-              borderRadius: const BorderRadius.all(
-                Radius.circular(10),
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(
-          height: 16,
-        ),
-        const Row(
-          children: [
-            Text(
-              '-3',
-              textAlign: TextAlign.left,
-            ),
-          ],
-        ),
-        TextFormField(
-          controller: minus3TextController,
-          decoration: InputDecoration(
-            labelText: '症状を入力してください',
-            border: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: AppColors.lightGrey,
-                width: 5,
-              ),
-              borderRadius: const BorderRadius.all(
-                Radius.circular(10),
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(
-          height: 16,
-        ),
-        const Row(
-          children: [
-            Text(
-              '-4',
-              textAlign: TextAlign.left,
-            ),
-          ],
-        ),
-        TextFormField(
-          controller: minus4TextController,
-          decoration: InputDecoration(
-            labelText: '症状を入力してください',
-            border: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: AppColors.lightGrey,
-                width: 5,
-              ),
-              borderRadius: const BorderRadius.all(
-                Radius.circular(10),
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(
-          height: 16,
-        ),
-        const Row(
-          children: [
-            Text(
-              '-5',
-              textAlign: TextAlign.left,
-            ),
-          ],
-        ),
-        TextFormField(
-          controller: minus5TextController,
-          decoration: InputDecoration(
-            labelText: '症状を入力してください',
-            border: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: AppColors.lightGrey,
-                width: 5,
-              ),
-              borderRadius: const BorderRadius.all(
-                Radius.circular(10),
-              ),
-            ),
-          ),
-        ),
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () async {
-                  await run(
-                    ref,
-                    action: () async {
-                      await ref
-                          .read(registerDepressionMoodWorksheetUsecaseProvider)
-                          .execute(
-                            minus_1: minus1TextController.text,
-                            minus_2: minus2TextController.text,
-                            minus_3: minus3TextController.text,
-                            minus_4: minus4TextController.text,
-                            minus_5: minus5TextController.text,
-                          );
-                      // ignore: use_build_context_synchronously
-                      PageNavigator.popUntilRoot(context);
-                    },
-                    successMessage: '鬱状態の気分値目安を登録しました',
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.green,
-                  foregroundColor: AppColors.white,
-                  fixedSize: const Size(350, 60),
+            const Row(
+              children: [
+                Text(
+                  '-1',
+                  textAlign: TextAlign.left,
                 ),
-                child: const Text(
-                  '決定して次へ',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+              ],
+            ),
+            TextFormField(
+              controller: minus1TextController,
+              decoration: InputDecoration(
+                labelText: '症状を入力してください',
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppColors.lightGrey,
+                    width: 5,
+                  ),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(10),
                   ),
                 ),
               ),
-            ],
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            const Row(
+              children: [
+                Text(
+                  '-2',
+                  textAlign: TextAlign.left,
+                ),
+              ],
+            ),
+            TextFormField(
+              controller: minus2TextController,
+              decoration: InputDecoration(
+                labelText: '症状を入力してください',
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppColors.lightGrey,
+                    width: 5,
+                  ),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            const Row(
+              children: [
+                Text(
+                  '-3',
+                  textAlign: TextAlign.left,
+                ),
+              ],
+            ),
+            TextFormField(
+              controller: minus3TextController,
+              decoration: InputDecoration(
+                labelText: '症状を入力してください',
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppColors.lightGrey,
+                    width: 5,
+                  ),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            const Row(
+              children: [
+                Text(
+                  '-4',
+                  textAlign: TextAlign.left,
+                ),
+              ],
+            ),
+            TextFormField(
+              controller: minus4TextController,
+              decoration: InputDecoration(
+                labelText: '症状を入力してください',
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppColors.lightGrey,
+                    width: 5,
+                  ),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            const Row(
+              children: [
+                Text(
+                  '-5',
+                  textAlign: TextAlign.left,
+                ),
+              ],
+            ),
+            TextFormField(
+              controller: minus5TextController,
+              decoration: InputDecoration(
+                labelText: '症状を入力してください',
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppColors.lightGrey,
+                    width: 5,
+                  ),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        Flexible(
+          child: Center(
+            child: ElevatedButton(
+              onPressed: () async {
+                await run(
+                  ref,
+                  action: () async {
+                    await ref
+                        .read(registerDepressionMoodWorksheetUsecaseProvider)
+                        .execute(
+                          minus_1: minus1TextController.text,
+                          minus_2: minus2TextController.text,
+                          minus_3: minus3TextController.text,
+                          minus_4: minus4TextController.text,
+                          minus_5: minus5TextController.text,
+                        );
+                    // ignore: use_build_context_synchronously
+                    PageNavigator.popUntilRoot(context);
+                  },
+                  successMessage: '鬱状態の気分値目安を登録しました',
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.green,
+                foregroundColor: AppColors.white,
+                fixedSize: const Size(350, 60),
+              ),
+              child: const Text(
+                '決定して次へ',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ),
         ),
       ],
