@@ -393,6 +393,7 @@ class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
                         minus5TextController.text,
                       ),
                     );
+                // TODO: この後に遷移する画面で登録内容を確認するようにする
                 PageNavigator.popUntilRoot(context);
               },
               style: ElevatedButton.styleFrom(

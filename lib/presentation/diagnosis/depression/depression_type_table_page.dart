@@ -5,7 +5,6 @@ import 'package:mood_trend_flutter/presentation/diagnosis/depression/entity/depr
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
-import '../../../application/diagnosis/register_depression_mood_worksheet_usecase.dart';
 import 'depression_type_diagnosis_page.dart';
 
 /// 鬱のタイプを表示するテーブル画面
@@ -111,23 +110,7 @@ class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                     fixedSize: const Size(330, 60),
                   ),
                   onPressed: () async {
-                    await run(
-                      ref,
-                      action: () async {
-                        await ref
-                            .read(
-                                registerDepressionMoodWorksheetUsecaseProvider)
-                            .execute(
-                              minus_5: worksheet.minus_5,
-                              minus_4: worksheet.minus_4,
-                              minus_3: worksheet.minus_3,
-                              minus_2: worksheet.minus_2,
-                              minus_1: worksheet.minus_1,
-                            );
-                      },
-                      successMessage: '鬱状態の気分値目安を登録しました',
-                    );
-                    // ignore: use_build_context_synchronously
+                    // TODO: この後に遷移する画面で登録内容を確認するようにする
                     PageNavigator.popUntilRoot(context);
                   },
                   child: const Text(

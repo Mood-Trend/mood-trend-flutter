@@ -4,7 +4,6 @@ import 'package:mood_trend_flutter/presentation/diagnosis/manic/entity/manic_wor
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
-import '../../../application/diagnosis/register_manic_mood_worksheet_usecase.dart';
 import '../../common/error_handler_mixin.dart';
 import '../depression/depression_type_diagnosis_page.dart';
 import 'manic_type_diagnosis_page.dart';
@@ -113,25 +112,9 @@ class ManicTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                     fixedSize: const Size(330, 60),
                   ),
                   onPressed: () async {
-                    await run(
-                      ref,
-                      action: () async {
-                        await ref
-                            .read(registerManicMoodWorksheetUsecaseProvider)
-                            .execute(
-                              plus_1: worksheet.plus_1,
-                              plus_2: worksheet.plus_2,
-                              plus_3: worksheet.plus_3,
-                              plus_4: worksheet.plus_4,
-                              plus_5: worksheet.plus_5,
-                            );
-                        // ignore: use_build_context_synchronously
-                        PageNavigator.push(
-                          context,
-                          const DepressionTypeDignosisPage(),
-                        );
-                      },
-                      successMessage: '躁状態の気分値目安を登録しました',
+                    PageNavigator.push(
+                      context,
+                      const DepressionTypeDignosisPage(),
                     );
                   },
                   child: const Text(
