@@ -114,7 +114,7 @@ class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                     PageNavigator.popUntilRoot(context);
                   },
                   child: const Text(
-                    '完了',
+                    '次へ',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
