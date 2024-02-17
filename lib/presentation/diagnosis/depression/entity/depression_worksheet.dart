@@ -99,7 +99,6 @@ class _SleepDisordersTypeWorksheet extends DepressionWorksheet {
 
 /// [DepressionWorksheet] を具象化したその他のワークシート
 class _OtherDepressionTypeWorksheet extends DepressionWorksheet {
-  // コンストラクタを追加
   _OtherDepressionTypeWorksheet({
     required this.minus_1,
     required this.minus_2,
