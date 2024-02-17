@@ -52,30 +52,6 @@ class TablePage extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextButton(
-                        onPressed: () {
-                          ref
-                              .read(selectedMoodButtonStateProvider.notifier)
-                              .update(
-                                (_) => MoodState.depression,
-                              );
-                        },
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                                ref.watch(selectedMoodButtonStateProvider) ==
-                                        MoodState.depression
-                                    ? AppColors.green
-                                    : Colors.transparent)),
-                        child: Text(
-                          "鬱状態",
-                          style: TextStyle(
-                              color:
-                                  ref.watch(selectedMoodButtonStateProvider) ==
-                                          MoodState.depression
-                                      ? AppColors.white
-                                      : AppColors.black,
-                              fontSize: 20),
-                        )),
-                    TextButton(
                       onPressed: () {
                         ref
                             .read(selectedMoodButtonStateProvider.notifier)
@@ -100,6 +76,30 @@ class TablePage extends ConsumerWidget {
                               : AppColors.black,
                           fontSize: 20,
                         ),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        ref
+                            .read(selectedMoodButtonStateProvider.notifier)
+                            .update(
+                              (_) => MoodState.depression,
+                            );
+                      },
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              ref.watch(selectedMoodButtonStateProvider) ==
+                                      MoodState.depression
+                                  ? AppColors.green
+                                  : Colors.transparent)),
+                      child: Text(
+                        "鬱状態",
+                        style: TextStyle(
+                            color: ref.watch(selectedMoodButtonStateProvider) ==
+                                    MoodState.depression
+                                ? AppColors.white
+                                : AppColors.black,
+                            fontSize: 20),
                       ),
                     ),
                   ],
