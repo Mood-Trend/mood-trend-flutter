@@ -1,3 +1,5 @@
+// ignore_for_file: overridden_fields
+
 import 'package:mood_trend_flutter/domain/app_exception.dart';
 
 /// 躁のタイプを示す列挙体
@@ -14,16 +16,29 @@ enum ManicType {
 
 /// [ManicWorksheet] を生成するファクトリクラス
 class ManicWorksheetFactory {
-  static ManicWorksheet create(ManicType type) {
+  static ManicWorksheet create(
+    ManicType type, [
+    String plus_1 = '',
+    String plus_2 = '',
+    String plus_3 = '',
+    String plus_4 = '',
+    String plus_5 = '',
+  ]) {
     switch (type) {
       case ManicType.idea:
-        return IdeaTypeWorksheet();
+        return _IdeaTypeWorksheet();
       case ManicType.elation:
-        return ElationTypeWorksheet();
+        return _ElationTypeWorksheet();
       case ManicType.activity:
-        return ActivityTypeWorksheet();
+        return _ActivityTypeWorksheet();
       case ManicType.other:
-        return OtherManicTypeWorksheet();
+        return _OtherManicTypeWorksheet(
+          plus_1: plus_1,
+          plus_2: plus_2,
+          plus_3: plus_3,
+          plus_4: plus_4,
+          plus_5: plus_5,
+        );
       default:
         throw AppException('Unsupported ManicType: $type');
     }
@@ -40,57 +55,65 @@ abstract class ManicWorksheet {
 }
 
 /// [ManicWorksheet] を具象化したアイデアのワークシート
-class IdeaTypeWorksheet extends ManicWorksheet {
+class _IdeaTypeWorksheet extends ManicWorksheet {
   @override
-  String get plus_5 => 'アイデアが成功すると確信し、実現に向けて実際に動く';
+  final String plus_5 = 'アイデアが成功すると確信し、実現に向けて実際に動く';
   @override
-  String get plus_4 => '次々と湧き上がるアイデアを具現化しようと奮闘する';
+  final String plus_4 = '次々と湧き上がるアイデアを具現化しようと奮闘する';
   @override
-  String get plus_3 => 'アイデアが湧き上がり、絶え間なく考え続ける';
+  final String plus_3 = 'アイデアが湧き上がり、絶え間なく考え続ける';
   @override
-  String get plus_2 => 'アイデアを簡単に思いつくことができる';
+  final String plus_2 = 'アイデアを簡単に思いつくことができる';
   @override
-  String get plus_1 => 'アイデアを考えようと思えば可能である';
+  final String plus_1 = 'アイデアを考えようと思えば可能である';
 }
 
 /// [ManicWorksheet] を具象化した気分高揚のワークシート
-class ElationTypeWorksheet extends ManicWorksheet {
+class _ElationTypeWorksheet extends ManicWorksheet {
   @override
-  String get plus_5 => '自分は絶対に正しく、すべてが上手くいくと確信する';
+  final String plus_5 = '自分は絶対に正しく、すべてが上手くいくと確信する';
   @override
-  String get plus_4 => 'どんなことでも自分は成功すると確信している';
+  final String plus_4 = 'どんなことでも自分は成功すると確信している';
   @override
-  String get plus_3 => 'どんな状況でも上手くいく感覚が強い';
+  final String plus_3 = 'どんな状況でも上手くいく感覚が強い';
   @override
-  String get plus_2 => '前向きで挑戦的な気持ちがあり、ポジティブなエネルギーを感じる';
+  final String plus_2 = '前向きで挑戦的な気持ちがあり、ポジティブなエネルギーを感じる';
   @override
-  String get plus_1 => '普段より前向きな気分である';
+  final String plus_1 = '普段より前向きな気分である';
 }
 
 /// [ManicWorksheet] を具象化した活動性のワークシート
-class ActivityTypeWorksheet extends ManicWorksheet {
+class _ActivityTypeWorksheet extends ManicWorksheet {
   @override
-  String get plus_5 => '何日も1日中活動を続けているが、疲れを感じずに精力的に行動している';
+  final String plus_5 = '何日も1日中活動を続けているが、疲れを感じずに精力的に行動している';
   @override
-  String get plus_4 => '1日が予定でいっぱいである';
+  final String plus_4 = '1日が予定でいっぱいである';
   @override
-  String get plus_3 => '積極的でエネルギッシュな気分で、予定をたくさん詰める';
+  final String plus_3 = '積極的でエネルギッシュな気分で、予定をたくさん詰める';
   @override
-  String get plus_2 => '普段よりも活発に動く気分である';
+  final String plus_2 = '普段よりも活発に動く気分である';
   @override
-  String get plus_1 => '活動が可能である';
+  final String plus_1 = '活動が可能である';
 }
 
 /// [ManicWorksheet] を具象化したその他のワークシート
-class OtherManicTypeWorksheet extends ManicWorksheet {
+class _OtherManicTypeWorksheet extends ManicWorksheet {
+  _OtherManicTypeWorksheet({
+    required this.plus_5,
+    required this.plus_4,
+    required this.plus_3,
+    required this.plus_2,
+    required this.plus_1,
+  });
+
   @override
-  String get plus_5 => '';
+  final String plus_5;
   @override
-  String get plus_4 => '';
+  final String plus_4;
   @override
-  String get plus_3 => '';
+  final String plus_3;
   @override
-  String get plus_2 => '';
+  final String plus_2;
   @override
-  String get plus_1 => '';
+  final String plus_1;
 }
