@@ -5,6 +5,7 @@ import 'package:mood_trend_flutter/presentation/diagnosis/depression/entity/depr
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
+import '../register_diagnosis_page.dart';
 import 'depression_type_diagnosis_page.dart';
 
 /// 鬱のタイプを表示するテーブル画面
@@ -110,8 +111,7 @@ class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                     fixedSize: const Size(330, 60),
                   ),
                   onPressed: () async {
-                    // TODO: この後に遷移する画面で登録内容を確認するようにする
-                    PageNavigator.popUntilRoot(context);
+                    PageNavigator.push(context, const RegisterDiagnosisPage());
                   },
                   child: const Text(
                     '次へ',

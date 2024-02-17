@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/depression/depression_type_diagnosis_page.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/register_manic_entity_provider.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/register_diagnosis_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
@@ -393,8 +394,7 @@ class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
                         minus5TextController.text,
                       ),
                     );
-                // TODO: この後に遷移する画面で登録内容を確認するようにする
-                PageNavigator.popUntilRoot(context);
+                PageNavigator.push(context, const RegisterDiagnosisPage());
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.green,
