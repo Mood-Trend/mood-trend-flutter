@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/application/diagnosis/register_depression_mood_worksheet_usecase.dart';
-import 'package:mood_trend_flutter/application/diagnosis/register_manic_mood_worksheet_usecase.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/depression/depression_type_diagnosis_page.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/manic/register_manic_entity_provider.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/register_diagnosis_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../common/error_handler_mixin.dart';
+import 'depression/register_depression_entity_provider.dart';
 
 /// 躁・鬱の状態入力で「独自に入力」を選択した場合の画面
 class SelfInputPage extends ConsumerWidget with ErrorHandlerMixin {
@@ -191,25 +192,18 @@ class _SelfInputForManic extends ConsumerWidget with ErrorHandlerMixin {
           children: [
             ElevatedButton(
               onPressed: () async {
-                await run(
-                  ref,
-                  action: () async {
-                    await ref
-                        .read(registerManicMoodWorksheetUsecaseProvider)
-                        .execute(
-                          plus_1: plus1TextController.text,
-                          plus_2: plus2TextController.text,
-                          plus_3: plus3TextController.text,
-                          plus_4: plus4TextController.text,
-                          plus_5: plus5TextController.text,
-                        );
-                    // ignore: use_build_context_synchronously
-                    PageNavigator.push(
-                      context,
-                      const DepressionTypeDignosisPage(),
+                ref.read(selfInputManicProvider.notifier).update(
+                      (_) => (
+                        plus1TextController.text,
+                        plus2TextController.text,
+                        plus3TextController.text,
+                        plus4TextController.text,
+                        plus5TextController.text,
+                      ),
                     );
-                  },
-                  successMessage: '躁状態の気分値目安を登録しました',
+                PageNavigator.push(
+                  context,
+                  const DepressionTypeDignosisPage(),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -218,7 +212,7 @@ class _SelfInputForManic extends ConsumerWidget with ErrorHandlerMixin {
                 fixedSize: const Size(350, 60),
               ),
               child: const Text(
-                '決定して次へ',
+                '次へ',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -391,23 +385,16 @@ class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
           child: Center(
             child: ElevatedButton(
               onPressed: () async {
-                await run(
-                  ref,
-                  action: () async {
-                    await ref
-                        .read(registerDepressionMoodWorksheetUsecaseProvider)
-                        .execute(
-                          minus_1: minus1TextController.text,
-                          minus_2: minus2TextController.text,
-                          minus_3: minus3TextController.text,
-                          minus_4: minus4TextController.text,
-                          minus_5: minus5TextController.text,
-                        );
-                    // ignore: use_build_context_synchronously
-                    PageNavigator.popUntilRoot(context);
-                  },
-                  successMessage: '鬱状態の気分値目安を登録しました',
-                );
+                ref.read(selfInputDepressionProvider.notifier).update(
+                      (_) => (
+                        minus1TextController.text,
+                        minus2TextController.text,
+                        minus3TextController.text,
+                        minus4TextController.text,
+                        minus5TextController.text,
+                      ),
+                    );
+                PageNavigator.push(context, const RegisterDiagnosisPage());
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.green,
@@ -415,7 +402,7 @@ class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
                 fixedSize: const Size(350, 60),
               ),
               child: const Text(
-                '決定して次へ',
+                '次へ',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
