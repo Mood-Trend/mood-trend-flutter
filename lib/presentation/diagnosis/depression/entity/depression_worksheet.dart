@@ -19,11 +19,11 @@ class DepressionWorksheetFactory {
   /// [DepressionType] に応じた [DepressionWorksheet] を生成する
   static DepressionWorksheet create(
     DepressionType type, [
-    String minus_1 = '',
-    String minus_2 = '',
-    String minus_3 = '',
-    String minus_4 = '',
-    String minus_5 = '',
+    String? minus_1,
+    String? minus_2,
+    String? minus_3,
+    String? minus_4,
+    String? minus_5,
   ]) {
     switch (type) {
       case DepressionType.melancholy:
@@ -34,11 +34,11 @@ class DepressionWorksheetFactory {
         return _SleepDisordersTypeWorksheet();
       case DepressionType.other:
         return _OtherDepressionTypeWorksheet(
-          minus_1: minus_1,
-          minus_2: minus_2,
-          minus_3: minus_3,
-          minus_4: minus_4,
-          minus_5: minus_5,
+          minus_1: minus_1 ?? '',
+          minus_2: minus_2 ?? '',
+          minus_3: minus_3 ?? '',
+          minus_4: minus_4 ?? '',
+          minus_5: minus_5 ?? '',
         );
       default:
         throw AppException('Unsupported ManicType: $type');

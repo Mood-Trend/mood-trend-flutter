@@ -18,11 +18,11 @@ enum ManicType {
 class ManicWorksheetFactory {
   static ManicWorksheet create(
     ManicType type, [
-    String plus_1 = '',
-    String plus_2 = '',
-    String plus_3 = '',
-    String plus_4 = '',
-    String plus_5 = '',
+    String? plus_1,
+    String? plus_2,
+    String? plus_3,
+    String? plus_4,
+    String? plus_5,
   ]) {
     switch (type) {
       case ManicType.idea:
@@ -33,11 +33,11 @@ class ManicWorksheetFactory {
         return _ActivityTypeWorksheet();
       case ManicType.other:
         return _OtherManicTypeWorksheet(
-          plus_1: plus_1,
-          plus_2: plus_2,
-          plus_3: plus_3,
-          plus_4: plus_4,
-          plus_5: plus_5,
+          plus_1: plus_1 ?? '',
+          plus_2: plus_2 ?? '',
+          plus_3: plus_3 ?? '',
+          plus_4: plus_4 ?? '',
+          plus_5: plus_5 ?? '',
         );
       default:
         throw AppException('Unsupported ManicType: $type');
