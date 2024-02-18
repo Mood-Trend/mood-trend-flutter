@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/application/diagnosis/register_mood_worksheet_usecase.dart';
 import 'package:mood_trend_flutter/presentation/common/error_handler_mixin.dart';
-import 'package:mood_trend_flutter/presentation/common/setting_page.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/register_manic_entity_provider.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/table_page.dart';
 
@@ -243,14 +242,6 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
                     context,
                     predicate: (_) => count++ >= popCount,
                   );
-                  // if (ref.read(isSettingPageProvider)) {
-                  //   // 設定画面から遷移してきた場合は設定画面に戻る
-                  //   await PageNavigator.popUntilRoot(context);
-                  //   await PageNavigator.push(context, const SettingPage());
-                  // } else {
-                  //   // それ以外の場合はルート画面まで戻る
-                  //   await PageNavigator.popUntilRoot(context);
-                  // }
                   popCount = 0;
                 }, successMessage: '気分値目安表の登録が完了しました');
               },
