@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:mood_trend_flutter/application/graph/add_mood_point_usecase.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/register_diagnosis_page.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/page_navigator.dart';
@@ -155,7 +154,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                 padding: const EdgeInsets.fromLTRB(18, 56, 18, 0),
                 child: IconButton(
                   onPressed: () {
-                    popCount++;
                     PageNavigator.push(
                       context,
                       const TablePage(),
