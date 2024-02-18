@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/register_diagnosis_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 
 import '../../application/diagnosis/states/subscribe_mood_work_sheet_provider.dart';
@@ -231,6 +232,7 @@ class TablePage extends ConsumerWidget {
                     fixedSize: const Size(330, 60),
                   ),
                   onPressed: () {
+                    popCount++;
                     PageNavigator.push(context, const ManicTypeDiagnosisPage());
                   },
                   child: const Text(

@@ -201,6 +201,7 @@ class _SelfInputForManic extends ConsumerWidget with ErrorHandlerMixin {
                         plus5TextController.text,
                       ),
                     );
+                popCount++;
                 PageNavigator.push(
                   context,
                   const DepressionTypeDignosisPage(),
@@ -394,6 +395,7 @@ class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
                         minus5TextController.text,
                       ),
                     );
+                popCount++;
                 PageNavigator.push(context, const RegisterDiagnosisPage());
               },
               style: ElevatedButton.styleFrom(

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/application/diagnosis/register_mood_worksheet_usecase.dart';
@@ -6,6 +8,7 @@ import 'package:mood_trend_flutter/presentation/diagnosis/manic/register_manic_e
 import 'package:mood_trend_flutter/presentation/diagnosis/table_page.dart';
 
 import '../../utils/app_colors.dart';
+import '../../utils/page_navigator.dart';
 import 'components/worksheet_table_cell.dart';
 import 'depression/register_depression_entity_provider.dart';
 
@@ -13,6 +16,7 @@ import 'depression/register_depression_entity_provider.dart';
 final selectedMoodButtonStateProvider = StateProvider<MoodState>(
   (_) => MoodState.manic,
 );
+int popCount = 0;
 
 /// 気分値目安表登録画面
 class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
@@ -217,7 +221,7 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
                 fixedSize: const Size(330, 60),
               ),
               onPressed: () async {
-                run(ref, action: () async {
+                await run(ref, action: () async {
                   await ref.read(registerMoodWorksheetUsecaseProvider).execute(
                         minus_5: registerDepressionWorksheet.minus_5,
                         minus_4: registerDepressionWorksheet.minus_4,
@@ -230,6 +234,12 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
                         plus_4: registerManicWorksheet.plus_4,
                         plus_5: registerManicWorksheet.plus_5,
                       );
+                  int count = 0;
+                  await PageNavigator.popUntil(
+                    context,
+                    predicate: (_) => count++ >= popCount,
+                  );
+                  popCount = 0;
                 }, successMessage: '気分値目安表の登録が完了しました');
               },
               child: const Text(
