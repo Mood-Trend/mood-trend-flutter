@@ -16,9 +16,6 @@ import 'depression/register_depression_entity_provider.dart';
 final selectedMoodButtonStateProvider = StateProvider<MoodState>(
   (_) => MoodState.manic,
 );
-
-/// 呼び出し元画面を判別するために値を保持する [StateProvider]
-final isSettingPageProvider = StateProvider<bool>((_) => false);
 int popCount = 0;
 
 /// 気分値目安表登録画面

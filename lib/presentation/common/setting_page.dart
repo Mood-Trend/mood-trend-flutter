@@ -44,7 +44,6 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
           ),
           GestureDetector(
             onTap: () {
-              ref.read(isSettingPageProvider.notifier).update((_) => true);
               popCount++;
               PageNavigator.push(context, const ManicTypeDiagnosisPage());
             },
