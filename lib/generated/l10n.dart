@@ -590,20 +590,20 @@ class S {
     );
   }
 
-  /// `Decreased Cognitive Function`
+  /// `Decreased\nCognitive Function`
   String get typePoorThinking {
     return Intl.message(
-      'Decreased Cognitive Function',
+      'Decreased\nCognitive Function',
       name: 'typePoorThinking',
       desc: '',
       args: [],
     );
   }
 
-  /// `Sleep Disorder`
+  /// `Sleep\nDisorder`
   String get typeSleepDisorder {
     return Intl.message(
-      'Sleep Disorder',
+      'Sleep\nDisorder',
       name: 'typeSleepDisorder',
       desc: '',
       args: [],

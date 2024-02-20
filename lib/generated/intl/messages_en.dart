@@ -166,9 +166,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "typeMelancholy": MessageLookupByLibrary.simpleMessage("Melancholy"),
         "typeOther": MessageLookupByLibrary.simpleMessage("Custom"),
         "typePoorThinking": MessageLookupByLibrary.simpleMessage(
-            "Decreased Cognitive Function"),
+            "Decreased\nCognitive Function"),
         "typeSleepDisorder":
-            MessageLookupByLibrary.simpleMessage("Sleep Disorder"),
+            MessageLookupByLibrary.simpleMessage("Sleep\nDisorder"),
         "typeSuggestion": MessageLookupByLibrary.simpleMessage("Suggestions")
       };
 }

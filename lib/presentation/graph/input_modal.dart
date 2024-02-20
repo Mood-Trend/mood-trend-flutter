@@ -233,7 +233,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
         final formattedDate = DateFormat('yyyy/MM/dd').format(date);
         return AlertDialog(
           // 対象日付には既に登録されている旨のメッセージを表示
-          title: Text('${formattedDate}${S.of(context).inputDepression}'),
+          title: Text('$formattedDate${S.of(context).inputDepression}'),
           content: Text(S.of(context).inputOverwritingQuestion),
           actions: [
             TextButton(

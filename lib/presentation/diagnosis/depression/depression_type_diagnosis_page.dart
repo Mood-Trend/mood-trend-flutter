@@ -73,7 +73,7 @@ class DepressionTypeDiagnosisPage extends ConsumerWidget {
                     style: buttonStyle(DepressionType.melancholy),
                     child: Text(
                       S.of(context).typeMelancholy,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 18,
                       ),
