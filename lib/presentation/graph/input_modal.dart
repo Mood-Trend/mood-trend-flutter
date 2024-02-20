@@ -153,10 +153,12 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
               Padding(
                 padding: const EdgeInsets.fromLTRB(18, 56, 18, 0),
                 child: IconButton(
-                  onPressed: () => PageNavigator.push(
-                    context,
-                    const TablePage(),
-                  ),
+                  onPressed: () {
+                    PageNavigator.push(
+                      context,
+                      const TablePage(),
+                    );
+                  },
                   icon: Icon(
                     Icons.align_horizontal_left,
                     color: AppColors.green,

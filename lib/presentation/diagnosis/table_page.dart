@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/register_diagnosis_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 
 import '../../application/diagnosis/states/subscribe_mood_work_sheet_provider.dart';
 import '../../utils/page_navigator.dart';
+import 'components/worksheet_table_cell.dart';
 import 'manic/manic_type_diagnosis_page.dart';
 
 /// [MoodState] は、気分値目安表の状態を表す
@@ -52,30 +54,6 @@ class TablePage extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextButton(
-                        onPressed: () {
-                          ref
-                              .read(selectedMoodButtonStateProvider.notifier)
-                              .update(
-                                (_) => MoodState.depression,
-                              );
-                        },
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                                ref.watch(selectedMoodButtonStateProvider) ==
-                                        MoodState.depression
-                                    ? AppColors.green
-                                    : Colors.transparent)),
-                        child: Text(
-                          "鬱状態",
-                          style: TextStyle(
-                              color:
-                                  ref.watch(selectedMoodButtonStateProvider) ==
-                                          MoodState.depression
-                                      ? AppColors.white
-                                      : AppColors.black,
-                              fontSize: 20),
-                        )),
-                    TextButton(
                       onPressed: () {
                         ref
                             .read(selectedMoodButtonStateProvider.notifier)
@@ -102,6 +80,30 @@ class TablePage extends ConsumerWidget {
                         ),
                       ),
                     ),
+                    TextButton(
+                      onPressed: () {
+                        ref
+                            .read(selectedMoodButtonStateProvider.notifier)
+                            .update(
+                              (_) => MoodState.depression,
+                            );
+                      },
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              ref.watch(selectedMoodButtonStateProvider) ==
+                                      MoodState.depression
+                                  ? AppColors.green
+                                  : Colors.transparent)),
+                      child: Text(
+                        "鬱状態",
+                        style: TextStyle(
+                            color: ref.watch(selectedMoodButtonStateProvider) ==
+                                    MoodState.depression
+                                ? AppColors.white
+                                : AppColors.black,
+                            fontSize: 20),
+                      ),
+                    ),
                   ],
                 ),
                 Expanded(
@@ -119,7 +121,7 @@ class TablePage extends ConsumerWidget {
                               ref.watch(selectedMoodButtonStateProvider) ==
                                       MoodState.manic
                                   ? [
-                                      TableCell(
+                                      WorksheetTableCell(
                                         moodValue: '+5',
                                         actionText: worksheet.plus_5,
                                       ),
@@ -130,7 +132,7 @@ class TablePage extends ConsumerWidget {
                                         endIndent: 16,
                                         color: AppColors.white,
                                       ),
-                                      TableCell(
+                                      WorksheetTableCell(
                                         moodValue: '+4',
                                         actionText: worksheet.plus_4,
                                       ),
@@ -141,7 +143,7 @@ class TablePage extends ConsumerWidget {
                                         endIndent: 16,
                                         color: AppColors.white,
                                       ),
-                                      TableCell(
+                                      WorksheetTableCell(
                                         moodValue: '+3',
                                         actionText: worksheet.plus_3,
                                       ),
@@ -152,7 +154,7 @@ class TablePage extends ConsumerWidget {
                                         endIndent: 16,
                                         color: AppColors.white,
                                       ),
-                                      TableCell(
+                                      WorksheetTableCell(
                                         moodValue: '+2',
                                         actionText: worksheet.plus_2,
                                       ),
@@ -163,13 +165,13 @@ class TablePage extends ConsumerWidget {
                                         endIndent: 16,
                                         color: AppColors.white,
                                       ),
-                                      TableCell(
+                                      WorksheetTableCell(
                                         moodValue: '+1',
                                         actionText: worksheet.plus_1,
                                       ),
                                     ]
                                   : [
-                                      TableCell(
+                                      WorksheetTableCell(
                                         moodValue: '-1',
                                         actionText: worksheet.minus_1,
                                       ),
@@ -180,7 +182,7 @@ class TablePage extends ConsumerWidget {
                                         endIndent: 16,
                                         color: AppColors.white,
                                       ),
-                                      TableCell(
+                                      WorksheetTableCell(
                                         moodValue: '-2',
                                         actionText: worksheet.minus_2,
                                       ),
@@ -191,7 +193,7 @@ class TablePage extends ConsumerWidget {
                                         endIndent: 16,
                                         color: AppColors.white,
                                       ),
-                                      TableCell(
+                                      WorksheetTableCell(
                                         moodValue: '-3',
                                         actionText: worksheet.minus_3,
                                       ),
@@ -202,7 +204,7 @@ class TablePage extends ConsumerWidget {
                                         endIndent: 16,
                                         color: AppColors.white,
                                       ),
-                                      TableCell(
+                                      WorksheetTableCell(
                                         moodValue: '-4',
                                         actionText: worksheet.minus_4,
                                       ),
@@ -213,7 +215,7 @@ class TablePage extends ConsumerWidget {
                                         endIndent: 16,
                                         color: AppColors.white,
                                       ),
-                                      TableCell(
+                                      WorksheetTableCell(
                                         moodValue: '-5',
                                         actionText: worksheet.minus_5,
                                       ),
@@ -230,6 +232,7 @@ class TablePage extends ConsumerWidget {
                     fixedSize: const Size(330, 60),
                   ),
                   onPressed: () {
+                    popCount++;
                     PageNavigator.push(context, const ManicTypeDiagnosisPage());
                   },
                   child: const Text(
@@ -248,56 +251,6 @@ class TablePage extends ConsumerWidget {
           ),
         );
       },
-    );
-  }
-}
-
-/// 気分値目安表のセル
-class TableCell extends StatelessWidget {
-  const TableCell({
-    super.key,
-    required this.moodValue,
-    required this.actionText,
-  });
-  final String moodValue;
-  final String actionText;
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Text(
-            moodValue,
-            style: const TextStyle(fontSize: 24),
-          ),
-        ),
-        Expanded(
-          child: SizedBox(
-            // これがないと文字数が多い時にUIが崩れる
-            height: 80,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Center(
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        textAlign: TextAlign.left,
-                        actionText,
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: AppColors.black,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
