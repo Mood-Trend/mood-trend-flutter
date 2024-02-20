@@ -152,7 +152,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(18, 56, 18, 0),
+                padding: const EdgeInsets.fromLTRB(15, 56, 15, 0),
                 child: IconButton(
                   onPressed: () {
                     PageNavigator.push(
@@ -187,7 +187,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 56, 16, 0),
+                padding: const EdgeInsets.fromLTRB(0, 56, 15, 0),
                 child: TextButton(
                   onPressed: () async {
                     run(

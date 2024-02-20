@@ -480,10 +480,10 @@ class S {
     );
   }
 
-  /// `Start setting up the Mood Value Reference Table`
+  /// `Start Editing`
   String get tableStartEdit {
     return Intl.message(
-      'Start setting up the Mood Value Reference Table',
+      'Start Editing',
       name: 'tableStartEdit',
       desc: '',
       args: [],
@@ -968,6 +968,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
       Locale.fromSubtags(languageCode: 'ja'),
+      Locale.fromSubtags(languageCode: 'zh'),
     ];
   }
 

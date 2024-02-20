@@ -43,7 +43,7 @@
     "inputOverwriting": "Overwrite",
     "depression": "Depressive State",
     "manic": "Manic State",
-    "tableStartEdit": "Start setting up the Mood Value Reference Table",
+    "tableStartEdit": "Start Editing",
     "inputDepression": "Enter symptoms of depression",
     "inputManic": "Enter symptoms of mania",
     "inputRequest": "Please enter symptoms",

@@ -144,8 +144,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Constantly in a severe state of insomnia, strong fatigue during the day. Alternatively, spending most of the day sleeping"),
         "table":
             MessageLookupByLibrary.simpleMessage("Mood Value Reference Table"),
-        "tableStartEdit": MessageLookupByLibrary.simpleMessage(
-            "Start setting up the Mood Value Reference Table"),
+        "tableStartEdit": MessageLookupByLibrary.simpleMessage("Start Editing"),
         "thinkMinus_1": MessageLookupByLibrary.simpleMessage(
             "Sometimes feel a bit reluctant to think about things"),
         "thinkMinus_2":

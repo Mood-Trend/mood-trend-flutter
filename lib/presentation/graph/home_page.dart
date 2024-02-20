@@ -180,7 +180,7 @@ class HomePage extends ConsumerWidget {
                   series: <ChartSeries>[
                     // 塗りつぶす部分を描画するためのエリアチャート
                     LineSeries<MoodPoint, DateTime>(
-                      name: '気分値', // 凡例の名前
+                      name: S.of(context).moodValue, // 凡例の名前
                       dataSource: moodPoints,
                       xValueMapper: (MoodPoint value, _) =>
                           value.moodDate.toDateOnly(),
@@ -190,7 +190,7 @@ class HomePage extends ConsumerWidget {
                       // borderDrawMode: RangeAreaBorderMode.excludeSides,
                     ),
                     LineSeries<MoodPoint, DateTime>(
-                      name: '予定数', // 凡例の名前
+                      name: S.of(context).plannedVolume, // 凡例の名前
                       dataSource: moodPoints,
                       xValueMapper: (MoodPoint value, _) =>
                           value.moodDate.toDateOnly(),
