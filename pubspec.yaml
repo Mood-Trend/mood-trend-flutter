@@ -22,12 +22,12 @@ dependencies:
   hooks_riverpod: ^2.4.4
   flutter_hooks: ^0.20.3
   google_fonts: ^6.1.0
-  flutter_localization: ^0.1.14
+  flutter_localization: ^0.2.0
   gap: ^3.0.1
   url_launcher: ^6.1.14
   hexcolor: ^3.0.1
   syncfusion_flutter_charts: ^23.1.44
-  intl: ^0.18.0
+  intl: ^0.18.1
   flutter_overboard: ^3.1.1
   shared_preferences: ^2.2.2
 

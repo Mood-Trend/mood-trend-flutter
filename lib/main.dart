@@ -70,6 +70,8 @@ class App extends ConsumerWidget {
       ],
       supportedLocales: const [
         Locale('ja', 'JP'),
+        Locale('en', 'US'),
+        Locale('zh', 'CN'),
       ],
       debugShowCheckedModeBanner: false,
       home: const RootPage(),

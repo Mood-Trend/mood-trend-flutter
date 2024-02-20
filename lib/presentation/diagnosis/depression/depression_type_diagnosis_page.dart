@@ -156,7 +156,7 @@ class DepressionTypeDignosisPage extends ConsumerWidget {
                 fixedSize: const Size(300, 60),
               ),
               child: const Text(
-                '同意して次へ',
+                '次へ',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,

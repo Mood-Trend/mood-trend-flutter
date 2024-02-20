@@ -74,7 +74,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
               color: AppColors.green,
             ),
             label: Text(
-              "${date.year.toString()}年${date.month.toString().padLeft(2)}月${date.day.toString().padLeft(2)}日",
+              DateFormat('yyyy/MM/dd').format(date),
               style: TextStyle(
                 color: AppColors.black,
               ),
@@ -227,7 +227,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
     await showDialog(
       context: context,
       builder: (context) {
-        final formattedDate = DateFormat('yyyy年M月d日').format(date);
+        final formattedDate = DateFormat('yyyy/MM/dd').format(date);
         return AlertDialog(
           // 対象日付には既に登録されている旨のメッセージを表示
           title: Text('$formattedDateには既に登録されています'),

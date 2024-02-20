@@ -218,7 +218,7 @@ class _SelfInputForManic extends ConsumerWidget with ErrorHandlerMixin {
                 fixedSize: const Size(350, 60),
               ),
               child: const Text(
-                '決定して次へ',
+                '次へ',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -412,7 +412,7 @@ class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
                   fixedSize: const Size(350, 60),
                 ),
                 child: const Text(
-                  '決定して次へ',
+                  '次へ',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,

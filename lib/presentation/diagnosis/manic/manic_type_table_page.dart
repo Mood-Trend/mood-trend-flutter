@@ -133,7 +133,7 @@ class ManicTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                 );
               },
               child: const Text(
-                '同意して次へ',
+                '次へ',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
