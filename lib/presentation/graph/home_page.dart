@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:mood_trend_flutter/domain/mood_point.dart';
+import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/common/setting_page.dart';
@@ -83,7 +84,7 @@ class HomePage extends ConsumerWidget {
                   .read(selectedTermProvider.notifier)
                   .update((state) => Term.year),
               style: buttonStyle(Term.year),
-              child: const Text('1年'),
+              child: Text(S.of(context).homeYear),
             ),
             const SizedBox(width: 10),
             TextButton(
@@ -91,7 +92,7 @@ class HomePage extends ConsumerWidget {
                   .read(selectedTermProvider.notifier)
                   .update((state) => Term.halfYear),
               style: buttonStyle(Term.halfYear),
-              child: const Text('半年'),
+              child: Text(S.of(context).homeHalfYear),
             ),
             const SizedBox(width: 10),
             TextButton(
@@ -99,7 +100,7 @@ class HomePage extends ConsumerWidget {
                   .read(selectedTermProvider.notifier)
                   .update((state) => Term.month),
               style: buttonStyle(Term.month),
-              child: const Text('1ヶ月'),
+              child: Text(S.of(context).homeMonth),
             ),
           ],
         ),
@@ -142,7 +143,8 @@ class HomePage extends ConsumerWidget {
                   legend: const Legend(isVisible: true), // 凡例の表示
                   backgroundColor: AppColors.white,
                   primaryXAxis: DateTimeAxis(
-                    dateFormat: DateFormat('MM/dd', 'ja_JP'),
+                    dateFormat: DateFormat(
+                        'MM/dd', Localizations.localeOf(context).languageCode),
                     visibleMinimum: ref.watch(visibleMinimumProvider),
                     visibleMaximum: ref.watch(visibleMaximumProvider),
                   ),

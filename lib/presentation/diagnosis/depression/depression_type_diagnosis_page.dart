@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/self_input_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
@@ -14,8 +15,8 @@ final selectedDepressionTypeProvider =
 );
 
 /// 鬱のタイプの診断画面
-class DepressionTypeDignosisPage extends ConsumerWidget {
-  const DepressionTypeDignosisPage({super.key});
+class DepressionTypeDiagnosisPage extends ConsumerWidget {
+  const DepressionTypeDiagnosisPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -49,9 +50,9 @@ class DepressionTypeDignosisPage extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'あなたの鬱のタイプは？',
-              style: TextStyle(
+            Text(
+              S.of(context).typeDepression,
+              style: const TextStyle(
                 fontSize: 26,
               ),
             ),
@@ -70,8 +71,8 @@ class DepressionTypeDignosisPage extends ConsumerWidget {
                           );
                     },
                     style: buttonStyle(DepressionType.melancholy),
-                    child: const Text(
-                      '憂鬱',
+                    child: Text(
+                      S.of(context).typeMelancholy,
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 18,
@@ -88,9 +89,9 @@ class DepressionTypeDignosisPage extends ConsumerWidget {
                             .update((_) => DepressionType.poorThinking);
                       },
                       style: buttonStyle(DepressionType.poorThinking),
-                      child: const Text(
-                        '思考力\n低下',
-                        style: TextStyle(
+                      child: Text(
+                        S.of(context).typePoorThinking,
+                        style: const TextStyle(
                           color: Colors.black,
                           fontSize: 18,
                         ),
@@ -110,9 +111,9 @@ class DepressionTypeDignosisPage extends ConsumerWidget {
                             .update((_) => DepressionType.sleepDisorders);
                       },
                       style: buttonStyle(DepressionType.sleepDisorders),
-                      child: const Text(
-                        '睡眠障害',
-                        style: TextStyle(
+                      child: Text(
+                        S.of(context).typeSleepDisorder,
+                        style: const TextStyle(
                           color: Colors.black,
                           fontSize: 18,
                         ),
@@ -127,9 +128,9 @@ class DepressionTypeDignosisPage extends ConsumerWidget {
                           );
                     },
                     style: buttonStyle(DepressionType.other),
-                    child: const Text(
-                      '独自に\n入力',
-                      style: TextStyle(
+                    child: Text(
+                      S.of(context).typeOther,
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 18,
                       ),
@@ -157,9 +158,9 @@ class DepressionTypeDignosisPage extends ConsumerWidget {
                 foregroundColor: AppColors.white,
                 fixedSize: const Size(300, 60),
               ),
-              child: const Text(
-                '次へ',
-                style: TextStyle(
+              child: Text(
+                S.of(context).next,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),

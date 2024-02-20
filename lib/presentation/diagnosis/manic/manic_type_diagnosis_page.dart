@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/self_input_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
@@ -47,9 +48,9 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'あなたの躁のタイプは？',
-              style: TextStyle(
+            Text(
+              S.of(context).typeManic,
+              style: const TextStyle(
                 fontSize: 26,
               ),
             ),
@@ -68,9 +69,9 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
                           );
                     },
                     style: buttonStyle(ManicType.idea),
-                    child: const Text(
-                      'アイデア',
-                      style: TextStyle(
+                    child: Text(
+                      S.of(context).typeIdea,
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 18,
                       ),
@@ -86,9 +87,9 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
                             );
                       },
                       style: buttonStyle(ManicType.elation),
-                      child: const Text(
-                        '気分高揚',
-                        style: TextStyle(
+                      child: Text(
+                        S.of(context).typeElation,
+                        style: const TextStyle(
                           color: Colors.black,
                           fontSize: 18,
                         ),
@@ -108,9 +109,9 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
                             );
                       },
                       style: buttonStyle(ManicType.activity),
-                      child: const Text(
-                        '活動性',
-                        style: TextStyle(
+                      child: Text(
+                        S.of(context).typeActivity,
+                        style: const TextStyle(
                           color: Colors.black,
                           fontSize: 18,
                         ),
@@ -125,9 +126,9 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
                           );
                     },
                     style: buttonStyle(ManicType.other),
-                    child: const Text(
-                      '独自に\n入力',
-                      style: TextStyle(
+                    child: Text(
+                      S.of(context).typeOther,
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 18,
                       ),
@@ -154,9 +155,9 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
                 foregroundColor: AppColors.white,
                 fixedSize: const Size(300, 60),
               ),
-              child: const Text(
-                '次へ',
-                style: TextStyle(
+              child: Text(
+                S.of(context).next,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),

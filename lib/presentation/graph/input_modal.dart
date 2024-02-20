@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:mood_trend_flutter/application/graph/add_mood_point_usecase.dart';
+import 'package:mood_trend_flutter/generated/l10n.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/page_navigator.dart';
@@ -116,9 +117,9 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
             children: [
               Row(
                 children: [
-                  const Text(
-                    '気分値',
-                    style: TextStyle(fontSize: 24),
+                  Text(
+                    S.of(context).moodValue,
+                    style: const TextStyle(fontSize: 24),
                   ),
                   SizedBox(
                     width: 75,
@@ -167,9 +168,9 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
               ),
               Row(
                 children: [
-                  const Text(
-                    '予定数',
-                    style: TextStyle(fontSize: 24),
+                  Text(
+                    S.of(context).plannedVolume,
+                    style: const TextStyle(fontSize: 24),
                   ),
                   SizedBox(
                     width: 75,
@@ -203,11 +204,11 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                         if (!result) return _showConfirmDialog(date: date);
                         Navigator.pop(context);
                       },
-                      successMessage: '気分値と予定数の登録が完了しました',
+                      successMessage: S.of(context).inputSuccess,
                     );
                   },
                   child: Text(
-                    '保存',
+                    S.of(context).inputSave,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: AppColors.green,
@@ -232,14 +233,14 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
         final formattedDate = DateFormat('yyyy/MM/dd').format(date);
         return AlertDialog(
           // 対象日付には既に登録されている旨のメッセージを表示
-          title: Text('$formattedDateには既に登録されています'),
-          content: const Text('上書きしてもよろしいですか？'),
+          title: Text('${formattedDate}${S.of(context).inputDepression}'),
+          content: Text(S.of(context).inputOverwritingQuestion),
           actions: [
             TextButton(
               onPressed: () {
                 PageNavigator.pop(context);
               },
-              child: const Text('キャンセル'),
+              child: Text(S.of(context).cancel),
             ),
             TextButton(
               onPressed: () async {
@@ -250,7 +251,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                     );
                 Navigator.pop(context);
               },
-              child: const Text('上書き'),
+              child: Text(S.of(context).inputOverwriting),
             ),
           ],
         );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/depression/depression_type_diagnosis_page.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/register_manic_entity_provider.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/register_diagnosis_page.dart';
@@ -50,9 +51,9 @@ class _SelfInputForManic extends ConsumerWidget with ErrorHandlerMixin {
     final TextEditingController plus5TextController = TextEditingController();
 
     return Column(children: [
-      const Text(
-        '躁の症状を入力',
-        style: TextStyle(
+      Text(
+        S.of(context).inputManic,
+        style: const TextStyle(
           fontSize: 26,
         ),
       ),
@@ -70,7 +71,7 @@ class _SelfInputForManic extends ConsumerWidget with ErrorHandlerMixin {
       TextFormField(
         controller: plus5TextController,
         decoration: InputDecoration(
-          labelText: '症状を入力してください',
+          labelText: S.of(context).inputRequest,
           border: OutlineInputBorder(
             borderSide: BorderSide(
               color: AppColors.lightGrey,
@@ -96,7 +97,7 @@ class _SelfInputForManic extends ConsumerWidget with ErrorHandlerMixin {
       TextFormField(
         controller: plus4TextController,
         decoration: InputDecoration(
-          labelText: '症状を入力してください',
+          labelText: S.of(context).inputRequest,
           border: OutlineInputBorder(
             borderSide: BorderSide(
               color: AppColors.lightGrey,
@@ -122,7 +123,7 @@ class _SelfInputForManic extends ConsumerWidget with ErrorHandlerMixin {
       TextFormField(
         controller: plus3TextController,
         decoration: InputDecoration(
-          labelText: '症状を入力してください',
+          labelText: S.of(context).inputRequest,
           border: OutlineInputBorder(
             borderSide: BorderSide(
               color: AppColors.lightGrey,
@@ -148,7 +149,7 @@ class _SelfInputForManic extends ConsumerWidget with ErrorHandlerMixin {
       TextFormField(
         controller: plus2TextController,
         decoration: InputDecoration(
-          labelText: '症状を入力してください',
+          labelText: S.of(context).inputRequest,
           border: OutlineInputBorder(
             borderSide: BorderSide(
               color: AppColors.lightGrey,
@@ -174,7 +175,7 @@ class _SelfInputForManic extends ConsumerWidget with ErrorHandlerMixin {
       TextFormField(
         controller: plus1TextController,
         decoration: InputDecoration(
-          labelText: '症状を入力してください',
+          labelText: S.of(context).inputRequest,
           border: OutlineInputBorder(
             borderSide: BorderSide(
               color: AppColors.lightGrey,
@@ -204,7 +205,7 @@ class _SelfInputForManic extends ConsumerWidget with ErrorHandlerMixin {
                 popCount++;
                 PageNavigator.push(
                   context,
-                  const DepressionTypeDignosisPage(),
+                  const DepressionTypeDiagnosisPage(),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -242,9 +243,9 @@ class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        const Text(
-          '鬱の症状を入力',
-          style: TextStyle(
+        Text(
+          S.of(context).inputDepression,
+          style: const TextStyle(
             fontSize: 26,
           ),
         ),
@@ -264,7 +265,7 @@ class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
             TextFormField(
               controller: minus1TextController,
               decoration: InputDecoration(
-                labelText: '症状を入力してください',
+                labelText: S.of(context).inputRequest,
                 border: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: AppColors.lightGrey,
@@ -290,7 +291,7 @@ class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
             TextFormField(
               controller: minus2TextController,
               decoration: InputDecoration(
-                labelText: '症状を入力してください',
+                labelText: S.of(context).inputRequest,
                 border: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: AppColors.lightGrey,
@@ -316,7 +317,7 @@ class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
             TextFormField(
               controller: minus3TextController,
               decoration: InputDecoration(
-                labelText: '症状を入力してください',
+                labelText: S.of(context).inputRequest,
                 border: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: AppColors.lightGrey,
@@ -342,7 +343,7 @@ class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
             TextFormField(
               controller: minus4TextController,
               decoration: InputDecoration(
-                labelText: '症状を入力してください',
+                labelText: S.of(context).inputRequest,
                 border: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: AppColors.lightGrey,
@@ -368,7 +369,7 @@ class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
             TextFormField(
               controller: minus5TextController,
               decoration: InputDecoration(
-                labelText: '症状を入力してください',
+                labelText: S.of(context).inputRequest,
                 border: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: AppColors.lightGrey,
@@ -403,9 +404,9 @@ class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
                 foregroundColor: AppColors.white,
                 fixedSize: const Size(350, 60),
               ),
-              child: const Text(
-                '次へ',
-                style: TextStyle(
+              child: Text(
+                S.of(context).next,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),

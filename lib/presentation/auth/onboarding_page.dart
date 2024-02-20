@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_overboard/flutter_overboard.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 
 import '../../application/auth/signin_anonymously_usecase.dart';
@@ -13,9 +14,9 @@ class OnboardingPage extends ConsumerWidget with ErrorHandlerMixin {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: OverBoard(
-        skipText: "スキップ",
-        nextText: "　つぎへ",
-        finishText: "はじめる",
+        skipText: S.of(context).onboardingSkip,
+        nextText: S.of(context).onboardingNext,
+        finishText: S.of(context).onboardingStart,
         allowScroll: true,
         buttonColor: AppColors.black,
         activeBulletColor: AppColors.black,
@@ -26,8 +27,8 @@ class OnboardingPage extends ConsumerWidget with ErrorHandlerMixin {
             bodyColor: AppColors.black,
             color: AppColors.white,
             imageAssetPath: 'assets/logo.png',
-            title: 'ようこそ',
-            body: '気分を記録し、穏やかな日々をサポートします',
+            title: S.of(context).onboardingTitleFirst,
+            body: S.of(context).onboardingBodyFirst,
             doAnimateImage: true,
           ),
           PageModel(
@@ -35,8 +36,8 @@ class OnboardingPage extends ConsumerWidget with ErrorHandlerMixin {
             bodyColor: AppColors.black,
             color: AppColors.white,
             imageAssetPath: 'assets/graph.png',
-            title: '気分を記録',
-            body: '積み重ねてグラフで確認',
+            title: S.of(context).onboardingTitleSecond,
+            body: S.of(context).onboardingBodySecond,
             doAnimateImage: true,
           ),
           PageModel(
@@ -44,8 +45,8 @@ class OnboardingPage extends ConsumerWidget with ErrorHandlerMixin {
             bodyColor: AppColors.black,
             color: AppColors.white,
             imageAssetPath: 'assets/table.png',
-            title: '気分値目安表',
-            body: '編集して自分専用の表を作ろう',
+            title: S.of(context).onboardingTitleThird,
+            body: S.of(context).onboardingBodyThird,
             doAnimateImage: true,
           ),
         ],
@@ -62,7 +63,7 @@ class OnboardingPage extends ConsumerWidget with ErrorHandlerMixin {
       ref,
       action: () async =>
           await ref.read(signinAnonymouslyUsecaseProvider).execute(),
-      successMessage: '気分グラフへようこそ！',
+      successMessage: S.of(context).onboardingWelcome,
     );
   }
 }
