@@ -33,7 +33,7 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
               selectedManicType == manicType ? AppColors.green : AppColors.grey,
           width: 1,
         ),
-        fixedSize: const Size(130, 130),
+        fixedSize: const Size(145, 145),
         foregroundColor: AppColors.black,
         splashFactory: NoSplash.splashFactory,
       );
@@ -137,29 +137,30 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 80,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                popCount++;
-                PageNavigator.push(
-                  context,
-                  ref.read(selectedManicTypeProvider) == ManicType.other
-                      ? const SelfInputPage(isManic: true)
-                      : const ManicTypeTablePage(),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.green,
-                foregroundColor: AppColors.white,
-                fixedSize: const Size(300, 60),
-              ),
-              child: Text(
-                S.of(context).next,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+            Flexible(
+              child: Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    popCount++;
+                    PageNavigator.push(
+                      context,
+                      ref.read(selectedManicTypeProvider) == ManicType.other
+                          ? const SelfInputPage(isManic: true)
+                          : const ManicTypeTablePage(),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.green,
+                    foregroundColor: AppColors.white,
+                    fixedSize: const Size(300, 60),
+                  ),
+                  child: Text(
+                    S.of(context).next,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
             ),

@@ -57,9 +57,6 @@ class _SelfInputForManic extends ConsumerWidget with ErrorHandlerMixin {
           fontSize: 26,
         ),
       ),
-      const SizedBox(
-        height: 32,
-      ),
       const Row(
         children: [
           Text(
@@ -213,9 +210,9 @@ class _SelfInputForManic extends ConsumerWidget with ErrorHandlerMixin {
                 foregroundColor: AppColors.white,
                 fixedSize: const Size(350, 60),
               ),
-              child: const Text(
-                '次へ',
-                style: TextStyle(
+              child: Text(
+                S.of(context).next,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -248,9 +245,6 @@ class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
           style: const TextStyle(
             fontSize: 26,
           ),
-        ),
-        const SizedBox(
-          height: 8,
         ),
         Column(
           children: [
