@@ -43,7 +43,7 @@
     "inputOverwriting": "덮어쓰기",
     "depression": "우울 상태",
     "manic": "만성 상태",
-    "tableStartEdit": "기분 값 참고 표 설정 시작",
+    "tableStartEdit": "편집 시작",
     "inputDepression": "우울증 증상 입력",
     "inputManic": "만성증 증상 입력",
     "inputRequest": "증상을 입력하세요",

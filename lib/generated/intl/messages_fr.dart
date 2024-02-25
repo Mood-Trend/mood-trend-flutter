@@ -148,8 +148,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Ne peut pas dormir, insomnie constante et excessive, forte fatigue pendant la journée, ou passe la plupart du temps à dormir"),
         "table": MessageLookupByLibrary.simpleMessage(
             "Tableau de référence de l\'humeur"),
-        "tableStartEdit": MessageLookupByLibrary.simpleMessage(
-            "Commencez l\'édition du tableau de référence de l\'humeur"),
+        "tableStartEdit": MessageLookupByLibrary.simpleMessage("édition"),
         "thinkMinus_1": MessageLookupByLibrary.simpleMessage(
             "Parfois, penser semble un peu laborieux"),
         "thinkMinus_2":

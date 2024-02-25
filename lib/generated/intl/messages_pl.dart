@@ -145,8 +145,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nie może spać, stała nadmierna bezsenność, silne zmęczenie w ciągu dnia lub większość czasu spędza na śnie"),
         "table":
             MessageLookupByLibrary.simpleMessage("Tabela wartości nastroju"),
-        "tableStartEdit": MessageLookupByLibrary.simpleMessage(
-            "Rozpocznij edycję tabeli wartości nastroju"),
+        "tableStartEdit":
+            MessageLookupByLibrary.simpleMessage("Rozpocznij edycję"),
         "thinkMinus_1": MessageLookupByLibrary.simpleMessage(
             "Czasami myślenie wydaje się trochę uciążliwe"),
         "thinkMinus_2": MessageLookupByLibrary.simpleMessage(

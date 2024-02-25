@@ -144,8 +144,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Kan ikke sove, konstant overdreven søvnløshet, sterk tretthet i løpet av dagen, eller tilbringer det meste av dagen i søvn"),
         "table": MessageLookupByLibrary.simpleMessage(
             "Stemningsverdi referansetabell"),
-        "tableStartEdit": MessageLookupByLibrary.simpleMessage(
-            "Start redigering av stemningsverdi referansetabell"),
+        "tableStartEdit":
+            MessageLookupByLibrary.simpleMessage("Begynn å redigere"),
         "thinkMinus_1": MessageLookupByLibrary.simpleMessage(
             "Noen ganger virker det litt tungvint å tenke"),
         "thinkMinus_2":

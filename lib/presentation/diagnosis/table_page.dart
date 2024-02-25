@@ -40,7 +40,10 @@ class TablePage extends ConsumerWidget {
             elevation: 0,
             backgroundColor: Colors.transparent,
             centerTitle: true,
-            title: Text(S.of(context).table),
+            title: Text(
+              S.of(context).table,
+              style: const TextStyle(fontSize: 20),
+            ),
             leading: IconButton(
               onPressed: () {
                 Navigator.of(context).pop();

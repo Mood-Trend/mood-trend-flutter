@@ -132,8 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sleepMinus_5": MessageLookupByLibrary.simpleMessage(
             "수면이 지속적으로 부족하여 심한 불면 상태에 있으며, 낮에도 강한 피로감이 있습니다. 또는 대부분을 자면서 보냅니다"),
         "table": MessageLookupByLibrary.simpleMessage("기분 값 참고 표"),
-        "tableStartEdit":
-            MessageLookupByLibrary.simpleMessage("기분 값 참고 표 설정 시작"),
+        "tableStartEdit": MessageLookupByLibrary.simpleMessage("편집 시작"),
         "thinkMinus_1":
             MessageLookupByLibrary.simpleMessage("가끔씩 생각하기가 조금 귀찮은 느낌이 있습니다"),
         "thinkMinus_2":
