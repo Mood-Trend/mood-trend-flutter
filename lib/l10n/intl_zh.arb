@@ -1,8 +1,8 @@
 {
     "@@locale": "zh",
-    "onboardingSkip": "跳过",
+    "onboardingSkip": "　跳过",
     "onboardingNext": "下一个",
-    "onboardingStart": "开始",
+    "onboardingStart": "　开始",
     "onboardingTitleFirst": "欢迎",
     "onboardingTitleSecond": "情绪图",
     "onboardingTitleThird": "情绪值参考表",

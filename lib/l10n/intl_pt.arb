@@ -1,6 +1,6 @@
 {
     "@@locale": "pt",
-    "onboardingSkip": "Pular",
+    "onboardingSkip": "  Pular",
     "onboardingNext": "Próximo",
     "onboardingStart": "Iniciar",
     "onboardingTitleFirst": "Bem-vindo",

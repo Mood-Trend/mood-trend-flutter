@@ -50,20 +50,20 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Skip`
+  /// ` Skip`
   String get onboardingSkip {
     return Intl.message(
-      'Skip',
+      ' Skip',
       name: 'onboardingSkip',
       desc: '',
       args: [],
     );
   }
 
-  /// `Next`
+  /// ` Next`
   String get onboardingNext {
     return Intl.message(
-      'Next',
+      ' Next',
       name: 'onboardingNext',
       desc: '',
       args: [],

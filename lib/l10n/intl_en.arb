@@ -1,7 +1,7 @@
 {
     "@@locale": "en",
-    "onboardingSkip": "Skip",
-    "onboardingNext": "Next",
+    "onboardingSkip": " Skip",
+    "onboardingNext": " Next",
     "onboardingStart": "Start",
     "onboardingTitleFirst": "Welcome",
     "onboardingTitleSecond": "Mood Chart",

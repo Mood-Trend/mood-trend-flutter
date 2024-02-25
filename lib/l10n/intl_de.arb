@@ -1,8 +1,8 @@
 {
     "@@locale": "de",
     "onboardingSkip": "Überspringen",
-    "onboardingNext": "Weiter",
-    "onboardingStart": "Starten",
+    "onboardingNext": "      Weiter",
+    "onboardingStart": "     Starten",
     "onboardingTitleFirst": "Willkommen",
     "onboardingTitleSecond": "Stimmungsdiagramm",
     "onboardingTitleThird": "Stimmungswertreferenztabelle",
