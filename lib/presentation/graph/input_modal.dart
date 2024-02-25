@@ -161,7 +161,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                     );
                   },
                   icon: Icon(
-                    Icons.align_horizontal_left,
+                    Icons.table_chart_outlined,
                     color: AppColors.green,
                   ),
                 ),
