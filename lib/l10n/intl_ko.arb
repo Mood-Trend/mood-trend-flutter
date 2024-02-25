@@ -1,8 +1,8 @@
 {
     "@@locale": "ko",
     "onboardingSkip": "건너뛰기",
-    "onboardingNext": "   다음",
-    "onboardingStart": "  시작",
+    "onboardingNext": "　　다음",
+    "onboardingStart": "　　시작",
     "onboardingTitleFirst": "환영합니다",
     "onboardingTitleSecond": "기분 차트",
     "onboardingTitleThird": "기분 값 참고표",
