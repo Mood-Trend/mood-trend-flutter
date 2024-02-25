@@ -1,8 +1,8 @@
 {
     "@@locale": "no",
     "onboardingSkip": "Hopp over",
-    "onboardingNext": "Neste",
-    "onboardingStart": "Start",
+    "onboardingNext": "    Neste",
+    "onboardingStart": "    Start",
     "onboardingTitleFirst": "Velkommen",
     "onboardingTitleSecond": "Humørdiagram",
     "onboardingTitleThird": "Referansetabell for humørverdier",

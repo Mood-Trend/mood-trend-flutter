@@ -1,7 +1,7 @@
 {
     "@@locale": "fr",
-    "onboardingSkip": "Passer",
-    "onboardingNext": "Suivant",
+    "onboardingSkip": "   Passer",
+    "onboardingNext": "  Suivant",
     "onboardingStart": "Commencer",
     "onboardingTitleFirst": "Bienvenue",
     "onboardingTitleSecond": "Graphique d'humeur",

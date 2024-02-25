@@ -1,8 +1,8 @@
 {
     "@@locale": "ne",
     "onboardingSkip": "छोड्नुहोस्",
-    "onboardingNext": "अरू",
-    "onboardingStart": "सुरु",
+    "onboardingNext": "    अरू",
+    "onboardingStart": "    सुरु",
     "onboardingTitleFirst": "स्वागत छ",
     "onboardingTitleSecond": "मनो चार्ट",
     "onboardingTitleThird": "मनो मूल्य संदर्भ पत्र",

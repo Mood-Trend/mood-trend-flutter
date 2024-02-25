@@ -1,8 +1,8 @@
 {
     "@@locale": "es",
-    "onboardingSkip": "Saltar",
+    "onboardingSkip": "   Saltar",
     "onboardingNext": "Siguiente",
-    "onboardingStart": "Comenzar",
+    "onboardingStart": " Comenzar",
     "onboardingTitleFirst": "Bienvenido",
     "onboardingTitleSecond": "Gráfico de Humor",
     "onboardingTitleThird": "Tabla de Referencia de Valores de Humor",

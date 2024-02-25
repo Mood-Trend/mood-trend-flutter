@@ -1,7 +1,7 @@
 {
     "@@locale": "pl",
-    "onboardingSkip": "Pomiń",
-    "onboardingNext": "Dalej",
+    "onboardingSkip": "     Pomiń",
+    "onboardingNext": "     Dalej",
     "onboardingStart": "Rozpocznij",
     "onboardingTitleFirst": "Witaj",
     "onboardingTitleSecond": "Wykres Nastroju",
