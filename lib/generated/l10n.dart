@@ -90,10 +90,10 @@ class S {
     );
   }
 
-  /// `Record Your Mood`
+  /// `Mood Chart`
   String get onboardingTitleSecond {
     return Intl.message(
-      'Record Your Mood',
+      'Mood Chart',
       name: 'onboardingTitleSecond',
       desc: '',
       args: [],
@@ -110,30 +110,30 @@ class S {
     );
   }
 
-  /// `Share Your Mood`
+  /// `Record your mood and create your own chart`
   String get onboardingBodyFirst {
     return Intl.message(
-      'Share Your Mood',
+      'Record your mood and create your own chart',
       name: 'onboardingBodyFirst',
       desc: '',
       args: [],
     );
   }
 
-  /// `Track and Confirm with Graph`
+  /// `Input mood values from -5 to +5 and stack them in a chart`
   String get onboardingBodySecond {
     return Intl.message(
-      'Track and Confirm with Graph',
+      'Input mood values from -5 to +5 and stack them in a chart',
       name: 'onboardingBodySecond',
       desc: '',
       args: [],
     );
   }
 
-  /// `Edit to Create Your Personal Table`
+  /// `Supports mood value input and allows for individual customization`
   String get onboardingBodyThird {
     return Intl.message(
-      'Edit to Create Your Personal Table',
+      'Supports mood value input and allows for individual customization',
       name: 'onboardingBodyThird',
       desc: '',
       args: [],
@@ -968,6 +968,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
       Locale.fromSubtags(languageCode: 'de'),
+      Locale.fromSubtags(languageCode: 'es'),
       Locale.fromSubtags(languageCode: 'fr'),
       Locale.fromSubtags(languageCode: 'ja'),
       Locale.fromSubtags(languageCode: 'ko'),

@@ -85,18 +85,19 @@ class MessageLookup extends MessageLookupByLibrary {
             "완전히 절망적이며, 살아가는 것이 고통일 뿐입니다. 일상 활동이 거의 불가능합니다"),
         "moodValue": MessageLookupByLibrary.simpleMessage("기분 값"),
         "next": MessageLookupByLibrary.simpleMessage("다음"),
-        "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage("기분 공유"),
-        "onboardingBodySecond":
-            MessageLookupByLibrary.simpleMessage("누적하여 그래프로 확인"),
-        "onboardingBodyThird":
-            MessageLookupByLibrary.simpleMessage("수정하여 자신만의 표 만들기"),
+        "onboardingBodyFirst":
+            MessageLookupByLibrary.simpleMessage("기분을 기록하고 나만의 차트를 만들어보세요"),
+        "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
+            "-5에서 +5의 기분 값을 입력하여 차트를 쌓아보세요"),
+        "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
+            "기분 값 입력을 지원하며 자신에 맞게 사용자 정의도 가능합니다"),
         "onboardingNext": MessageLookupByLibrary.simpleMessage("다음"),
         "onboardingSkip": MessageLookupByLibrary.simpleMessage("건너뛰기"),
         "onboardingStart": MessageLookupByLibrary.simpleMessage("시작"),
         "onboardingTitleFirst": MessageLookupByLibrary.simpleMessage("환영합니다"),
-        "onboardingTitleSecond": MessageLookupByLibrary.simpleMessage("기분 기록"),
+        "onboardingTitleSecond": MessageLookupByLibrary.simpleMessage("기분 차트"),
         "onboardingTitleThird":
-            MessageLookupByLibrary.simpleMessage("기분 값 참고 표"),
+            MessageLookupByLibrary.simpleMessage("기분 값 참고표"),
         "onboardingWelcome":
             MessageLookupByLibrary.simpleMessage("기분 그래프에 오신 것을 환영합니다!"),
         "plannedVolume": MessageLookupByLibrary.simpleMessage("계획된 양"),

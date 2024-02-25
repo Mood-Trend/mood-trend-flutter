@@ -75,6 +75,7 @@ class HomePage extends ConsumerWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: AppColors.white,
+        foregroundColor: AppColors.black,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,

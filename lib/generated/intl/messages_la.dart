@@ -91,20 +91,20 @@ class MessageLookup extends MessageLookupByLibrary {
             "Perfecte desperatus est, in dolore vivit, vix cotidianas actiones peragere potest"),
         "moodValue": MessageLookupByLibrary.simpleMessage("Valorem Mentis"),
         "next": MessageLookupByLibrary.simpleMessage("Sequentem"),
-        "onboardingBodyFirst":
-            MessageLookupByLibrary.simpleMessage("Tuam Mentem Communicare"),
-        "onboardingBodySecond":
-            MessageLookupByLibrary.simpleMessage("Graphice Conspicere"),
+        "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
+            "Affectum tuum adnota et tuum proprium diagramma creā"),
+        "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
+            "Valōrēs Affectūs ā -5 ad +5 inserē et in diagrammate collocā"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
-            "Edere ut Tabulam Tuam Propriam Facias"),
+            "Sustentat inputum valōrum Affectūs et personalizationem individualem permittit"),
         "onboardingNext": MessageLookupByLibrary.simpleMessage("Sequentem"),
         "onboardingSkip": MessageLookupByLibrary.simpleMessage("Transire"),
         "onboardingStart": MessageLookupByLibrary.simpleMessage("Incipere"),
         "onboardingTitleFirst": MessageLookupByLibrary.simpleMessage("Salve"),
         "onboardingTitleSecond":
-            MessageLookupByLibrary.simpleMessage("Tuam Mentem Registrare"),
-        "onboardingTitleThird":
-            MessageLookupByLibrary.simpleMessage("Tabula Indicis Mentis"),
+            MessageLookupByLibrary.simpleMessage("Diagramma Affectūs"),
+        "onboardingTitleThird": MessageLookupByLibrary.simpleMessage(
+            "Tabula Referentiae Valōrum Affectūs"),
         "onboardingWelcome":
             MessageLookupByLibrary.simpleMessage("Salve ad Chartam Mentis!"),
         "plannedVolume":

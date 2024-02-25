@@ -89,18 +89,18 @@ class MessageLookup extends MessageLookupByLibrary {
             "Completely hopeless, living is only pain. Unable to perform daily activities"),
         "moodValue": MessageLookupByLibrary.simpleMessage("Mood Value"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
-        "onboardingBodyFirst":
-            MessageLookupByLibrary.simpleMessage("Share Your Mood"),
+        "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
+            "Record your mood and create your own chart"),
         "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
-            "Track and Confirm with Graph"),
+            "Input mood values from -5 to +5 and stack them in a chart"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
-            "Edit to Create Your Personal Table"),
+            "Supports mood value input and allows for individual customization"),
         "onboardingNext": MessageLookupByLibrary.simpleMessage("Next"),
         "onboardingSkip": MessageLookupByLibrary.simpleMessage("Skip"),
         "onboardingStart": MessageLookupByLibrary.simpleMessage("Start"),
         "onboardingTitleFirst": MessageLookupByLibrary.simpleMessage("Welcome"),
         "onboardingTitleSecond":
-            MessageLookupByLibrary.simpleMessage("Record Your Mood"),
+            MessageLookupByLibrary.simpleMessage("Mood Chart"),
         "onboardingTitleThird":
             MessageLookupByLibrary.simpleMessage("Mood Value Reference Table"),
         "onboardingWelcome":
