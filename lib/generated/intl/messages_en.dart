@@ -95,8 +95,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Input mood values from -5 to +5 and stack them in a chart"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
             "Supports mood value input and allows for individual customization"),
-        "onboardingNext": MessageLookupByLibrary.simpleMessage("Next"),
-        "onboardingSkip": MessageLookupByLibrary.simpleMessage("Skip"),
+        "onboardingNext": MessageLookupByLibrary.simpleMessage(" Next"),
+        "onboardingSkip": MessageLookupByLibrary.simpleMessage(" Skip"),
         "onboardingStart": MessageLookupByLibrary.simpleMessage("Start"),
         "onboardingTitleFirst": MessageLookupByLibrary.simpleMessage("Welcome"),
         "onboardingTitleSecond":

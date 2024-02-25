@@ -91,9 +91,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "-5에서 +5의 기분 값을 입력하여 차트를 쌓아보세요"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
             "기분 값 입력을 지원하며 자신에 맞게 사용자 정의도 가능합니다"),
-        "onboardingNext": MessageLookupByLibrary.simpleMessage("다음"),
+        "onboardingNext": MessageLookupByLibrary.simpleMessage("　　다음"),
         "onboardingSkip": MessageLookupByLibrary.simpleMessage("건너뛰기"),
-        "onboardingStart": MessageLookupByLibrary.simpleMessage("시작"),
+        "onboardingStart": MessageLookupByLibrary.simpleMessage("　　시작"),
         "onboardingTitleFirst": MessageLookupByLibrary.simpleMessage("환영합니다"),
         "onboardingTitleSecond": MessageLookupByLibrary.simpleMessage("기분 차트"),
         "onboardingTitleThird":

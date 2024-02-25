@@ -96,8 +96,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Entrez des valeurs d\'humeur de -5 à +5 et superposez-les dans un graphique"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
             "Soutient la saisie des valeurs d\'humeur et permet des personnalisations individuelles"),
-        "onboardingNext": MessageLookupByLibrary.simpleMessage("Suivant"),
-        "onboardingSkip": MessageLookupByLibrary.simpleMessage("Passer"),
+        "onboardingNext": MessageLookupByLibrary.simpleMessage("  Suivant"),
+        "onboardingSkip": MessageLookupByLibrary.simpleMessage("   Passer"),
         "onboardingStart": MessageLookupByLibrary.simpleMessage("Commencer"),
         "onboardingTitleFirst":
             MessageLookupByLibrary.simpleMessage("Bienvenue"),

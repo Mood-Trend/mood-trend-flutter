@@ -96,9 +96,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Gib Stimmungswerte von -5 bis +5 ein und staple sie zu einem Diagramm"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
             "Unterstützt die Eingabe von Stimmungswerten und ermöglicht individuelle Anpassungen"),
-        "onboardingNext": MessageLookupByLibrary.simpleMessage("Weiter"),
+        "onboardingNext": MessageLookupByLibrary.simpleMessage("      Weiter"),
         "onboardingSkip": MessageLookupByLibrary.simpleMessage("Überspringen"),
-        "onboardingStart": MessageLookupByLibrary.simpleMessage("Starten"),
+        "onboardingStart": MessageLookupByLibrary.simpleMessage("     Starten"),
         "onboardingTitleFirst":
             MessageLookupByLibrary.simpleMessage("Willkommen"),
         "onboardingTitleSecond":

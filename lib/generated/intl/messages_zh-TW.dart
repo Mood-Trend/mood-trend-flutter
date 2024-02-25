@@ -79,7 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "onboardingBodyThird":
             MessageLookupByLibrary.simpleMessage("支持情緒值輸入，也可以根據個人需求進行定制"),
         "onboardingNext": MessageLookupByLibrary.simpleMessage("下一步"),
-        "onboardingSkip": MessageLookupByLibrary.simpleMessage("跳過"),
+        "onboardingSkip": MessageLookupByLibrary.simpleMessage("　跳過"),
         "onboardingStart": MessageLookupByLibrary.simpleMessage("開始"),
         "onboardingTitleFirst": MessageLookupByLibrary.simpleMessage("歡迎"),
         "onboardingTitleSecond": MessageLookupByLibrary.simpleMessage("情緒圖"),

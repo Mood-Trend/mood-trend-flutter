@@ -98,8 +98,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
             "Sustentat inputum valōrum Affectūs et personalizationem individualem permittit"),
         "onboardingNext": MessageLookupByLibrary.simpleMessage("Sequentem"),
-        "onboardingSkip": MessageLookupByLibrary.simpleMessage("Transire"),
-        "onboardingStart": MessageLookupByLibrary.simpleMessage("Incipere"),
+        "onboardingSkip": MessageLookupByLibrary.simpleMessage(" Transire"),
+        "onboardingStart": MessageLookupByLibrary.simpleMessage(" Incipere"),
         "onboardingTitleFirst": MessageLookupByLibrary.simpleMessage("Salve"),
         "onboardingTitleSecond":
             MessageLookupByLibrary.simpleMessage("Diagramma Affectūs"),

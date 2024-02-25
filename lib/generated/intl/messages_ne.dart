@@ -97,9 +97,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "-5 देखि +5 सम्मको मनो मूल्य प्रविष्ट गर्नुहोस्, र ती यसमा राख्नुहोस्"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
             "मनो मूल्य प्रविष्ट गर्न समर्थन गर्दछ र व्यक्तिगत अनुकूलन पनि गर्दछ"),
-        "onboardingNext": MessageLookupByLibrary.simpleMessage("अरू"),
+        "onboardingNext": MessageLookupByLibrary.simpleMessage("    अरू"),
         "onboardingSkip": MessageLookupByLibrary.simpleMessage("छोड्नुहोस्"),
-        "onboardingStart": MessageLookupByLibrary.simpleMessage("सुरु"),
+        "onboardingStart": MessageLookupByLibrary.simpleMessage("    सुरु"),
         "onboardingTitleFirst":
             MessageLookupByLibrary.simpleMessage("स्वागत छ"),
         "onboardingTitleSecond":

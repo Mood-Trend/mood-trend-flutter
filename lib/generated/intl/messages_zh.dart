@@ -79,8 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "onboardingBodyThird":
             MessageLookupByLibrary.simpleMessage("支持情绪值输入，也可以根据个人需求进行定制"),
         "onboardingNext": MessageLookupByLibrary.simpleMessage("下一个"),
-        "onboardingSkip": MessageLookupByLibrary.simpleMessage("跳过"),
-        "onboardingStart": MessageLookupByLibrary.simpleMessage("开始"),
+        "onboardingSkip": MessageLookupByLibrary.simpleMessage("　跳过"),
+        "onboardingStart": MessageLookupByLibrary.simpleMessage("　开始"),
         "onboardingTitleFirst": MessageLookupByLibrary.simpleMessage("欢迎"),
         "onboardingTitleSecond": MessageLookupByLibrary.simpleMessage("情绪图"),
         "onboardingTitleThird": MessageLookupByLibrary.simpleMessage("情绪值参考表"),

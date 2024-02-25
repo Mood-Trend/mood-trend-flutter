@@ -95,8 +95,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wprowadź wartości nastroju od -5 do +5 i ułóż je w wykresie"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
             "Obsługuje wprowadzanie wartości nastroju i umożliwia indywidualne dostosowanie"),
-        "onboardingNext": MessageLookupByLibrary.simpleMessage("Dalej"),
-        "onboardingSkip": MessageLookupByLibrary.simpleMessage("Pomiń"),
+        "onboardingNext": MessageLookupByLibrary.simpleMessage("     Dalej"),
+        "onboardingSkip": MessageLookupByLibrary.simpleMessage("     Pomiń"),
         "onboardingStart": MessageLookupByLibrary.simpleMessage("Rozpocznij"),
         "onboardingTitleFirst": MessageLookupByLibrary.simpleMessage("Witaj"),
         "onboardingTitleSecond":

@@ -96,9 +96,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Skriv inn humørverdier fra -5 til +5 og legg dem oppå hverandre i et diagram"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
             "Støtter inntasting av humørverdier og tillater individuelle tilpasninger"),
-        "onboardingNext": MessageLookupByLibrary.simpleMessage("Neste"),
+        "onboardingNext": MessageLookupByLibrary.simpleMessage("    Neste"),
         "onboardingSkip": MessageLookupByLibrary.simpleMessage("Hopp over"),
-        "onboardingStart": MessageLookupByLibrary.simpleMessage("Start"),
+        "onboardingStart": MessageLookupByLibrary.simpleMessage("    Start"),
         "onboardingTitleFirst":
             MessageLookupByLibrary.simpleMessage("Velkommen"),
         "onboardingTitleSecond":

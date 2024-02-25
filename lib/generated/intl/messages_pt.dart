@@ -97,7 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
             "Suporta a entrada de valores de humor e permite personalizações individuais"),
         "onboardingNext": MessageLookupByLibrary.simpleMessage("Próximo"),
-        "onboardingSkip": MessageLookupByLibrary.simpleMessage("Pular"),
+        "onboardingSkip": MessageLookupByLibrary.simpleMessage("  Pular"),
         "onboardingStart": MessageLookupByLibrary.simpleMessage("Iniciar"),
         "onboardingTitleFirst":
             MessageLookupByLibrary.simpleMessage("Bem-vindo"),
