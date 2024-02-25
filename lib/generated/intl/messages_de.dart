@@ -147,8 +147,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Kann nicht schlafen, ständig in einem extremen Zustand von Schlaflosigkeit, tagsüber starke Erschöpfung. Oder verbringt den Großteil des Tages schlafend"),
         "table": MessageLookupByLibrary.simpleMessage(
             "Stimmungswert Referenztabelle"),
-        "tableStartEdit": MessageLookupByLibrary.simpleMessage(
-            "Beginnen Sie mit der Einstellung der Stimmungswert Referenztabelle"),
+        "tableStartEdit":
+            MessageLookupByLibrary.simpleMessage("Bearbeitung Beginnen"),
         "thinkMinus_1": MessageLookupByLibrary.simpleMessage(
             "Manchmal fällt es schwer, über Dinge nachzudenken"),
         "thinkMinus_2":

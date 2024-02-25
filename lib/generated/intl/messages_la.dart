@@ -147,7 +147,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "sleepMinus_5": MessageLookupByLibrary.simpleMessage(
             "Non potest dormire, insomnia perpetua et nimia, valida lassitudo diurna vel plerumque dormienti consumitur"),
         "table": MessageLookupByLibrary.simpleMessage("Tabula Indicis Mentis"),
-        "tableStartEdit": MessageLookupByLibrary.simpleMessage("Editum"),
+        "tableStartEdit":
+            MessageLookupByLibrary.simpleMessage("Rozpocznij edycję"),
         "thinkMinus_1": MessageLookupByLibrary.simpleMessage(
             "Interdum cogitare videtur leviter molestum"),
         "thinkMinus_2": MessageLookupByLibrary.simpleMessage(
