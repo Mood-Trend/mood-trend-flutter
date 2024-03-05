@@ -90,21 +90,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "moodValue":
             MessageLookupByLibrary.simpleMessage("Valeur de l\'humeur"),
         "next": MessageLookupByLibrary.simpleMessage("Suivant"),
-        "onboardingBodyFirst":
-            MessageLookupByLibrary.simpleMessage("Partagez votre humeur"),
+        "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
+            "Enregistrez votre humeur et créez votre propre graphique"),
         "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
-            "Consultez l\'évolution avec un graphique"),
+            "Entrez des valeurs d\'humeur de -5 à +5 et superposez-les dans un graphique"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
-            "Éditez pour créer votre propre tableau personnalisé"),
-        "onboardingNext": MessageLookupByLibrary.simpleMessage("Suivant"),
-        "onboardingSkip": MessageLookupByLibrary.simpleMessage("Passer"),
+            "Soutient la saisie des valeurs d\'humeur et permet des personnalisations individuelles"),
+        "onboardingNext": MessageLookupByLibrary.simpleMessage("  Suivant"),
+        "onboardingSkip": MessageLookupByLibrary.simpleMessage("   Passer"),
         "onboardingStart": MessageLookupByLibrary.simpleMessage("Commencer"),
         "onboardingTitleFirst":
             MessageLookupByLibrary.simpleMessage("Bienvenue"),
         "onboardingTitleSecond":
-            MessageLookupByLibrary.simpleMessage("Enregistrez votre humeur"),
+            MessageLookupByLibrary.simpleMessage("Graphique d\'humeur"),
         "onboardingTitleThird": MessageLookupByLibrary.simpleMessage(
-            "Tableau de référence de l\'humeur"),
+            "Tableau de référence des valeurs d\'humeur"),
         "onboardingWelcome": MessageLookupByLibrary.simpleMessage(
             "Bienvenue sur le Graphique d\'Humeur !"),
         "plannedVolume": MessageLookupByLibrary.simpleMessage("Volume prévu"),

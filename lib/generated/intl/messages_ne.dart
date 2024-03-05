@@ -91,21 +91,21 @@ class MessageLookup extends MessageLookupByLibrary {
             "पूर्ण रूपमा आशाहीन, जीवनले केवल पीडामा बदलिसकेको छ, प्रतिदिनका कार्यहरूमा सामान्यतया पनि हुँदैन"),
         "moodValue": MessageLookupByLibrary.simpleMessage("भावना मूल्य"),
         "next": MessageLookupByLibrary.simpleMessage("अरू"),
-        "onboardingBodyFirst":
-            MessageLookupByLibrary.simpleMessage("भावना साझा गर्नुहोस्"),
+        "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
+            "तपाईंको मनो नोट गर्नुहोस् र आफ्नो चार्ट बनाउनुहोस्"),
         "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
-            "ग्राफमा जम्मा गर्नुहोस् र पुष्टि गर्नुहोस्"),
+            "-5 देखि +5 सम्मको मनो मूल्य प्रविष्ट गर्नुहोस्, र ती यसमा राख्नुहोस्"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
-            "सम्पादन गर्नुहोस् र आफ्नो खुदको पत्र बनाउनुहोस्"),
-        "onboardingNext": MessageLookupByLibrary.simpleMessage("अरू"),
+            "मनो मूल्य प्रविष्ट गर्न समर्थन गर्दछ र व्यक्तिगत अनुकूलन पनि गर्दछ"),
+        "onboardingNext": MessageLookupByLibrary.simpleMessage("    अरू"),
         "onboardingSkip": MessageLookupByLibrary.simpleMessage("छोड्नुहोस्"),
-        "onboardingStart": MessageLookupByLibrary.simpleMessage("सुरु"),
+        "onboardingStart": MessageLookupByLibrary.simpleMessage("    सुरु"),
         "onboardingTitleFirst":
             MessageLookupByLibrary.simpleMessage("स्वागत छ"),
         "onboardingTitleSecond":
-            MessageLookupByLibrary.simpleMessage("भावना दर्ता गर्नुहोस्"),
+            MessageLookupByLibrary.simpleMessage("मनो चार्ट"),
         "onboardingTitleThird":
-            MessageLookupByLibrary.simpleMessage("भावना मूल्य संदर्भ पत्र"),
+            MessageLookupByLibrary.simpleMessage("मनो मूल्य संदर्भ पत्र"),
         "onboardingWelcome":
             MessageLookupByLibrary.simpleMessage("भावना चिन्हमा स्वागत छ!"),
         "plannedVolume": MessageLookupByLibrary.simpleMessage("नियोजित मात्रा"),
@@ -119,6 +119,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingContact":
             MessageLookupByLibrary.simpleMessage("सम्पर्क गर्नुहोस्"),
         "settingEdit": MessageLookupByLibrary.simpleMessage("सम्पादन"),
+        "settingOnboarding":
+            MessageLookupByLibrary.simpleMessage("यो एप्लिकेशन बारेमा"),
         "settingOther": MessageLookupByLibrary.simpleMessage("अन्य"),
         "settingPrivacy": MessageLookupByLibrary.simpleMessage("गोप्यता नीति"),
         "settingReview": MessageLookupByLibrary.simpleMessage("समीक्षा"),

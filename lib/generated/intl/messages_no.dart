@@ -90,21 +90,21 @@ class MessageLookup extends MessageLookupByLibrary {
             "Er helt fortvilet, lever i smerte, kan knapt utføre daglige aktiviteter"),
         "moodValue": MessageLookupByLibrary.simpleMessage("Stemningsverdi"),
         "next": MessageLookupByLibrary.simpleMessage("Neste"),
-        "onboardingBodyFirst":
-            MessageLookupByLibrary.simpleMessage("Del stemningen"),
+        "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
+            "Registrer humøret ditt og lag ditt eget diagram"),
         "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
-            "Se den bygge seg opp og bekreft med graf"),
+            "Skriv inn humørverdier fra -5 til +5 og legg dem oppå hverandre i et diagram"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
-            "Rediger og lag din egen personlige tabell"),
-        "onboardingNext": MessageLookupByLibrary.simpleMessage("Neste"),
+            "Støtter inntasting av humørverdier og tillater individuelle tilpasninger"),
+        "onboardingNext": MessageLookupByLibrary.simpleMessage("    Neste"),
         "onboardingSkip": MessageLookupByLibrary.simpleMessage("Hopp over"),
-        "onboardingStart": MessageLookupByLibrary.simpleMessage("Start"),
+        "onboardingStart": MessageLookupByLibrary.simpleMessage("    Start"),
         "onboardingTitleFirst":
             MessageLookupByLibrary.simpleMessage("Velkommen"),
         "onboardingTitleSecond":
-            MessageLookupByLibrary.simpleMessage("Registrer stemningen"),
+            MessageLookupByLibrary.simpleMessage("Humørdiagram"),
         "onboardingTitleThird": MessageLookupByLibrary.simpleMessage(
-            "Stemningsverdi referansetabell"),
+            "Referansetabell for humørverdier"),
         "onboardingWelcome": MessageLookupByLibrary.simpleMessage(
             "Velkommen til Stemningsgraf!"),
         "plannedVolume": MessageLookupByLibrary.simpleMessage("Planlagt volum"),
@@ -116,6 +116,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingAboutApp": MessageLookupByLibrary.simpleMessage("Om appen"),
         "settingContact": MessageLookupByLibrary.simpleMessage("Kontakt oss"),
         "settingEdit": MessageLookupByLibrary.simpleMessage("Rediger"),
+        "settingOnboarding":
+            MessageLookupByLibrary.simpleMessage("Om denne appen"),
         "settingOther": MessageLookupByLibrary.simpleMessage("Annet"),
         "settingPrivacy":
             MessageLookupByLibrary.simpleMessage("Personvernregler"),

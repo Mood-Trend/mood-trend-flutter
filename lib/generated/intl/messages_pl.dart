@@ -89,20 +89,20 @@ class MessageLookup extends MessageLookupByLibrary {
             "Jest całkowicie zrozpaczony, żyje w cierpieniu, ledwo może wykonywać codzienne czynności"),
         "moodValue": MessageLookupByLibrary.simpleMessage("Wartość nastroju"),
         "next": MessageLookupByLibrary.simpleMessage("Dalej"),
-        "onboardingBodyFirst":
-            MessageLookupByLibrary.simpleMessage("Podziel się nastrój"),
+        "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
+            "Zapisz swój nastrój i stwórz swój własny wykres"),
         "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
-            "Sprawdź rozwój za pomocą wykresu"),
+            "Wprowadź wartości nastroju od -5 do +5 i ułóż je w wykresie"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
-            "Edytuj, aby stworzyć własną spersonalizowaną tabelę"),
-        "onboardingNext": MessageLookupByLibrary.simpleMessage("Dalej"),
-        "onboardingSkip": MessageLookupByLibrary.simpleMessage("Pomiń"),
+            "Obsługuje wprowadzanie wartości nastroju i umożliwia indywidualne dostosowanie"),
+        "onboardingNext": MessageLookupByLibrary.simpleMessage("     Dalej"),
+        "onboardingSkip": MessageLookupByLibrary.simpleMessage("     Pomiń"),
         "onboardingStart": MessageLookupByLibrary.simpleMessage("Rozpocznij"),
         "onboardingTitleFirst": MessageLookupByLibrary.simpleMessage("Witaj"),
         "onboardingTitleSecond":
-            MessageLookupByLibrary.simpleMessage("Zarejestruj nastrój"),
-        "onboardingTitleThird":
-            MessageLookupByLibrary.simpleMessage("Tabela wartości nastroju"),
+            MessageLookupByLibrary.simpleMessage("Wykres Nastroju"),
+        "onboardingTitleThird": MessageLookupByLibrary.simpleMessage(
+            "Tabela Referencyjna Wartości Nastroju"),
         "onboardingWelcome":
             MessageLookupByLibrary.simpleMessage("Witaj w Grafie Nastroju!"),
         "plannedVolume":
@@ -116,6 +116,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingContact":
             MessageLookupByLibrary.simpleMessage("Skontaktuj się z nami"),
         "settingEdit": MessageLookupByLibrary.simpleMessage("Edytuj"),
+        "settingOnboarding":
+            MessageLookupByLibrary.simpleMessage("O tej aplikacji"),
         "settingOther": MessageLookupByLibrary.simpleMessage("Inne"),
         "settingPrivacy":
             MessageLookupByLibrary.simpleMessage("Polityka prywatności"),

@@ -74,7 +74,7 @@ class TablePage extends ConsumerWidget {
                         ),
                       ),
                       child: Text(
-                        S.of(context).depression,
+                        S.of(context).manic,
                         style: TextStyle(
                           color: ref.watch(selectedMoodButtonStateProvider) ==
                                   MoodState.manic
@@ -99,7 +99,7 @@ class TablePage extends ConsumerWidget {
                                   ? AppColors.green
                                   : Colors.transparent)),
                       child: Text(
-                        S.of(context).manic,
+                        S.of(context).depression,
                         style: TextStyle(
                             color: ref.watch(selectedMoodButtonStateProvider) ==
                                     MoodState.depression

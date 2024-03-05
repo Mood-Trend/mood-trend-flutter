@@ -1,14 +1,14 @@
 {
     "@@locale": "pl",
-    "onboardingSkip": "Pomiń",
-    "onboardingNext": "Dalej",
+    "onboardingSkip": "     Pomiń",
+    "onboardingNext": "     Dalej",
     "onboardingStart": "Rozpocznij",
     "onboardingTitleFirst": "Witaj",
-    "onboardingTitleSecond": "Zarejestruj nastrój",
-    "onboardingTitleThird": "Tabela wartości nastroju",
-    "onboardingBodyFirst": "Podziel się nastrój",
-    "onboardingBodySecond": "Sprawdź rozwój za pomocą wykresu",
-    "onboardingBodyThird": "Edytuj, aby stworzyć własną spersonalizowaną tabelę",
+    "onboardingTitleSecond": "Wykres Nastroju",
+    "onboardingTitleThird": "Tabela Referencyjna Wartości Nastroju",
+    "onboardingBodyFirst": "Zapisz swój nastrój i stwórz swój własny wykres",
+    "onboardingBodySecond": "Wprowadź wartości nastroju od -5 do +5 i ułóż je w wykresie",
+    "onboardingBodyThird": "Obsługuje wprowadzanie wartości nastroju i umożliwia indywidualne dostosowanie",
     "onboardingWelcome": "Witaj w Grafie Nastroju!",
     "dialogError": "Błąd",
     "dialogOk": "OK",
@@ -23,6 +23,7 @@
     "settingAboutApp": "O aplikacji",
     "settingReview": "Recenzja",
     "settingReviewRequest": "Deweloperzy zatańczą z radości, jeśli napiszesz recenzję",
+    "settingOnboarding": "O tej aplikacji",
     "settingTerms": "Warunki korzystania",
     "settingPrivacy": "Polityka prywatności",
     "settingOther": "Inne",
@@ -92,5 +93,3 @@
     "activityPlus_4": "Dzień jest pełen planów",
     "activityPlus_5": "Kontynuuje aktywność przez kilka dni bez odczuwania zmęczenia, działa energetycznie przez cały dzień"
 }
-
-

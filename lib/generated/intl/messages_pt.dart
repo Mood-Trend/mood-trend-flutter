@@ -90,21 +90,21 @@ class MessageLookup extends MessageLookupByLibrary {
             "Está completamente desesperado, vive na dor, mal consegue realizar atividades diárias"),
         "moodValue": MessageLookupByLibrary.simpleMessage("Valor do humor"),
         "next": MessageLookupByLibrary.simpleMessage("Próximo"),
-        "onboardingBodyFirst":
-            MessageLookupByLibrary.simpleMessage("Compartilhe seu humor"),
-        "onboardingBodySecond":
-            MessageLookupByLibrary.simpleMessage("Acompanhe com um gráfico"),
+        "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
+            "Registre seu humor e crie seu próprio gráfico"),
+        "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
+            "Digite valores de humor de -5 a +5 e sobreponha-os em um gráfico"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
-            "Edite para criar sua própria tabela personalizada"),
+            "Suporta a entrada de valores de humor e permite personalizações individuais"),
         "onboardingNext": MessageLookupByLibrary.simpleMessage("Próximo"),
-        "onboardingSkip": MessageLookupByLibrary.simpleMessage("Pular"),
+        "onboardingSkip": MessageLookupByLibrary.simpleMessage("  Pular"),
         "onboardingStart": MessageLookupByLibrary.simpleMessage("Iniciar"),
         "onboardingTitleFirst":
             MessageLookupByLibrary.simpleMessage("Bem-vindo"),
         "onboardingTitleSecond":
-            MessageLookupByLibrary.simpleMessage("Registre seu humor"),
+            MessageLookupByLibrary.simpleMessage("Gráfico de Humor"),
         "onboardingTitleThird": MessageLookupByLibrary.simpleMessage(
-            "Tabela de referência de humor"),
+            "Tabela de Referência de Valores de Humor"),
         "onboardingWelcome": MessageLookupByLibrary.simpleMessage(
             "Bem-vindo ao Gráfico de Humor!"),
         "plannedVolume":
@@ -118,6 +118,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sobre o aplicativo"),
         "settingContact": MessageLookupByLibrary.simpleMessage("Contato"),
         "settingEdit": MessageLookupByLibrary.simpleMessage("Editar"),
+        "settingOnboarding":
+            MessageLookupByLibrary.simpleMessage("Sobre este aplicativo"),
         "settingOther": MessageLookupByLibrary.simpleMessage("Outro"),
         "settingPrivacy":
             MessageLookupByLibrary.simpleMessage("Política de privacidade"),

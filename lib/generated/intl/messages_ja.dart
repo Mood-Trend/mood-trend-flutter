@@ -83,16 +83,17 @@ class MessageLookup extends MessageLookupByLibrary {
             "完全に絶望的で、生きることが苦痛でしかない。日常の動作がままならない"),
         "moodValue": MessageLookupByLibrary.simpleMessage("気分値"),
         "next": MessageLookupByLibrary.simpleMessage("次へ"),
-        "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage("気分を共有"),
-        "onboardingBodySecond":
-            MessageLookupByLibrary.simpleMessage("積み重ねてグラフで確認"),
+        "onboardingBodyFirst":
+            MessageLookupByLibrary.simpleMessage("気分を記録してあなただけのグラフをつくろう"),
+        "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
+            "0をのぞく-5から+5の気分値を入力してグラフを積み重ねよう"),
         "onboardingBodyThird":
-            MessageLookupByLibrary.simpleMessage("編集して自分専用の表を作ろう"),
+            MessageLookupByLibrary.simpleMessage("気分値の入力をサポート\n自分専用にカスタマイズも可能"),
         "onboardingNext": MessageLookupByLibrary.simpleMessage("　つぎへ"),
         "onboardingSkip": MessageLookupByLibrary.simpleMessage("スキップ"),
         "onboardingStart": MessageLookupByLibrary.simpleMessage("はじめる"),
         "onboardingTitleFirst": MessageLookupByLibrary.simpleMessage("ようこそ"),
-        "onboardingTitleSecond": MessageLookupByLibrary.simpleMessage("気分を記録"),
+        "onboardingTitleSecond": MessageLookupByLibrary.simpleMessage("気分グラフ"),
         "onboardingTitleThird": MessageLookupByLibrary.simpleMessage("気分値目安表"),
         "onboardingWelcome":
             MessageLookupByLibrary.simpleMessage("気分グラフへようこそ！"),

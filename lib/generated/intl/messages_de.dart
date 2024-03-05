@@ -90,21 +90,21 @@ class MessageLookup extends MessageLookupByLibrary {
             "Völlig verzweifelt, das Leben ist nur noch Qual, alltägliche Aktivitäten sind kaum möglich"),
         "moodValue": MessageLookupByLibrary.simpleMessage("Stimmungswert"),
         "next": MessageLookupByLibrary.simpleMessage("Weiter"),
-        "onboardingBodyFirst":
-            MessageLookupByLibrary.simpleMessage("Stimmung teilen"),
-        "onboardingBodySecond":
-            MessageLookupByLibrary.simpleMessage("Mit Grafiken überprüfen"),
+        "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
+            "Notiere deine Stimmung und erstelle dein eigenes Diagramm"),
+        "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
+            "Gib Stimmungswerte von -5 bis +5 ein und staple sie zu einem Diagramm"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
-            "Bearbeiten und eigene Tabelle erstellen"),
-        "onboardingNext": MessageLookupByLibrary.simpleMessage("Weiter"),
+            "Unterstützt die Eingabe von Stimmungswerten und ermöglicht individuelle Anpassungen"),
+        "onboardingNext": MessageLookupByLibrary.simpleMessage("      Weiter"),
         "onboardingSkip": MessageLookupByLibrary.simpleMessage("Überspringen"),
-        "onboardingStart": MessageLookupByLibrary.simpleMessage("Starten"),
+        "onboardingStart": MessageLookupByLibrary.simpleMessage("     Starten"),
         "onboardingTitleFirst":
             MessageLookupByLibrary.simpleMessage("Willkommen"),
         "onboardingTitleSecond":
-            MessageLookupByLibrary.simpleMessage("Stimmung aufzeichnen"),
+            MessageLookupByLibrary.simpleMessage("Stimmungsdiagramm"),
         "onboardingTitleThird": MessageLookupByLibrary.simpleMessage(
-            "Stimmungswert Referenztabelle"),
+            "Stimmungswertreferenztabelle"),
         "onboardingWelcome": MessageLookupByLibrary.simpleMessage(
             "Willkommen bei der Stimmungsgrafik!"),
         "plannedVolume": MessageLookupByLibrary.simpleMessage("Geplante Menge"),
@@ -118,6 +118,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingContact":
             MessageLookupByLibrary.simpleMessage("Kontaktieren Sie uns"),
         "settingEdit": MessageLookupByLibrary.simpleMessage("Bearbeiten"),
+        "settingOnboarding":
+            MessageLookupByLibrary.simpleMessage("Über diese App"),
         "settingOther": MessageLookupByLibrary.simpleMessage("Sonstiges"),
         "settingPrivacy":
             MessageLookupByLibrary.simpleMessage("Datenschutzbestimmungen"),

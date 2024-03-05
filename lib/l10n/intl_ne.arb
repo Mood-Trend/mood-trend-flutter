@@ -1,14 +1,14 @@
 {
     "@@locale": "ne",
     "onboardingSkip": "छोड्नुहोस्",
-    "onboardingNext": "अरू",
-    "onboardingStart": "सुरु",
+    "onboardingNext": "    अरू",
+    "onboardingStart": "    सुरु",
     "onboardingTitleFirst": "स्वागत छ",
-    "onboardingTitleSecond": "भावना दर्ता गर्नुहोस्",
-    "onboardingTitleThird": "भावना मूल्य संदर्भ पत्र",
-    "onboardingBodyFirst": "भावना साझा गर्नुहोस्",
-    "onboardingBodySecond": "ग्राफमा जम्मा गर्नुहोस् र पुष्टि गर्नुहोस्",
-    "onboardingBodyThird": "सम्पादन गर्नुहोस् र आफ्नो खुदको पत्र बनाउनुहोस्",
+    "onboardingTitleSecond": "मनो चार्ट",
+    "onboardingTitleThird": "मनो मूल्य संदर्भ पत्र",
+    "onboardingBodyFirst": "तपाईंको मनो नोट गर्नुहोस् र आफ्नो चार्ट बनाउनुहोस्",
+    "onboardingBodySecond": "-5 देखि +5 सम्मको मनो मूल्य प्रविष्ट गर्नुहोस्, र ती यसमा राख्नुहोस्",
+    "onboardingBodyThird": "मनो मूल्य प्रविष्ट गर्न समर्थन गर्दछ र व्यक्तिगत अनुकूलन पनि गर्दछ",
     "onboardingWelcome": "भावना चिन्हमा स्वागत छ!",
     "dialogError": "त्रुटि",
     "dialogOk": "ठिक छ",
@@ -23,6 +23,7 @@
     "settingAboutApp": "एप्लिकेशन बारेमा",
     "settingReview": "समीक्षा",
     "settingReviewRequest": "यदि तपाईंले समीक्षा गर्नु भएमा, डेभेलपरहरू आफैले खुसी हुन्छन्!",
+    "settingOnboarding": "यो एप्लिकेशन बारेमा",
     "settingTerms": "प्रयोगका नियम",
     "settingPrivacy": "गोप्यता नीति",
     "settingOther": "अन्य",
@@ -92,4 +93,3 @@
     "activityPlus_4": "दिन योजनामा भरिएको छ",
     "activityPlus_5": "केहि दिनसम्म दिनभर सक्रिय रहेको छ, थकिएको महसुस गरिएन, वा दिनभर घुम्न रहेको छ"
 }
-    
