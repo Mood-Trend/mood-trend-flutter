@@ -3,12 +3,15 @@ import 'package:flutter_overboard/flutter_overboard.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
+import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../../application/auth/signin_anonymously_usecase.dart';
 import '../common/error_handler_mixin.dart';
 
 class OnboardingPage extends ConsumerWidget with ErrorHandlerMixin {
-  const OnboardingPage({super.key});
+  const OnboardingPage({super.key, this.isFromSettings = false});
+
+  final bool isFromSettings;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -51,8 +54,20 @@ class OnboardingPage extends ConsumerWidget with ErrorHandlerMixin {
           ),
         ],
         showBullets: true,
-        skipCallback: () async => await _signinAnonymously(context, ref),
-        finishCallback: () async => await _signinAnonymously(context, ref),
+        skipCallback: () async {
+          if (isFromSettings) {
+            PageNavigator.pop(context);
+            return;
+          }
+          await _signinAnonymously(context, ref);
+        },
+        finishCallback: () async {
+          if (isFromSettings) {
+            PageNavigator.pop(context);
+            return;
+          }
+          await _signinAnonymously(context, ref);
+        },
       ),
     );
   }

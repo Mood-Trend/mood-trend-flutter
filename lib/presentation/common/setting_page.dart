@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/application/auth/signout_anonymously_usecase.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
+import 'package:mood_trend_flutter/presentation/auth/onboarding_page.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/common/error_handler_mixin.dart';
 import 'package:mood_trend_flutter/presentation/auth/root_page.dart';
@@ -141,6 +142,34 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                       ),
                     ),
                   ],
+                ),
+              ),
+              Divider(
+                height: 0,
+                thickness: 0.7,
+                indent: 16,
+                endIndent: 16,
+                color: AppColors.grey,
+              ),
+              GestureDetector(
+                onTap: () {
+                  popCount++;
+                  PageNavigator.push(
+                      context,
+                      const OnboardingPage(
+                        isFromSettings: true,
+                      ));
+                },
+                child: Container(
+                  color: AppColors.white,
+                  width: double.infinity,
+                  child: const Padding(
+                    padding: EdgeInsets.fromLTRB(16, 20, 16, 20),
+                    child: Text(
+                      'このアプリの説明',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
                 ),
               ),
               Divider(
