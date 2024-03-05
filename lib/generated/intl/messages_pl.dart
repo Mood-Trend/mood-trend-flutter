@@ -116,6 +116,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingContact":
             MessageLookupByLibrary.simpleMessage("Skontaktuj się z nami"),
         "settingEdit": MessageLookupByLibrary.simpleMessage("Edytuj"),
+        "settingOnboarding":
+            MessageLookupByLibrary.simpleMessage("O tej aplikacji"),
         "settingOther": MessageLookupByLibrary.simpleMessage("Inne"),
         "settingPrivacy":
             MessageLookupByLibrary.simpleMessage("Polityka prywatności"),

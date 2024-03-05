@@ -92,6 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingAboutApp": MessageLookupByLibrary.simpleMessage("关于应用"),
         "settingContact": MessageLookupByLibrary.simpleMessage("联系我们"),
         "settingEdit": MessageLookupByLibrary.simpleMessage("编辑"),
+        "settingOnboarding": MessageLookupByLibrary.simpleMessage("关于这个应用程序"),
         "settingOther": MessageLookupByLibrary.simpleMessage("其他"),
         "settingPrivacy": MessageLookupByLibrary.simpleMessage("隐私政策"),
         "settingReview": MessageLookupByLibrary.simpleMessage("评论"),

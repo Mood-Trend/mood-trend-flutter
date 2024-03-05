@@ -280,6 +280,16 @@ class S {
     );
   }
 
+  /// `About This App`
+  String get settingOnboarding {
+    return Intl.message(
+      'About This App',
+      name: 'settingOnboarding',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Terms of Service`
   String get settingTerms {
     return Intl.message(

@@ -118,6 +118,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("De Applicatio"),
         "settingContact": MessageLookupByLibrary.simpleMessage("Contactus"),
         "settingEdit": MessageLookupByLibrary.simpleMessage("Edere"),
+        "settingOnboarding":
+            MessageLookupByLibrary.simpleMessage("De hac applicatione"),
         "settingOther": MessageLookupByLibrary.simpleMessage("Aliud"),
         "settingPrivacy":
             MessageLookupByLibrary.simpleMessage("Lex Privationum"),

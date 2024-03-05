@@ -108,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingAboutApp": MessageLookupByLibrary.simpleMessage("앱 정보"),
         "settingContact": MessageLookupByLibrary.simpleMessage("문의하기"),
         "settingEdit": MessageLookupByLibrary.simpleMessage("편집"),
+        "settingOnboarding": MessageLookupByLibrary.simpleMessage("이 앱 소개"),
         "settingOther": MessageLookupByLibrary.simpleMessage("기타"),
         "settingPrivacy": MessageLookupByLibrary.simpleMessage("개인정보 처리 방침"),
         "settingReview": MessageLookupByLibrary.simpleMessage("리뷰"),
