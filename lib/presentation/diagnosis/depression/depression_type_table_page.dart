@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/error_handler_mixin.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/depression/entity/depression_worksheet.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
@@ -30,11 +31,11 @@ class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
       body: Center(
         child: Column(
           children: [
-            const Flexible(
+            Flexible(
               child: Center(
                 child: Text(
-                  '提案',
-                  style: TextStyle(
+                  S.of(context).typeSuggestion,
+                  style: const TextStyle(
                     fontSize: 26,
                   ),
                 ),
@@ -114,9 +115,9 @@ class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                     popCount++;
                     PageNavigator.push(context, const RegisterDiagnosisPage());
                   },
-                  child: const Text(
-                    '次へ',
-                    style: TextStyle(
+                  child: Text(
+                    S.of(context).next,
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),

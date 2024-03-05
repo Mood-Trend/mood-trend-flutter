@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/entity/manic_worksheet.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
@@ -31,11 +32,11 @@ class ManicTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
       body: Center(
         child: Column(
           children: [
-            const Flexible(
+            Flexible(
               child: Center(
                 child: Text(
-                  '提案',
-                  style: TextStyle(
+                  S.of(context).typeSuggestion,
+                  style: const TextStyle(
                     fontSize: 26,
                   ),
                 ),
@@ -116,12 +117,12 @@ class ManicTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                     popCount++;
                     PageNavigator.push(
                       context,
-                      const DepressionTypeDignosisPage(),
+                      const DepressionTypeDiagnosisPage(),
                     );
                   },
-                  child: const Text(
-                    '次へ',
-                    style: TextStyle(
+                  child: Text(
+                    S.of(context).next,
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/application/diagnosis/register_mood_worksheet_usecase.dart';
+import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/error_handler_mixin.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/register_manic_entity_provider.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/table_page.dart';
@@ -39,7 +40,7 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
         elevation: 0,
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: const Text("登録確認"),
+        title: Text(S.of(context).registerConfirm),
       ),
       body: Center(
         child: Column(
@@ -62,7 +63,7 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
                     ),
                   ),
                   child: Text(
-                    "躁状態",
+                    S.of(context).manic,
                     style: TextStyle(
                       color: ref.watch(selectedMoodButtonStateProvider) ==
                               MoodState.manic
@@ -85,7 +86,7 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
                               ? AppColors.green
                               : Colors.transparent)),
                   child: Text(
-                    "鬱状態",
+                    S.of(context).depression,
                     style: TextStyle(
                         color: ref.watch(selectedMoodButtonStateProvider) ==
                                 MoodState.depression
@@ -240,11 +241,11 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
                     predicate: (_) => count++ >= popCount,
                   );
                   popCount = 0;
-                }, successMessage: '気分値目安表の登録が完了しました');
+                }, successMessage: S.of(context).registerSave);
               },
-              child: const Text(
-                '登録',
-                style: TextStyle(
+              child: Text(
+                S.of(context).registerRegister,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),

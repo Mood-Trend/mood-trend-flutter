@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/generated/l10n.dart';
 
 /// ダイアログ表示用の [GlobalKey]
 final navigatorKeyProvider = Provider(
@@ -44,19 +45,19 @@ class ConfirmDialog extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AlertDialog(
-      title: const Text('確認'),
+      title: Text(S.of(context).dialogConfirm),
       content: Text(message),
       actions: [
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: const Text('いいえ'),
+          child: Text(S.of(context).dialogNo),
         ),
         TextButton(
           onPressed: () {
             Navigator.of(context).pop();
             onApproved?.call();
           },
-          child: const Text('はい'),
+          child: Text(S.of(context).dialogYes),
         ),
       ],
     );

@@ -37,6 +37,7 @@ class WorksheetTableCell extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 16,
                           color: AppColors.black,
+                          height: 1.4,
                         ),
                       ),
                     ),

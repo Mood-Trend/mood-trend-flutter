@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:mood_trend_flutter/application/graph/add_mood_point_usecase.dart';
+import 'package:mood_trend_flutter/generated/l10n.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/page_navigator.dart';
@@ -74,7 +75,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
               color: AppColors.green,
             ),
             label: Text(
-              "${date.year.toString()}年${date.month.toString().padLeft(2)}月${date.day.toString().padLeft(2)}日",
+              DateFormat('yyyy/MM/dd').format(date),
               style: TextStyle(
                 color: AppColors.black,
               ),
@@ -116,9 +117,9 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
             children: [
               Row(
                 children: [
-                  const Text(
-                    '気分値',
-                    style: TextStyle(fontSize: 24),
+                  Text(
+                    S.of(context).moodValue,
+                    style: const TextStyle(fontSize: 24),
                   ),
                   SizedBox(
                     width: 75,
@@ -151,7 +152,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(18, 56, 18, 0),
+                padding: const EdgeInsets.fromLTRB(15, 56, 15, 0),
                 child: IconButton(
                   onPressed: () {
                     PageNavigator.push(
@@ -160,16 +161,16 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                     );
                   },
                   icon: Icon(
-                    Icons.align_horizontal_left,
+                    Icons.table_chart_outlined,
                     color: AppColors.green,
                   ),
                 ),
               ),
               Row(
                 children: [
-                  const Text(
-                    '予定数',
-                    style: TextStyle(fontSize: 24),
+                  Text(
+                    S.of(context).plannedVolume,
+                    style: const TextStyle(fontSize: 24),
                   ),
                   SizedBox(
                     width: 75,
@@ -186,7 +187,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 56, 16, 0),
+                padding: const EdgeInsets.fromLTRB(0, 56, 15, 0),
                 child: TextButton(
                   onPressed: () async {
                     run(
@@ -203,11 +204,11 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                         if (!result) return _showConfirmDialog(date: date);
                         Navigator.pop(context);
                       },
-                      successMessage: '気分値と予定数の登録が完了しました',
+                      successMessage: S.of(context).inputSuccess,
                     );
                   },
                   child: Text(
-                    '保存',
+                    S.of(context).inputSave,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: AppColors.green,
@@ -229,17 +230,19 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
     await showDialog(
       context: context,
       builder: (context) {
-        final formattedDate = DateFormat('yyyy年M月d日').format(date);
+        final formattedDate = DateFormat('yyyy/MM/dd').format(date);
         return AlertDialog(
+          surfaceTintColor: Colors.transparent,
+          backgroundColor: AppColors.white,
           // 対象日付には既に登録されている旨のメッセージを表示
-          title: Text('$formattedDateには既に登録されています'),
-          content: const Text('上書きしてもよろしいですか？'),
+          title: Text('$formattedDate ${S.of(context).inputDepression}'),
+          content: Text(S.of(context).inputOverwritingQuestion),
           actions: [
             TextButton(
               onPressed: () {
                 PageNavigator.pop(context);
               },
-              child: const Text('キャンセル'),
+              child: Text(S.of(context).cancel),
             ),
             TextButton(
               onPressed: () async {
@@ -250,7 +253,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                     );
                 Navigator.pop(context);
               },
-              child: const Text('上書き'),
+              child: Text(S.of(context).inputOverwriting),
             ),
           ],
         );

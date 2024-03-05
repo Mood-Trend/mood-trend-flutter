@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/register_diagnosis_page.dart';
@@ -39,7 +40,10 @@ class TablePage extends ConsumerWidget {
             elevation: 0,
             backgroundColor: Colors.transparent,
             centerTitle: true,
-            title: const Text("気分値目安表"),
+            title: Text(
+              S.of(context).table,
+              style: const TextStyle(fontSize: 20),
+            ),
             leading: IconButton(
               onPressed: () {
                 Navigator.of(context).pop();
@@ -70,7 +74,7 @@ class TablePage extends ConsumerWidget {
                         ),
                       ),
                       child: Text(
-                        "躁状態",
+                        S.of(context).manic,
                         style: TextStyle(
                           color: ref.watch(selectedMoodButtonStateProvider) ==
                                   MoodState.manic
@@ -95,7 +99,7 @@ class TablePage extends ConsumerWidget {
                                   ? AppColors.green
                                   : Colors.transparent)),
                       child: Text(
-                        "鬱状態",
+                        S.of(context).depression,
                         style: TextStyle(
                             color: ref.watch(selectedMoodButtonStateProvider) ==
                                     MoodState.depression
@@ -235,9 +239,9 @@ class TablePage extends ConsumerWidget {
                     popCount++;
                     PageNavigator.push(context, const ManicTypeDiagnosisPage());
                   },
-                  child: const Text(
-                    '気分値目安表の設定をはじめる',
-                    style: TextStyle(
+                  child: Text(
+                    S.of(context).tableStartEdit,
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
