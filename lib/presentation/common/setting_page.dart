@@ -16,6 +16,10 @@ import 'package:mood_trend_flutter/utils/page_navigator.dart';
 import '../../application/common/states/overlay_loading_provider.dart';
 import '../../application/common/url_launcher_service.dart';
 
+final hostingUrlProvider = Provider<String>(
+  (_) => throw UnimplementedError('not implemented'),
+);
+
 class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
   const SettingPage({super.key});
 
@@ -184,7 +188,7 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                   ref,
                   action: () async =>
                       await ref.read(urlLauncherServiceProvider).launch(
-                            'https://daffodil-cabin-d84.notion.site/de8c281a43e04c3199b1c60a067f3f2f',
+                            '${ref.read(hostingUrlProvider)}/term-of-service.html',
                           ),
                   successMessage: '',
                 ),
@@ -212,7 +216,7 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                   ref,
                   action: () async =>
                       await ref.read(urlLauncherServiceProvider).launch(
-                            'https://daffodil-cabin-d84.notion.site/7c662f7f695a46ee99e679418e3b8083',
+                            '${ref.read(hostingUrlProvider)}/privacy-policy.html',
                           ),
                   successMessage: '',
                 ),
