@@ -11,6 +11,7 @@ import 'package:mood_trend_flutter/presentation/common/components/dialog.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/common/components/snackbars.dart';
 import 'package:mood_trend_flutter/presentation/auth/root_page.dart';
+import 'package:mood_trend_flutter/presentation/common/setting_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/constants.dart';
 import 'package:package_info/package_info.dart';
@@ -33,9 +34,13 @@ Future<void> main() async {
   final packageInfo = await PackageInfo.fromPlatform();
 
   runApp(
-    const ProviderScope(
-      overrides: [],
-      child: App(),
+    ProviderScope(
+      overrides: [
+        hostingUrlProvider.overrideWithValue(
+          isProd ? hostingUrlforProd : hostingUrlforDev,
+        ),
+      ],
+      child: const App(),
     ),
   );
 }
