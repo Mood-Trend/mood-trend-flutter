@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/application/usecase_mixin.dart';
 import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
+import 'package:mood_trend_flutter/infrastructure/firebase/user_repository.dart';
 
 /// [SigninAnonymouslyUsecase] のインスタンスを作成するためのプロバイダ
 ///
@@ -25,8 +26,11 @@ class SigninAnonymouslyUsecase with UsecaseMixin {
   Future<void> execute() async {
     await run(
       ref,
-      action: () async =>
-          await ref.read(firebaseAuthRepositoryProvider).signinAnonymously(),
+      action: () async {
+        final uid =
+            await ref.read(firebaseAuthRepositoryProvider).signinAnonymously();
+        await ref.read(userRepositoryProvider).waitUntilUserCreated(uid);
+      },
     );
   }
 }
