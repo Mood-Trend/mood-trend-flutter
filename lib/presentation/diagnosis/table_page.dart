@@ -33,6 +33,13 @@ class TablePage extends ConsumerWidget {
     return AsyncValueHandler(
       value: ref.watch(subscribeMoodWorksheetProvider),
       loading: () => const OverlayLoading(),
+      error: (p0, p1) => Scaffold(
+        body: Center(
+          child: Text(
+            p0.toString(),
+          ),
+        ),
+      ),
       builder: (worksheet) {
         return Scaffold(
           backgroundColor: AppColors.white,
