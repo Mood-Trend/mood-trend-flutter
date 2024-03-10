@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mood_trend_flutter/application/auth/wait_until_user_created_future_provider.dart';
-import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/graph/home_page.dart';
 import 'package:mood_trend_flutter/presentation/auth/onboarding_page.dart';
@@ -58,11 +57,5 @@ class AuthDependentBuilder extends ConsumerWidget {
       loading: () => const Center(child: OverlayLoading()),
       error: (e, s) => const SizedBox(),
     );
-    // return AsyncValueHandler(
-    //   value: asyncValue,
-    //   builder: (_) => onAuthenticated(userId),
-    //   loading: () => const Center(child: OverlayLoading()),
-    // );
-    // return onAuthenticated(userId);
   }
 }
