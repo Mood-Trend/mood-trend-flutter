@@ -29,7 +29,7 @@ class SigninAnonymouslyUsecase with UsecaseMixin {
       action: () async {
         final uid =
             await ref.read(firebaseAuthRepositoryProvider).signinAnonymously();
-        await ref.read(userRepositoryProvider).waitUntilUserCreated(uid);
+        // await ref.read(userRepositoryProvider).waitUntilUserCreated(uid);
       },
     );
   }
