@@ -147,7 +147,7 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
                       ref.read(selectedManicTypeProvider) == ManicType.other
                           ? const SelfInputPage(isManic: true)
                           : const ManicTypeTablePage(),
-                    );
+                    ).then((value) => popCount--);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.green,

@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mood_trend_flutter/application/auth/wait_until_user_created_future_provider.dart';
+import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/graph/home_page.dart';
 import 'package:mood_trend_flutter/presentation/auth/onboarding_page.dart';
 
@@ -48,6 +50,12 @@ class AuthDependentBuilder extends ConsumerWidget {
     if (userId == null) {
       return onUnAuthenticated();
     }
-    return onAuthenticated(userId);
+
+    final asyncValue = ref.read(waitUntilUserCreatedFutureProvider(userId));
+    return asyncValue.when(
+      data: (_) => onAuthenticated(userId),
+      loading: () => const Center(child: OverlayLoading()),
+      error: (e, s) => const SizedBox(),
+    );
   }
 }

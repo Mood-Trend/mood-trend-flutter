@@ -203,7 +203,7 @@ class _SelfInputForManic extends ConsumerWidget with ErrorHandlerMixin {
                 PageNavigator.push(
                   context,
                   const DepressionTypeDiagnosisPage(),
-                );
+                ).then((value) => popCount--);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.green,
@@ -391,7 +391,8 @@ class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
                       ),
                     );
                 popCount++;
-                PageNavigator.push(context, const RegisterDiagnosisPage());
+                PageNavigator.push(context, const RegisterDiagnosisPage())
+                    .then((value) => popCount--);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.green,

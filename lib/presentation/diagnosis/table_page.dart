@@ -244,7 +244,8 @@ class TablePage extends ConsumerWidget {
                   ),
                   onPressed: () {
                     popCount++;
-                    PageNavigator.push(context, const ManicTypeDiagnosisPage());
+                    PageNavigator.push(context, const ManicTypeDiagnosisPage())
+                        .then((value) => popCount = 0);
                   },
                   child: Text(
                     S.of(context).tableStartEdit,
