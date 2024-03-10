@@ -35,6 +35,9 @@ class AppInfo with _$AppInfo {
 
     /// 利用規約のURL
     required Uri termsOfServiceUrl,
+
+    /// コンタクトのURL
+    required Uri contactUrl,
   }) = _AppInfo;
 
   const AppInfo._();

@@ -40,6 +40,9 @@ mixin _$AppInfo {
   /// 利用規約のURL
   Uri get termsOfServiceUrl => throw _privateConstructorUsedError;
 
+  /// コンタクトのURL
+  Uri get contactUrl => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $AppInfoCopyWith<AppInfo> get copyWith => throw _privateConstructorUsedError;
 }
@@ -57,7 +60,8 @@ abstract class $AppInfoCopyWith<$Res> {
       String copyRight,
       String iconImagePath,
       Uri privacyPolicyUrl,
-      Uri termsOfServiceUrl});
+      Uri termsOfServiceUrl,
+      Uri contactUrl});
 }
 
 /// @nodoc
@@ -81,6 +85,7 @@ class _$AppInfoCopyWithImpl<$Res, $Val extends AppInfo>
     Object? iconImagePath = null,
     Object? privacyPolicyUrl = null,
     Object? termsOfServiceUrl = null,
+    Object? contactUrl = null,
   }) {
     return _then(_value.copyWith(
       appName: null == appName
@@ -115,6 +120,10 @@ class _$AppInfoCopyWithImpl<$Res, $Val extends AppInfo>
           ? _value.termsOfServiceUrl
           : termsOfServiceUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
+      contactUrl: null == contactUrl
+          ? _value.contactUrl
+          : contactUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
     ) as $Val);
   }
 }
@@ -134,7 +143,8 @@ abstract class _$$_AppInfoCopyWith<$Res> implements $AppInfoCopyWith<$Res> {
       String copyRight,
       String iconImagePath,
       Uri privacyPolicyUrl,
-      Uri termsOfServiceUrl});
+      Uri termsOfServiceUrl,
+      Uri contactUrl});
 }
 
 /// @nodoc
@@ -155,6 +165,7 @@ class __$$_AppInfoCopyWithImpl<$Res>
     Object? iconImagePath = null,
     Object? privacyPolicyUrl = null,
     Object? termsOfServiceUrl = null,
+    Object? contactUrl = null,
   }) {
     return _then(_$_AppInfo(
       appName: null == appName
@@ -189,6 +200,10 @@ class __$$_AppInfoCopyWithImpl<$Res>
           ? _value.termsOfServiceUrl
           : termsOfServiceUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
+      contactUrl: null == contactUrl
+          ? _value.contactUrl
+          : contactUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
     ));
   }
 }
@@ -204,7 +219,8 @@ class _$_AppInfo extends _AppInfo {
       required this.copyRight,
       required this.iconImagePath,
       required this.privacyPolicyUrl,
-      required this.termsOfServiceUrl})
+      required this.termsOfServiceUrl,
+      required this.contactUrl})
       : super._();
 
   /// アプリ名
@@ -239,9 +255,13 @@ class _$_AppInfo extends _AppInfo {
   @override
   final Uri termsOfServiceUrl;
 
+  /// コンタクトのURL
+  @override
+  final Uri contactUrl;
+
   @override
   String toString() {
-    return 'AppInfo(appName: $appName, packageName: $packageName, version: $version, buildNumber: $buildNumber, copyRight: $copyRight, iconImagePath: $iconImagePath, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl)';
+    return 'AppInfo(appName: $appName, packageName: $packageName, version: $version, buildNumber: $buildNumber, copyRight: $copyRight, iconImagePath: $iconImagePath, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, contactUrl: $contactUrl)';
   }
 
   @override
@@ -262,7 +282,9 @@ class _$_AppInfo extends _AppInfo {
             (identical(other.privacyPolicyUrl, privacyPolicyUrl) ||
                 other.privacyPolicyUrl == privacyPolicyUrl) &&
             (identical(other.termsOfServiceUrl, termsOfServiceUrl) ||
-                other.termsOfServiceUrl == termsOfServiceUrl));
+                other.termsOfServiceUrl == termsOfServiceUrl) &&
+            (identical(other.contactUrl, contactUrl) ||
+                other.contactUrl == contactUrl));
   }
 
   @override
@@ -275,7 +297,8 @@ class _$_AppInfo extends _AppInfo {
       copyRight,
       iconImagePath,
       privacyPolicyUrl,
-      termsOfServiceUrl);
+      termsOfServiceUrl,
+      contactUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -293,7 +316,8 @@ abstract class _AppInfo extends AppInfo {
       required final String copyRight,
       required final String iconImagePath,
       required final Uri privacyPolicyUrl,
-      required final Uri termsOfServiceUrl}) = _$_AppInfo;
+      required final Uri termsOfServiceUrl,
+      required final Uri contactUrl}) = _$_AppInfo;
   const _AppInfo._() : super._();
 
   @override
@@ -328,6 +352,9 @@ abstract class _AppInfo extends AppInfo {
 
   /// 利用規約のURL
   Uri get termsOfServiceUrl;
+
+  /// コンタクトのURL
+  Uri get contactUrl;
   @override
   @JsonKey(ignore: true)
   _$$_AppInfoCopyWith<_$_AppInfo> get copyWith =>
