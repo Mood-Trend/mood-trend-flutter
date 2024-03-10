@@ -15,10 +15,7 @@ import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../../application/common/states/overlay_loading_provider.dart';
 import '../../application/common/url_launcher_service.dart';
-
-final hostingUrlProvider = Provider<String>(
-  (_) => throw UnimplementedError('not implemented'),
-);
+import '../../domain/app_info.dart';
 
 class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
   const SettingPage({super.key});
@@ -84,7 +81,7 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
               ref,
               action: () async =>
                   await ref.read(urlLauncherServiceProvider).launch(
-                        'https://docs.google.com/forms/d/e/1FAIpQLScJx5NC4RWnZaAbTld5_0lE1y6gjAx5_KkkjeWbFFFRLGsq3g/viewform?usp=sf_link',
+                        ref.read(appInfoProvider).contactUrl.toString(),
                       ),
               successMessage: '',
             ),
@@ -186,10 +183,11 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
               GestureDetector(
                 onTap: () async => await run(
                   ref,
-                  action: () async =>
-                      await ref.read(urlLauncherServiceProvider).launch(
-                            '${ref.read(hostingUrlProvider)}/term-of-service.html',
-                          ),
+                  action: () async => await ref
+                      .read(urlLauncherServiceProvider)
+                      .launch(
+                        ref.read(appInfoProvider).termsOfServiceUrl.toString(),
+                      ),
                   successMessage: '',
                 ),
                 child: Container(
@@ -214,10 +212,11 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
               GestureDetector(
                 onTap: () async => await run(
                   ref,
-                  action: () async =>
-                      await ref.read(urlLauncherServiceProvider).launch(
-                            '${ref.read(hostingUrlProvider)}/privacy-policy.html',
-                          ),
+                  action: () async => await ref
+                      .read(urlLauncherServiceProvider)
+                      .launch(
+                        ref.read(appInfoProvider).privacyPolicyUrl.toString(),
+                      ),
                   successMessage: '',
                 ),
                 child: Container(

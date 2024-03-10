@@ -11,12 +11,12 @@ import 'package:mood_trend_flutter/presentation/common/components/dialog.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/common/components/snackbars.dart';
 import 'package:mood_trend_flutter/presentation/auth/root_page.dart';
-import 'package:mood_trend_flutter/presentation/common/setting_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/constants.dart';
 import 'package:package_info/package_info.dart';
 
 import 'application/common/states/overlay_loading_provider.dart';
+import 'domain/app_info.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,8 +36,32 @@ Future<void> main() async {
   runApp(
     ProviderScope(
       overrides: [
-        hostingUrlProvider.overrideWithValue(
-          isProd ? hostingUrlforProd : hostingUrlforDev,
+        appInfoProvider.overrideWith(
+          (ref) => AppInfo(
+            appName: packageInfo.appName,
+            packageName: packageInfo.packageName,
+            version: 'v${packageInfo.version}',
+            buildNumber: packageInfo.buildNumber,
+            copyRight: '(C)2024 Mood Trend',
+            iconImagePath: 'assets/icon.png',
+            privacyPolicyUrl: isProd
+                ? Uri.parse(
+                    'https://mood-trend-prod.web.app/privacy-policy.html',
+                  )
+                : Uri.parse(
+                    'https://mood-trend-dev.web.app/privacy-policy.html',
+                  ),
+            termsOfServiceUrl: isProd
+                ? Uri.parse(
+                    'https://mood-trend-prod.web.app/term-of-service.html',
+                  )
+                : Uri.parse(
+                    'https://mood-trend-dev.web.app/term-of-service.html',
+                  ),
+            contactUrl: Uri.parse(
+              'https://docs.google.com/forms/d/e/1FAIpQLScJx5NC4RWnZaAbTld5_0lE1y6gjAx5_KkkjeWbFFFRLGsq3g/viewform?usp=sf_link',
+            ),
+          ),
         ),
       ],
       child: const App(),
