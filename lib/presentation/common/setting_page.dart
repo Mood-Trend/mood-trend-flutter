@@ -231,6 +231,43 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                   ),
                 ),
               ),
+              Divider(
+                height: 0,
+                thickness: 0.7,
+                indent: 16,
+                endIndent: 16,
+                color: AppColors.grey,
+              ),
+              GestureDetector(
+                onTap: () {
+                  final info = ref.watch(appInfoProvider);
+                  showAboutDialog(
+                    context: context,
+                    applicationName: info.appName,
+                    applicationVersion:
+                        '${info.version} build${info.buildNumber}',
+                    applicationIcon: SizedBox.square(
+                      dimension: 60,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.asset(info.iconImagePath),
+                      ),
+                    ),
+                    applicationLegalese: info.copyRight,
+                  );
+                },
+                child: Container(
+                  color: AppColors.white,
+                  width: double.infinity,
+                  child: const Padding(
+                    padding: EdgeInsets.fromLTRB(16, 20, 16, 20),
+                    child: Text(
+                      'バージョン情報',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
           Padding(
