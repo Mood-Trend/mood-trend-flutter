@@ -113,7 +113,8 @@ class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                   ),
                   onPressed: () async {
                     popCount++;
-                    PageNavigator.push(context, const RegisterDiagnosisPage());
+                    PageNavigator.push(context, const RegisterDiagnosisPage())
+                        .then((value) => popCount--);
                   },
                   child: Text(
                     S.of(context).next,

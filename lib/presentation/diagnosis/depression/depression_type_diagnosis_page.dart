@@ -150,7 +150,7 @@ class DepressionTypeDiagnosisPage extends ConsumerWidget {
                               DepressionType.other
                           ? const SelfInputPage(isManic: false)
                           : const DepressionTypeTablePage(),
-                    );
+                    ).then((value) => popCount--);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.green,
