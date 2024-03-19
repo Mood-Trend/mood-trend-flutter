@@ -3,25 +3,25 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/domain/conf.dart';
-import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
 import 'package:mood_trend_flutter/utils/constants.dart';
 
 import '../../domain/app_exception.dart';
 import 'firebase_provider.dart';
 
 /// [ConfRepository] のインスタンスを提供する [Provider]
-final confRepositoryProvider = Provider<ConfRepository>(
-  (ref) => ConfRepository(
-    confCollectionRef: ref.read(confCollectionRefProvider),
+final confRepositoryProvider = Provider.family<ConfRepository, String>(
+  (ref, uid) => ConfRepository(
+    confCollectionRef: ref.read(confCollectionRefProvider(uid)),
   ),
 );
 
 /// Conf コレクションの参照結果を提供する [Provider].
-final confCollectionRefProvider = Provider(
-  (ref) => ref
+final confCollectionRefProvider =
+    Provider.family<CollectionReference<ConfDocument>, String>(
+  (ref, uid) => ref
       .watch(firebaseFirestoreProvider)
       .collection('users')
-      .doc(ref.read(userIdProvider)!)
+      .doc(uid)
       .collection('conf')
       .withConverter<ConfDocument>(
         fromFirestore: (snapshot, _) => ConfDocument.fromJson(
