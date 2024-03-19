@@ -15,11 +15,14 @@ class SelfInputPage extends ConsumerWidget with ErrorHandlerMixin {
   const SelfInputPage({
     super.key,
     required this.isManic,
+    required this.uid,
   });
 
   /// 躁の場合は `true`
   /// 鬱の場合は `false`
   final bool isManic;
+
+  final String uid;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -31,8 +34,8 @@ class SelfInputPage extends ConsumerWidget with ErrorHandlerMixin {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: isManic
-            ? const _SelfInputForManic()
-            : const _SelfInputForDepression(),
+            ? _SelfInputForManic(uid: uid)
+            : _SelfInputForDepression(uid: uid),
       ),
     );
   }
@@ -40,7 +43,9 @@ class SelfInputPage extends ConsumerWidget with ErrorHandlerMixin {
 
 /// 躁の状態入力で「独自に入力」を選択した場合の画面
 class _SelfInputForManic extends ConsumerWidget with ErrorHandlerMixin {
-  const _SelfInputForManic();
+  const _SelfInputForManic({required this.uid});
+
+  final String uid;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -202,7 +207,7 @@ class _SelfInputForManic extends ConsumerWidget with ErrorHandlerMixin {
                 popCount++;
                 PageNavigator.push(
                   context,
-                  const DepressionTypeDiagnosisPage(),
+                  DepressionTypeDiagnosisPage(uid: uid),
                 ).then((value) => popCount--);
               },
               style: ElevatedButton.styleFrom(
@@ -227,7 +232,8 @@ class _SelfInputForManic extends ConsumerWidget with ErrorHandlerMixin {
 
 /// 鬱の状態入力で「独自に入力」を選択した場合の画面
 class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
-  const _SelfInputForDepression();
+  const _SelfInputForDepression({required this.uid});
+  final String uid;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -391,7 +397,7 @@ class _SelfInputForDepression extends ConsumerWidget with ErrorHandlerMixin {
                       ),
                     );
                 popCount++;
-                PageNavigator.push(context, const RegisterDiagnosisPage())
+                PageNavigator.push(context, RegisterDiagnosisPage(uid: uid))
                     .then((value) => popCount--);
               },
               style: ElevatedButton.styleFrom(

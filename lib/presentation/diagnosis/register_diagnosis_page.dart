@@ -21,7 +21,8 @@ int popCount = 0;
 
 /// 気分値目安表登録画面
 class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
-  const RegisterDiagnosisPage({super.key});
+  const RegisterDiagnosisPage({super.key, required this.uid});
+  final String uid;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -223,7 +224,9 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
               ),
               onPressed: () async {
                 await run(ref, action: () async {
-                  await ref.read(registerMoodWorksheetUsecaseProvider).execute(
+                  await ref
+                      .read(registerMoodWorksheetUsecaseProvider(uid))
+                      .execute(
                         minus_5: registerDepressionWorksheet.minus_5,
                         minus_4: registerDepressionWorksheet.minus_4,
                         minus_3: registerDepressionWorksheet.minus_3,

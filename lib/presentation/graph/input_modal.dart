@@ -13,7 +13,9 @@ import '../diagnosis/table_page.dart';
 
 /// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
-  const InputModal({super.key});
+  const InputModal({super.key, required this.uid});
+
+  final String uid;
 
   @override
   ConsumerState<InputModal> createState() => _MyWidgetState();
@@ -157,7 +159,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   onPressed: () {
                     PageNavigator.push(
                       context,
-                      const TablePage(),
+                      TablePage(uid: widget.uid),
                     );
                   },
                   icon: Icon(

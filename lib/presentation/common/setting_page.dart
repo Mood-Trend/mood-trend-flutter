@@ -18,7 +18,8 @@ import '../../application/common/url_launcher_service.dart';
 import '../../domain/app_info.dart';
 
 class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
-  const SettingPage({super.key});
+  const SettingPage({super.key, required this.uid});
+  final String uid;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -48,7 +49,7 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
           GestureDetector(
             onTap: () {
               popCount++;
-              PageNavigator.push(context, const ManicTypeDiagnosisPage())
+              PageNavigator.push(context, ManicTypeDiagnosisPage(uid: uid))
                   .then((value) => popCount = 0);
             },
             child: Container(

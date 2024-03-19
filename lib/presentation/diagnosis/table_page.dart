@@ -26,12 +26,14 @@ final selectedMoodButtonStateProvider = StateProvider<MoodState>(
 
 /// 気分値目安表を表示するページ
 class TablePage extends ConsumerWidget {
-  const TablePage({super.key});
+  const TablePage({super.key, required this.uid});
+
+  final String uid;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AsyncValueHandler(
-      value: ref.watch(subscribeMoodWorksheetProvider),
+      value: ref.watch(subscribeMoodWorksheetProvider(uid)),
       loading: () => const OverlayLoading(),
       error: (p0, p1) => Scaffold(
         body: Center(
@@ -244,8 +246,12 @@ class TablePage extends ConsumerWidget {
                   ),
                   onPressed: () {
                     popCount++;
-                    PageNavigator.push(context, const ManicTypeDiagnosisPage())
-                        .then((value) => popCount = 0);
+                    PageNavigator.push(
+                      context,
+                      ManicTypeDiagnosisPage(
+                        uid: uid,
+                      ),
+                    ).then((value) => popCount = 0);
                   },
                   child: Text(
                     S.of(context).tableStartEdit,

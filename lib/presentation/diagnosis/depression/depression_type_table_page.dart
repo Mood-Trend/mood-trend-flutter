@@ -11,7 +11,8 @@ import 'depression_type_diagnosis_page.dart';
 
 /// 鬱のタイプを表示するテーブル画面
 class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
-  const DepressionTypeTablePage({super.key});
+  const DepressionTypeTablePage({super.key, required this.uid});
+  final String uid;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -113,7 +114,7 @@ class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                   ),
                   onPressed: () async {
                     popCount++;
-                    PageNavigator.push(context, const RegisterDiagnosisPage())
+                    PageNavigator.push(context, RegisterDiagnosisPage(uid: uid))
                         .then((value) => popCount--);
                   },
                   child: Text(
