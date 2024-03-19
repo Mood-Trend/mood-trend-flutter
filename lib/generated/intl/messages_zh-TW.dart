@@ -134,6 +134,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "typeOther": MessageLookupByLibrary.simpleMessage("自訂\n輸入"),
         "typePoorThinking": MessageLookupByLibrary.simpleMessage("思考能力\n降低"),
         "typeSleepDisorder": MessageLookupByLibrary.simpleMessage("睡眠障礙"),
-        "typeSuggestion": MessageLookupByLibrary.simpleMessage("建議")
+        "typeSuggestion": MessageLookupByLibrary.simpleMessage("建議"),
+        "version_info": MessageLookupByLibrary.simpleMessage("版本資訊")
       };
 }

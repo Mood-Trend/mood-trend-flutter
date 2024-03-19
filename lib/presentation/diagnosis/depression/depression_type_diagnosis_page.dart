@@ -16,7 +16,8 @@ final selectedDepressionTypeProvider =
 
 /// 鬱のタイプの診断画面
 class DepressionTypeDiagnosisPage extends ConsumerWidget {
-  const DepressionTypeDiagnosisPage({super.key});
+  const DepressionTypeDiagnosisPage({super.key, required this.uid});
+  final String uid;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -148,8 +149,8 @@ class DepressionTypeDiagnosisPage extends ConsumerWidget {
                       context,
                       ref.read(selectedDepressionTypeProvider) ==
                               DepressionType.other
-                          ? const SelfInputPage(isManic: false)
-                          : const DepressionTypeTablePage(),
+                          ? SelfInputPage(isManic: false, uid: uid)
+                          : DepressionTypeTablePage(uid: uid),
                     ).then((value) => popCount--);
                   },
                   style: ElevatedButton.styleFrom(

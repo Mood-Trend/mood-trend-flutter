@@ -15,7 +15,8 @@ final selectedManicTypeProvider = StateProvider.autoDispose<ManicType>(
 
 /// 躁のタイプの診断画面
 class ManicTypeDiagnosisPage extends ConsumerWidget {
-  const ManicTypeDiagnosisPage({super.key});
+  const ManicTypeDiagnosisPage({super.key, required this.uid});
+  final String uid;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -145,8 +146,8 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
                     PageNavigator.push(
                       context,
                       ref.read(selectedManicTypeProvider) == ManicType.other
-                          ? const SelfInputPage(isManic: true)
-                          : const ManicTypeTablePage(),
+                          ? SelfInputPage(isManic: true, uid: uid)
+                          : ManicTypeTablePage(uid: uid),
                     ).then((value) => popCount--);
                   },
                   style: ElevatedButton.styleFrom(

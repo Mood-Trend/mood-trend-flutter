@@ -155,6 +155,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "typeOther": MessageLookupByLibrary.simpleMessage("사용자 정의"),
         "typePoorThinking": MessageLookupByLibrary.simpleMessage("사고 능력 감소"),
         "typeSleepDisorder": MessageLookupByLibrary.simpleMessage("수면 장애"),
-        "typeSuggestion": MessageLookupByLibrary.simpleMessage("제안")
+        "typeSuggestion": MessageLookupByLibrary.simpleMessage("제안"),
+        "version_info": MessageLookupByLibrary.simpleMessage("버전 정보")
       };
 }

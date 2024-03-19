@@ -18,7 +18,8 @@ import '../../application/common/url_launcher_service.dart';
 import '../../domain/app_info.dart';
 
 class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
-  const SettingPage({super.key});
+  const SettingPage({super.key, required this.uid});
+  final String uid;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -48,7 +49,7 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
           GestureDetector(
             onTap: () {
               popCount++;
-              PageNavigator.push(context, const ManicTypeDiagnosisPage())
+              PageNavigator.push(context, ManicTypeDiagnosisPage(uid: uid))
                   .then((value) => popCount = 0);
             },
             child: Container(
@@ -259,11 +260,11 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                 child: Container(
                   color: AppColors.white,
                   width: double.infinity,
-                  child: const Padding(
-                    padding: EdgeInsets.fromLTRB(16, 20, 16, 20),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
                     child: Text(
-                      'バージョン情報',
-                      style: TextStyle(fontSize: 18),
+                      S.of(context).version_info,
+                      style: const TextStyle(fontSize: 18),
                     ),
                   ),
                 ),

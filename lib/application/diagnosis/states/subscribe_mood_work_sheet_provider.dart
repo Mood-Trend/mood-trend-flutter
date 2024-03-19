@@ -4,6 +4,7 @@ import '../../../domain/mood_worksheet.dart';
 import '../../../infrastructure/firebase/mood_worksheet_repository.dart';
 
 /// [MoodWorksheet] を購読する [StreamProvider]
-final subscribeMoodWorksheetProvider = StreamProvider<MoodWorksheet>(
-  (ref) => ref.watch(moodWorksheetRepositoryProvider).subscribe(),
+final subscribeMoodWorksheetProvider =
+    StreamProvider.family<MoodWorksheet, String>(
+  (ref, uid) => ref.watch(moodWorksheetRepositoryProvider(uid)).subscribe(),
 );

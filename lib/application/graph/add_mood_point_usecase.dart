@@ -5,8 +5,9 @@ import '../usecase_mixin.dart';
 /// [AddMoodPointUsecase] のインスタンスを作成するためのプロバイダ
 ///
 /// UI 層にユースケースを注入するために使用され、認証プロセスを抽象化する
-final addMoodPointUsecaseProvider = Provider<AddMoodPointUsecase>(
-  AddMoodPointUsecase.new,
+final addMoodPointUsecaseProvider =
+    Provider.family<AddMoodPointUsecase, String>(
+  (ref, uid) => AddMoodPointUsecase(ref, uid),
 );
 
 /// [AddMoodPointUsecase] は、匿名でサインインするプロセスをカプセル化する
@@ -15,11 +16,12 @@ final addMoodPointUsecaseProvider = Provider<AddMoodPointUsecase>(
 /// さらに、ローディング管理を [UsecaseMixin] にて隠蔽している
 class AddMoodPointUsecase with UsecaseMixin {
   final Ref ref;
+  final String uid;
 
   /// 指定された [Ref] を使用して [AddMoodPointUsecase] を構築する
   ///
   /// [Ref] は必要なプロバイダーを読み取るために使用される
-  AddMoodPointUsecase(this.ref);
+  AddMoodPointUsecase(this.ref, this.uid);
 
   /// 気分値、予定数の登録
   /// 返却値：登録成功時は true、登録失敗時（同じ日付で既に登録されている場合）は false
@@ -35,13 +37,13 @@ class AddMoodPointUsecase with UsecaseMixin {
   }) async {
     return run(ref, action: () async {
       // 同じ日付の気分値が既に登録されていないか確認
-      final isExist = await ref.read(moodPointRepositoryProvider).isExist(
+      final isExist = await ref.read(moodPointRepositoryProvider(uid)).isExist(
             moodDate: moodDate,
           );
       if (isExist) return false;
 
       // [MoodPointRepository] を使用して気分値を追加
-      await ref.read(moodPointRepositoryProvider).add(
+      await ref.read(moodPointRepositoryProvider(uid)).add(
             point: point,
             plannedVolume: plannedVolume,
             moodDate: moodDate,
@@ -63,10 +65,10 @@ class AddMoodPointUsecase with UsecaseMixin {
   }) async {
     await run(ref, action: () async {
       final oldMoodPoint =
-          await ref.read(moodPointRepositoryProvider).getByDate(
+          await ref.read(moodPointRepositoryProvider(uid)).getByDate(
                 moodDate: moodDate,
               );
-      await ref.read(moodPointRepositoryProvider).update(
+      await ref.read(moodPointRepositoryProvider(uid)).update(
             pointId: oldMoodPoint.pointId,
             point: point,
             plannedVolume: plannedVolume,

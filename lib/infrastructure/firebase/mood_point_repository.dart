@@ -3,22 +3,23 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../domain/app_exception.dart';
 import '../../domain/mood_point.dart';
-import 'auth_repository.dart';
 import 'firebase_provider.dart';
 
 /// [MoodPointRepository] のインスタンスを提供する [Provider]
-final moodPointRepositoryProvider = Provider<MoodPointRepository>(
-  (ref) => MoodPointRepository(
-    moodPointsCollectionRef: ref.watch(moodPointsCollectionRefProvider),
+final moodPointRepositoryProvider =
+    Provider.family<MoodPointRepository, String>(
+  (ref, uid) => MoodPointRepository(
+    moodPointsCollectionRef: ref.watch(moodPointsCollectionRefProvider(uid)),
   ),
 );
 
 /// MoodPoints コレクションの参照結果を提供する [Provider].
-final moodPointsCollectionRefProvider = Provider(
-  (ref) => ref
+final moodPointsCollectionRefProvider =
+    Provider.family<CollectionReference<MoodPointDocument>, String>(
+  (ref, uid) => ref
       .watch(firebaseFirestoreProvider)
       .collection('users')
-      .doc(ref.watch(userIdProvider)!)
+      .doc(uid)
       .collection('mood_points')
       .withConverter<MoodPointDocument>(
         fromFirestore: (snapshot, _) => MoodPointDocument.fromJson(

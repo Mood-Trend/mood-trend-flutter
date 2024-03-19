@@ -172,6 +172,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Spadek myślenia"),
         "typeSleepDisorder":
             MessageLookupByLibrary.simpleMessage("Zaburzenia snu"),
-        "typeSuggestion": MessageLookupByLibrary.simpleMessage("Sugestia")
+        "typeSuggestion": MessageLookupByLibrary.simpleMessage("Sugestia"),
+        "version_info":
+            MessageLookupByLibrary.simpleMessage("Informacje o wersji")
       };
 }

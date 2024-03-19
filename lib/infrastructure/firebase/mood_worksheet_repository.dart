@@ -5,22 +5,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../domain/app_exception.dart';
 import '../../domain/mood_worksheet.dart';
-import 'auth_repository.dart';
 import 'firebase_provider.dart';
 
 /// [MoodWorksheetRepository] のインスタンスを提供する [Provider]
-final moodWorksheetRepositoryProvider = Provider<MoodWorksheetRepository>(
-  (ref) => MoodWorksheetRepository(
-    moodWorksheetCollectionRef: ref.read(moodWorksheetCollectionRefProvider),
+final moodWorksheetRepositoryProvider =
+    Provider.family<MoodWorksheetRepository, String>(
+  (ref, uid) => MoodWorksheetRepository(
+    moodWorksheetCollectionRef:
+        ref.read(moodWorksheetCollectionRefProvider(uid)),
   ),
 );
 
 /// MoodWorksheet コレクションの参照結果を提供する [Provider].
-final moodWorksheetCollectionRefProvider = Provider(
-  (ref) => ref
+final moodWorksheetCollectionRefProvider =
+    Provider.family<CollectionReference<MoodWorksheetDocument>, String>(
+  (ref, uid) => ref
       .watch(firebaseFirestoreProvider)
       .collection('users')
-      .doc(ref.read(userIdProvider)!)
+      .doc(uid)
       .collection('mood_worksheet')
       .withConverter<MoodWorksheetDocument>(
         fromFirestore: (snapshot, _) => MoodWorksheetDocument.fromJson(

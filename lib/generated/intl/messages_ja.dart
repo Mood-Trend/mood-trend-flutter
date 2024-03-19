@@ -105,6 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingAboutApp": MessageLookupByLibrary.simpleMessage("アプリについて"),
         "settingContact": MessageLookupByLibrary.simpleMessage("お問い合わせ"),
         "settingEdit": MessageLookupByLibrary.simpleMessage("編集"),
+        "settingOnboarding": MessageLookupByLibrary.simpleMessage("このアプリについて"),
         "settingOther": MessageLookupByLibrary.simpleMessage("その他"),
         "settingPrivacy": MessageLookupByLibrary.simpleMessage("プライバシーポリシー"),
         "settingReview": MessageLookupByLibrary.simpleMessage("レビュー"),
@@ -150,6 +151,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "typeOther": MessageLookupByLibrary.simpleMessage("独自に\n入力"),
         "typePoorThinking": MessageLookupByLibrary.simpleMessage("思考力\n低下"),
         "typeSleepDisorder": MessageLookupByLibrary.simpleMessage("睡眠障害"),
-        "typeSuggestion": MessageLookupByLibrary.simpleMessage("提案")
+        "typeSuggestion": MessageLookupByLibrary.simpleMessage("提案"),
+        "version_info": MessageLookupByLibrary.simpleMessage("バージョン情報")
       };
 }

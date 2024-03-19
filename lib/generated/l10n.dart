@@ -969,6 +969,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Version Information`
+  String get version_info {
+    return Intl.message(
+      'Version Information',
+      name: 'version_info',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

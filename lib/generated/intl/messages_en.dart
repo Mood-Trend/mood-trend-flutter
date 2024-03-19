@@ -170,6 +170,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Decreased\nCognitive Function"),
         "typeSleepDisorder":
             MessageLookupByLibrary.simpleMessage("Sleep\nDisorder"),
-        "typeSuggestion": MessageLookupByLibrary.simpleMessage("Suggestions")
+        "typeSuggestion": MessageLookupByLibrary.simpleMessage("Suggestions"),
+        "version_info":
+            MessageLookupByLibrary.simpleMessage("Version Information")
       };
 }

@@ -23,6 +23,7 @@
     "settingAboutApp" : "アプリについて",
     "settingReview" : "レビュー",
     "settingReviewRequest" : "レビューしてもらえると開発者が小躍りします",
+    "settingOnboarding" : "このアプリについて",
     "settingTerms" : "利用規約",
     "settingPrivacy" : "プライバシーポリシー",
     "settingOther" : "その他",
@@ -90,5 +91,6 @@
     "activityPlus_2" : "普段よりも活発に動く気分である",
     "activityPlus_3" : "積極的でエネルギッシュな気分で、予定をたくさん詰める",
     "activityPlus_4" : "1日が予定でいっぱいである",
-    "activityPlus_5" : "何日も1日中活動を続けているが、疲れを感じずに精力的に行動している"
+    "activityPlus_5" : "何日も1日中活動を続けているが、疲れを感じずに精力的に行動している",
+    "version_info": "バージョン情報"
 }

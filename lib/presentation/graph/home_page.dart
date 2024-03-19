@@ -113,13 +113,16 @@ class HomePage extends ConsumerWidget {
             icon: const Icon(Icons.refresh),
           ),
           IconButton(
-            onPressed: () => PageNavigator.push(context, const SettingPage()),
+            onPressed: () => PageNavigator.push(
+              context,
+              SettingPage(uid: userId),
+            ),
             icon: const Icon(Icons.settings),
           ),
         ],
       ),
       body: AsyncValueHandler(
-          value: ref.watch(subscribeMoodPointsProvider),
+          value: ref.watch(subscribeMoodPointsProvider(userId)),
           loading: () => const OverlayLoading(),
           builder: (moodPoints) {
             final term = ref.watch(selectedTermProvider) == Term.month
@@ -214,7 +217,7 @@ class HomePage extends ConsumerWidget {
             isScrollControlled: true,
             context: context,
             builder: (context) {
-              return const InputModal();
+              return InputModal(uid: userId);
             },
           );
         },

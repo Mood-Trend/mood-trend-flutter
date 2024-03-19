@@ -12,7 +12,8 @@ import 'manic_type_diagnosis_page.dart';
 
 /// 躁のタイプを表示するテーブル画面
 class ManicTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
-  const ManicTypeTablePage({super.key});
+  const ManicTypeTablePage({super.key, required this.uid});
+  final String uid;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -117,7 +118,7 @@ class ManicTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                     popCount++;
                     PageNavigator.push(
                       context,
-                      const DepressionTypeDiagnosisPage(),
+                      DepressionTypeDiagnosisPage(uid: uid),
                     ).then((value) => popCount--);
                   },
                   child: Text(

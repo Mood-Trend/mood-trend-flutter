@@ -174,6 +174,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Denkfähigkeit\nvermindert"),
         "typeSleepDisorder":
             MessageLookupByLibrary.simpleMessage("Schlafstörung"),
-        "typeSuggestion": MessageLookupByLibrary.simpleMessage("Vorschlag")
+        "typeSuggestion": MessageLookupByLibrary.simpleMessage("Vorschlag"),
+        "version_info":
+            MessageLookupByLibrary.simpleMessage("Versionsinformationen")
       };
 }

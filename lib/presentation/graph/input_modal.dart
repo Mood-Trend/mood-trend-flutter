@@ -13,7 +13,9 @@ import '../diagnosis/table_page.dart';
 
 /// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
-  const InputModal({super.key});
+  const InputModal({super.key, required this.uid});
+
+  final String uid;
 
   @override
   ConsumerState<InputModal> createState() => _MyWidgetState();
@@ -157,7 +159,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   onPressed: () {
                     PageNavigator.push(
                       context,
-                      const TablePage(),
+                      TablePage(uid: widget.uid),
                     );
                   },
                   icon: Icon(
@@ -194,14 +196,20 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       ref,
                       action: () async {
                         // mood_points コレクションにドキュメントを追加
-                        final result =
-                            await ref.read(addMoodPointUsecaseProvider).execute(
-                                  point: _moodValue.toInt(),
-                                  plannedVolume: _plannedValue.toInt(),
-                                  moodDate: date,
-                                );
+                        final result = await ref
+                            .read(addMoodPointUsecaseProvider(widget.uid))
+                            .execute(
+                              point: _moodValue.toInt(),
+                              plannedVolume: _plannedValue.toInt(),
+                              moodDate: date,
+                            );
                         // 同じ日付に既に登録されている場合は上書きされる旨の確認ダイアログを表示
-                        if (!result) return _showConfirmDialog(date: date);
+                        if (!result) {
+                          return _showConfirmDialog(
+                            date: date,
+                            uid: widget.uid,
+                          );
+                        }
                         Navigator.pop(context);
                       },
                       successMessage: S.of(context).inputSuccess,
@@ -225,6 +233,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
 
   /// 同じ日付に既に登録されている場合の確認ダイアログの表示処理
   Future<void> _showConfirmDialog({
+    required String uid,
     required DateTime date,
   }) async {
     await showDialog(
@@ -246,7 +255,9 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
             ),
             TextButton(
               onPressed: () async {
-                await ref.read(addMoodPointUsecaseProvider).executeForUpdate(
+                await ref
+                    .read(addMoodPointUsecaseProvider(uid))
+                    .executeForUpdate(
                       point: _moodValue.toInt(),
                       plannedVolume: _plannedValue.toInt(),
                       moodDate: date,

@@ -174,6 +174,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Cogitandi Inferioris"),
         "typeSleepDisorder":
             MessageLookupByLibrary.simpleMessage("Morbi Somni"),
-        "typeSuggestion": MessageLookupByLibrary.simpleMessage("Suggestio")
+        "typeSuggestion": MessageLookupByLibrary.simpleMessage("Suggestio"),
+        "version_info":
+            MessageLookupByLibrary.simpleMessage("Informationes versionis")
       };
 }

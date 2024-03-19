@@ -7,18 +7,22 @@ import '../usecase_mixin.dart';
 ///
 /// UI 層にユースケースを注入するために使用され、躁鬱状態を登録する
 final registerMoodWorksheetUsecaseProvider =
-    Provider<RegisterMoodWorksheetUsecase>(
-  RegisterMoodWorksheetUsecase.new,
+    Provider.family<RegisterMoodWorksheetUsecase, String>(
+  (ref, uid) => RegisterMoodWorksheetUsecase(ref, uid),
 );
 
 /// [RegisterMoodWorksheetUsecase] は、躁鬱状態を登録するプロセスをカプセル化する
 class RegisterMoodWorksheetUsecase with UsecaseMixin {
   final Ref ref;
+  final String uid;
 
   /// 指定された [Ref] を使用して [RegisterMoodWorksheetUsecase] を構築する
   ///
   /// [Ref] は必要なプロバイダーを読み取るために使用される
-  RegisterMoodWorksheetUsecase(this.ref);
+  RegisterMoodWorksheetUsecase(
+    this.ref,
+    this.uid,
+  );
 
   /// 躁鬱状態を登録するユースケースの実行
   Future<void> execute({
@@ -36,7 +40,7 @@ class RegisterMoodWorksheetUsecase with UsecaseMixin {
     await run(
       ref,
       action: () async =>
-          await ref.read(moodWorksheetRepositoryProvider).update(
+          await ref.read(moodWorksheetRepositoryProvider(uid)).update(
                 minus_5: minus_5,
                 minus_4: minus_4,
                 minus_3: minus_3,
