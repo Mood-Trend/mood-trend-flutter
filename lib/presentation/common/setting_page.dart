@@ -260,11 +260,11 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                 child: Container(
                   color: AppColors.white,
                   width: double.infinity,
-                  child: const Padding(
-                    padding: EdgeInsets.fromLTRB(16, 20, 16, 20),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
                     child: Text(
-                      'バージョン情報',
-                      style: TextStyle(fontSize: 18),
+                      S.of(context).version_info,
+                      style: const TextStyle(fontSize: 18),
                     ),
                   ),
                 ),
