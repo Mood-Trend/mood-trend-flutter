@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:mood_trend_flutter/firebase_options_dev.dart' as dev;
 import 'package:mood_trend_flutter/firebase_options_prod.dart' as prod;
-import 'package:mood_trend_flutter/generated/l10n.dart';
+import 'package:mood_trend_flutter/presentation/l10n/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/components/dialog.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/common/components/snackbars.dart';
