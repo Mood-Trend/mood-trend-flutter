@@ -110,6 +110,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingReview": MessageLookupByLibrary.simpleMessage("レビュー"),
         "settingReviewRequest":
             MessageLookupByLibrary.simpleMessage("レビューしてもらえると開発者が小躍りします"),
+        "settingOnboarding": MessageLookupByLibrary.simpleMessage("このアプリについて"),
         "settingSetting": MessageLookupByLibrary.simpleMessage("設定"),
         "settingSupport": MessageLookupByLibrary.simpleMessage("サポート"),
         "settingTerms": MessageLookupByLibrary.simpleMessage("利用規約"),
