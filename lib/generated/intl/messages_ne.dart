@@ -175,6 +175,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("विचार शक्ति\nकमी"),
         "typeSleepDisorder":
             MessageLookupByLibrary.simpleMessage("सुत्ने अवस्था"),
-        "typeSuggestion": MessageLookupByLibrary.simpleMessage("सुझाव")
+        "typeSuggestion": MessageLookupByLibrary.simpleMessage("सुझाव"),
+        "version_info": MessageLookupByLibrary.simpleMessage("संस्करण जानकारी")
       };
 }

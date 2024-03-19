@@ -171,6 +171,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Lav tenkeevne"),
         "typeSleepDisorder":
             MessageLookupByLibrary.simpleMessage("Søvnforstyrrelse"),
-        "typeSuggestion": MessageLookupByLibrary.simpleMessage("Forslag")
+        "typeSuggestion": MessageLookupByLibrary.simpleMessage("Forslag"),
+        "version_info":
+            MessageLookupByLibrary.simpleMessage("Versjonsinformasjon")
       };
 }
