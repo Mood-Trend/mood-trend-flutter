@@ -1,6 +1,6 @@
 // ignore_for_file: overridden_fields
 
-import 'package:mood_trend_flutter/utils/l10n/generated/l10n.dart';
+import 'package:mood_trend_flutter/generated/l10n.dart';
 
 import '../../../../domain/app_exception.dart';
 
