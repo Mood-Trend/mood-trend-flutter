@@ -122,7 +122,7 @@ class HomePage extends ConsumerWidget {
         ],
       ),
       body: AsyncValueHandler(
-          value: ref.watch(subscribeMoodPointsProvider),
+          value: ref.watch(subscribeMoodPointsProvider(userId)),
           loading: () => const OverlayLoading(),
           builder: (moodPoints) {
             final term = ref.watch(selectedTermProvider) == Term.month
