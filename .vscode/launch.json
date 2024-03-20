@@ -24,6 +24,30 @@
           "prod",
           "--dart-define=FLAVOR=prod",
         ]
+      },
+      {
+        "name": "app-dev-release",
+        "type": "dart",
+        "request": "launch",
+        "flutterMode": "release",
+        "program": "lib/main.dart",
+        "args": [
+          "--flavor",
+          "prod",
+          "--dart-define=FLAVOR=prod",
+        ]
+      },
+      {
+        "name": "app-prod-release",
+        "type": "dart",
+        "request": "launch",
+        "flutterMode": "release",
+        "program": "lib/main.dart",
+        "args": [
+          "--flavor",
+          "prod",
+          "--dart-define=FLAVOR=prod",
+        ]
       }
     ]
   }
