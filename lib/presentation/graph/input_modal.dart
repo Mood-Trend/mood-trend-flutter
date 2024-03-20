@@ -208,6 +208,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                           return _showConfirmDialog(
                             date: date,
                             uid: widget.uid,
+                            parent: context,
                           );
                         }
                         Navigator.pop(context);
@@ -235,9 +236,10 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
   Future<void> _showConfirmDialog({
     required String uid,
     required DateTime date,
+    required BuildContext parent,
   }) async {
     await showDialog(
-      context: context,
+      context: parent,
       builder: (context) {
         final formattedDate = DateFormat('yyyy/MM/dd').format(date);
         return AlertDialog(
@@ -262,7 +264,8 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       plannedVolume: _plannedValue.toInt(),
                       moodDate: date,
                     );
-                Navigator.pop(context);
+                PageNavigator.pop(context);
+                PageNavigator.pop(parent);
               },
               child: Text(S.of(context).inputOverwriting),
             ),
