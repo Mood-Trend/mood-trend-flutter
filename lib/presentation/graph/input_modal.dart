@@ -236,14 +236,21 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                                 plannedVolume: _plannedValue.toInt(),
                                 moodDate: date,
                               );
+
                           // 同じ日付に既に登録されている場合は上書きされる旨の確認ダイアログを表示
                           if (!result) {
                             return _showConfirmDialog(
                               date: date,
                               uid: widget.uid,
                               parent: context,
+                              isContinueSaving: _isContinueSaving,
                             );
                           }
+
+                          // 続けて保存が選択されている場合はモーダル継続
+                          if (_isContinueSaving) return;
+
+                          // 続けて保存が選択されていない場合はモーダルを閉じる
                           Navigator.pop(context);
                         },
                         successMessage: S.of(context).inputSuccess,
@@ -271,6 +278,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
     required String uid,
     required DateTime date,
     required BuildContext parent,
+    required bool isContinueSaving,
   }) async {
     await showDialog(
       context: parent,
@@ -299,6 +307,10 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       moodDate: date,
                     );
                 PageNavigator.pop(context);
+
+                // 続けて保存が選択されている場合はモーダル継続
+                if (isContinueSaving) return;
+                // 続けて保存が選択されていない場合はモーダルを閉じる
                 PageNavigator.pop(parent);
               },
               child: Text(S.of(context).inputOverwriting),
