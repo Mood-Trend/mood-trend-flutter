@@ -96,8 +96,10 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   children: [
                     const Text('続けて保存'),
                     Padding(
-                      padding: const EdgeInsets.only(left: 4.0),
+                      padding: const EdgeInsets.only(left: 8.0),
                       child: Switch(
+                        activeColor: AppColors.green,
+                        inactiveTrackColor: AppColors.grey,
                         value: _isContinueSaving,
                         onChanged: (value) {
                           setState(() => _isContinueSaving = value);
