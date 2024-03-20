@@ -46,47 +46,67 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
             const SizedBox(
               height: 16,
             ),
-            TextButton.icon(
-              onPressed: () async {
-                final selectedDate = await showDatePicker(
-                  context: context,
-                  initialDate: date,
-                  firstDate: DateTime(2000),
-                  lastDate: DateTime.now(),
-                  builder: (context, child) {
-                    return Theme(
-                      data: Theme.of(context).copyWith(
-                        colorScheme: ColorScheme.light(
-                          primary:
-                              AppColors.green, // 背景色のテーマや選択時の背景色、キャンセルOKボタンの色
-                          onPrimary: AppColors.white, // 選択時のテキストカラー
-                          surface: AppColors.white, // カレンダーの背景色
-                          onSurface: AppColors.black, // カレンダーのテキストカラー
-                          surfaceTint: Colors.transparent, // カレンダーの背景にうっすらかかる色
-                        ),
-                      ),
-                      child: child!,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TextButton.icon(
+                  onPressed: () async {
+                    final selectedDate = await showDatePicker(
+                      context: context,
+                      initialDate: date,
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime.now(),
+                      builder: (context, child) {
+                        return Theme(
+                          data: Theme.of(context).copyWith(
+                            colorScheme: ColorScheme.light(
+                              primary: AppColors
+                                  .green, // 背景色のテーマや選択時の背景色、キャンセルOKボタンの色
+                              onPrimary: AppColors.white, // 選択時のテキストカラー
+                              surface: AppColors.white, // カレンダーの背景色
+                              onSurface: AppColors.black, // カレンダーのテキストカラー
+                              surfaceTint:
+                                  Colors.transparent, // カレンダーの背景にうっすらかかる色
+                            ),
+                          ),
+                          child: child!,
+                        );
+                      },
                     );
+                    if (selectedDate != null) {
+                      setState(
+                        () {
+                          date = selectedDate;
+                        },
+                      );
+                    }
                   },
-                );
-                if (selectedDate != null) {
-                  setState(
-                    () {
-                      date = selectedDate;
-                    },
-                  );
-                }
-              },
-              icon: Icon(
-                Icons.calendar_month,
-                color: AppColors.green,
-              ),
-              label: Text(
-                DateFormat('yyyy/MM/dd').format(date),
-                style: TextStyle(
-                  color: AppColors.black,
+                  icon: Icon(
+                    Icons.calendar_month,
+                    color: AppColors.green,
+                  ),
+                  label: Text(
+                    DateFormat('yyyy/MM/dd').format(date),
+                    style: TextStyle(
+                      color: AppColors.black,
+                    ),
+                  ),
                 ),
-              ),
+                Row(
+                  children: [
+                    const Text('続けて保存'),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 4.0),
+                      child: Switch(
+                        value: _isContinueSaving,
+                        onChanged: (value) {
+                          setState(() => _isContinueSaving = value);
+                        },
+                      ),
+                    ),
+                  ],
+                )
+              ],
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(56, 48, 56, 0),
