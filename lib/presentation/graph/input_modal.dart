@@ -24,7 +24,7 @@ class InputModal extends ConsumerStatefulWidget {
 class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
   double _plannedValue = 0.0;
   DateTime date = DateTime.now();
-  bool _isContinueSaving = false;
+  // bool _isContinueSaving = false;
 
   int moodNum = 1;
   void _changeSlider(double e) => setState(() {
@@ -47,7 +47,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
               height: 16,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton.icon(
                   onPressed: () async {
@@ -92,22 +92,22 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                     ),
                   ),
                 ),
-                Row(
-                  children: [
-                    const Text('続けて保存'),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: Switch(
-                        activeColor: AppColors.green,
-                        inactiveTrackColor: AppColors.grey,
-                        value: _isContinueSaving,
-                        onChanged: (value) {
-                          setState(() => _isContinueSaving = value);
-                        },
-                      ),
-                    ),
-                  ],
-                )
+                // Row(
+                //   children: [
+                //     const Text('続けて保存'),
+                //     Padding(
+                //       padding: const EdgeInsets.only(left: 8.0),
+                //       child: Switch(
+                //         activeColor: AppColors.green,
+                //         inactiveTrackColor: AppColors.grey,
+                //         value: _isContinueSaving,
+                //         onChanged: (value) {
+                //           setState(() => _isContinueSaving = value);
+                //         },
+                //       ),
+                //     ),
+                //   ],
+                // )
               ],
             ),
             Padding(
@@ -243,14 +243,14 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                               date: date,
                               uid: widget.uid,
                               parent: context,
-                              isContinueSaving: _isContinueSaving,
+                              // isContinueSaving: _isContinueSaving,
                             );
                           }
 
-                          // 続けて保存が選択されている場合はモーダル継続
-                          if (_isContinueSaving) return;
+                          // // 続けて保存が選択されている場合はモーダル継続
+                          // if (_isContinueSaving) return;
 
-                          // 続けて保存が選択されていない場合はモーダルを閉じる
+                          // // 続けて保存が選択されていない場合はモーダルを閉じる
                           Navigator.pop(context);
                         },
                         successMessage: S.of(context).inputSuccess,
@@ -278,7 +278,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
     required String uid,
     required DateTime date,
     required BuildContext parent,
-    required bool isContinueSaving,
+    // required bool isContinueSaving,
   }) async {
     await showDialog(
       context: parent,
@@ -308,9 +308,9 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                     );
                 PageNavigator.pop(context);
 
-                // 続けて保存が選択されている場合はモーダル継続
-                if (isContinueSaving) return;
-                // 続けて保存が選択されていない場合はモーダルを閉じる
+                // // 続けて保存が選択されている場合はモーダル継続
+                // if (isContinueSaving) return;
+                // // 続けて保存が選択されていない場合はモーダルを閉じる
                 PageNavigator.pop(parent);
               },
               child: Text(S.of(context).inputOverwriting),
