@@ -110,7 +110,7 @@ class HomePage extends ConsumerWidget {
             onPressed: () => ref
                 .watch(visibleMaximumProvider.notifier)
                 .update((_) => DateTime.now().toDateOnly()),
-            icon: const Icon(Icons.refresh),
+            icon: const Icon(Icons.home),
           ),
           IconButton(
             onPressed: () => PageNavigator.push(
