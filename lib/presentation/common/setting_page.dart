@@ -36,7 +36,6 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
           appBar: AppBar(
             elevation: 0,
             backgroundColor: AppColors.lightGrey,
-            surfaceTintColor: AppColors.lightGrey,
             centerTitle: true,
             title: Text(S.of(context).settingSetting),
           ),
