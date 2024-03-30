@@ -65,9 +65,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "inputAlreadyExist":
             MessageLookupByLibrary.simpleMessage("ya está registrado"),
         "inputDepression": MessageLookupByLibrary.simpleMessage(
-            "Ingresa los síntomas maníacos"),
-        "inputManic": MessageLookupByLibrary.simpleMessage(
             "Ingresa los síntomas depresivos"),
+        "inputManic": MessageLookupByLibrary.simpleMessage(
+            "Ingresa los síntomas maníacos"),
         "inputOverwriting":
             MessageLookupByLibrary.simpleMessage("Sobrescribir"),
         "inputOverwritingQuestion":
