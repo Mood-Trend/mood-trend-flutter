@@ -79,6 +79,13 @@ class App extends ConsumerWidget {
       theme: ThemeData(
         useMaterial3: true,
         colorSchemeSeed: Colors.green,
+        appBarTheme: const AppBarTheme(
+          surfaceTintColor: Colors.transparent,
+        ),
+        dialogTheme: DialogTheme(
+          surfaceTintColor: AppColors.white,
+          backgroundColor: AppColors.white,
+        ),
         sliderTheme: SliderThemeData(
           overlayShape: SliderComponentShape.noOverlay,
           activeTrackColor: AppColors.green,
