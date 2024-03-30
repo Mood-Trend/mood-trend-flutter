@@ -285,7 +285,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                                 width: 20,
                                 child: CircularProgressIndicator(
                                   color: AppColors.green,
-                                  strokeWidth: 2,
+                                  strokeWidth: 2.5,
                                 ),
                               ),
                             )
@@ -323,9 +323,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
           actions: [
             TextButton(
               onPressed: () {
-                ref
-                    .read(isSavingProvider.notifier)
-                    .update((_) => SavingType.none);
                 PageNavigator.pop(context);
               },
               child: Text(S.of(context).cancel),
@@ -337,11 +334,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                 if (scaffoldMessenger == null) return;
                 try {
                   await PageNavigator.pop(context);
-
-                  // // 続けて保存が選択されている場合はモーダル継続
-                  // if (isContinueSaving) return;
-                  // // 続けて保存が選択されていない場合はモーダルを閉じる
-                  await PageNavigator.pop(parent);
                   await ref
                       .read(addMoodPointUsecaseProvider(uid))
                       .executeForUpdate(
@@ -349,6 +341,10 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                         plannedVolume: _plannedValue.toInt(),
                         moodDate: date,
                       );
+                  // // 続けて保存が選択されている場合はモーダル継続
+                  // if (isContinueSaving) return;
+                  // // 続けて保存が選択されていない場合はモーダルを閉じる
+                  await PageNavigator.pop(parent);
                 } on AppException catch (e) {
                   FailureSnackBar.show(
                     scaffoldMessenger,
@@ -362,5 +358,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
         );
       },
     );
+    ref.read(isSavingProvider.notifier).update((_) => SavingType.none);
   }
 }
