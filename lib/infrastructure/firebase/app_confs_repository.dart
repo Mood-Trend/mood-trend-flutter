@@ -38,7 +38,7 @@ class AppConfsRepository {
   /// アプリ設定のドキュメントをすべてストリームで取得する。
   /// AppConf ドキュメントは value フィールドを持っており、ドキュメント ID によって AppConfs のフィールドを識別する。
   /// 例）ドキュメント ID が 'is_show_review_menu' の場合、AppConfs の isShowReviewMenu フィールドに value を格納する。
-  Stream<AppConfs> watchAll() {
+  Stream<AppConfs> subScribeAppConfs() {
     return appConfsCollectionRef.snapshots().map((snapshot) {
       final appConfs = <String, dynamic>{};
       for (final doc in snapshot.docs) {
