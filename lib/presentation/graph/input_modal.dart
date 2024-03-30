@@ -289,10 +289,13 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                                 ),
                               ),
                             )
-                          : AnimatedCheckmark(
-                              value: true,
-                              size: 20,
-                              color: AppColors.green,
+                          : Padding(
+                              padding: const EdgeInsets.only(right: 44.0),
+                              child: AnimatedCheckmark(
+                                weight: 2.5,
+                                size: 20,
+                                color: AppColors.green,
+                              ),
                             ),
                 ),
               ],
