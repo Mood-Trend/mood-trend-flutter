@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'app_info.dart';
 
@@ -129,10 +129,10 @@ class _$AppInfoCopyWithImpl<$Res, $Val extends AppInfo>
 }
 
 /// @nodoc
-abstract class _$$_AppInfoCopyWith<$Res> implements $AppInfoCopyWith<$Res> {
-  factory _$$_AppInfoCopyWith(
-          _$_AppInfo value, $Res Function(_$_AppInfo) then) =
-      __$$_AppInfoCopyWithImpl<$Res>;
+abstract class _$$AppInfoImplCopyWith<$Res> implements $AppInfoCopyWith<$Res> {
+  factory _$$AppInfoImplCopyWith(
+          _$AppInfoImpl value, $Res Function(_$AppInfoImpl) then) =
+      __$$AppInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -148,10 +148,11 @@ abstract class _$$_AppInfoCopyWith<$Res> implements $AppInfoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AppInfoCopyWithImpl<$Res>
-    extends _$AppInfoCopyWithImpl<$Res, _$_AppInfo>
-    implements _$$_AppInfoCopyWith<$Res> {
-  __$$_AppInfoCopyWithImpl(_$_AppInfo _value, $Res Function(_$_AppInfo) _then)
+class __$$AppInfoImplCopyWithImpl<$Res>
+    extends _$AppInfoCopyWithImpl<$Res, _$AppInfoImpl>
+    implements _$$AppInfoImplCopyWith<$Res> {
+  __$$AppInfoImplCopyWithImpl(
+      _$AppInfoImpl _value, $Res Function(_$AppInfoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -167,7 +168,7 @@ class __$$_AppInfoCopyWithImpl<$Res>
     Object? termsOfServiceUrl = null,
     Object? contactUrl = null,
   }) {
-    return _then(_$_AppInfo(
+    return _then(_$AppInfoImpl(
       appName: null == appName
           ? _value.appName
           : appName // ignore: cast_nullable_to_non_nullable
@@ -210,8 +211,8 @@ class __$$_AppInfoCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppInfo extends _AppInfo {
-  const _$_AppInfo(
+class _$AppInfoImpl extends _AppInfo {
+  const _$AppInfoImpl(
       {required this.appName,
       required this.packageName,
       required this.version,
@@ -268,7 +269,7 @@ class _$_AppInfo extends _AppInfo {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppInfo &&
+            other is _$AppInfoImpl &&
             (identical(other.appName, appName) || other.appName == appName) &&
             (identical(other.packageName, packageName) ||
                 other.packageName == packageName) &&
@@ -303,8 +304,8 @@ class _$_AppInfo extends _AppInfo {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppInfoCopyWith<_$_AppInfo> get copyWith =>
-      __$$_AppInfoCopyWithImpl<_$_AppInfo>(this, _$identity);
+  _$$AppInfoImplCopyWith<_$AppInfoImpl> get copyWith =>
+      __$$AppInfoImplCopyWithImpl<_$AppInfoImpl>(this, _$identity);
 }
 
 abstract class _AppInfo extends AppInfo {
@@ -317,7 +318,7 @@ abstract class _AppInfo extends AppInfo {
       required final String iconImagePath,
       required final Uri privacyPolicyUrl,
       required final Uri termsOfServiceUrl,
-      required final Uri contactUrl}) = _$_AppInfo;
+      required final Uri contactUrl}) = _$AppInfoImpl;
   const _AppInfo._() : super._();
 
   @override
@@ -352,11 +353,12 @@ abstract class _AppInfo extends AppInfo {
 
   /// 利用規約のURL
   Uri get termsOfServiceUrl;
+  @override
 
   /// コンタクトのURL
   Uri get contactUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_AppInfoCopyWith<_$_AppInfo> get copyWith =>
+  _$$AppInfoImplCopyWith<_$AppInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
