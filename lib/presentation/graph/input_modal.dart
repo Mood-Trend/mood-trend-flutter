@@ -1,13 +1,17 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:animated_checkmark/animated_checkmark.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:mood_trend_flutter/application/graph/add_mood_point_usecase.dart';
+import 'package:mood_trend_flutter/application/graph/states/is_saving_provider.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 
+import '../../domain/app_exception.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/page_navigator.dart';
+import '../common/components/snackbars.dart';
 import '../common/error_handler_mixin.dart';
 import '../diagnosis/table_page.dart';
 
@@ -223,47 +227,76 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 56, 15, 0),
-                  child: TextButton(
-                    onPressed: () async {
-                      run(
-                        ref,
-                        action: () async {
-                          // mood_points コレクションにドキュメントを追加
-                          final result = await ref
-                              .read(addMoodPointUsecaseProvider(widget.uid))
-                              .execute(
-                                point: _moodValue.toInt(),
-                                plannedVolume: _plannedValue.toInt(),
-                                moodDate: date,
+                  child: ref.watch(isSavingProvider) == SavingType.none
+                      ? TextButton(
+                          onPressed: () async {
+                            final scaffoldMessenger = ref
+                                .read(scaffoldMessengerKeyProvider)
+                                .currentState;
+                            if (scaffoldMessenger == null) return;
+                            try {
+                              // mood_points コレクションにドキュメントを追加
+                              final result = await ref
+                                  .read(addMoodPointUsecaseProvider(widget.uid))
+                                  .execute(
+                                    point: _moodValue.toInt(),
+                                    plannedVolume: _plannedValue.toInt(),
+                                    moodDate: date,
+                                  );
+
+                              // 同じ日付に既に登録されている場合は上書きされる旨の確認ダイアログを表示
+                              if (!result) {
+                                ref
+                                    .read(isSavingProvider.notifier)
+                                    .update((_) => SavingType.saving);
+                                return _showConfirmDialog(
+                                  date: date,
+                                  uid: widget.uid,
+                                  parent: context,
+                                  // isContinueSaving: _isContinueSaving,
+                                );
+                              }
+
+                              // // 続けて保存が選択されている場合はモーダル継続
+                              // if (_isContinueSaving) return;
+
+                              // // 続けて保存が選択されていない場合はモーダルを閉じる
+                              Navigator.pop(context);
+                            } on AppException catch (e) {
+                              FailureSnackBar.show(
+                                scaffoldMessenger,
+                                message: e.toString(),
                               );
-
-                          // 同じ日付に既に登録されている場合は上書きされる旨の確認ダイアログを表示
-                          if (!result) {
-                            return _showConfirmDialog(
-                              date: date,
-                              uid: widget.uid,
-                              parent: context,
-                              // isContinueSaving: _isContinueSaving,
-                            );
-                          }
-
-                          // // 続けて保存が選択されている場合はモーダル継続
-                          // if (_isContinueSaving) return;
-
-                          // // 続けて保存が選択されていない場合はモーダルを閉じる
-                          Navigator.pop(context);
-                        },
-                        successMessage: S.of(context).inputSuccess,
-                      );
-                    },
-                    child: Text(
-                      S.of(context).inputSave,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.green,
-                      ),
-                    ),
-                  ),
+                            }
+                          },
+                          child: Text(
+                            S.of(context).inputSave,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.green,
+                            ),
+                          ),
+                        )
+                      : ref.watch(isSavingProvider) == SavingType.saving
+                          ? Padding(
+                              padding: const EdgeInsets.only(right: 44.0),
+                              child: SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: CircularProgressIndicator(
+                                  color: AppColors.green,
+                                  strokeWidth: 2.5,
+                                ),
+                              ),
+                            )
+                          : Padding(
+                              padding: const EdgeInsets.only(right: 44.0),
+                              child: AnimatedCheckmark(
+                                weight: 2.5,
+                                size: 20,
+                                color: AppColors.green,
+                              ),
+                            ),
                 ),
               ],
             ),
@@ -299,19 +332,28 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
             ),
             TextButton(
               onPressed: () async {
-                await ref
-                    .read(addMoodPointUsecaseProvider(uid))
-                    .executeForUpdate(
-                      point: _moodValue.toInt(),
-                      plannedVolume: _plannedValue.toInt(),
-                      moodDate: date,
-                    );
-                PageNavigator.pop(context);
-
-                // // 続けて保存が選択されている場合はモーダル継続
-                // if (isContinueSaving) return;
-                // // 続けて保存が選択されていない場合はモーダルを閉じる
-                PageNavigator.pop(parent);
+                final scaffoldMessenger =
+                    ref.read(scaffoldMessengerKeyProvider).currentState;
+                if (scaffoldMessenger == null) return;
+                try {
+                  await PageNavigator.pop(context);
+                  await ref
+                      .read(addMoodPointUsecaseProvider(uid))
+                      .executeForUpdate(
+                        point: _moodValue.toInt(),
+                        plannedVolume: _plannedValue.toInt(),
+                        moodDate: date,
+                      );
+                  // // 続けて保存が選択されている場合はモーダル継続
+                  // if (isContinueSaving) return;
+                  // // 続けて保存が選択されていない場合はモーダルを閉じる
+                  await PageNavigator.pop(parent);
+                } on AppException catch (e) {
+                  FailureSnackBar.show(
+                    scaffoldMessenger,
+                    message: e.toString(),
+                  );
+                }
               },
               child: Text(S.of(context).inputOverwriting),
             ),
@@ -319,5 +361,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
         );
       },
     );
+    ref.read(isSavingProvider.notifier).update((_) => SavingType.none);
   }
 }

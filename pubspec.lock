@@ -25,6 +25,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.2.0"
+  animated_checkmark:
+    dependency: "direct main"
+    description:
+      name: animated_checkmark
+      sha256: "396ed9848c6d0b59cd3788816ea1252b447c90ce7f07f722429ccb23290af678"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   archive:
     dependency: transitive
     description:
