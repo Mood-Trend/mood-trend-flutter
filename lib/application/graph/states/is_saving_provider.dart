@@ -9,9 +9,6 @@ enum SavingType {
 
   /// 保存完了
   saved,
-
-  /// 保存失敗
-  failed,
 }
 
 final isSavingProvider = StateProvider.autoDispose<SavingType>(
