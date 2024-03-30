@@ -28,6 +28,7 @@ class InputModal extends ConsumerStatefulWidget {
 class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
   double _plannedValue = 0.0;
   DateTime date = DateTime.now();
+  bool _isModalPop = true;
   // bool _isContinueSaving = false;
 
   int moodNum = 1;
@@ -35,6 +36,13 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
         _plannedValue = e;
       });
   double _moodValue = 1.0;
+
+  @override
+  void dispose() {
+    _isModalPop = false;
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -260,7 +268,10 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                               // // 続けて保存が選択されている場合はモーダル継続
                               // if (_isContinueSaving) return;
 
-                              // // 続けて保存が選択されていない場合はモーダルを閉じる
+                              await Future.delayed(
+                                const Duration(milliseconds: 500),
+                              );
+                              if (!_isModalPop) return;
                               Navigator.pop(context);
                             } on AppException catch (e) {
                               FailureSnackBar.show(
@@ -279,7 +290,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                         )
                       : ref.watch(isSavingProvider) == SavingType.saving
                           ? Padding(
-                              padding: const EdgeInsets.only(right: 44.0),
+                              padding: const EdgeInsets.only(right: 44),
                               child: SizedBox(
                                 height: 20,
                                 width: 20,
@@ -290,7 +301,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                               ),
                             )
                           : Padding(
-                              padding: const EdgeInsets.only(right: 44.0),
+                              padding: const EdgeInsets.only(right: 44),
                               child: AnimatedCheckmark(
                                 weight: 2.5,
                                 size: 20,
@@ -347,6 +358,9 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   // // 続けて保存が選択されている場合はモーダル継続
                   // if (isContinueSaving) return;
                   // // 続けて保存が選択されていない場合はモーダルを閉じる
+
+                  await Future.delayed(const Duration(milliseconds: 500));
+                  if (!_isModalPop) return;
                   await PageNavigator.pop(parent);
                 } on AppException catch (e) {
                   FailureSnackBar.show(
