@@ -35,21 +35,26 @@ class AddMoodPointUsecase with UsecaseMixin {
     /// 気分値の日付
     required DateTime moodDate,
   }) async {
-    return run(ref, action: () async {
-      // 同じ日付の気分値が既に登録されていないか確認
-      final isExist = await ref.read(moodPointRepositoryProvider(uid)).isExist(
-            moodDate: moodDate,
-          );
-      if (isExist) return false;
+    return run(
+      ref,
+      action: () async {
+        // 同じ日付の気分値が既に登録されていないか確認
+        final isExist =
+            await ref.read(moodPointRepositoryProvider(uid)).isExist(
+                  moodDate: moodDate,
+                );
+        if (isExist) return false;
 
-      // [MoodPointRepository] を使用して気分値を追加
-      await ref.read(moodPointRepositoryProvider(uid)).add(
-            point: point,
-            plannedVolume: plannedVolume,
-            moodDate: moodDate,
-          );
-      return true;
-    });
+        // [MoodPointRepository] を使用して気分値を追加
+        await ref.read(moodPointRepositoryProvider(uid)).add(
+              point: point,
+              plannedVolume: plannedVolume,
+              moodDate: moodDate,
+            );
+        return true;
+      },
+      isOverlayLoading: false,
+    );
   }
 
   /// 気分値、予定数の登録（確認ダイアログ後の登録）
@@ -63,17 +68,21 @@ class AddMoodPointUsecase with UsecaseMixin {
     /// 気分値の日付
     required DateTime moodDate,
   }) async {
-    await run(ref, action: () async {
-      final oldMoodPoint =
-          await ref.read(moodPointRepositoryProvider(uid)).getByDate(
-                moodDate: moodDate,
-              );
-      await ref.read(moodPointRepositoryProvider(uid)).update(
-            pointId: oldMoodPoint.pointId,
-            point: point,
-            plannedVolume: plannedVolume,
-            moodDate: moodDate,
-          );
-    });
+    await run(
+      ref,
+      action: () async {
+        final oldMoodPoint =
+            await ref.read(moodPointRepositoryProvider(uid)).getByDate(
+                  moodDate: moodDate,
+                );
+        await ref.read(moodPointRepositoryProvider(uid)).update(
+              pointId: oldMoodPoint.pointId,
+              point: point,
+              plannedVolume: plannedVolume,
+              moodDate: moodDate,
+            );
+      },
+      isOverlayLoading: false,
+    );
   }
 }
