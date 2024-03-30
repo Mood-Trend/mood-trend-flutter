@@ -684,6 +684,8 @@ PODS:
   - Flutter (1.0.0)
   - flutter_localization (0.0.1):
     - Flutter
+  - flutter_native_splash (0.0.1):
+    - Flutter
   - GoogleUtilities/AppDelegateSwizzler (7.11.5):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -786,6 +788,7 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
   - flutter_localization (from `.symlinks/plugins/flutter_localization/ios`)
+  - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
   - package_info (from `.symlinks/plugins/package_info/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
@@ -821,6 +824,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_localization:
     :path: ".symlinks/plugins/flutter_localization/ios"
+  flutter_native_splash:
+    :path: ".symlinks/plugins/flutter_native_splash/ios"
   package_info:
     :path: ".symlinks/plugins/package_info/ios"
   path_provider_foundation:
@@ -844,6 +849,7 @@ SPEC CHECKSUMS:
   FirebaseFirestore: b4c0eaaf24efda5732ec21d9e6c788d083118ca6
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_localization: f43b18844a2b3d2c71fd64f04ffd6b1e64dd54d4
+  flutter_native_splash: 52501b97d1c0a5f898d687f1646226c1f93c56ef
   GoogleUtilities: 13e2c67ede716b8741c7989e26893d151b2b2084
   "gRPC-C++": 0968bace703459fd3e5dcb0b2bed4c573dbff046
   gRPC-Core: 17108291d84332196d3c8466b48f016fc17d816d
