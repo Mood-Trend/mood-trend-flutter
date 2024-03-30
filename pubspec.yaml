@@ -33,6 +33,7 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   json_annotation: ^4.8.1
   animated_checkmark: ^2.0.0
+  flutter_native_splash: ^2.3.7
 
 dev_dependencies:
   flutter_test:
