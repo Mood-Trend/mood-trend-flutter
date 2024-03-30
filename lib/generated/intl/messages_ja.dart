@@ -61,8 +61,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("アイデアが成功すると確信し、実現に向けて実際に動く"),
         "inputAlreadyExist":
             MessageLookupByLibrary.simpleMessage("には既に登録されています"),
-        "inputDepression": MessageLookupByLibrary.simpleMessage("躁の症状を入力"),
-        "inputManic": MessageLookupByLibrary.simpleMessage("鬱の症状を入力"),
+        "inputDepression": MessageLookupByLibrary.simpleMessage("鬱の症状を入力"),
+        "inputManic": MessageLookupByLibrary.simpleMessage("躁の症状を入力"),
         "inputOverwriting": MessageLookupByLibrary.simpleMessage("上書き"),
         "inputOverwritingQuestion":
             MessageLookupByLibrary.simpleMessage("上書きしますか？"),
