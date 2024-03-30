@@ -289,18 +289,24 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                           ),
                         )
                       : ref.watch(isSavingProvider) == SavingType.saving
-                          ? SizedBox(
-                              height: 20,
-                              width: 20,
-                              child: CircularProgressIndicator(
-                                color: AppColors.green,
-                                strokeWidth: 2.5,
+                          ? Padding(
+                              padding: const EdgeInsets.only(right: 44),
+                              child: SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: CircularProgressIndicator(
+                                  color: AppColors.green,
+                                  strokeWidth: 2.5,
+                                ),
                               ),
                             )
-                          : AnimatedCheckmark(
-                              weight: 2.5,
-                              size: 20,
-                              color: AppColors.green,
+                          : Padding(
+                              padding: const EdgeInsets.only(right: 44),
+                              child: AnimatedCheckmark(
+                                weight: 2.5,
+                                size: 20,
+                                color: AppColors.green,
+                              ),
                             ),
                 ),
               ],
