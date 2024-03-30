@@ -260,7 +260,9 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                               // // 続けて保存が選択されている場合はモーダル継続
                               // if (_isContinueSaving) return;
 
-                              // // 続けて保存が選択されていない場合はモーダルを閉じる
+                              await Future.delayed(
+                                const Duration(milliseconds: 500),
+                              );
                               Navigator.pop(context);
                             } on AppException catch (e) {
                               FailureSnackBar.show(
@@ -278,24 +280,18 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                           ),
                         )
                       : ref.watch(isSavingProvider) == SavingType.saving
-                          ? Padding(
-                              padding: const EdgeInsets.only(right: 44.0),
-                              child: SizedBox(
-                                height: 20,
-                                width: 20,
-                                child: CircularProgressIndicator(
-                                  color: AppColors.green,
-                                  strokeWidth: 2.5,
-                                ),
+                          ? SizedBox(
+                              height: 20,
+                              width: 20,
+                              child: CircularProgressIndicator(
+                                color: AppColors.green,
+                                strokeWidth: 2.5,
                               ),
                             )
-                          : Padding(
-                              padding: const EdgeInsets.only(right: 44.0),
-                              child: AnimatedCheckmark(
-                                weight: 2.5,
-                                size: 20,
-                                color: AppColors.green,
-                              ),
+                          : AnimatedCheckmark(
+                              weight: 2.5,
+                              size: 20,
+                              color: AppColors.green,
                             ),
                 ),
               ],
@@ -347,6 +343,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   // // 続けて保存が選択されている場合はモーダル継続
                   // if (isContinueSaving) return;
                   // // 続けて保存が選択されていない場合はモーダルを閉じる
+                  await Future.delayed(const Duration(milliseconds: 500));
                   await PageNavigator.pop(parent);
                 } on AppException catch (e) {
                   FailureSnackBar.show(
