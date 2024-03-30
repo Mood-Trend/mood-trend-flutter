@@ -288,7 +288,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
           surfaceTintColor: Colors.transparent,
           backgroundColor: AppColors.white,
           // 対象日付には既に登録されている旨のメッセージを表示
-          title: Text('$formattedDate ${S.of(context).inputDepression}'),
+          title: Text('$formattedDate ${S.of(context).inputAlreadyExist}'),
           content: Text(S.of(context).inputOverwritingQuestion),
           actions: [
             TextButton(
