@@ -45,9 +45,9 @@ dev_dependencies:
 
 flutter_native_splash:
   color: '#FFFFFF'
-  image: 'assets/simple_logo.png'
+  image: 'assets/logo.png'
   color_dark: '#FFFFFF'
-  image_dark: 'assets/simple_logo.png'
+  image_dark: 'assets/logo.png'
   fullscreen: true
   android_12:
     icon_background_color: '#FFFFFF'
