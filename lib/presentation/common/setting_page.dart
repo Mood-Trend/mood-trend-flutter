@@ -20,6 +20,7 @@ import 'package:mood_trend_flutter/utils/page_navigator.dart';
 import '../../application/common/states/overlay_loading_provider.dart';
 import '../../application/common/url_launcher_service.dart';
 import '../../domain/app_info.dart';
+import 'components/custom_about_dialog.dart';
 
 class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
   const SettingPage({super.key, required this.uid});
@@ -28,18 +29,18 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncValue = ref.watch(appConfsProvider);
-    return AsyncValueHandler(
-      value: asyncValue,
-      builder: (appConfs) {
-        return Scaffold(
-          backgroundColor: AppColors.lightGrey,
-          appBar: AppBar(
-            elevation: 0,
-            backgroundColor: AppColors.lightGrey,
-            centerTitle: true,
-            title: Text(S.of(context).settingSetting),
-          ),
-          body: ListView(
+    return Scaffold(
+      backgroundColor: AppColors.lightGrey,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: AppColors.lightGrey,
+        centerTitle: true,
+        title: Text(S.of(context).settingSetting),
+      ),
+      body: AsyncValueHandler(
+        value: asyncValue,
+        builder: (appConfs) {
+          return ListView(
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 30, 16, 8),
@@ -265,19 +266,17 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                   GestureDetector(
                     onTap: () {
                       final info = ref.watch(appInfoProvider);
-                      showAboutDialog(
+                      showDialog(
                         context: context,
-                        applicationName: info.appName,
-                        applicationVersion:
-                            '${info.version} build${info.buildNumber}',
-                        applicationIcon: SizedBox.square(
-                          dimension: 60,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: Image.asset(info.iconImagePath),
-                          ),
-                        ),
-                        applicationLegalese: info.copyRight,
+                        builder: (BuildContext context) {
+                          return CustomAboutDialog(
+                            applicationName: info.appName,
+                            applicationVersion:
+                                '${info.version} build${info.buildNumber}',
+                            applicationIcon: AssetImage(info.iconImagePath),
+                            applicationLegalese: info.copyRight,
+                          );
+                        },
                       );
                     },
                     child: Container(
@@ -376,11 +375,11 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                 height: 50,
               ),
             ],
-          ),
-        );
-      },
-      loading: () => const OverlayLoading(),
-      error: (p0, p1) => Text(p0.toString()),
+          );
+        },
+        loading: () => const OverlayLoading(),
+        error: (e, s) => const SizedBox(),
+      ),
     );
   }
 }
