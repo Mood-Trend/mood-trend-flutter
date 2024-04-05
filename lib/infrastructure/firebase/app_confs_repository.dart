@@ -7,14 +7,14 @@ import 'package:mood_trend_flutter/domain/app_confs.dart';
 import 'firebase_provider.dart';
 
 /// [AppConfsRepository] のインスタンスを提供する [Provider]
-final appConfsRepositoryProvider = Provider<AppConfsRepository>(
+final appConfsRepositoryProvider = Provider.autoDispose<AppConfsRepository>(
   (ref) => AppConfsRepository(
     appConfsCollectionRef: ref.watch(appConfsCollectionRefProvider),
   ),
 );
 
 /// アプリ設定コレクションの参照結果を提供する [Provider].
-final appConfsCollectionRefProvider = Provider(
+final appConfsCollectionRefProvider = Provider.autoDispose(
   (ref) => ref
       .watch(firebaseFirestoreProvider)
       .collection('app_confs')
