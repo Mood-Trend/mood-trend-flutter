@@ -1,4 +1,4 @@
-package com.moodtrend.mood_trend_flutter
+package com.moodtrend.app
 
 import io.flutter.embedding.android.FlutterActivity
 
