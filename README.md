@@ -55,3 +55,9 @@ Firebase から値の取得が必要な場合は、Application Layer の Usecase
 ### Click here for details
 
 - [レイヤードアーキテクチャで作る](https://zenn.dev/flutteruniv/books/flutter-architecture/viewer/5_layered-architecture)
+
+## Other
+
+- [mood-trend-firebase](https://github.com/Mood-Trend/mood-trend-firebase)
+- [IaC (Terraform)](https://github.com/Mood-Trend/mood-trend-terraform)
+- [Snyk](https://github.com/Mood-Trend/mood-trend-snyk-scan)
