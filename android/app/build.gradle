@@ -7,7 +7,7 @@ if (localPropertiesFile.exists()) {
     }
 }
 
-def keystorePropertiesFile = rootProject.file('k.properties')
+def keystorePropertiesFile = rootProject.file('key.properties')
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
