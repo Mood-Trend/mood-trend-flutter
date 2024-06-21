@@ -149,15 +149,15 @@ class HomePage extends ConsumerWidget {
                   primaryXAxis: DateTimeAxis(
                     dateFormat: DateFormat(
                         'MM/dd', Localizations.localeOf(context).languageCode),
-                    visibleMinimum: ref.watch(visibleMinimumProvider),
-                    visibleMaximum: ref.watch(visibleMaximumProvider),
+                    minimum: ref.watch(visibleMinimumProvider),
+                    maximum: ref.watch(visibleMaximumProvider),
                   ),
                   primaryYAxis: NumericAxis(
                     minimum: -5,
                     maximum: 5,
                     interval: 1,
                     numberFormat: NumberFormat('0'),
-                    plotBands: <PlotBand>[
+                    plotBands: const [
                       PlotBand(
                         isVisible: true,
                         start: double.infinity,
@@ -172,7 +172,7 @@ class HomePage extends ConsumerWidget {
                       ),
                     ],
                   ),
-                  axes: [
+                  axes: const [
                     NumericAxis(
                       minimum: 0,
                       maximum: 16,
@@ -181,7 +181,7 @@ class HomePage extends ConsumerWidget {
                       opposedPosition: true,
                     ),
                   ],
-                  series: <ChartSeries>[
+                  series: [
                     // 塗りつぶす部分を描画するためのエリアチャート
                     LineSeries<MoodPoint, DateTime>(
                       name: S.of(context).moodValue, // 凡例の名前
