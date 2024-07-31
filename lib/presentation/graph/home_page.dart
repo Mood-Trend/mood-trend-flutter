@@ -157,7 +157,7 @@ class HomePage extends ConsumerWidget {
                     maximum: 5,
                     interval: 1,
                     numberFormat: NumberFormat('0'),
-                    plotBands: const [
+                    plotBands: [
                       PlotBand(
                         isVisible: true,
                         start: double.infinity,
@@ -172,7 +172,7 @@ class HomePage extends ConsumerWidget {
                       ),
                     ],
                   ),
-                  axes: const [
+                  axes: [
                     NumericAxis(
                       minimum: 0,
                       maximum: 16,
