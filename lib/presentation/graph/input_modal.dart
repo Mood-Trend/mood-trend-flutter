@@ -67,6 +67,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: AppColors.white,
         title: TextButton.icon(
           onPressed: () async {
