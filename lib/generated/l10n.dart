@@ -1029,6 +1029,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Let's start recording!`
+  String get homeCoachMarkTitle {
+    return Intl.message(
+      'Let\'s start recording!',
+      name: 'homeCoachMarkTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can record your mood values and activity numbers using the buttons below`
+  String get homeCoachMarkBody {
+    return Intl.message(
+      'You can record your mood values and activity numbers using the buttons below',
+      name: 'homeCoachMarkBody',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -97,5 +97,7 @@
     "plannedVolumeQuestion" : "Quantas atividades ou planos você teve hoje?",
     "moodValueQuestionTooltipMessage" : "Registre seu humor hoje com valores de -5 a +5\nConsulte a tabela de referência de valores de humor se tiver dúvidas!",
     "plannedVolumeQuestionTooltipMessage" : "Registre o número de atividades que você fez hoje\nIsso ajudará a refletir com um valor mais objetivo do que o valor do humor!",
-    "goTable" : "A tabela de referência de valores de humor está aqui"
+    "goTable" : "A tabela de referência de valores de humor está aqui",
+    "homeCoachMarkTitle": "Vamos começar a registrar!",
+    "homeCoachMarkBody": "Você pode registrar seus valores de humor e números de atividade com os botões abaixo"
 }

@@ -44,6 +44,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "elationPlus_5":
             MessageLookupByLibrary.simpleMessage("绝对确信自己是正确的，一切都会顺利进行"),
         "goTable": MessageLookupByLibrary.simpleMessage("心情值参考表在这里"),
+        "homeCoachMarkBody":
+            MessageLookupByLibrary.simpleMessage("您可以通过下面的按钮记录心情值和活动数量"),
+        "homeCoachMarkTitle": MessageLookupByLibrary.simpleMessage("開始記錄！"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("半年"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1个月"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1年"),

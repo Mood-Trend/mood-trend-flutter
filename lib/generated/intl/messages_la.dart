@@ -52,6 +52,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Absolute certus est se iure habere et omnia bene procedere"),
         "goTable": MessageLookupByLibrary.simpleMessage(
             "Tabula Indicis Mentis hic est"),
+        "homeCoachMarkBody": MessageLookupByLibrary.simpleMessage(
+            "Subter pulsantibus valorem mentis et numerum actuum notare potes"),
+        "homeCoachMarkTitle":
+            MessageLookupByLibrary.simpleMessage("Incipiamus notare!"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("Semestrem"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("Mensem"),
         "homeYear": MessageLookupByLibrary.simpleMessage("Annum"),

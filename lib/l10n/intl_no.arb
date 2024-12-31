@@ -97,5 +97,7 @@
     "plannedVolumeQuestion" : "Hvor mange aktiviteter eller planer hadde du den dagen?",
     "moodValueQuestionTooltipMessage" : "Registrer humøret ditt for dagen med en humørsverdi fra -5 til +5\nHvis du er usikker, kan du se på referansetabellen for humørverdier!",
     "plannedVolumeQuestionTooltipMessage" : "Registrer antall aktiviteter du gjorde den dagen\nDette vil hjelpe deg med å reflektere på en mer objektiv måte enn humørverdier",
-    "goTable" : "Referansetabellen for humørverdier finner du her"
+    "goTable" : "Referansetabellen for humørverdier finner du her",
+    "homeCoachMarkTitle": "Begynn å registrere!",
+    "homeCoachMarkBody": "Du kan registrere humørsverdier og antall aktiviteter ved hjelp av knappene nedenfor"
 }

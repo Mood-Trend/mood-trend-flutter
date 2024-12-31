@@ -97,5 +97,7 @@
     "plannedVolumeQuestion" : "How many activities or plans did you have on this day?",
     "moodValueQuestionTooltipMessage" : "Record your mood for the day with a mood value from -5 to +5\nCheck the mood value reference table if you're unsure!",
     "plannedVolumeQuestionTooltipMessage" : "Record the number of things you did on this day\nIt will be useful for reflection with more objective numbers than mood values",
-    "goTable" : "Go to the Mood Value Reference Table"
+    "goTable" : "Go to the Mood Value Reference Table",
+    "homeCoachMarkTitle": "Let's start recording!",
+    "homeCoachMarkBody": "You can record your mood values and activity numbers using the buttons below"
 }

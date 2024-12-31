@@ -97,5 +97,7 @@
     "plannedVolumeQuestion" : "この活動 or 予定の数はいくつですか？",
     "moodValueQuestionTooltipMessage" : "この日の気分を-5から+5の気分値で記録してください\n迷ったら気分値目安表を確認しましょう！",
     "plannedVolumeQuestionTooltipMessage" : "この日に行ったことの数を記録してください\n気分値より客観性のある数値で振り返りに役立ちます",
-    "goTable" : "気分値目安表はこちら"
+    "goTable" : "気分値目安表はこちら",
+    "homeCoachMarkTitle": "記録を始めましょう！",
+    "homeCoachMarkBody": "下のボタンから気分値と活動数の記録ができます"
 }

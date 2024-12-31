@@ -52,6 +52,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Er absolutt sikker på at de har rett, og at alt vil gå bra"),
         "goTable": MessageLookupByLibrary.simpleMessage(
             "Referansetabellen for humørverdier finner du her"),
+        "homeCoachMarkBody": MessageLookupByLibrary.simpleMessage(
+            "Du kan registrere humørsverdier og antall aktiviteter ved hjelp av knappene nedenfor"),
+        "homeCoachMarkTitle":
+            MessageLookupByLibrary.simpleMessage("Begynn å registrere!"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("Halvt år"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1 måned"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1 år"),

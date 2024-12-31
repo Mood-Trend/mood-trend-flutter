@@ -47,6 +47,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "elationPlus_5":
             MessageLookupByLibrary.simpleMessage("自分は絶対に正しく、すべてが上手くいくと確信する"),
         "goTable": MessageLookupByLibrary.simpleMessage("気分値目安表はこちら"),
+        "homeCoachMarkBody":
+            MessageLookupByLibrary.simpleMessage("下のボタンから気分値と活動数の記録ができます"),
+        "homeCoachMarkTitle":
+            MessageLookupByLibrary.simpleMessage("記録を始めましょう！"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("半年"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1ヶ月"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1年"),

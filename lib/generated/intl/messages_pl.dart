@@ -51,6 +51,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Jest absolutnie pewny, że ma rację i że wszystko pójdzie dobrze"),
         "goTable": MessageLookupByLibrary.simpleMessage(
             "Tabela wartości nastroju znajduje się tutaj"),
+        "homeCoachMarkBody": MessageLookupByLibrary.simpleMessage(
+            "Możesz zarejestrować wartość nastroju i liczbę działań za pomocą poniższych przycisków"),
+        "homeCoachMarkTitle":
+            MessageLookupByLibrary.simpleMessage("Zacznij rejestrować!"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("Pół roku"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1 miesiąc"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1 rok"),

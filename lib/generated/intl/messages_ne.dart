@@ -52,6 +52,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "तपाईंले आफ्नो पक्षमा हुनेवाना पूर्ण भरोसा गरिएको छ"),
         "goTable": MessageLookupByLibrary.simpleMessage(
             "भावना मूल्य संदर्भ पत्र यहाँ छ"),
+        "homeCoachMarkBody": MessageLookupByLibrary.simpleMessage(
+            "तलको बटनबाट भावना मूल्य र कार्य संख्या दर्ता गर्न सकिन्छ"),
+        "homeCoachMarkTitle":
+            MessageLookupByLibrary.simpleMessage("दर्ता गर्न सुरु गरौं!"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("६ महिना"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("१ महिना"),
         "homeYear": MessageLookupByLibrary.simpleMessage("१ वर्ष"),

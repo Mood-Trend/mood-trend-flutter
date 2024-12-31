@@ -79,7 +79,7 @@ class HomePage extends ConsumerWidget {
                   child: Column(
                     children: [
                       Text(
-                        "記録を始めましょう！",
+                        S.of(context).homeCoachMarkTitle,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -88,7 +88,7 @@ class HomePage extends ConsumerWidget {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        "下のボタンから気分値と活動数の記録ができます",
+                        S.of(context).homeCoachMarkBody,
                         style: const TextStyle(
                           fontSize: 16,
                           color: Colors.white,

@@ -49,6 +49,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "elationPlus_5": MessageLookupByLibrary.simpleMessage(
             "내 자신은 절대로 틀리지 않고, 모든 것이 잘 될 것이라고 확신합니다"),
         "goTable": MessageLookupByLibrary.simpleMessage("기분 값 참고표는 여기서"),
+        "homeCoachMarkBody": MessageLookupByLibrary.simpleMessage(
+            "아래 버튼을 사용하여 기분 값과 활동 수를 기록할 수 있습니다"),
+        "homeCoachMarkTitle":
+            MessageLookupByLibrary.simpleMessage("기록을 시작해보세요!"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("6개월"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1개월"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1년"),

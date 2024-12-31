@@ -97,5 +97,7 @@
     "plannedVolumeQuestion" : "Ile aktywności lub planów miałaś tego dnia?",
     "moodValueQuestionTooltipMessage" : "Zarejestruj swój nastrój tego dnia w skali od -5 do +5\nJeśli masz wątpliwości, sprawdź tabelę wartości nastroju!",
     "plannedVolumeQuestionTooltipMessage" : "Zarejestruj liczbę działań, które wykonałaś tego dnia\nPomoże to w analizie z większą obiektywnością niż wartości nastroju",
-    "goTable" : "Tabela wartości nastroju znajduje się tutaj"
+    "goTable" : "Tabela wartości nastroju znajduje się tutaj",
+    "homeCoachMarkTitle": "Zacznij rejestrować!",
+    "homeCoachMarkBody": "Możesz zarejestrować wartość nastroju i liczbę działań za pomocą poniższych przycisków"
 }

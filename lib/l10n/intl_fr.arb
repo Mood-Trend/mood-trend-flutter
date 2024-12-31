@@ -97,5 +97,7 @@
     "plannedVolumeQuestion" : "Combien d'activités ou de plans aviez-vous ce jour-là ?",
     "moodValueQuestionTooltipMessage" : "Veuillez enregistrer votre humeur de la journée sur une échelle de -5 à +5\nConsultez le tableau de référence de l'humeur si vous hésitez !",
     "plannedVolumeQuestionTooltipMessage" : "Veuillez enregistrer le nombre d'activités que vous avez faites ce jour-là\nCela vous aidera à réfléchir de manière plus objective que les valeurs d'humeur",
-    "goTable" : "Le tableau de référence de l'humeur est ici"
+    "goTable" : "Le tableau de référence de l'humeur est ici",
+    "homeCoachMarkTitle": "Commençons l'enregistrement",
+    "homeCoachMarkBody": "Vous pouvez enregistrer vos valeurs d'humeur et le nombre d'activités avec les boutons ci-dessous"
 }

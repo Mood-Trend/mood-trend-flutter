@@ -51,6 +51,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Sind sich absolut sicher, dass sie richtig liegen und alles gut laufen wird"),
         "goTable": MessageLookupByLibrary.simpleMessage(
             "Hier geht es zur Stimmungswertreferenztabelle"),
+        "homeCoachMarkBody": MessageLookupByLibrary.simpleMessage(
+            "Sie können Ihre Stimmungswerte und Aktivitätszahlen über die Schaltflächen unten aufzeichnen"),
+        "homeCoachMarkTitle": MessageLookupByLibrary.simpleMessage(
+            "Lassen Sie uns mit der Aufzeichnung"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("6 Monate"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1 Monat"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1 Jahr"),

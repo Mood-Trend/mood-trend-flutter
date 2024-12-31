@@ -51,6 +51,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Est absolument sûr d\'avoir raison, et que tout ira bien"),
         "goTable": MessageLookupByLibrary.simpleMessage(
             "Le tableau de référence de l\'humeur est ici"),
+        "homeCoachMarkBody": MessageLookupByLibrary.simpleMessage(
+            "Vous pouvez enregistrer vos valeurs d\'humeur et le nombre d\'activités avec les boutons ci-dessous"),
+        "homeCoachMarkTitle": MessageLookupByLibrary.simpleMessage(
+            "Commençons l\'enregistrement"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("6 mois"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1 mois"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1 an"),

@@ -97,5 +97,7 @@
     "plannedVolumeQuestion" : "Wie viele Aktivitäten oder Pläne haben Sie an diesem Tag?",
     "moodValueQuestionTooltipMessage" : "Bitte geben Sie Ihre Stimmung an diesem Tag mit einem Stimmungswert von -5 bis +5 an\nWenn Sie sich nicht sicher sind, überprüfen Sie die Stimmungswertreferenztabelle!",
     "plannedVolumeQuestionTooltipMessage" : "Bitte geben Sie die Anzahl der Aktivitäten an, die Sie an diesem Tag durchgeführt haben\nEs ist nützlich für eine objektivere Überprüfung als der Stimmungswert",
-    "goTable" : "Hier geht es zur Stimmungswertreferenztabelle"
+    "goTable" : "Hier geht es zur Stimmungswertreferenztabelle",
+    "homeCoachMarkTitle": "Lassen Sie uns mit der Aufzeichnung",
+    "homeCoachMarkBody": "Sie können Ihre Stimmungswerte und Aktivitätszahlen über die Schaltflächen unten aufzeichnen"
 }

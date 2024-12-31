@@ -51,6 +51,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Absolutely certain of being correct, and everything will go well"),
         "goTable": MessageLookupByLibrary.simpleMessage(
             "Go to the Mood Value Reference Table"),
+        "homeCoachMarkBody": MessageLookupByLibrary.simpleMessage(
+            "You can record your mood values and activity numbers using the buttons below"),
+        "homeCoachMarkTitle":
+            MessageLookupByLibrary.simpleMessage("Let\'s start recording!"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("6 Months"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1 Month"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1 Year"),

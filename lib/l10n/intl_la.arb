@@ -97,5 +97,7 @@
     "plannedVolumeQuestion" : "Quot sunt haec acta vel consilia?",
     "moodValueQuestionTooltipMessage" : "Valorem mentis hodie in -5 ad +5 notare\nSi dubitas, tabulam indicis mentis consule!",
     "plannedVolumeQuestionTooltipMessage" : "Acta hodie facta numerare\nAd mentis valorem quam obiectivum numerum respicere adiuvat",
-    "goTable" : "Tabula Indicis Mentis hic est"
+    "goTable" : "Tabula Indicis Mentis hic est",
+    "homeCoachMarkTitle": "Incipiamus notare!",
+    "homeCoachMarkBody": "Subter pulsantibus valorem mentis et numerum actuum notare potes"
 }
