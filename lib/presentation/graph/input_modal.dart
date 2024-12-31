@@ -203,9 +203,11 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        S.of(context).moodValueQuestion,
-                        style: const TextStyle(fontSize: 16),
+                      Flexible(
+                        child: Text(
+                          S.of(context).moodValueQuestion,
+                          style: const TextStyle(fontSize: 16),
+                        ),
                       ),
                       Tooltip(
                         triggerMode: TooltipTriggerMode.tap,
@@ -213,7 +215,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                         child: Icon(
                           Icons.help,
                           color: AppColors.grey,
-                          size: 16,
+                          size: 18,
                         ),
                       ),
                     ],
@@ -274,11 +276,13 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                             TablePage(uid: widget.uid),
                           );
                         },
-                        label: Text(
-                          S.of(context).goTable,
-                          style: TextStyle(
-                            color: AppColors.black,
-                            fontSize: 12,
+                        label: Center(
+                          child: Text(
+                            S.of(context).goTable,
+                            style: TextStyle(
+                              color: AppColors.black,
+                              fontSize: 12,
+                            ),
                           ),
                         ),
                         iconAlignment: IconAlignment.end,
@@ -296,9 +300,11 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        S.of(context).plannedVolumeQuestion,
-                        style: const TextStyle(fontSize: 16),
+                      Flexible(
+                        child: Text(
+                          S.of(context).plannedVolumeQuestion,
+                          style: const TextStyle(fontSize: 16),
+                        ),
                       ),
                       Tooltip(
                         triggerMode: TooltipTriggerMode.tap,
@@ -307,7 +313,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                         child: Icon(
                           Icons.help,
                           color: AppColors.grey,
-                          size: 16,
+                          size: 18,
                         ),
                       ),
                     ],
