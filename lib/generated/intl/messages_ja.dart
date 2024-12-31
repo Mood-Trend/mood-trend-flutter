@@ -97,7 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "onboardingTitleThird": MessageLookupByLibrary.simpleMessage("気分値目安表"),
         "onboardingWelcome":
             MessageLookupByLibrary.simpleMessage("気分グラフへようこそ！"),
-        "plannedVolume": MessageLookupByLibrary.simpleMessage("予定量"),
+        "plannedVolume": MessageLookupByLibrary.simpleMessage("予定数"),
         "registerConfirm": MessageLookupByLibrary.simpleMessage("登録確認"),
         "registerRegister": MessageLookupByLibrary.simpleMessage("登録"),
         "registerSave":

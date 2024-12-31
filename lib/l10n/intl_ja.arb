@@ -35,7 +35,7 @@
     "homeHalfYear": "半年",
     "homeMonth": "1ヶ月",
     "moodValue" : "気分値",
-    "plannedVolume" : "予定量",
+    "plannedVolume" : "予定数",
     "inputSuccess" : "気分値と予定数の登録が完了しました",
     "inputSave" : "保存",
     "inputAlreadyExist" : "には既に登録されています",
