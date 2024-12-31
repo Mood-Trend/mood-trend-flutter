@@ -3,10 +3,12 @@
 import 'package:animated_checkmark/animated_checkmark.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:intl/intl.dart';
 import 'package:mood_trend_flutter/application/graph/add_mood_point_usecase.dart';
 import 'package:mood_trend_flutter/application/graph/states/is_saving_provider.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
+import 'package:mood_trend_flutter/utils/get_ad_reward_unit_id.dart';
 
 import '../../domain/app_exception.dart';
 import '../../utils/app_colors.dart';
@@ -14,6 +16,8 @@ import '../../utils/page_navigator.dart';
 import '../common/components/snackbars.dart';
 import '../common/error_handler_mixin.dart';
 import '../diagnosis/table_page.dart';
+
+final selectedTermProvider = StateProvider<RewardedAd?>((_) => null);
 
 /// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
@@ -45,6 +49,22 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
 
   @override
   Widget build(BuildContext context) {
+    // リワード広告をロード
+    void rewardedAd() {
+      RewardedAd.load(
+        adUnitId: getAdRewardUnitId(),
+        request: AdRequest(),
+        rewardedAdLoadCallback: RewardedAdLoadCallback(
+          onAdLoaded: (ad) {
+            ad.show(
+              onUserEarnedReward: (ad, reward) {},
+            );
+          },
+          onAdFailedToLoad: (error) {},
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.white,
@@ -136,8 +156,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                             );
                           }
 
-                          // // 続けて保存が選択されている場合はモーダル継続
-                          // if (_isContinueSaving) return;
+                          rewardedAd();
 
                           await Future.delayed(
                             const Duration(milliseconds: 500),
@@ -366,6 +385,21 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
     required BuildContext parent,
     // required bool isContinueSaving,
   }) async {
+    void rewardedAd() {
+      RewardedAd.load(
+        adUnitId: getAdRewardUnitId(),
+        request: AdRequest(),
+        rewardedAdLoadCallback: RewardedAdLoadCallback(
+          onAdLoaded: (ad) {
+            ad.show(
+              onUserEarnedReward: (ad, reward) {},
+            );
+          },
+          onAdFailedToLoad: (error) {},
+        ),
+      );
+    }
+
     await showDialog(
       context: parent,
       builder: (context) {
@@ -400,6 +434,8 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   // // 続けて保存が選択されている場合はモーダル継続
                   // if (isContinueSaving) return;
                   // // 続けて保存が選択されていない場合はモーダルを閉じる
+
+                  rewardedAd();
 
                   await Future.delayed(const Duration(milliseconds: 500));
                   if (!_isModalPop) return;
