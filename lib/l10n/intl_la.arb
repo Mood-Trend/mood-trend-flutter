@@ -92,5 +92,10 @@
     "activityPlus_3": "Positivus et energicus est, multas actiones concinnat",
     "activityPlus_4": "Dies plenus est planis",
     "activityPlus_5": "Per dies multos activus manet sine fatiscentia, et eniti energetice per totum diem.",
-    "version_info": "Informationes versionis"
+    "version_info": "Informationes versionis",
+    "moodValueQuestion" : "Quomodo hodie sentis?",
+    "plannedVolumeQuestion" : "Quot sunt haec acta vel consilia?",
+    "moodValueQuestionTooltipMessage" : "Valorem mentis hodie in -5 ad +5 notare\nSi dubitas, tabulam indicis mentis consule!",
+    "plannedVolumeQuestionTooltipMessage" : "Acta hodie facta numerare\nAd mentis valorem quam obiectivum numerum respicere adiuvat",
+    "goTable" : "Tabula Indicis Mentis hic est"
 }

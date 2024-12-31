@@ -92,5 +92,10 @@
     "activityPlus_3": "Estoy activo y enérgico, llenando mi agenda con muchos planes",
     "activityPlus_4": "Cada día está lleno de planes",
     "activityPlus_5": "Sigo realizando actividades durante varios días sin sentir fatiga, actuando enérgicamente",
-    "version_info": "Información de la versión"
+    "version_info": "Información de la versión",
+    "moodValueQuestion" : "¿Cómo fue tu estado de ánimo en este día?",
+    "plannedVolumeQuestion" : "¿Cuántas actividades o planes tenías en este día?",
+    "moodValueQuestionTooltipMessage" : "Registra tu estado de ánimo en este día con valores de -5 a +5\n¡Consulta la tabla de referencia de valores de humor si tienes dudas!",
+    "plannedVolumeQuestionTooltipMessage" : "Registra el número de actividades que realizaste en este día\n¡Te ayudará a reflexionar con un valor más objetivo que el valor de humor!",
+    "goTable" : "La tabla de referencia de valores de humor está aquí"
 }

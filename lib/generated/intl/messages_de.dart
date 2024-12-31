@@ -49,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Überzeugt, dass alles, was sie tun, erfolgreich sein wird"),
         "elationPlus_5": MessageLookupByLibrary.simpleMessage(
             "Sind sich absolut sicher, dass sie richtig liegen und alles gut laufen wird"),
+        "goTable": MessageLookupByLibrary.simpleMessage(
+            "Hier geht es zur Stimmungswertreferenztabelle"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("6 Monate"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1 Monat"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1 Jahr"),
@@ -89,6 +91,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "melancholyMinus_5": MessageLookupByLibrary.simpleMessage(
             "Völlig verzweifelt, das Leben ist nur noch Qual, alltägliche Aktivitäten sind kaum möglich"),
         "moodValue": MessageLookupByLibrary.simpleMessage("Stimmungswert"),
+        "moodValueQuestion": MessageLookupByLibrary.simpleMessage(
+            "Wie war Ihre Stimmung an diesem Tag?"),
+        "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
+            "Bitte geben Sie Ihre Stimmung an diesem Tag mit einem Stimmungswert von -5 bis +5 an\nWenn Sie sich nicht sicher sind, überprüfen Sie die Stimmungswertreferenztabelle!"),
         "next": MessageLookupByLibrary.simpleMessage("Weiter"),
         "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
             "Notiere deine Stimmung und erstelle dein eigenes Diagramm"),
@@ -108,6 +114,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "onboardingWelcome": MessageLookupByLibrary.simpleMessage(
             "Willkommen bei der Stimmungsgrafik!"),
         "plannedVolume": MessageLookupByLibrary.simpleMessage("Geplante Menge"),
+        "plannedVolumeQuestion": MessageLookupByLibrary.simpleMessage(
+            "Wie viele Aktivitäten oder Pläne haben Sie an diesem Tag?"),
+        "plannedVolumeQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
+            "Bitte geben Sie die Anzahl der Aktivitäten an, die Sie an diesem Tag durchgeführt haben\nEs ist nützlich für eine objektivere Überprüfung als der Stimmungswert"),
         "registerConfirm":
             MessageLookupByLibrary.simpleMessage("Registrierungsbestätigung"),
         "registerRegister":

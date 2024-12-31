@@ -49,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Est convaincu qu\'il réussira quoi qu\'il fasse"),
         "elationPlus_5": MessageLookupByLibrary.simpleMessage(
             "Est absolument sûr d\'avoir raison, et que tout ira bien"),
+        "goTable": MessageLookupByLibrary.simpleMessage(
+            "Le tableau de référence de l\'humeur est ici"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("6 mois"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1 mois"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1 an"),
@@ -89,6 +91,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Est complètement désespéré, vit dans la douleur, peut à peine effectuer des activités quotidiennes"),
         "moodValue":
             MessageLookupByLibrary.simpleMessage("Valeur de l\'humeur"),
+        "moodValueQuestion": MessageLookupByLibrary.simpleMessage(
+            "Comment était votre humeur ce jour-là ?"),
+        "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
+            "Veuillez enregistrer votre humeur de la journée sur une échelle de -5 à +5\nConsultez le tableau de référence de l\'humeur si vous hésitez !"),
         "next": MessageLookupByLibrary.simpleMessage("Suivant"),
         "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
             "Enregistrez votre humeur et créez votre propre graphique"),
@@ -108,6 +114,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "onboardingWelcome": MessageLookupByLibrary.simpleMessage(
             "Bienvenue sur le Graphique d\'Humeur !"),
         "plannedVolume": MessageLookupByLibrary.simpleMessage("Volume prévu"),
+        "plannedVolumeQuestion": MessageLookupByLibrary.simpleMessage(
+            "Combien d\'activités ou de plans aviez-vous ce jour-là ?"),
+        "plannedVolumeQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
+            "Veuillez enregistrer le nombre d\'activités que vous avez faites ce jour-là\nCela vous aidera à réfléchir de manière plus objective que les valeurs d\'humeur"),
         "registerConfirm":
             MessageLookupByLibrary.simpleMessage("Confirmer l\'enregistrement"),
         "registerRegister": MessageLookupByLibrary.simpleMessage("Enregistrer"),

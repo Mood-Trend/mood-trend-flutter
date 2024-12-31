@@ -92,5 +92,10 @@
     "activityPlus_3": "적극적이고 에너제틱한 기분으로 계획을 많이 세우고 있습니다",
     "activityPlus_4": "하루 종일 일정으로 가득차 있습니다",
     "activityPlus_5": "몇 일 동안 하루 종일 활동을 지속하면서도 피로를 느끼지 않고 활기차게 행동합니다",
-    "version_info": "버전 정보"
+    "version_info": "버전 정보",
+    "moodValueQuestion" : "이 날의 기분은?",
+    "plannedVolumeQuestion" : "이 날의 활동 또는 계획 수는 몇 개인가요?",
+    "moodValueQuestionTooltipMessage" : "이 날의 기분을 -5에서 +5의 기분 값으로 기록해주세요\n망설이면 기분 값 참고표를 확인해보세요!",
+    "plannedVolumeQuestionTooltipMessage" : "이 날에 한 일의 수를 기록해주세요\n기분 값보다 객관적인 수치로 되돌아보는 데 도움이 됩니다",
+    "goTable" : "기분 값 참고표는 여기서"
 }

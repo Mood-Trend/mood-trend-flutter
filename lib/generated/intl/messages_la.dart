@@ -50,6 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Certus est se in omnibus feliciter succedurum"),
         "elationPlus_5": MessageLookupByLibrary.simpleMessage(
             "Absolute certus est se iure habere et omnia bene procedere"),
+        "goTable": MessageLookupByLibrary.simpleMessage(
+            "Tabula Indicis Mentis hic est"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("Semestrem"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("Mensem"),
         "homeYear": MessageLookupByLibrary.simpleMessage("Annum"),
@@ -90,6 +92,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "melancholyMinus_5": MessageLookupByLibrary.simpleMessage(
             "Perfecte desperatus est, in dolore vivit, vix cotidianas actiones peragere potest"),
         "moodValue": MessageLookupByLibrary.simpleMessage("Valorem Mentis"),
+        "moodValueQuestion":
+            MessageLookupByLibrary.simpleMessage("Quomodo hodie sentis?"),
+        "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
+            "Valorem mentis hodie in -5 ad +5 notare\nSi dubitas, tabulam indicis mentis consule!"),
         "next": MessageLookupByLibrary.simpleMessage("Sequentem"),
         "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
             "Affectum tuum adnota et tuum proprium diagramma creā"),
@@ -109,6 +115,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Salve ad Chartam Mentis!"),
         "plannedVolume":
             MessageLookupByLibrary.simpleMessage("Quantitatem Propositam"),
+        "plannedVolumeQuestion": MessageLookupByLibrary.simpleMessage(
+            "Quot sunt haec acta vel consilia?"),
+        "plannedVolumeQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
+            "Acta hodie facta numerare\nAd mentis valorem quam obiectivum numerum respicere adiuvat"),
         "registerConfirm":
             MessageLookupByLibrary.simpleMessage("Confirmatio Registratio"),
         "registerRegister": MessageLookupByLibrary.simpleMessage("Registra"),

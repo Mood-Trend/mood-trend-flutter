@@ -35,7 +35,7 @@
     "homeHalfYear": "半年",
     "homeMonth": "1ヶ月",
     "moodValue" : "気分値",
-    "plannedVolume" : "予定数",
+    "plannedVolume" : "活動数",
     "inputSuccess" : "気分値と予定数の登録が完了しました",
     "inputSave" : "保存",
     "inputAlreadyExist" : "には既に登録されています",
@@ -92,5 +92,10 @@
     "activityPlus_3" : "積極的でエネルギッシュな気分で、予定をたくさん詰める",
     "activityPlus_4" : "1日が予定でいっぱいである",
     "activityPlus_5" : "何日も1日中活動を続けているが、疲れを感じずに精力的に行動している",
-    "version_info": "バージョン情報"
+    "version_info": "バージョン情報",
+    "moodValueQuestion" : "この日の気分は？",
+    "plannedVolumeQuestion" : "この活動 or 予定の数はいくつですか？",
+    "moodValueQuestionTooltipMessage" : "この日の気分を-5から+5の気分値で記録してください\n迷ったら気分値目安表を確認しましょう！",
+    "plannedVolumeQuestionTooltipMessage" : "この日に行ったことの数を記録してください\n気分値より客観性のある数値で振り返りに役立ちます",
+    "goTable" : "気分値目安表はこちら"
 }

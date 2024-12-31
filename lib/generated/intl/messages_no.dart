@@ -50,6 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Er overbevist om at de vil lykkes uansett hva de gjør"),
         "elationPlus_5": MessageLookupByLibrary.simpleMessage(
             "Er absolutt sikker på at de har rett, og at alt vil gå bra"),
+        "goTable": MessageLookupByLibrary.simpleMessage(
+            "Referansetabellen for humørverdier finner du her"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("Halvt år"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1 måned"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1 år"),
@@ -89,6 +91,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "melancholyMinus_5": MessageLookupByLibrary.simpleMessage(
             "Er helt fortvilet, lever i smerte, kan knapt utføre daglige aktiviteter"),
         "moodValue": MessageLookupByLibrary.simpleMessage("Stemningsverdi"),
+        "moodValueQuestion": MessageLookupByLibrary.simpleMessage(
+            "Hvordan var humøret ditt den dagen?"),
+        "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
+            "Registrer humøret ditt for dagen med en humørsverdi fra -5 til +5\nHvis du er usikker, kan du se på referansetabellen for humørverdier!"),
         "next": MessageLookupByLibrary.simpleMessage("Neste"),
         "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
             "Registrer humøret ditt og lag ditt eget diagram"),
@@ -108,6 +114,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "onboardingWelcome": MessageLookupByLibrary.simpleMessage(
             "Velkommen til Stemningsgraf!"),
         "plannedVolume": MessageLookupByLibrary.simpleMessage("Planlagt volum"),
+        "plannedVolumeQuestion": MessageLookupByLibrary.simpleMessage(
+            "Hvor mange aktiviteter eller planer hadde du den dagen?"),
+        "plannedVolumeQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
+            "Registrer antall aktiviteter du gjorde den dagen\nDette vil hjelpe deg med å reflektere på en mer objektiv måte enn humørverdier"),
         "registerConfirm":
             MessageLookupByLibrary.simpleMessage("Bekreft registrering"),
         "registerRegister": MessageLookupByLibrary.simpleMessage("Registrer"),

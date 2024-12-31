@@ -43,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "elationPlus_4": MessageLookupByLibrary.simpleMessage("相信一切都会成功"),
         "elationPlus_5":
             MessageLookupByLibrary.simpleMessage("绝对确信自己是正确的，一切都会顺利进行"),
+        "goTable": MessageLookupByLibrary.simpleMessage("心情值参考表在这里"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("半年"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1个月"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1年"),
@@ -71,6 +72,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "melancholyMinus_5":
             MessageLookupByLibrary.simpleMessage("完全绝望，生活只是痛苦。无法进行日常活动"),
         "moodValue": MessageLookupByLibrary.simpleMessage("心情值"),
+        "moodValueQuestion": MessageLookupByLibrary.simpleMessage("这一天的心情是？"),
+        "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
+            "请记录这一天的心情，使用-5到+5的心情值\n如果不确定，请查看心情值参考表！"),
         "next": MessageLookupByLibrary.simpleMessage("下一步"),
         "onboardingBodyFirst":
             MessageLookupByLibrary.simpleMessage("记录情绪，创建属于您的图表"),
@@ -86,6 +90,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "onboardingTitleThird": MessageLookupByLibrary.simpleMessage("情绪值参考表"),
         "onboardingWelcome": MessageLookupByLibrary.simpleMessage("欢迎来到心情图！"),
         "plannedVolume": MessageLookupByLibrary.simpleMessage("计划量"),
+        "plannedVolumeQuestion":
+            MessageLookupByLibrary.simpleMessage("这一天的活动或计划数量是多少？"),
+        "plannedVolumeQuestionTooltipMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "请记录这一天的活动数量\n有助于客观地回顾，而不是根据心情值"),
         "registerConfirm": MessageLookupByLibrary.simpleMessage("注册确认"),
         "registerRegister": MessageLookupByLibrary.simpleMessage("注册"),
         "registerSave": MessageLookupByLibrary.simpleMessage("心情值参考表的注册已完成。"),

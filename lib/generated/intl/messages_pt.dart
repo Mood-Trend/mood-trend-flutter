@@ -49,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Está convencido de que terá sucesso em qualquer empreendimento"),
         "elationPlus_5": MessageLookupByLibrary.simpleMessage(
             "Está absolutamente certo de que está certo e que tudo correrá bem"),
+        "goTable": MessageLookupByLibrary.simpleMessage(
+            "A tabela de referência de valores de humor está aqui"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("6 meses"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1 mês"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1 ano"),
@@ -89,6 +91,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "melancholyMinus_5": MessageLookupByLibrary.simpleMessage(
             "Está completamente desesperado, vive na dor, mal consegue realizar atividades diárias"),
         "moodValue": MessageLookupByLibrary.simpleMessage("Valor do humor"),
+        "moodValueQuestion":
+            MessageLookupByLibrary.simpleMessage("Como foi seu humor hoje?"),
+        "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
+            "Registre seu humor hoje com valores de -5 a +5\nConsulte a tabela de referência de valores de humor se tiver dúvidas!"),
         "next": MessageLookupByLibrary.simpleMessage("Próximo"),
         "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
             "Registre seu humor e crie seu próprio gráfico"),
@@ -109,6 +115,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bem-vindo ao Gráfico de Humor!"),
         "plannedVolume":
             MessageLookupByLibrary.simpleMessage("Volume planejado"),
+        "plannedVolumeQuestion": MessageLookupByLibrary.simpleMessage(
+            "Quantas atividades ou planos você teve hoje?"),
+        "plannedVolumeQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
+            "Registre o número de atividades que você fez hoje\nIsso ajudará a refletir com um valor mais objetivo do que o valor do humor!"),
         "registerConfirm":
             MessageLookupByLibrary.simpleMessage("Confirmar registro"),
         "registerRegister": MessageLookupByLibrary.simpleMessage("Registrar"),

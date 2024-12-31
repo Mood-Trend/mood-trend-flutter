@@ -979,6 +979,56 @@ class S {
       args: [],
     );
   }
+
+  /// `How was your mood on this day?`
+  String get moodValueQuestion {
+    return Intl.message(
+      'How was your mood on this day?',
+      name: 'moodValueQuestion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How many activities or plans did you have on this day?`
+  String get plannedVolumeQuestion {
+    return Intl.message(
+      'How many activities or plans did you have on this day?',
+      name: 'plannedVolumeQuestion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Record your mood for the day with a mood value from -5 to +5\nCheck the mood value reference table if you're unsure!`
+  String get moodValueQuestionTooltipMessage {
+    return Intl.message(
+      'Record your mood for the day with a mood value from -5 to +5\nCheck the mood value reference table if you\'re unsure!',
+      name: 'moodValueQuestionTooltipMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Record the number of things you did on this day\nIt will be useful for reflection with more objective numbers than mood values`
+  String get plannedVolumeQuestionTooltipMessage {
+    return Intl.message(
+      'Record the number of things you did on this day\nIt will be useful for reflection with more objective numbers than mood values',
+      name: 'plannedVolumeQuestionTooltipMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go to the Mood Value Reference Table`
+  String get goTable {
+    return Intl.message(
+      'Go to the Mood Value Reference Table',
+      name: 'goTable',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
