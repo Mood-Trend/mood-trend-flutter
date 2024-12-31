@@ -8,7 +8,9 @@ import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/common/setting_page.dart';
 import 'package:mood_trend_flutter/utils/datetime_extension.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 import '../../application/graph/states/subscribe_mood_points_provider.dart';
 import '../../utils/app_colors.dart';
@@ -58,6 +60,62 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedTerm = ref.watch(selectedTermProvider);
+
+    // コーチマーク用のターゲット
+    final GlobalKey floatingActionButtonKey = GlobalKey();
+
+    // コーチマークのセットアップ
+    Future<void> showCoachMark() async {
+      final prefs = await SharedPreferences.getInstance();
+      final isFirstLaunch = prefs.getBool('isFirstLaunch') ?? true;
+      if (isFirstLaunch) {
+        final coachMark = TutorialCoachMark(
+          targets: [
+            TargetFocus(
+              keyTarget: floatingActionButtonKey,
+              contents: [
+                TargetContent(
+                  align: ContentAlign.top,
+                  child: Column(
+                    children: [
+                      Text(
+                        "記録を始めましょう！",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: AppColors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        "下のボタンから気分値と活動数の記録ができます",
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
+          colorShadow: Colors.black,
+          textSkip: S.of(context).onboardingSkip,
+          onFinish: () async {
+            await prefs.setBool('isFirstLaunch', false);
+          },
+        );
+        coachMark.show(context: context);
+        await prefs.setBool('isFirstLaunch', false);
+      }
+    }
+
+    // 初回起動時にコーチマークを表示
+    Future.delayed(Duration.zero, () {
+      showCoachMark();
+    });
+
     ButtonStyle buttonStyle(Term term) {
       return TextButton.styleFrom(
         /// 文字色は選択されている場合は白、そうでない場合は黒
@@ -215,6 +273,7 @@ class HomePage extends ConsumerWidget {
             }),
       ),
       floatingActionButton: FloatingActionButton(
+        key: floatingActionButtonKey,
         backgroundColor: AppColors.green,
         foregroundColor: AppColors.white,
         shape: RoundedRectangleBorder(
