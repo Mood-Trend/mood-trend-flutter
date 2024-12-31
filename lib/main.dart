@@ -27,9 +27,13 @@ Future<void> main() async {
         : dev.DefaultFirebaseOptions.currentPlatform,
   );
 
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
+  SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.manual,
+    overlays: [
+      SystemUiOverlay.bottom,
+      SystemUiOverlay.top,
+    ],
+  );
 
   final packageInfo = await PackageInfo.fromPlatform();
 
