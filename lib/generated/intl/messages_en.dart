@@ -81,7 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter symptoms"),
         "inputSave": MessageLookupByLibrary.simpleMessage("Save"),
         "inputSuccess": MessageLookupByLibrary.simpleMessage(
-            "Registration of Mood Value and Planned Number is complete."),
+            "Registration of Mood Value and Activity Count is complete."),
         "manic": MessageLookupByLibrary.simpleMessage("Manic State"),
         "melancholyMinus_1": MessageLookupByLibrary.simpleMessage(
             "Tend to be somewhat pessimistic"),
@@ -115,7 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mood Value Reference Table"),
         "onboardingWelcome":
             MessageLookupByLibrary.simpleMessage("Welcome to Mood Graph!"),
-        "plannedVolume": MessageLookupByLibrary.simpleMessage("Planned Volume"),
+        "plannedVolume": MessageLookupByLibrary.simpleMessage("Activity Count"),
         "plannedVolumeQuestion": MessageLookupByLibrary.simpleMessage(
             "How many activities or plans did you have on this day?"),
         "plannedVolumeQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(

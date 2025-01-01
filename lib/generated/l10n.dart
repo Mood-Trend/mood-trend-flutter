@@ -400,20 +400,20 @@ class S {
     );
   }
 
-  /// `Planned Volume`
+  /// `Activity Count`
   String get plannedVolume {
     return Intl.message(
-      'Planned Volume',
+      'Activity Count',
       name: 'plannedVolume',
       desc: '',
       args: [],
     );
   }
 
-  /// `Registration of Mood Value and Planned Number is complete.`
+  /// `Registration of Mood Value and Activity Count is complete.`
   String get inputSuccess {
     return Intl.message(
-      'Registration of Mood Value and Planned Number is complete.',
+      'Registration of Mood Value and Activity Count is complete.',
       name: 'inputSuccess',
       desc: '',
       args: [],
