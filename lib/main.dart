@@ -7,6 +7,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:mood_trend_flutter/firebase_options_dev.dart' as dev;
 import 'package:mood_trend_flutter/firebase_options_prod.dart' as prod;
 import 'package:mood_trend_flutter/generated/l10n.dart';
+import 'package:mood_trend_flutter/infrastructure/firebase/analytics_repository.dart';
 import 'package:mood_trend_flutter/presentation/common/components/dialog.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/common/components/snackbars.dart';
@@ -78,7 +79,12 @@ class App extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var analytics = ref.watch(analyticsRepository);
+    var analyticsObserver = ref.watch(analyticsObserverRepository);
+
+    analytics.logAppOpen();
     return MaterialApp(
+      navigatorObservers: [analyticsObserver],
       title: 'Mood Trend',
       theme: ThemeData(
         useMaterial3: true,

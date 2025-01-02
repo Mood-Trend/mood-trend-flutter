@@ -36,6 +36,7 @@ dependencies:
   flutter_native_splash: ^2.3.7
   tutorial_coach_mark: ^1.2.12
   google_mobile_ads: ^5.2.0
+  firebase_analytics: ^11.3.6
 
 dev_dependencies:
   flutter_test:

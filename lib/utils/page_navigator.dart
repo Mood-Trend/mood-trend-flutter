@@ -20,6 +20,9 @@ class PageNavigator {
       MaterialPageRoute(
         builder: (_) => page,
         fullscreenDialog: fullscreenDialog,
+        settings: RouteSettings(
+          name: page.toString(),
+        ),
       ),
     );
   }
@@ -51,6 +54,9 @@ class PageNavigator {
             child: child,
           );
         },
+        settings: RouteSettings(
+          name: page.toString(),
+        ),
       ),
     );
   }
@@ -72,6 +78,9 @@ class PageNavigator {
       MaterialPageRoute(
         builder: (_) => page,
         fullscreenDialog: fullscreenDialog,
+        settings: RouteSettings(
+          name: page.toString(),
+        ),
       ),
     );
   }
@@ -93,6 +102,9 @@ class PageNavigator {
       MaterialPageRoute(
         builder: (_) => page,
         fullscreenDialog: fullscreenDialog,
+        settings: RouteSettings(
+          name: page.toString(),
+        ),
       ),
       (_) => false,
     );
