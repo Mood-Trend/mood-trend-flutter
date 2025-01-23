@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 
-String getAdRewardUnitId() {
+String getAdMobUnitId() {
   String bannerUnitId = "";
   if (Platform.isAndroid) {
     // Android のとき

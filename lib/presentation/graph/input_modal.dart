@@ -8,7 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:mood_trend_flutter/application/graph/add_mood_point_usecase.dart';
 import 'package:mood_trend_flutter/application/graph/states/is_saving_provider.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
-import 'package:mood_trend_flutter/utils/get_ad_reward_unit_id.dart';
+import 'package:mood_trend_flutter/utils/get_ad_mob_unit_id.dart';
 
 import '../../domain/app_exception.dart';
 import '../../utils/app_colors.dart';
@@ -49,16 +49,14 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
 
   @override
   Widget build(BuildContext context) {
-    // リワード広告をロード
-    void rewardedAd() {
-      RewardedAd.load(
-        adUnitId: getAdRewardUnitId(),
+    // インタースティシャル広告をロード
+    void loadInterstitialAd() {
+      InterstitialAd.load(
+        adUnitId: getAdMobUnitId(),
         request: AdRequest(),
-        rewardedAdLoadCallback: RewardedAdLoadCallback(
+        adLoadCallback: InterstitialAdLoadCallback(
           onAdLoaded: (ad) {
-            ad.show(
-              onUserEarnedReward: (ad, reward) {},
-            );
+            ad.show();
           },
           onAdFailedToLoad: (error) {},
         ),
@@ -157,7 +155,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                             );
                           }
 
-                          rewardedAd();
+                          loadInterstitialAd();
 
                           await Future.delayed(
                             const Duration(milliseconds: 500),
@@ -386,15 +384,13 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
     required BuildContext parent,
     // required bool isContinueSaving,
   }) async {
-    void rewardedAd() {
-      RewardedAd.load(
-        adUnitId: getAdRewardUnitId(),
+    void loadInterstitialAd() {
+      InterstitialAd.load(
+        adUnitId: getAdMobUnitId(),
         request: AdRequest(),
-        rewardedAdLoadCallback: RewardedAdLoadCallback(
+        adLoadCallback: InterstitialAdLoadCallback(
           onAdLoaded: (ad) {
-            ad.show(
-              onUserEarnedReward: (ad, reward) {},
-            );
+            ad.show();
           },
           onAdFailedToLoad: (error) {},
         ),
@@ -436,7 +432,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   // if (isContinueSaving) return;
                   // // 続けて保存が選択されていない場合はモーダルを閉じる
 
-                  rewardedAd();
+                  loadInterstitialAd();
 
                   await Future.delayed(const Duration(milliseconds: 500));
                   if (!_isModalPop) return;
