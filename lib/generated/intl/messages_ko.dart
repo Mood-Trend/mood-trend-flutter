@@ -48,6 +48,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("모든 것이 성공할 것이라고 자신합니다"),
         "elationPlus_5": MessageLookupByLibrary.simpleMessage(
             "내 자신은 절대로 틀리지 않고, 모든 것이 잘 될 것이라고 확신합니다"),
+        "goTable": MessageLookupByLibrary.simpleMessage("기분 값 참고표는 여기서"),
+        "homeCoachMarkBody": MessageLookupByLibrary.simpleMessage(
+            "아래 버튼을 사용하여 기분 값과 활동 수를 기록할 수 있습니다"),
+        "homeCoachMarkTitle":
+            MessageLookupByLibrary.simpleMessage("기록을 시작해보세요!"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("6개월"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1개월"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1년"),
@@ -84,6 +89,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "melancholyMinus_5": MessageLookupByLibrary.simpleMessage(
             "완전히 절망적이며, 살아가는 것이 고통일 뿐입니다. 일상 활동이 거의 불가능합니다"),
         "moodValue": MessageLookupByLibrary.simpleMessage("기분 값"),
+        "moodValueQuestion": MessageLookupByLibrary.simpleMessage("이 날의 기분은?"),
+        "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
+            "이 날의 기분을 -5에서 +5의 기분 값으로 기록해주세요\n망설이면 기분 값 참고표를 확인해보세요!"),
         "next": MessageLookupByLibrary.simpleMessage("다음"),
         "onboardingBodyFirst":
             MessageLookupByLibrary.simpleMessage("기분을 기록하고 나만의 차트를 만들어보세요"),
@@ -101,6 +109,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "onboardingWelcome":
             MessageLookupByLibrary.simpleMessage("기분 그래프에 오신 것을 환영합니다!"),
         "plannedVolume": MessageLookupByLibrary.simpleMessage("계획된 양"),
+        "plannedVolumeQuestion":
+            MessageLookupByLibrary.simpleMessage("이 날의 활동 또는 계획 수는 몇 개인가요?"),
+        "plannedVolumeQuestionTooltipMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "이 날에 한 일의 수를 기록해주세요\n기분 값보다 객관적인 수치로 되돌아보는 데 도움이 됩니다"),
         "registerConfirm": MessageLookupByLibrary.simpleMessage("등록 확인"),
         "registerRegister": MessageLookupByLibrary.simpleMessage("등록"),
         "registerSave":

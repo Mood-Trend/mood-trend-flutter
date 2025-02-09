@@ -46,6 +46,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("どんなことでも自分は成功すると確信している"),
         "elationPlus_5":
             MessageLookupByLibrary.simpleMessage("自分は絶対に正しく、すべてが上手くいくと確信する"),
+        "goTable": MessageLookupByLibrary.simpleMessage("気分値目安表はこちら"),
+        "homeCoachMarkBody":
+            MessageLookupByLibrary.simpleMessage("下のボタンから気分値と活動数の記録ができます"),
+        "homeCoachMarkTitle":
+            MessageLookupByLibrary.simpleMessage("記録を始めましょう！"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("半年"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1ヶ月"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1年"),
@@ -82,6 +87,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "melancholyMinus_5": MessageLookupByLibrary.simpleMessage(
             "完全に絶望的で、生きることが苦痛でしかない。日常の動作がままならない"),
         "moodValue": MessageLookupByLibrary.simpleMessage("気分値"),
+        "moodValueQuestion": MessageLookupByLibrary.simpleMessage("この日の気分は？"),
+        "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
+            "この日の気分を-5から+5の気分値で記録してください\n迷ったら気分値目安表を確認しましょう！"),
         "next": MessageLookupByLibrary.simpleMessage("次へ"),
         "onboardingBodyFirst":
             MessageLookupByLibrary.simpleMessage("気分を記録してあなただけのグラフをつくろう"),
@@ -97,7 +105,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "onboardingTitleThird": MessageLookupByLibrary.simpleMessage("気分値目安表"),
         "onboardingWelcome":
             MessageLookupByLibrary.simpleMessage("気分グラフへようこそ！"),
-        "plannedVolume": MessageLookupByLibrary.simpleMessage("予定量"),
+        "plannedVolume": MessageLookupByLibrary.simpleMessage("活動数"),
+        "plannedVolumeQuestion":
+            MessageLookupByLibrary.simpleMessage("この活動 or 予定の数はいくつですか？"),
+        "plannedVolumeQuestionTooltipMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "この日に行ったことの数を記録してください\n気分値より客観性のある数値で振り返りに役立ちます"),
         "registerConfirm": MessageLookupByLibrary.simpleMessage("登録確認"),
         "registerRegister": MessageLookupByLibrary.simpleMessage("登録"),
         "registerSave":

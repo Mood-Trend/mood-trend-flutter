@@ -49,6 +49,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Estoy convencido de que tendré éxito en cualquier cosa que haga"),
         "elationPlus_5": MessageLookupByLibrary.simpleMessage(
             "Estoy absolutamente seguro de que estoy en lo correcto y todo saldrá bien"),
+        "goTable": MessageLookupByLibrary.simpleMessage(
+            "La tabla de referencia de valores de humor está aquí"),
+        "homeCoachMarkBody": MessageLookupByLibrary.simpleMessage(
+            "Puedes registrar tus valores de humor y números de actividad con los botones de abajo"),
+        "homeCoachMarkTitle":
+            MessageLookupByLibrary.simpleMessage("¡Comencemos a registrar!"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("6 meses"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1 mes"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1 año"),
@@ -89,6 +95,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "melancholyMinus_5": MessageLookupByLibrary.simpleMessage(
             "Me siento completamente desesperado, vivir se vuelve doloroso y las actividades diarias son casi imposibles"),
         "moodValue": MessageLookupByLibrary.simpleMessage("Valor de Humor"),
+        "moodValueQuestion": MessageLookupByLibrary.simpleMessage(
+            "¿Cómo fue tu estado de ánimo en este día?"),
+        "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
+            "Registra tu estado de ánimo en este día con valores de -5 a +5\n¡Consulta la tabla de referencia de valores de humor si tienes dudas!"),
         "next": MessageLookupByLibrary.simpleMessage("Siguiente"),
         "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
             "Registra tu estado de ánimo y crea tu propio gráfico"),
@@ -109,6 +119,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "¡Bienvenido al Gráfico de Humor!"),
         "plannedVolume":
             MessageLookupByLibrary.simpleMessage("Volumen Planificado"),
+        "plannedVolumeQuestion": MessageLookupByLibrary.simpleMessage(
+            "¿Cuántas actividades o planes tenías en este día?"),
+        "plannedVolumeQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
+            "Registra el número de actividades que realizaste en este día\n¡Te ayudará a reflexionar con un valor más objetivo que el valor de humor!"),
         "registerConfirm":
             MessageLookupByLibrary.simpleMessage("Confirmar Registro"),
         "registerRegister": MessageLookupByLibrary.simpleMessage("Registrarse"),

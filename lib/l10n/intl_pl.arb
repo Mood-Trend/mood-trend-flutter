@@ -92,5 +92,12 @@
     "activityPlus_3": "Jest pozytywny i pełen energii, planuje wiele aktywności",
     "activityPlus_4": "Dzień jest pełen planów",
     "activityPlus_5": "Kontynuuje aktywność przez kilka dni bez odczuwania zmęczenia, działa energetycznie przez cały dzień",
-    "version_info": "Informacje o wersji"
+    "version_info": "Informacje o wersji",
+    "moodValueQuestion" : "Jaki był twój nastrój tego dnia?",
+    "plannedVolumeQuestion" : "Ile aktywności lub planów miałaś tego dnia?",
+    "moodValueQuestionTooltipMessage" : "Zarejestruj swój nastrój tego dnia w skali od -5 do +5\nJeśli masz wątpliwości, sprawdź tabelę wartości nastroju!",
+    "plannedVolumeQuestionTooltipMessage" : "Zarejestruj liczbę działań, które wykonałaś tego dnia\nPomoże to w analizie z większą obiektywnością niż wartości nastroju",
+    "goTable" : "Tabela wartości nastroju znajduje się tutaj",
+    "homeCoachMarkTitle": "Zacznij rejestrować!",
+    "homeCoachMarkBody": "Możesz zarejestrować wartość nastroju i liczbę działań za pomocą poniższych przycisków"
 }

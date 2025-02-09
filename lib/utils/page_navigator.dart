@@ -20,6 +20,43 @@ class PageNavigator {
       MaterialPageRoute(
         builder: (_) => page,
         fullscreenDialog: fullscreenDialog,
+        settings: RouteSettings(
+          name: page.toString(),
+        ),
+      ),
+    );
+  }
+
+  /// 下からのスライドアニメーションで指定したページに遷移
+  ///
+  /// [context] - BuildContext を指定
+  /// [page] - 遷移先のウィジェットを指定
+  /// [rootNavigator] - true の場合、最上位の Navigator を使用
+  static Future<void> pushWithSlideFromBottom(
+    BuildContext context,
+    Widget page, {
+    bool rootNavigator = false,
+  }) async {
+    return Navigator.of(context, rootNavigator: rootNavigator).push<void>(
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => page,
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          const begin = Offset(0.0, 1.0); // 下から上への開始位置
+          const end = Offset.zero; // 最終位置（中央）
+          const curve = Curves.easeInOut;
+
+          var tween =
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          var offsetAnimation = animation.drive(tween);
+
+          return SlideTransition(
+            position: offsetAnimation,
+            child: child,
+          );
+        },
+        settings: RouteSettings(
+          name: page.toString(),
+        ),
       ),
     );
   }
@@ -41,6 +78,9 @@ class PageNavigator {
       MaterialPageRoute(
         builder: (_) => page,
         fullscreenDialog: fullscreenDialog,
+        settings: RouteSettings(
+          name: page.toString(),
+        ),
       ),
     );
   }
@@ -62,6 +102,9 @@ class PageNavigator {
       MaterialPageRoute(
         builder: (_) => page,
         fullscreenDialog: fullscreenDialog,
+        settings: RouteSettings(
+          name: page.toString(),
+        ),
       ),
       (_) => false,
     );

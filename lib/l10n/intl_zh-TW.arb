@@ -92,5 +92,12 @@
     "activityPlus_3": "积极而充满活力，计划很多",
     "activityPlus_4": "一天都是计划的活动",
     "activityPlus_5": "连续几天都在进行活动，积极行动而不感到疲劳",
-    "version_info": "版本資訊"
+    "version_info": "版本資訊",
+    "moodValueQuestion" : "這一天的心情如何？",
+    "plannedVolumeQuestion" : "這一天的活動或計劃數量是多少？",
+    "moodValueQuestionTooltipMessage" : "請記錄這一天的心情，使用-5到+5的心情值\n如果不確定，請查看心情值參考表！",
+    "plannedVolumeQuestionTooltipMessage" : "請記錄這一天的活動數量\n有助於客觀地回顧，而不是根據心情值",
+    "goTable" : "心情值參考表在這裡",
+    "homeCoachMarkTitle": "開始記錄！",
+    "homeCoachMarkBody": "您可以通過下面的按鈕記錄心情值和活動數量"
 }

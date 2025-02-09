@@ -400,20 +400,20 @@ class S {
     );
   }
 
-  /// `Planned Volume`
+  /// `Activity Count`
   String get plannedVolume {
     return Intl.message(
-      'Planned Volume',
+      'Activity Count',
       name: 'plannedVolume',
       desc: '',
       args: [],
     );
   }
 
-  /// `Registration of Mood Value and Planned Number is complete.`
+  /// `Registration of Mood Value and Activity Count is complete.`
   String get inputSuccess {
     return Intl.message(
-      'Registration of Mood Value and Planned Number is complete.',
+      'Registration of Mood Value and Activity Count is complete.',
       name: 'inputSuccess',
       desc: '',
       args: [],
@@ -975,6 +975,76 @@ class S {
     return Intl.message(
       'Version Information',
       name: 'version_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How was your mood on this day?`
+  String get moodValueQuestion {
+    return Intl.message(
+      'How was your mood on this day?',
+      name: 'moodValueQuestion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How many activities or plans did you have on this day?`
+  String get plannedVolumeQuestion {
+    return Intl.message(
+      'How many activities or plans did you have on this day?',
+      name: 'plannedVolumeQuestion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Record your mood for the day with a mood value from -5 to +5\nCheck the mood value reference table if you're unsure!`
+  String get moodValueQuestionTooltipMessage {
+    return Intl.message(
+      'Record your mood for the day with a mood value from -5 to +5\nCheck the mood value reference table if you\'re unsure!',
+      name: 'moodValueQuestionTooltipMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Record the number of things you did on this day\nIt will be useful for reflection with more objective numbers than mood values`
+  String get plannedVolumeQuestionTooltipMessage {
+    return Intl.message(
+      'Record the number of things you did on this day\nIt will be useful for reflection with more objective numbers than mood values',
+      name: 'plannedVolumeQuestionTooltipMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go to the Mood Value Reference Table`
+  String get goTable {
+    return Intl.message(
+      'Go to the Mood Value Reference Table',
+      name: 'goTable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Let's start recording!`
+  String get homeCoachMarkTitle {
+    return Intl.message(
+      'Let\'s start recording!',
+      name: 'homeCoachMarkTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can record your mood values and activity numbers using the buttons below`
+  String get homeCoachMarkBody {
+    return Intl.message(
+      'You can record your mood values and activity numbers using the buttons below',
+      name: 'homeCoachMarkBody',
       desc: '',
       args: [],
     );

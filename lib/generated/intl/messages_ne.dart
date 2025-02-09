@@ -50,6 +50,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "तपाईंले गर्दा सबै सफल हुनेवाना विश्वास गरिएको छ"),
         "elationPlus_5": MessageLookupByLibrary.simpleMessage(
             "तपाईंले आफ्नो पक्षमा हुनेवाना पूर्ण भरोसा गरिएको छ"),
+        "goTable": MessageLookupByLibrary.simpleMessage(
+            "भावना मूल्य संदर्भ पत्र यहाँ छ"),
+        "homeCoachMarkBody": MessageLookupByLibrary.simpleMessage(
+            "तलको बटनबाट भावना मूल्य र कार्य संख्या दर्ता गर्न सकिन्छ"),
+        "homeCoachMarkTitle":
+            MessageLookupByLibrary.simpleMessage("दर्ता गर्न सुरु गरौं!"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("६ महिना"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("१ महिना"),
         "homeYear": MessageLookupByLibrary.simpleMessage("१ वर्ष"),
@@ -90,6 +96,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "melancholyMinus_5": MessageLookupByLibrary.simpleMessage(
             "पूर्ण रूपमा आशाहीन, जीवनले केवल पीडामा बदलिसकेको छ, प्रतिदिनका कार्यहरूमा सामान्यतया पनि हुँदैन"),
         "moodValue": MessageLookupByLibrary.simpleMessage("भावना मूल्य"),
+        "moodValueQuestion":
+            MessageLookupByLibrary.simpleMessage("यो दिनको भावना के हो?"),
+        "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
+            "यो दिनको भावना -5 देखि +5 मा भावना मूल्यमा दर्ता गर्नुहोस्\nसंदेह भएमा भावना मूल्य संदर्भ पत्र हेर्नुहोस्!"),
         "next": MessageLookupByLibrary.simpleMessage("अरू"),
         "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
             "तपाईंको मनो नोट गर्नुहोस् र आफ्नो चार्ट बनाउनुहोस्"),
@@ -109,6 +119,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "onboardingWelcome":
             MessageLookupByLibrary.simpleMessage("भावना चिन्हमा स्वागत छ!"),
         "plannedVolume": MessageLookupByLibrary.simpleMessage("नियोजित मात्रा"),
+        "plannedVolumeQuestion": MessageLookupByLibrary.simpleMessage(
+            "यो दिनको कार्य वा योजना संख्या कति हो?"),
+        "plannedVolumeQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
+            "यो दिनमा गरेको कामको संख्या दर्ता गर्नुहोस्\nभावना मूल्यबाट बाहिर निर्णय गर्नमा मद्दत गर्दछ"),
         "registerConfirm": MessageLookupByLibrary.simpleMessage("पर्खिक दर्ता"),
         "registerRegister":
             MessageLookupByLibrary.simpleMessage("दर्ता गर्नुहोस्"),

@@ -49,6 +49,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Confident that everything will succeed"),
         "elationPlus_5": MessageLookupByLibrary.simpleMessage(
             "Absolutely certain of being correct, and everything will go well"),
+        "goTable": MessageLookupByLibrary.simpleMessage(
+            "Go to the Mood Value Reference Table"),
+        "homeCoachMarkBody": MessageLookupByLibrary.simpleMessage(
+            "You can record your mood values and activity numbers using the buttons below"),
+        "homeCoachMarkTitle":
+            MessageLookupByLibrary.simpleMessage("Let\'s start recording!"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("6 Months"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1 Month"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1 Year"),
@@ -75,7 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter symptoms"),
         "inputSave": MessageLookupByLibrary.simpleMessage("Save"),
         "inputSuccess": MessageLookupByLibrary.simpleMessage(
-            "Registration of Mood Value and Planned Number is complete."),
+            "Registration of Mood Value and Activity Count is complete."),
         "manic": MessageLookupByLibrary.simpleMessage("Manic State"),
         "melancholyMinus_1": MessageLookupByLibrary.simpleMessage(
             "Tend to be somewhat pessimistic"),
@@ -88,6 +94,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "melancholyMinus_5": MessageLookupByLibrary.simpleMessage(
             "Completely hopeless, living is only pain. Unable to perform daily activities"),
         "moodValue": MessageLookupByLibrary.simpleMessage("Mood Value"),
+        "moodValueQuestion": MessageLookupByLibrary.simpleMessage(
+            "How was your mood on this day?"),
+        "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
+            "Record your mood for the day with a mood value from -5 to +5\nCheck the mood value reference table if you\'re unsure!"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
             "Record your mood and create your own chart"),
@@ -105,7 +115,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mood Value Reference Table"),
         "onboardingWelcome":
             MessageLookupByLibrary.simpleMessage("Welcome to Mood Graph!"),
-        "plannedVolume": MessageLookupByLibrary.simpleMessage("Planned Volume"),
+        "plannedVolume": MessageLookupByLibrary.simpleMessage("Activity Count"),
+        "plannedVolumeQuestion": MessageLookupByLibrary.simpleMessage(
+            "How many activities or plans did you have on this day?"),
+        "plannedVolumeQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
+            "Record the number of things you did on this day\nIt will be useful for reflection with more objective numbers than mood values"),
         "registerConfirm":
             MessageLookupByLibrary.simpleMessage("Registration Confirmation"),
         "registerRegister": MessageLookupByLibrary.simpleMessage("Register"),

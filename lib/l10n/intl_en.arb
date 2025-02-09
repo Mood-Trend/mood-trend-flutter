@@ -35,8 +35,8 @@
     "homeHalfYear": "6 Months",
     "homeMonth": "1 Month",
     "moodValue": "Mood Value",
-    "plannedVolume": "Planned Volume",
-    "inputSuccess": "Registration of Mood Value and Planned Number is complete.",
+    "plannedVolume": "Activity Count",
+    "inputSuccess": "Registration of Mood Value and Activity Count is complete.",
     "inputSave": "Save",
     "inputAlreadyExist": " is already registered.",
     "inputOverwritingQuestion": "Do you want to overwrite it?",
@@ -92,5 +92,12 @@
     "activityPlus_3": "Active and energetic, with a lot of plans",
     "activityPlus_4": "Full day of scheduled activities",
     "activityPlus_5": "Continuing activities all day for several days, actively moving without feeling tired",
-    "version_info": "Version Information"
+    "version_info": "Version Information",
+    "moodValueQuestion" : "How was your mood on this day?",
+    "plannedVolumeQuestion" : "How many activities or plans did you have on this day?",
+    "moodValueQuestionTooltipMessage" : "Record your mood for the day with a mood value from -5 to +5\nCheck the mood value reference table if you're unsure!",
+    "plannedVolumeQuestionTooltipMessage" : "Record the number of things you did on this day\nIt will be useful for reflection with more objective numbers than mood values",
+    "goTable" : "Go to the Mood Value Reference Table",
+    "homeCoachMarkTitle": "Let's start recording!",
+    "homeCoachMarkBody": "You can record your mood values and activity numbers using the buttons below"
 }

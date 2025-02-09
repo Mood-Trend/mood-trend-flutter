@@ -92,5 +92,12 @@
     "activityPlus_3": "É positivo e energético, planeja muitas atividades",
     "activityPlus_4": "O dia está repleto de planos",
     "activityPlus_5": "Continua ativo por vários dias sem se sentir cansado, e age energeticamente ao longo do dia",
-    "version_info": "Informações da versão"
+    "version_info": "Informações da versão",
+    "moodValueQuestion" : "Como foi seu humor hoje?",
+    "plannedVolumeQuestion" : "Quantas atividades ou planos você teve hoje?",
+    "moodValueQuestionTooltipMessage" : "Registre seu humor hoje com valores de -5 a +5\nConsulte a tabela de referência de valores de humor se tiver dúvidas!",
+    "plannedVolumeQuestionTooltipMessage" : "Registre o número de atividades que você fez hoje\nIsso ajudará a refletir com um valor mais objetivo do que o valor do humor!",
+    "goTable" : "A tabela de referência de valores de humor está aqui",
+    "homeCoachMarkTitle": "Vamos começar a registrar!",
+    "homeCoachMarkBody": "Você pode registrar seus valores de humor e números de atividade com os botões abaixo"
 }

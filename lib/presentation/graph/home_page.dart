@@ -8,7 +8,9 @@ import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/common/setting_page.dart';
 import 'package:mood_trend_flutter/utils/datetime_extension.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 import '../../application/graph/states/subscribe_mood_points_provider.dart';
 import '../../utils/app_colors.dart';
@@ -58,6 +60,62 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedTerm = ref.watch(selectedTermProvider);
+
+    // コーチマーク用のターゲット
+    final GlobalKey floatingActionButtonKey = GlobalKey();
+
+    // コーチマークのセットアップ
+    Future<void> showCoachMark() async {
+      final prefs = await SharedPreferences.getInstance();
+      final isFirstLaunch = prefs.getBool('isFirstLaunch') ?? true;
+      if (isFirstLaunch) {
+        final coachMark = TutorialCoachMark(
+          targets: [
+            TargetFocus(
+              keyTarget: floatingActionButtonKey,
+              contents: [
+                TargetContent(
+                  align: ContentAlign.top,
+                  child: Column(
+                    children: [
+                      Text(
+                        S.of(context).homeCoachMarkTitle,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: AppColors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        S.of(context).homeCoachMarkBody,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
+          colorShadow: Colors.black,
+          textSkip: S.of(context).onboardingSkip,
+          onFinish: () async {
+            await prefs.setBool('isFirstLaunch', false);
+          },
+        );
+        coachMark.show(context: context);
+        await prefs.setBool('isFirstLaunch', false);
+      }
+    }
+
+    // 初回起動時にコーチマークを表示
+    Future.delayed(Duration.zero, () {
+      showCoachMark();
+    });
+
     ButtonStyle buttonStyle(Term term) {
       return TextButton.styleFrom(
         /// 文字色は選択されている場合は白、そうでない場合は黒
@@ -110,7 +168,7 @@ class HomePage extends ConsumerWidget {
             onPressed: () => ref
                 .watch(visibleMaximumProvider.notifier)
                 .update((_) => DateTime.now().toDateOnly()),
-            icon: const Icon(Icons.home),
+            icon: const Icon(Icons.replay_outlined),
           ),
           IconButton(
             onPressed: () => PageNavigator.push(
@@ -121,107 +179,119 @@ class HomePage extends ConsumerWidget {
           ),
         ],
       ),
-      body: AsyncValueHandler(
-          value: ref.watch(subscribeMoodPointsProvider(userId)),
-          loading: () => const OverlayLoading(),
-          builder: (moodPoints) {
-            final term = ref.watch(selectedTermProvider) == Term.month
-                ? const Duration(days: 30)
-                : ref.watch(selectedTermProvider) == Term.halfYear
-                    ? const Duration(days: 182)
-                    : const Duration(days: 365);
-            return Center(
-              child: GestureDetector(
-                onHorizontalDragEnd: (details) {
-                  if (details.primaryVelocity! > 0) {
-                    ref
-                        .watch(visibleMaximumProvider.notifier)
-                        .update((state) => state.subtract(term));
-                  } else {
-                    ref
-                        .watch(visibleMaximumProvider.notifier)
-                        .update((state) => state.add(term));
-                  }
-                },
-                child: SfCartesianChart(
-                  legend: const Legend(isVisible: true), // 凡例の表示
-                  backgroundColor: AppColors.white,
-                  primaryXAxis: DateTimeAxis(
-                    dateFormat: DateFormat(
-                        'MM/dd', Localizations.localeOf(context).languageCode),
-                    minimum: ref.watch(visibleMinimumProvider),
-                    maximum: ref.watch(visibleMaximumProvider),
-                  ),
-                  primaryYAxis: NumericAxis(
-                    minimum: -5,
-                    maximum: 5,
-                    interval: 1,
-                    numberFormat: NumberFormat('0'),
-                    plotBands: [
-                      PlotBand(
-                        isVisible: true,
-                        start: double.infinity,
-                        end: 0,
-                        color: Colors.white,
+      body: SafeArea(
+        child: AsyncValueHandler(
+            value: ref.watch(subscribeMoodPointsProvider(userId)),
+            loading: () => const OverlayLoading(),
+            builder: (moodPoints) {
+              final term = ref.watch(selectedTermProvider) == Term.month
+                  ? const Duration(days: 30)
+                  : ref.watch(selectedTermProvider) == Term.halfYear
+                      ? const Duration(days: 182)
+                      : const Duration(days: 365);
+              return Center(
+                child: GestureDetector(
+                  onHorizontalDragEnd: (details) {
+                    if (details.primaryVelocity! > 0) {
+                      ref
+                          .watch(visibleMaximumProvider.notifier)
+                          .update((state) => state.subtract(term));
+                    } else {
+                      ref
+                          .watch(visibleMaximumProvider.notifier)
+                          .update((state) => state.add(term));
+                    }
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+                    child: SfCartesianChart(
+                      legend: const Legend(isVisible: true), // 凡例の表示
+                      backgroundColor: AppColors.white,
+                      primaryXAxis: DateTimeAxis(
+                        dateFormat: DateFormat('MM/dd',
+                            Localizations.localeOf(context).languageCode),
+                        minimum: ref.watch(visibleMinimumProvider),
+                        maximum: ref.watch(visibleMaximumProvider),
                       ),
-                      PlotBand(
-                        isVisible: true,
-                        start: -double.infinity,
-                        end: 0,
-                        color: const Color.fromRGBO(249, 249, 249, 1),
+                      primaryYAxis: NumericAxis(
+                        minimum: -5,
+                        maximum: 5,
+                        interval: 1,
+                        numberFormat: NumberFormat('0'),
+                        plotBands: [
+                          PlotBand(
+                            isVisible: true,
+                            start: double.infinity,
+                            end: 0,
+                            color: Colors.white,
+                          ),
+                          PlotBand(
+                            isVisible: true,
+                            start: -double.infinity,
+                            end: 0,
+                            color: const Color.fromRGBO(249, 249, 249, 1),
+                          ),
+                        ],
                       ),
-                    ],
+                      axes: [
+                        NumericAxis(
+                          minimum: 0,
+                          maximum: 16,
+                          interval: 1,
+                          name: 'yAxis',
+                          opposedPosition: true,
+                        ),
+                      ],
+                      series: [
+                        // 塗りつぶす部分を描画するためのエリアチャート
+                        LineSeries<MoodPoint, DateTime>(
+                          name: S.of(context).moodValue, // 凡例の名前
+                          dataSource: moodPoints,
+                          xValueMapper: (MoodPoint value, _) =>
+                              value.moodDate.toDateOnly(),
+                          yValueMapper: (MoodPoint value, _) => value.point,
+                          color: AppColors.green.withOpacity(0.5),
+                          markerSettings: const MarkerSettings(isVisible: true),
+                          // borderDrawMode: RangeAreaBorderMode.excludeSides,
+                        ),
+                        LineSeries<MoodPoint, DateTime>(
+                          name: S.of(context).plannedVolume, // 凡例の名前
+                          dataSource: moodPoints,
+                          xValueMapper: (MoodPoint value, _) =>
+                              value.moodDate.toDateOnly(),
+                          yValueMapper: (MoodPoint value, _) =>
+                              value.plannedVolume,
+                          color: AppColors.blue.withOpacity(0.5),
+                          markerSettings: const MarkerSettings(isVisible: true),
+                          yAxisName: 'yAxis',
+                        ),
+                      ],
+                    ),
                   ),
-                  axes: [
-                    NumericAxis(
-                      minimum: 0,
-                      maximum: 16,
-                      interval: 1,
-                      name: 'yAxis',
-                      opposedPosition: true,
-                    ),
-                  ],
-                  series: [
-                    // 塗りつぶす部分を描画するためのエリアチャート
-                    LineSeries<MoodPoint, DateTime>(
-                      name: S.of(context).moodValue, // 凡例の名前
-                      dataSource: moodPoints,
-                      xValueMapper: (MoodPoint value, _) =>
-                          value.moodDate.toDateOnly(),
-                      yValueMapper: (MoodPoint value, _) => value.point,
-                      color: AppColors.green.withOpacity(0.5),
-                      markerSettings: const MarkerSettings(isVisible: true),
-                      // borderDrawMode: RangeAreaBorderMode.excludeSides,
-                    ),
-                    LineSeries<MoodPoint, DateTime>(
-                      name: S.of(context).plannedVolume, // 凡例の名前
-                      dataSource: moodPoints,
-                      xValueMapper: (MoodPoint value, _) =>
-                          value.moodDate.toDateOnly(),
-                      yValueMapper: (MoodPoint value, _) => value.plannedVolume,
-                      color: AppColors.blue.withOpacity(0.5),
-                      markerSettings: const MarkerSettings(isVisible: true),
-                      yAxisName: 'yAxis',
-                    ),
-                  ],
                 ),
-              ),
-            );
-          }),
+              );
+            }),
+      ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.black,
-        foregroundColor: AppColors.grey,
+        key: floatingActionButtonKey,
+        backgroundColor: AppColors.green,
+        foregroundColor: AppColors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(100),
+        ),
         onPressed: () {
-          showModalBottomSheet(
-            backgroundColor: AppColors.white,
-            isScrollControlled: true,
-            context: context,
-            builder: (context) {
-              return InputModal(uid: userId);
-            },
+          PageNavigator.pushWithSlideFromBottom(
+            context,
+            InputModal(uid: userId),
           );
         },
         child: Icon(Icons.add, color: AppColors.white),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: AppColors.lightGreen,
+        notchMargin: 20,
+        shape: const CircularNotchedRectangle(),
       ),
     );
   }
