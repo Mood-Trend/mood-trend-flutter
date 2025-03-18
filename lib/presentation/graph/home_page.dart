@@ -207,6 +207,11 @@ class HomePage extends ConsumerWidget {
                           : visibleMinDate,
                       initialVisibleMinimum: visibleMinDate, // 表示範囲の最小値
                       initialVisibleMaximum: DateTime.now(),
+                      interval: switch (ref.watch(selectedTermProvider)) {
+                        Term.month => 7,
+                        Term.halfYear => 1,
+                        Term.year => 1,
+                      },
                     ),
                     primaryYAxis: NumericAxis(
                       minimum: -5,
@@ -239,7 +244,7 @@ class HomePage extends ConsumerWidget {
                     ],
                     series: [
                       // 塗りつぶす部分を描画するためのエリアチャート
-                      LineSeries<MoodPoint, DateTime>(
+                      SplineAreaSeries<MoodPoint, DateTime>(
                         name: S.of(context).moodValue, // 凡例の名前
                         dataSource: moodPoints,
                         xValueMapper: (MoodPoint value, _) =>
@@ -247,9 +252,9 @@ class HomePage extends ConsumerWidget {
                         yValueMapper: (MoodPoint value, _) => value.point,
                         color: AppColors.green.withOpacity(0.5),
                         markerSettings: const MarkerSettings(isVisible: true),
-                        // borderDrawMode: RangeAreaBorderMode.excludeSides,
+                        splineType: SplineType.monotonic,
                       ),
-                      LineSeries<MoodPoint, DateTime>(
+                      SplineAreaSeries<MoodPoint, DateTime>(
                         name: S.of(context).plannedVolume, // 凡例の名前
                         dataSource: moodPoints,
                         xValueMapper: (MoodPoint value, _) =>
@@ -259,6 +264,7 @@ class HomePage extends ConsumerWidget {
                         color: AppColors.blue.withOpacity(0.5),
                         markerSettings: const MarkerSettings(isVisible: true),
                         yAxisName: 'yAxis',
+                        splineType: SplineType.monotonic,
                       ),
                     ],
                   ),
