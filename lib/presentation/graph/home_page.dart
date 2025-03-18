@@ -167,12 +167,6 @@ class HomePage extends ConsumerWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () => ref
-                .watch(visibleMaximumProvider.notifier)
-                .update((_) => DateTime.now().toDateOnly()),
-            icon: const Icon(Icons.replay_outlined),
-          ),
-          IconButton(
             onPressed: () => PageNavigator.push(
               context,
               SettingPage(uid: userId),
@@ -200,9 +194,10 @@ class HomePage extends ConsumerWidget {
                     primaryXAxis: DateTimeAxis(
                       dateFormat: DateFormat('MM/dd',
                           Localizations.localeOf(context).languageCode),
-                      minimum: moodPoints.first.moodDate
-                              .toDateOnly()
-                              .isBefore(visibleMinDate)
+                      minimum: moodPoints.isNotEmpty &&
+                              moodPoints.first.moodDate
+                                  .toDateOnly()
+                                  .isBefore(visibleMinDate)
                           ? moodPoints.first.moodDate.toDateOnly()
                           : visibleMinDate,
                       initialVisibleMinimum: visibleMinDate, // 表示範囲の最小値
