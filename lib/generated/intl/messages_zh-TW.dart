@@ -76,6 +76,26 @@ class MessageLookup extends MessageLookupByLibrary {
         "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
             "請用-5到+5的心情值記錄這天的心情\n如果不確定，可以參考心情值參考表！\n+3以上或-3以下時，建議提前就醫"),
         "next": MessageLookupByLibrary.simpleMessage("下一步"),
+        "notificationDailyBody":
+            MessageLookupByLibrary.simpleMessage("記錄今天的心情，通過心情圖表獲得一些啟示"),
+        "notificationDailyTitle":
+            MessageLookupByLibrary.simpleMessage("今天的心情回顧一下吧？"),
+        "notificationSettingsDaily": MessageLookupByLibrary.simpleMessage("每天"),
+        "notificationSettingsDailyDescription":
+            MessageLookupByLibrary.simpleMessage("每天20:00發送通知"),
+        "notificationSettingsNone": MessageLookupByLibrary.simpleMessage("無通知"),
+        "notificationSettingsNoneDescription":
+            MessageLookupByLibrary.simpleMessage("禁用通知"),
+        "notificationSettingsTitle":
+            MessageLookupByLibrary.simpleMessage("設定通知提醒嗎？"),
+        "notificationSettingsWeekend":
+            MessageLookupByLibrary.simpleMessage("週末一次"),
+        "notificationSettingsWeekendDescription":
+            MessageLookupByLibrary.simpleMessage("每週末20:00發送通知"),
+        "notificationWeekendBody":
+            MessageLookupByLibrary.simpleMessage("記錄週末的回顧，通過心情圖表獲得一些啟示"),
+        "notificationWeekendTitle":
+            MessageLookupByLibrary.simpleMessage("週末的心情回顧一下吧？"),
         "onboardingBodyFirst":
             MessageLookupByLibrary.simpleMessage("記錄心情，製作專屬你的圖表"),
         "onboardingBodySecond":

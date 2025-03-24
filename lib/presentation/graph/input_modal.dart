@@ -9,7 +9,6 @@ import 'package:mood_trend_flutter/application/graph/add_mood_point_usecase.dart
 import 'package:mood_trend_flutter/application/graph/states/is_saving_provider.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/utils/get_ad_mob_unit_id.dart';
-import 'package:mood_trend_flutter/infrastructure/services/notification_service.dart';
 import 'package:mood_trend_flutter/presentation/common/components/notification_settings_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

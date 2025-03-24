@@ -99,5 +99,16 @@
     "plannedVolumeQuestionTooltipMessage": "記錄當天進行的活動數\n這是一個比心情值更客觀的指標，能幫助回顧",
     "goTable": "前往心情值參考表",
     "homeCoachMarkTitle": "開始記錄吧！",
-    "homeCoachMarkBody": "點擊下方按鈕記錄心情值與活動數"
+    "homeCoachMarkBody": "點擊下方按鈕記錄心情值與活動數",
+    "notificationDailyTitle": "今天的心情回顧一下吧？",
+    "notificationDailyBody": "記錄今天的心情，通過心情圖表獲得一些啟示",
+    "notificationWeekendTitle": "週末的心情回顧一下吧？",
+    "notificationWeekendBody": "記錄週末的回顧，通過心情圖表獲得一些啟示",
+    "notificationSettingsTitle": "設定通知提醒嗎？",
+    "notificationSettingsDaily": "每天",
+    "notificationSettingsDailyDescription": "每天20:00發送通知",
+    "notificationSettingsWeekend": "週末一次",
+    "notificationSettingsWeekendDescription": "每週末20:00發送通知",
+    "notificationSettingsNone": "無通知",
+    "notificationSettingsNoneDescription": "禁用通知"
 }

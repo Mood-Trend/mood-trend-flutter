@@ -23,15 +23,15 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "activityPlus_1":
-            MessageLookupByLibrary.simpleMessage("Er i stand til å være aktiv"),
+            MessageLookupByLibrary.simpleMessage("Kan være aktiv"),
         "activityPlus_2": MessageLookupByLibrary.simpleMessage(
-            "Er i en mer aktiv stemning enn vanlig"),
+            "Er mer energisk og motivert enn vanlig"),
         "activityPlus_3": MessageLookupByLibrary.simpleMessage(
-            "Er positiv og energisk, planlegger mange aktiviteter"),
-        "activityPlus_4":
-            MessageLookupByLibrary.simpleMessage("Dagen er full av planer"),
+            "Er aktiv og energisk, fyller dagen med aktiviteter"),
+        "activityPlus_4": MessageLookupByLibrary.simpleMessage(
+            "Dagen er fylt med aktiviteter"),
         "activityPlus_5": MessageLookupByLibrary.simpleMessage(
-            "Fortsetter å være aktiv i flere dager uten å føle seg sliten, og handler energisk gjennom dagen"),
+            "Har vært aktiv hele dagen i flere dager, uten å føle meg trøtt, og er energisk"),
         "cancel": MessageLookupByLibrary.simpleMessage("Avbryt"),
         "depression":
             MessageLookupByLibrary.simpleMessage("Depresjonstilstand"),
@@ -41,92 +41,116 @@ class MessageLookup extends MessageLookupByLibrary {
         "dialogOk": MessageLookupByLibrary.simpleMessage("OK"),
         "dialogYes": MessageLookupByLibrary.simpleMessage("Ja"),
         "elationPlus_1": MessageLookupByLibrary.simpleMessage(
-            "Har en mer positiv stemning enn vanlig"),
+            "Er mer optimistisk enn vanlig"),
         "elationPlus_2": MessageLookupByLibrary.simpleMessage(
-            "Er positiv og har en utfordrende holdning, føler positiv energi"),
+            "Har en positiv og utfordrende holdning, føler på positiv energi"),
         "elationPlus_3": MessageLookupByLibrary.simpleMessage(
-            "Føler seg trygg på at alt vil gå bra i enhver situasjon"),
+            "Har sterk følelse av at alt går bra i alle situasjoner"),
         "elationPlus_4": MessageLookupByLibrary.simpleMessage(
-            "Er overbevist om at de vil lykkes uansett hva de gjør"),
+            "Er helt sikker på at jeg vil lykkes med alt"),
         "elationPlus_5": MessageLookupByLibrary.simpleMessage(
-            "Er absolutt sikker på at de har rett, og at alt vil gå bra"),
-        "goTable": MessageLookupByLibrary.simpleMessage(
-            "Referansetabellen for humørverdier finner du her"),
+            "Er helt sikker på at jeg har rett og at alt vil gå bra"),
+        "goTable":
+            MessageLookupByLibrary.simpleMessage("Se humorverdikartet her"),
         "homeCoachMarkBody": MessageLookupByLibrary.simpleMessage(
-            "Du kan registrere humørsverdier og antall aktiviteter ved hjelp av knappene nedenfor"),
-        "homeCoachMarkTitle":
-            MessageLookupByLibrary.simpleMessage("Begynn å registrere!"),
-        "homeHalfYear": MessageLookupByLibrary.simpleMessage("Halvt år"),
+            "Bruk knappen nedenfor for å registrere humørverdien og aktivitetsmengden"),
+        "homeCoachMarkTitle": MessageLookupByLibrary.simpleMessage(
+            "La oss begynne å registrere!"),
+        "homeHalfYear": MessageLookupByLibrary.simpleMessage("6 måneder"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1 måned"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1 år"),
         "ideaPlus_1": MessageLookupByLibrary.simpleMessage(
-            "Kan tenke på ideer når de ønsker det"),
+            "Kan tenke på ideer hvis jeg prøver"),
         "ideaPlus_2":
-            MessageLookupByLibrary.simpleMessage("Kan lett komme på ideer"),
+            MessageLookupByLibrary.simpleMessage("Kan enkelt komme på ideer"),
         "ideaPlus_3": MessageLookupByLibrary.simpleMessage(
-            "Ideer strømmer kontinuerlig, tenker konstant"),
+            "Ideene strømmer på, tenker kontinuerlig"),
         "ideaPlus_4": MessageLookupByLibrary.simpleMessage(
-            "Strever med å materialisere påfølgende ideer"),
+            "Kjemper for å realisere ideene som kommer til meg"),
         "ideaPlus_5": MessageLookupByLibrary.simpleMessage(
-            "Er sikker på at ideene vil lykkes, handler faktisk for å realisere dem"),
+            "Er sikker på at ideene vil lykkes, og begynner å handle på dem"),
         "inputAlreadyExist":
             MessageLookupByLibrary.simpleMessage("er allerede registrert"),
         "inputDepression": MessageLookupByLibrary.simpleMessage(
-            "Skriv inn symptomer på depresjon"),
-        "inputManic":
-            MessageLookupByLibrary.simpleMessage("Skriv inn symptomer på mani"),
-        "inputOverwriting": MessageLookupByLibrary.simpleMessage("Overskriv"),
+            "Skriv inn symptomene på depresjon"),
+        "inputManic": MessageLookupByLibrary.simpleMessage(
+            "Skriv inn symptomene på mani"),
+        "inputOverwriting": MessageLookupByLibrary.simpleMessage("Overskrive"),
         "inputOverwritingQuestion":
             MessageLookupByLibrary.simpleMessage("Vil du overskrive?"),
         "inputRequest": MessageLookupByLibrary.simpleMessage(
-            "Vennligst skriv inn symptomer"),
+            "Vennligst skriv inn symptomene"),
         "inputSave": MessageLookupByLibrary.simpleMessage("Lagre"),
         "inputSuccess": MessageLookupByLibrary.simpleMessage(
-            "Registrering av stemningsverdi og planlagt antall er fullført"),
+            "Registreringen av humørverdien og aktivitetsmengden er fullført"),
         "manic": MessageLookupByLibrary.simpleMessage("Manisk tilstand"),
         "melancholyMinus_1":
-            MessageLookupByLibrary.simpleMessage("Er generelt mer negativ"),
+            MessageLookupByLibrary.simpleMessage("Er litt nedstemt"),
         "melancholyMinus_2": MessageLookupByLibrary.simpleMessage(
-            "Er litt melankolsk, med økt motvilje mot daglige aktiviteter"),
+            "Lett melankoli, føler at det er flere ting en ikke har lyst til å gjøre"),
         "melancholyMinus_3": MessageLookupByLibrary.simpleMessage(
-            "Opplever sterke melankolske følelser og har vanskelig livssituasjon. Har nesten ingen interesse i daglige aktiviteter"),
+            "Sterk melankoli, har vanskelig for å interessere seg for daglige aktiviteter"),
         "melancholyMinus_4": MessageLookupByLibrary.simpleMessage(
-            "Har sterke melankolske følelser, påvirker dagliglivet og funksjonsnivået. Påvirker daglige funksjoner"),
+            "Sterk melankoli som påvirker hverdagen, hemmer daglige funksjoner"),
         "melancholyMinus_5": MessageLookupByLibrary.simpleMessage(
-            "Er helt fortvilet, lever i smerte, kan knapt utføre daglige aktiviteter"),
-        "moodValue": MessageLookupByLibrary.simpleMessage("Stemningsverdi"),
+            "Fullstendig håpløshet, livet er bare en smerte, kan ikke gjennomføre daglige oppgaver"),
+        "moodValue": MessageLookupByLibrary.simpleMessage("Humørverdi"),
         "moodValueQuestion": MessageLookupByLibrary.simpleMessage(
-            "Hvordan var humøret ditt den dagen?"),
+            "Hvordan er humøret ditt i dag?"),
         "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
-            "Registrer humøret ditt for dagen med en humørsverdi fra -5 til +5\nHvis du er usikker, kan du se på referansetabellen for humørverdier!"),
+            "Registrer humøret ditt på en skala fra -5 til +5\nHvis du er usikker, kan du sjekke humorverdikartet!\nDet anbefales å oppsøke lege ved humørverdier over +3 eller under -3"),
         "next": MessageLookupByLibrary.simpleMessage("Neste"),
+        "notificationDailyBody": MessageLookupByLibrary.simpleMessage(
+            "Registrer dagens humør og få innsikt fra humordiagrammet"),
+        "notificationDailyTitle":
+            MessageLookupByLibrary.simpleMessage("Vil du se på dagens humør?"),
+        "notificationSettingsDaily":
+            MessageLookupByLibrary.simpleMessage("Hver dag"),
+        "notificationSettingsDailyDescription":
+            MessageLookupByLibrary.simpleMessage(
+                "Påminnelse hver dag kl 20:00"),
+        "notificationSettingsNone":
+            MessageLookupByLibrary.simpleMessage("Ingen påminnelser"),
+        "notificationSettingsNoneDescription":
+            MessageLookupByLibrary.simpleMessage("Deaktiver påminnelser"),
+        "notificationSettingsTitle": MessageLookupByLibrary.simpleMessage(
+            "Vil du sette opp påminnelser?"),
+        "notificationSettingsWeekend":
+            MessageLookupByLibrary.simpleMessage("Hver helg"),
+        "notificationSettingsWeekendDescription":
+            MessageLookupByLibrary.simpleMessage(
+                "Påminnelse hver helg kl 20:00"),
+        "notificationWeekendBody": MessageLookupByLibrary.simpleMessage(
+            "Registrer helgens refleksjon og få innsikt fra humordiagrammet"),
+        "notificationWeekendTitle":
+            MessageLookupByLibrary.simpleMessage("Vil du se på helgens humør?"),
         "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
             "Registrer humøret ditt og lag ditt eget diagram"),
         "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
-            "Skriv inn humørverdier fra -5 til +5 og legg dem oppå hverandre i et diagram"),
+            "Skriv inn humørverdier fra -5 til +5, unntatt 0, og bygg opp diagrammet"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
-            "Støtter inntasting av humørverdier og tillater individuelle tilpasninger"),
-        "onboardingNext": MessageLookupByLibrary.simpleMessage("    Neste"),
+            "Støtte for inntasting av humørverdier\nKan også tilpasses for å være personlig"),
+        "onboardingNext": MessageLookupByLibrary.simpleMessage("Neste"),
         "onboardingSkip": MessageLookupByLibrary.simpleMessage("Hopp over"),
-        "onboardingStart": MessageLookupByLibrary.simpleMessage("    Start"),
+        "onboardingStart": MessageLookupByLibrary.simpleMessage("Start"),
         "onboardingTitleFirst":
             MessageLookupByLibrary.simpleMessage("Velkommen"),
         "onboardingTitleSecond":
-            MessageLookupByLibrary.simpleMessage("Humørdiagram"),
-        "onboardingTitleThird": MessageLookupByLibrary.simpleMessage(
-            "Referansetabell for humørverdier"),
+            MessageLookupByLibrary.simpleMessage("Humordiagram"),
+        "onboardingTitleThird":
+            MessageLookupByLibrary.simpleMessage("Humorverdikart"),
         "onboardingWelcome": MessageLookupByLibrary.simpleMessage(
-            "Velkommen til Stemningsgraf!"),
-        "plannedVolume": MessageLookupByLibrary.simpleMessage("Planlagt volum"),
+            "Velkommen til humordiagrammet!"),
+        "plannedVolume": MessageLookupByLibrary.simpleMessage("Aktiviteter"),
         "plannedVolumeQuestion": MessageLookupByLibrary.simpleMessage(
-            "Hvor mange aktiviteter eller planer hadde du den dagen?"),
+            "Hvor mange aktiviteter eller planer har du i dag?"),
         "plannedVolumeQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
-            "Registrer antall aktiviteter du gjorde den dagen\nDette vil hjelpe deg med å reflektere på en mer objektiv måte enn humørverdier"),
+            "Registrer antallet aktiviteter du har gjennomført i dag\nDette gir en mer objektiv vurdering enn humørverdien"),
         "registerConfirm":
-            MessageLookupByLibrary.simpleMessage("Bekreft registrering"),
+            MessageLookupByLibrary.simpleMessage("Registreringsbekreftelse"),
         "registerRegister": MessageLookupByLibrary.simpleMessage("Registrer"),
         "registerSave": MessageLookupByLibrary.simpleMessage(
-            "Registrering av stemningsverdi referansetabell er fullført"),
+            "Registreringen av humorverdikartet er fullført"),
         "settingAboutApp": MessageLookupByLibrary.simpleMessage("Om appen"),
         "settingContact": MessageLookupByLibrary.simpleMessage("Kontakt oss"),
         "settingEdit": MessageLookupByLibrary.simpleMessage("Rediger"),
@@ -134,55 +158,55 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Om denne appen"),
         "settingOther": MessageLookupByLibrary.simpleMessage("Annet"),
         "settingPrivacy":
-            MessageLookupByLibrary.simpleMessage("Personvernregler"),
+            MessageLookupByLibrary.simpleMessage("Personvernerklæring"),
         "settingReview": MessageLookupByLibrary.simpleMessage("Anmeldelse"),
         "settingReviewRequest": MessageLookupByLibrary.simpleMessage(
-            "Utviklerne vil hoppe av glede hvis du gir en anmeldelse"),
+            "En anmeldelse vil gjøre utvikleren veldig glad!"),
         "settingSetting": MessageLookupByLibrary.simpleMessage("Innstillinger"),
-        "settingSupport": MessageLookupByLibrary.simpleMessage("Support"),
+        "settingSupport": MessageLookupByLibrary.simpleMessage("Støtte"),
         "settingTerms": MessageLookupByLibrary.simpleMessage("Bruksvilkår"),
-        "settingThank": MessageLookupByLibrary.simpleMessage(
-            "Takk for at du har brukt tjenesten vår"),
-        "settingWithdraw": MessageLookupByLibrary.simpleMessage("Si opp"),
-        "settingWithdrawConfirm":
-            MessageLookupByLibrary.simpleMessage("Vil du si opp?"),
+        "settingThank":
+            MessageLookupByLibrary.simpleMessage("Takk for at du bruker appen"),
+        "settingWithdraw":
+            MessageLookupByLibrary.simpleMessage("Avslutte medlemskap"),
+        "settingWithdrawConfirm": MessageLookupByLibrary.simpleMessage(
+            "Er du sikker på at du vil avslutte medlemskapet?"),
         "settingWithdrawConfirmDetail": MessageLookupByLibrary.simpleMessage(
             "Alle data vil bli slettet og kan ikke gjenopprettes"),
-        "sleepMinus_1": MessageLookupByLibrary.simpleMessage(
-            "Er ikke frisk ved oppvåkning"),
+        "sleepMinus_1":
+            MessageLookupByLibrary.simpleMessage("Våkner ikke opplagt"),
         "sleepMinus_2": MessageLookupByLibrary.simpleMessage(
-            "Lav søvnkvalitet, føler seg søvnig og utmattet i løpet av dagen"),
+            "Søvnkvaliteten er dårlig, føler meg trøtt og sliten i løpet av dagen"),
         "sleepMinus_3": MessageLookupByLibrary.simpleMessage(
-            "Søvnen er forstyrret, får ikke tilstrekkelig hvile, sterk dagtretthet"),
+            "Søvnen er forstyrret, får ikke nok hvile, føler meg veldig søvnig om dagen"),
         "sleepMinus_4": MessageLookupByLibrary.simpleMessage(
-            "Ekstremt lite søvn eller oversøvn, betydelig redusert daglig funksjon"),
+            "Søvnmangel eller sover for mye, stor påvirkning på daglige funksjoner"),
         "sleepMinus_5": MessageLookupByLibrary.simpleMessage(
-            "Kan ikke sove, konstant overdreven søvnløshet, sterk tretthet i løpet av dagen, eller tilbringer det meste av dagen i søvn"),
-        "table": MessageLookupByLibrary.simpleMessage(
-            "Stemningsverdi referansetabell"),
-        "tableStartEdit":
-            MessageLookupByLibrary.simpleMessage("Begynn å redigere"),
+            "Har konstant søvnløshet og føler meg utmattet hele dagen, eller sover hele dagen"),
+        "table": MessageLookupByLibrary.simpleMessage("Humorverdikart"),
+        "tableStartEdit": MessageLookupByLibrary.simpleMessage(
+            "Start redigering av humorverdikartet"),
         "thinkMinus_1": MessageLookupByLibrary.simpleMessage(
-            "Noen ganger virker det litt tungvint å tenke"),
+            "Føler at det kan være litt vanskelig å tenke på ting"),
         "thinkMinus_2":
-            MessageLookupByLibrary.simpleMessage("Har mild treg tenkning"),
+            MessageLookupByLibrary.simpleMessage("Lett mental treghet"),
         "thinkMinus_3": MessageLookupByLibrary.simpleMessage(
-            "Har treg tenkning, betydelig reduksjon i problemløsning og dommerkraft"),
+            "Tankene er langsommere, problemløsning og beslutningstaking er betydelig nedsatt"),
         "thinkMinus_4": MessageLookupByLibrary.simpleMessage(
-            "Har betydelig redusert tenkeevne, store problemer med konsentrasjon og hukommelse"),
+            "Tankene er sterkt redusert, det er betydelige problemer med konsentrasjon og hukommelse"),
         "thinkMinus_5": MessageLookupByLibrary.simpleMessage(
-            "Har ingen fungerende tenkeevne, forstår nesten ingenting"),
+            "Tankene fungerer ikke i det hele tatt, har problemer med å forstå nesten alt"),
         "typeActivity": MessageLookupByLibrary.simpleMessage("Aktivitet"),
         "typeDepression":
             MessageLookupByLibrary.simpleMessage("Hva er din type depresjon?"),
-        "typeElation": MessageLookupByLibrary.simpleMessage("Opphisselse"),
-        "typeIdea": MessageLookupByLibrary.simpleMessage("Idee"),
+        "typeElation": MessageLookupByLibrary.simpleMessage("Høy stemning"),
+        "typeIdea": MessageLookupByLibrary.simpleMessage("Idé"),
         "typeManic":
             MessageLookupByLibrary.simpleMessage("Hva er din type mani?"),
         "typeMelancholy": MessageLookupByLibrary.simpleMessage("Melankoli"),
-        "typeOther": MessageLookupByLibrary.simpleMessage("Annet"),
+        "typeOther": MessageLookupByLibrary.simpleMessage("Egendefinert"),
         "typePoorThinking":
-            MessageLookupByLibrary.simpleMessage("Lav tenkeevne"),
+            MessageLookupByLibrary.simpleMessage("Dårlig tenkning"),
         "typeSleepDisorder":
             MessageLookupByLibrary.simpleMessage("Søvnforstyrrelse"),
         "typeSuggestion": MessageLookupByLibrary.simpleMessage("Forslag"),

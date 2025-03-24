@@ -91,6 +91,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
             "この日の気分を-5から+5の気分値で記録してください\n迷ったら気分値目安表を確認しましょう！\n+3以上or-3以下は早めの受診をお勧めします"),
         "next": MessageLookupByLibrary.simpleMessage("次へ"),
+        "notificationDailyBody": MessageLookupByLibrary.simpleMessage(
+            "今日の気分を記録して、気分グラフでちょっとした気づきを得よう"),
+        "notificationDailyTitle":
+            MessageLookupByLibrary.simpleMessage("今日の気分を振り返りませんか？"),
+        "notificationSettingsDaily": MessageLookupByLibrary.simpleMessage("毎日"),
+        "notificationSettingsDailyDescription":
+            MessageLookupByLibrary.simpleMessage("毎日20:00に通知"),
+        "notificationSettingsNone":
+            MessageLookupByLibrary.simpleMessage("通知なし"),
+        "notificationSettingsNoneDescription":
+            MessageLookupByLibrary.simpleMessage("通知を無効化"),
+        "notificationSettingsTitle":
+            MessageLookupByLibrary.simpleMessage("通知リマインドを設定しますか？"),
+        "notificationSettingsWeekend":
+            MessageLookupByLibrary.simpleMessage("週末1回"),
+        "notificationSettingsWeekendDescription":
+            MessageLookupByLibrary.simpleMessage("週末の20:00に通知"),
+        "notificationWeekendBody": MessageLookupByLibrary.simpleMessage(
+            "週末の振り返りを記録して、気分グラフでちょっとした気づきを得よう"),
+        "notificationWeekendTitle":
+            MessageLookupByLibrary.simpleMessage("週末の気分を振り返りませんか？"),
         "onboardingBodyFirst":
             MessageLookupByLibrary.simpleMessage("気分を記録してあなただけのグラフをつくろう"),
         "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(

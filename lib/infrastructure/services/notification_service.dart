@@ -1,4 +1,5 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
@@ -104,8 +105,8 @@ class NotificationService {
 
     await _notifications.zonedSchedule(
       0,
-      '今日の気分を記録しましょう',
-      '1日の振り返りを記録して、気分の変化を追跡しましょう',
+      S.current.notificationDailyTitle,
+      S.current.notificationDailyBody,
       tz.TZDateTime.from(scheduledTime, tz.local),
       const NotificationDetails(
         android: AndroidNotificationDetails(
@@ -132,8 +133,8 @@ class NotificationService {
 
     await _notifications.zonedSchedule(
       0,
-      '週末の気分を記録しましょう',
-      '週末の振り返りを記録して、気分の変化を追跡しましょう',
+      S.current.notificationWeekendTitle,
+      S.current.notificationWeekendBody,
       tz.TZDateTime.from(nextWeekend, tz.local),
       const NotificationDetails(
         android: AndroidNotificationDetails(

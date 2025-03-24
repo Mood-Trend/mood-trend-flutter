@@ -99,5 +99,16 @@
     "plannedVolumeQuestionTooltipMessage": "Enregistrez le nombre d'activités réalisées aujourd'hui.\nUne valeur plus objective que l'humeur, utile pour le suivi.",
     "goTable": "Consulter le tableau des valeurs d'humeur",
     "homeCoachMarkTitle": "Commençons l'enregistrement !",
-    "homeCoachMarkBody": "Utilisez le bouton ci-dessous pour enregistrer votre humeur et vos activités."
+    "homeCoachMarkBody": "Utilisez le bouton ci-dessous pour enregistrer votre humeur et vos activités.",
+    "notificationDailyTitle": "Comment vous sentez-vous aujourd'hui ?",
+    "notificationDailyBody": "Enregistrez votre humeur et suivez son évolution",
+    "notificationWeekendTitle": "Comment vous sentez-vous ce week-end ?",
+    "notificationWeekendBody": "Enregistrez votre humeur du week-end et suivez son évolution",
+    "notificationSettingsTitle": "Voulez-vous configurer des rappels ?",
+    "notificationSettingsDaily": "Quotidien",
+    "notificationSettingsDailyDescription": "Notification à 20h00 chaque jour",
+    "notificationSettingsWeekend": "Week-end",
+    "notificationSettingsWeekendDescription": "Notification à 20h00 le week-end",
+    "notificationSettingsNone": "Aucune notification",
+    "notificationSettingsNoneDescription": "Désactiver les notifications"
 }

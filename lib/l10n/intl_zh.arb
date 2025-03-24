@@ -99,5 +99,16 @@
     "plannedVolumeQuestionTooltipMessage": "请记录当天进行的活动数量\n比心情值更客观，有助于回顾",
     "goTable": "查看心情值参考表",
     "homeCoachMarkTitle": "开始记录吧！",
-    "homeCoachMarkBody": "点击下方按钮记录心情值和活动数量"
+    "homeCoachMarkBody": "点击下方按钮记录心情值和活动数量",
+    "notificationDailyTitle": "今天的心情如何？",
+    "notificationDailyBody": "记录今天的心情，追踪心情变化",
+    "notificationWeekendTitle": "周末的心情如何？",
+    "notificationWeekendBody": "记录周末的心情，追踪心情变化",
+    "notificationSettingsTitle": "是否设置提醒通知？",
+    "notificationSettingsDaily": "每天",
+    "notificationSettingsDailyDescription": "每天20:00通知",
+    "notificationSettingsWeekend": "周末",
+    "notificationSettingsWeekendDescription": "周末20:00通知",
+    "notificationSettingsNone": "不通知",
+    "notificationSettingsNoneDescription": "禁用通知"
 }

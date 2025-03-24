@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mood_trend_flutter/generated/l10n.dart';
 import '../../../infrastructure/services/notification_service.dart';
 
 class NotificationSettingsDialog extends StatelessWidget {
@@ -7,29 +8,30 @@ class NotificationSettingsDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('通知リマインドを設定しますか？'),
+      title: Text(S.of(context).notificationSettingsTitle),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           ListTile(
-            title: const Text('毎日'),
-            subtitle: const Text('毎日20:00に通知'),
+            title: Text(S.of(context).notificationSettingsDaily),
+            subtitle: Text(S.of(context).notificationSettingsDailyDescription),
             onTap: () => _setNotificationFrequency(
               context,
               NotificationFrequency.daily,
             ),
           ),
           ListTile(
-            title: const Text('週末1回'),
-            subtitle: const Text('週末の20:00に通知'),
+            title: Text(S.of(context).notificationSettingsWeekend),
+            subtitle:
+                Text(S.of(context).notificationSettingsWeekendDescription),
             onTap: () => _setNotificationFrequency(
               context,
               NotificationFrequency.weekend,
             ),
           ),
           ListTile(
-            title: const Text('通知なし'),
-            subtitle: const Text('通知を無効化'),
+            title: Text(S.of(context).notificationSettingsNone),
+            subtitle: Text(S.of(context).notificationSettingsNoneDescription),
             onTap: () => _setNotificationFrequency(
               context,
               NotificationFrequency.none,

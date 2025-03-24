@@ -99,5 +99,16 @@
     "plannedVolumeQuestionTooltipMessage": "Erfasse die Anzahl der Aktivitäten des Tages\nEine objektivere Kennzahl als die Stimmung",
     "goTable": "Zur Stimmungswert-Tabelle",
     "homeCoachMarkTitle": "Lass uns starten!",
-    "homeCoachMarkBody": "Unten kannst du Stimmungswerte und Aktivitäten erfassen"
+    "homeCoachMarkBody": "Unten kannst du Stimmungswerte und Aktivitäten erfassen",
+    "notificationDailyTitle": "Wie fühlen Sie sich heute?",
+    "notificationDailyBody": "Aufzeichnen Sie Ihre Stimmung und verfolgen Sie die Veränderungen",
+    "notificationWeekendTitle": "Wie fühlen Sie sich am Wochenende?",
+    "notificationWeekendBody": "Aufzeichnen Sie Ihre Wochenendstimmung und verfolgen Sie die Veränderungen",
+    "notificationSettingsTitle": "Möchten Sie Erinnerungen einrichten?",
+    "notificationSettingsDaily": "Täglich",
+    "notificationSettingsDailyDescription": "Benachrichtigung um 20:00 Uhr täglich",
+    "notificationSettingsWeekend": "Wochenende",
+    "notificationSettingsWeekendDescription": "Benachrichtigung um 20:00 Uhr am Wochenende",
+    "notificationSettingsNone": "Keine Benachrichtigungen",
+    "notificationSettingsNoneDescription": "Benachrichtigungen deaktivieren"
 }

@@ -23,172 +23,195 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "activityPlus_1":
-            MessageLookupByLibrary.simpleMessage("सक्रिय हुन सकिन्छ"),
+            MessageLookupByLibrary.simpleMessage("गतिविधि सम्भव छ"),
         "activityPlus_2": MessageLookupByLibrary.simpleMessage(
-            "सामान्यतया भन्दा बढी सक्रिय भावना महसुस गरिएको छ"),
+            "साधारण भन्दा बढी सक्रिय लाग्ने"),
         "activityPlus_3": MessageLookupByLibrary.simpleMessage(
-            "सकारात्मक र ऊर्जाशील भावना, धेरै योजनाहरू बनाउँछ"),
+            "सक्रिय र ऊर्जावान, र धेरै योजना बनाउने"),
         "activityPlus_4":
-            MessageLookupByLibrary.simpleMessage("दिन योजनामा भरिएको छ"),
+            MessageLookupByLibrary.simpleMessage("दिनभरि योजनामा व्यस्त"),
         "activityPlus_5": MessageLookupByLibrary.simpleMessage(
-            "केहि दिनसम्म दिनभर सक्रिय रहेको छ, थकिएको महसुस गरिएन, वा दिनभर घुम्न रहेको छ"),
+            "केही दिनसम्म सक्रिय भएर काम गर्दै थकान महसुस नगर्ने"),
         "cancel": MessageLookupByLibrary.simpleMessage("रद्द गर्नुहोस्"),
-        "depression": MessageLookupByLibrary.simpleMessage("अवसाद स्थिति"),
+        "depression": MessageLookupByLibrary.simpleMessage("डिप्रेसन अवस्था"),
         "dialogConfirm":
             MessageLookupByLibrary.simpleMessage("पुष्टि गर्नुहोस्"),
         "dialogError": MessageLookupByLibrary.simpleMessage("त्रुटि"),
         "dialogNo": MessageLookupByLibrary.simpleMessage("होइन"),
         "dialogOk": MessageLookupByLibrary.simpleMessage("ठिक छ"),
         "dialogYes": MessageLookupByLibrary.simpleMessage("हो"),
-        "elationPlus_1": MessageLookupByLibrary.simpleMessage(
-            "सामान्यतया भन्दा अधिक सकारात्मक छ"),
+        "elationPlus_1":
+            MessageLookupByLibrary.simpleMessage("साधारण भन्दा सकारात्मक मूड"),
         "elationPlus_2": MessageLookupByLibrary.simpleMessage(
-            "उत्साही र आत्मविश्वास भएको छ, पॉजिटिभ ऊर्जा महसुस गरिएको छ"),
+            "सकारात्मक र चुनौतीपूर्ण भावना, र सकारात्मक ऊर्जा महसुस हुन्छ"),
         "elationPlus_3": MessageLookupByLibrary.simpleMessage(
-            "हरेक परिस्थितिमा राम्रो हुनेभन्दा पनि सकारात्मक छ"),
+            "जुनसुकै परिस्थितिमा सफलता पाउने दृढ भावना"),
         "elationPlus_4": MessageLookupByLibrary.simpleMessage(
-            "तपाईंले गर्दा सबै सफल हुनेवाना विश्वास गरिएको छ"),
+            "आफ्नो सफलतामा पूर्ण विश्वास, जुनसुकै कार्यमा"),
         "elationPlus_5": MessageLookupByLibrary.simpleMessage(
-            "तपाईंले आफ्नो पक्षमा हुनेवाना पूर्ण भरोसा गरिएको छ"),
-        "goTable": MessageLookupByLibrary.simpleMessage(
-            "भावना मूल्य संदर्भ पत्र यहाँ छ"),
+            "आफ्नो सहीमा पूर्ण विश्वास, सबै कुरा सफल हुनेछ"),
+        "goTable":
+            MessageLookupByLibrary.simpleMessage("मूड मानक तालिका यहाँ छ"),
         "homeCoachMarkBody": MessageLookupByLibrary.simpleMessage(
-            "तलको बटनबाट भावना मूल्य र कार्य संख्या दर्ता गर्न सकिन्छ"),
+            "तलको बटनबाट मूड मान र गतिविधि संख्या रेकर्ड गर्न सकिन्छ"),
         "homeCoachMarkTitle":
-            MessageLookupByLibrary.simpleMessage("दर्ता गर्न सुरु गरौं!"),
+            MessageLookupByLibrary.simpleMessage("रेकर्ड गर्न सुरु गरौं!"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("६ महिना"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("१ महिना"),
         "homeYear": MessageLookupByLibrary.simpleMessage("१ वर्ष"),
         "ideaPlus_1": MessageLookupByLibrary.simpleMessage(
-            "यदि प्रेरणा हुँदा, विचार गर्न सकिन्छ"),
-        "ideaPlus_2": MessageLookupByLibrary.simpleMessage(
-            "सोही प्रेरणामा बिचार गर्न सकिन्छ"),
+            "यदि चाहनुहुन्छ भने आइडिया सोच्न सकिन्छ"),
+        "ideaPlus_2":
+            MessageLookupByLibrary.simpleMessage("आइडिया सोच्न सजिलो छ"),
         "ideaPlus_3": MessageLookupByLibrary.simpleMessage(
-            "बिचार हाम्रो बाटोमा उडेछ र हामीले सन्तुलन राखेका छौं"),
+            "आइडिया लगातार उब्जिन्छ र निरन्तर सोच्न जारी राख्छ"),
         "ideaPlus_4": MessageLookupByLibrary.simpleMessage(
-            "एकपछि आउँदै गएका विचारहरूलाई कारगिरी गर्ने कोशिश गर्दैछ"),
+            "आइडियालाई व्यवहारमा ल्याउनको लागि प्रयासरत"),
         "ideaPlus_5": MessageLookupByLibrary.simpleMessage(
-            "विचारहरू सफल हुनेबाट विश्वास गरेको छ, र तत्परता देखि कार्यमा उत्सुक हुन्छ"),
+            "आइडिया सफल हुनेमा विश्वस्त र कार्यमा लाग्नुहोस्"),
         "inputAlreadyExist":
-            MessageLookupByLibrary.simpleMessage("मा पहिले नै दर्ता गरिएको छ"),
+            MessageLookupByLibrary.simpleMessage("पहिले नै रेकर्ड गरिएको छ"),
         "inputDepression": MessageLookupByLibrary.simpleMessage(
-            "अवसादको लक्षणहरू दर्ता गर्नुहोस्"),
+            "डिप्रेसन लक्षणहरू इनपुट गर्नुहोस्"),
         "inputManic": MessageLookupByLibrary.simpleMessage(
-            "म्यानिकको लक्षणहरू दर्ता गर्नुहोस्"),
+            "मैनिक लक्षणहरू इनपुट गर्नुहोस्"),
         "inputOverwriting":
-            MessageLookupByLibrary.simpleMessage("अधिलेखन गर्नुहोस्"),
+            MessageLookupByLibrary.simpleMessage("ओभरराइट गर्नुहोस्"),
         "inputOverwritingQuestion": MessageLookupByLibrary.simpleMessage(
-            "के तपाईं अधिलेखन गर्न चाहनुहुन्छ?"),
+            "के यसलाई ओभरराइट गर्नुहुन्छ?"),
         "inputRequest": MessageLookupByLibrary.simpleMessage(
-            "कृपया लक्षणहरू दर्ता गर्नुहोस्"),
+            "कृपया लक्षणहरू इनपुट गर्नुहोस्"),
         "inputSave": MessageLookupByLibrary.simpleMessage("सुरक्षित गर्नुहोस्"),
         "inputSuccess": MessageLookupByLibrary.simpleMessage(
-            "भावना मूल्य र नियोजित संख्या दर्ता गरिएको छ"),
-        "manic": MessageLookupByLibrary.simpleMessage("म्यानिक स्थिति"),
-        "melancholyMinus_1": MessageLookupByLibrary.simpleMessage(
-            "सामान्यतया अधिक नकारात्मक हुन्छ"),
+            "मूड मान र योजनाबद्ध संख्या सफलतापूर्वक रेकर्ड गरियो"),
+        "manic": MessageLookupByLibrary.simpleMessage("मैनिक अवस्था"),
+        "melancholyMinus_1":
+            MessageLookupByLibrary.simpleMessage("केही हदसम्म नकरात्मक हुनु"),
         "melancholyMinus_2": MessageLookupByLibrary.simpleMessage(
-            "सामान्यतया उदासीनता छ, गरिनु पर्ने कामहरू बढ्दैछ"),
+            "हल्का उदासी छ, र दैनिक काममा गर्न नचाहने कुरा बढिरहेको छ"),
         "melancholyMinus_3": MessageLookupByLibrary.simpleMessage(
-            "उदासीनता धेरै छ, जीवन कठिन बनेको छ, प्रतिदिनका क्रियाहरूमा तीनै रुचि छैन"),
+            "उदासी धेरै छ र जीवन कष्टकर छ। सामान्य गतिविधिमा चासो छैन"),
         "melancholyMinus_4": MessageLookupByLibrary.simpleMessage(
-            "उदासीनता धेरै छ, जीवनमा असर हुँदैछ, प्रतिदिनका कार्यहरूमा प्रभाव गरेको छ"),
+            "उदासी अत्यधिक छ र दैनिक कार्यमा असर परेको छ"),
         "melancholyMinus_5": MessageLookupByLibrary.simpleMessage(
-            "पूर्ण रूपमा आशाहीन, जीवनले केवल पीडामा बदलिसकेको छ, प्रतिदिनका कार्यहरूमा सामान्यतया पनि हुँदैन"),
-        "moodValue": MessageLookupByLibrary.simpleMessage("भावना मूल्य"),
+            "पूर्ण निराशा, जीवन यातनाजनक छ, दैनिक काम गर्न सक्दैन"),
+        "moodValue": MessageLookupByLibrary.simpleMessage("मूड मान"),
         "moodValueQuestion":
-            MessageLookupByLibrary.simpleMessage("यो दिनको भावना के हो?"),
+            MessageLookupByLibrary.simpleMessage("आजको मूड कस्तो छ?"),
         "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
-            "यो दिनको भावना -5 देखि +5 मा भावना मूल्यमा दर्ता गर्नुहोस्\nसंदेह भएमा भावना मूल्य संदर्भ पत्र हेर्नुहोस्!"),
-        "next": MessageLookupByLibrary.simpleMessage("अरू"),
+            "आजको मूड -5 देखि +5 को मूड मानमा रेकर्ड गर्नुहोस्\nयदि शंका छ भने मूड मानक तालिका हेर्नुहोस्!\n+3 भन्दा बढी वा -3 भन्दा कम भएमा चाँडो चिकित्सकसँग जाँच गराउनुहोस्"),
+        "next": MessageLookupByLibrary.simpleMessage("अर्को"),
+        "notificationDailyBody": MessageLookupByLibrary.simpleMessage(
+            "आजको मूड रेकर्ड गरेर मूड ग्राफमा थोरै मूल्यांकन प्राप्त गर्नुहोस्"),
+        "notificationDailyTitle": MessageLookupByLibrary.simpleMessage(
+            "आजको मूडलाई पुनः मूल्यांकन गर्नुहोस्?"),
+        "notificationSettingsDaily":
+            MessageLookupByLibrary.simpleMessage("प्रत्येक दिन"),
+        "notificationSettingsDailyDescription":
+            MessageLookupByLibrary.simpleMessage("प्रत्येक दिन २०:०० मा सूचना"),
+        "notificationSettingsNone":
+            MessageLookupByLibrary.simpleMessage("सूचना छैन"),
+        "notificationSettingsNoneDescription":
+            MessageLookupByLibrary.simpleMessage("सूचना निष्क्रिय गरियो"),
+        "notificationSettingsTitle": MessageLookupByLibrary.simpleMessage(
+            "सूचना सेटिङ सेट गर्न चाहनुहुन्छ?"),
+        "notificationSettingsWeekend":
+            MessageLookupByLibrary.simpleMessage("हप्तामा १ पटक"),
+        "notificationSettingsWeekendDescription":
+            MessageLookupByLibrary.simpleMessage(
+                "हप्ताको अन्त्यमा २०:०० मा सूचना"),
+        "notificationWeekendBody": MessageLookupByLibrary.simpleMessage(
+            "हप्ता समापनको मूल्यांकन रेकर्ड गरेर मूड ग्राफमा थोरै मूल्यांकन प्राप्त गर्नुहोस्"),
+        "notificationWeekendTitle": MessageLookupByLibrary.simpleMessage(
+            "हप्ता समापनको मूड पुनः मूल्यांकन गर्नुहोस्?"),
         "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
-            "तपाईंको मनो नोट गर्नुहोस् र आफ्नो चार्ट बनाउनुहोस्"),
+            "तपाईंको मूडलाई रेकर्ड गरेर आफ्नै ग्राफ बनाउनुहोस्"),
         "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
-            "-5 देखि +5 सम्मको मनो मूल्य प्रविष्ट गर्नुहोस्, र ती यसमा राख्नुहोस्"),
+            "0 बाहेक -5 देखि +5 सम्मको मूड मान भर्नुहोस् र ग्राफ बढाउनुहोस्"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
-            "मनो मूल्य प्रविष्ट गर्न समर्थन गर्दछ र व्यक्तिगत अनुकूलन पनि गर्दछ"),
-        "onboardingNext": MessageLookupByLibrary.simpleMessage("    अरू"),
+            "मूड मान इनपुटको समर्थन\nआफ्नो अनुकूलन गर्न सकिन्छ"),
+        "onboardingNext": MessageLookupByLibrary.simpleMessage("अर्को"),
         "onboardingSkip": MessageLookupByLibrary.simpleMessage("छोड्नुहोस्"),
-        "onboardingStart": MessageLookupByLibrary.simpleMessage("    सुरु"),
+        "onboardingStart":
+            MessageLookupByLibrary.simpleMessage("सुरु गर्नुहोस्"),
         "onboardingTitleFirst":
             MessageLookupByLibrary.simpleMessage("स्वागत छ"),
         "onboardingTitleSecond":
-            MessageLookupByLibrary.simpleMessage("मनो चार्ट"),
+            MessageLookupByLibrary.simpleMessage("मूड ग्राफ"),
         "onboardingTitleThird":
-            MessageLookupByLibrary.simpleMessage("मनो मूल्य संदर्भ पत्र"),
+            MessageLookupByLibrary.simpleMessage("मूड मानक तालिका"),
         "onboardingWelcome":
-            MessageLookupByLibrary.simpleMessage("भावना चिन्हमा स्वागत छ!"),
-        "plannedVolume": MessageLookupByLibrary.simpleMessage("नियोजित मात्रा"),
+            MessageLookupByLibrary.simpleMessage("मूड ग्राफमा स्वागत छ!"),
+        "plannedVolume": MessageLookupByLibrary.simpleMessage("गतिविधि संख्या"),
         "plannedVolumeQuestion": MessageLookupByLibrary.simpleMessage(
-            "यो दिनको कार्य वा योजना संख्या कति हो?"),
+            "आजको गतिविधि वा योजना संख्या कति हो?"),
         "plannedVolumeQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
-            "यो दिनमा गरेको कामको संख्या दर्ता गर्नुहोस्\nभावना मूल्यबाट बाहिर निर्णय गर्नमा मद्दत गर्दछ"),
-        "registerConfirm": MessageLookupByLibrary.simpleMessage("पर्खिक दर्ता"),
+            "आज तपाईंले गरेका कामहरूको संख्या रेकर्ड गर्नुहोस्\nमूड मान भन्दा थप वस्तुगत संख्या फिर्तीको लागि सहायक हुनेछ"),
+        "registerConfirm": MessageLookupByLibrary.simpleMessage("दर्ता पुष्टि"),
         "registerRegister":
             MessageLookupByLibrary.simpleMessage("दर्ता गर्नुहोस्"),
-        "registerSave": MessageLookupByLibrary.simpleMessage(
-            "भावना मूल्य संदर्भ पत्रको दर्ता पूर्ण भयो"),
-        "settingAboutApp":
-            MessageLookupByLibrary.simpleMessage("एप्लिकेशन बारेमा"),
+        "registerSave":
+            MessageLookupByLibrary.simpleMessage("मूड मानक तालिका दर्ता सफल"),
+        "settingAboutApp": MessageLookupByLibrary.simpleMessage("एपको बारेमा"),
         "settingContact":
             MessageLookupByLibrary.simpleMessage("सम्पर्क गर्नुहोस्"),
-        "settingEdit": MessageLookupByLibrary.simpleMessage("सम्पादन"),
+        "settingEdit":
+            MessageLookupByLibrary.simpleMessage("सम्पादन गर्नुहोस्"),
         "settingOnboarding":
-            MessageLookupByLibrary.simpleMessage("यो एप्लिकेशन बारेमा"),
+            MessageLookupByLibrary.simpleMessage("यस एपको बारेमा"),
         "settingOther": MessageLookupByLibrary.simpleMessage("अन्य"),
-        "settingPrivacy": MessageLookupByLibrary.simpleMessage("गोप्यता नीति"),
+        "settingPrivacy": MessageLookupByLibrary.simpleMessage("गोपनीयता नीति"),
         "settingReview": MessageLookupByLibrary.simpleMessage("समीक्षा"),
         "settingReviewRequest": MessageLookupByLibrary.simpleMessage(
-            "यदि तपाईंले समीक्षा गर्नु भएमा, डेभेलपरहरू आफैले खुसी हुन्छन्!"),
-        "settingSetting": MessageLookupByLibrary.simpleMessage("सेटिंग"),
+            "समीक्षा गर्नुभयो भने, विकासकर्ताले खुशी महसुस गर्नेछन्"),
+        "settingSetting": MessageLookupByLibrary.simpleMessage("सेटिङ"),
         "settingSupport": MessageLookupByLibrary.simpleMessage("समर्थन"),
-        "settingTerms": MessageLookupByLibrary.simpleMessage("प्रयोगका नियम"),
+        "settingTerms":
+            MessageLookupByLibrary.simpleMessage("प्रयोगको सर्तहरू"),
         "settingThank": MessageLookupByLibrary.simpleMessage(
-            "तपाईंको प्रयोगको लागि धन्यवाद!"),
+            "तपाईंको प्रयोगको लागि धन्यवाद"),
         "settingWithdraw":
-            MessageLookupByLibrary.simpleMessage("निष्कासन गर्नुहोस्"),
-        "settingWithdrawConfirm": MessageLookupByLibrary.simpleMessage(
-            "के तपाईं निष्कासन गर्न चाहानुहुन्छ?"),
+            MessageLookupByLibrary.simpleMessage("पदत्याग गर्नुहोस्"),
+        "settingWithdrawConfirm":
+            MessageLookupByLibrary.simpleMessage("पदत्याग गर्न चाहनुहुन्छ?"),
         "settingWithdrawConfirmDetail": MessageLookupByLibrary.simpleMessage(
-            "डेटा सबै हटाइएको छ र पुनः प्राप्त गर्न सकिन्छैन।"),
+            "सर्वे डाटा मेटाइनेछ र पुन: प्राप्त गर्न सकिँदैन"),
         "sleepMinus_1": MessageLookupByLibrary.simpleMessage(
-            "उठ्न बडी राम्रो महसुस गरिएको छैन"),
+            "सुत्न पछि ताजगी महसुस हुँदैन"),
         "sleepMinus_2": MessageLookupByLibrary.simpleMessage(
-            "निद्राको गुणस्तर कम छ, दिनभर निद्राले जान्छ र थकाइ लाग्छ"),
+            "सुत्नको गुणस्तर कम, र दिनभरि निन्द्रा वा थकान महसुस हुन्छ"),
         "sleepMinus_3": MessageLookupByLibrary.simpleMessage(
-            "निद्रा विकल्पित छ, पुर्ण शान्तिपूर्ण बित्तिन्छैन, दिनभर अत्यधिक थकाइ छ"),
+            "सुत्न बिग्रिएको छ, पर्याप्त विश्राम प्राप्त गर्न सकिँदैन। दिनभरि निन्द्रा प्रबल छ"),
         "sleepMinus_4": MessageLookupByLibrary.simpleMessage(
-            "निद्रा अत्यधिक कमी वा अत्यधिक, दिनभरको कार्यमा भारी प्रभाव गरेको छ"),
+            "सुत्नमा अत्यधिक कमी वा अत्यधिक सुत्न, जसका कारण दिनभरि कार्यक्षमता घटेको छ"),
         "sleepMinus_5": MessageLookupByLibrary.simpleMessage(
-            "निद्रा आउँदैन, सँसारमा सधैं निद्रामा छ, वा दिनभर बडी थकाइ लाग्छ"),
-        "table":
-            MessageLookupByLibrary.simpleMessage("भावना मूल्य संदर्भ पत्र"),
+            "अत्यधिक अनिद्रा, दिनभर थकान महसुस वा प्राय: सबै समय सुतिरहने"),
+        "table": MessageLookupByLibrary.simpleMessage("मूड मानक तालिका"),
         "tableStartEdit": MessageLookupByLibrary.simpleMessage(
-            "भावना मूल्य संदर्भ पत्र सेटिङ गर्नुहोस्"),
-        "thinkMinus_1":
-            MessageLookupByLibrary.simpleMessage("थाहा पार्टा कमी लाग्छ"),
-        "thinkMinus_2": MessageLookupByLibrary.simpleMessage(
-            "सामान्यतया विचारमा गोल्डुपपारी छ"),
+            "मूड मानक तालिका सेटिङ सुरु गर्नुहोस्"),
+        "thinkMinus_1": MessageLookupByLibrary.simpleMessage(
+            "केही सोच्न अलि गाह्रो लागेको छ"),
+        "thinkMinus_2":
+            MessageLookupByLibrary.simpleMessage("हल्का सोचमा ढिलाइ छ"),
         "thinkMinus_3": MessageLookupByLibrary.simpleMessage(
-            "विचार गोल्डुपपारी छ, समस्या सुल्झाउँछ र निर्णयक्षमता अत्यधिक कमी गरेको छ"),
+            "सोच धीमा भएको छ, समस्या समाधान र निर्णय क्षमता निकै घटेको छ"),
         "thinkMinus_4": MessageLookupByLibrary.simpleMessage(
-            "विचार अत्यधिक कमी गरेको छ, एकाग्रता र स्मृतिमा महत्त्वपूर्ण समस्याहरू छन्"),
+            "सोचमा ठूलो कमी छ, ध्यान र स्मरणशक्ति समस्या भएको छ"),
         "thinkMinus_5": MessageLookupByLibrary.simpleMessage(
-            "विचार पूर्ण रूपमा सक्रिय हुँदैछ न, चाहिँ कुनै कुरा बुझ्न गर्न सकिन्छैन"),
-        "typeActivity": MessageLookupByLibrary.simpleMessage("क्रियाशीलता"),
+            "सोच बिल्कुलै कार्यरत छैन, प्राय: सबै कुरा बुझ्न सक्दैन"),
+        "typeActivity": MessageLookupByLibrary.simpleMessage("सक्रिय"),
         "typeDepression": MessageLookupByLibrary.simpleMessage(
-            "तपाईंको अवसादको प्रकार के हो?"),
-        "typeElation": MessageLookupByLibrary.simpleMessage("उत्साह"),
-        "typeIdea": MessageLookupByLibrary.simpleMessage("विचार"),
-        "typeManic": MessageLookupByLibrary.simpleMessage(
-            "तपाईंको म्यानिकको प्रकार के हो?"),
-        "typeMelancholy": MessageLookupByLibrary.simpleMessage("उदास"),
-        "typeOther":
-            MessageLookupByLibrary.simpleMessage("स्वनिर्धारित\nप्रविष्टि"),
+            "तपाईंको डिप्रेसन प्रकार के हो?"),
+        "typeElation": MessageLookupByLibrary.simpleMessage("मूड उत्साह"),
+        "typeIdea": MessageLookupByLibrary.simpleMessage("आइडिया"),
+        "typeManic":
+            MessageLookupByLibrary.simpleMessage("तपाईंको मैनिक प्रकार के हो?"),
+        "typeMelancholy": MessageLookupByLibrary.simpleMessage("उदासी"),
+        "typeOther": MessageLookupByLibrary.simpleMessage("आफ्नै इनपुट"),
         "typePoorThinking":
-            MessageLookupByLibrary.simpleMessage("विचार शक्ति\nकमी"),
+            MessageLookupByLibrary.simpleMessage("विचारशक्ति\nअवनति"),
         "typeSleepDisorder":
-            MessageLookupByLibrary.simpleMessage("सुत्ने अवस्था"),
+            MessageLookupByLibrary.simpleMessage("सुत्नमा कठिनाई"),
         "typeSuggestion": MessageLookupByLibrary.simpleMessage("सुझाव"),
         "version_info": MessageLookupByLibrary.simpleMessage("संस्करण जानकारी")
       };

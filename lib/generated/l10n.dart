@@ -1049,6 +1049,116 @@ class S {
       args: [],
     );
   }
+
+  /// `Record your mood today`
+  String get notificationDailyTitle {
+    return Intl.message(
+      'Record your mood today',
+      name: 'notificationDailyTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Track your mood changes by recording your daily reflection`
+  String get notificationDailyBody {
+    return Intl.message(
+      'Track your mood changes by recording your daily reflection',
+      name: 'notificationDailyBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Record your weekend mood`
+  String get notificationWeekendTitle {
+    return Intl.message(
+      'Record your weekend mood',
+      name: 'notificationWeekendTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Track your mood changes by recording your weekend reflection`
+  String get notificationWeekendBody {
+    return Intl.message(
+      'Track your mood changes by recording your weekend reflection',
+      name: 'notificationWeekendBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Would you like to set up notification reminders?`
+  String get notificationSettingsTitle {
+    return Intl.message(
+      'Would you like to set up notification reminders?',
+      name: 'notificationSettingsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Daily`
+  String get notificationSettingsDaily {
+    return Intl.message(
+      'Daily',
+      name: 'notificationSettingsDaily',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notify at 8:00 PM daily`
+  String get notificationSettingsDailyDescription {
+    return Intl.message(
+      'Notify at 8:00 PM daily',
+      name: 'notificationSettingsDailyDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Weekend`
+  String get notificationSettingsWeekend {
+    return Intl.message(
+      'Weekend',
+      name: 'notificationSettingsWeekend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notify at 8:00 PM on weekends`
+  String get notificationSettingsWeekendDescription {
+    return Intl.message(
+      'Notify at 8:00 PM on weekends',
+      name: 'notificationSettingsWeekendDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No notifications`
+  String get notificationSettingsNone {
+    return Intl.message(
+      'No notifications',
+      name: 'notificationSettingsNone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Disable notifications`
+  String get notificationSettingsNoneDescription {
+    return Intl.message(
+      'Disable notifications',
+      name: 'notificationSettingsNoneDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

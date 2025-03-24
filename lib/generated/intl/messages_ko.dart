@@ -91,6 +91,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
             "이날의 기분을 -5부터 +5까지 기록하세요\n헷갈리면 기분 수치 기준표를 참고하세요!\n+3 이상 또는 -3 이하일 경우 조기 상담을 추천합니다"),
         "next": MessageLookupByLibrary.simpleMessage("다음"),
+        "notificationDailyBody":
+            MessageLookupByLibrary.simpleMessage("오늘의 기분을 기록하고 변화를 추적해보세요"),
+        "notificationDailyTitle":
+            MessageLookupByLibrary.simpleMessage("오늘의 기분은 어떠신가요?"),
+        "notificationSettingsDaily": MessageLookupByLibrary.simpleMessage("매일"),
+        "notificationSettingsDailyDescription":
+            MessageLookupByLibrary.simpleMessage("매일 20:00에 알림"),
+        "notificationSettingsNone":
+            MessageLookupByLibrary.simpleMessage("알림 없음"),
+        "notificationSettingsNoneDescription":
+            MessageLookupByLibrary.simpleMessage("알림 비활성화"),
+        "notificationSettingsTitle":
+            MessageLookupByLibrary.simpleMessage("알림을 설정하시겠습니까?"),
+        "notificationSettingsWeekend":
+            MessageLookupByLibrary.simpleMessage("주말"),
+        "notificationSettingsWeekendDescription":
+            MessageLookupByLibrary.simpleMessage("주말 20:00에 알림"),
+        "notificationWeekendBody":
+            MessageLookupByLibrary.simpleMessage("주말의 기분을 기록하고 변화를 추적해보세요"),
+        "notificationWeekendTitle":
+            MessageLookupByLibrary.simpleMessage("주말의 기분은 어떠신가요?"),
         "onboardingBodyFirst":
             MessageLookupByLibrary.simpleMessage("기분을 기록하여 나만의 그래프를 만들어보세요"),
         "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
