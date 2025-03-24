@@ -200,6 +200,7 @@ class HomePage extends ConsumerWidget {
                                   .isBefore(visibleMinDate)
                           ? moodPoints.first.moodDate.toDateOnly()
                           : visibleMinDate,
+                      maximum: DateTime.now(),
                       initialVisibleMinimum: visibleMinDate, // 表示範囲の最小値
                       initialVisibleMaximum: DateTime.now(),
                       interval: switch (ref.watch(selectedTermProvider)) {
