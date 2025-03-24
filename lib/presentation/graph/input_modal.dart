@@ -167,7 +167,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                           final newRecordCount = recordCount + 1;
                           await prefs.setInt('record_count', newRecordCount);
 
-                          // 3回目の記録時にレビュー促進
+                          // 3回目 or 10の倍数回目 の記録時にレビュー促進
                           if (newRecordCount == 3 || newRecordCount % 10 == 0) {
                             if (await _inAppReview.isAvailable()) {
                               await _inAppReview.requestReview();
@@ -473,7 +473,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   final newRecordCount = recordCount + 1;
                   await prefs.setInt('record_count', newRecordCount);
 
-                  // 3回目の記録時にレビュー促進
+                  // 3回目 or 10の倍数回目 の記録時にレビュー促進
                   if (newRecordCount == 3 || newRecordCount % 10 == 0) {
                     if (await _inAppReview.isAvailable()) {
                       await _inAppReview.requestReview();
