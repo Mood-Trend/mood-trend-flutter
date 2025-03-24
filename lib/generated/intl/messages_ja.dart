@@ -89,7 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "moodValue": MessageLookupByLibrary.simpleMessage("気分値"),
         "moodValueQuestion": MessageLookupByLibrary.simpleMessage("この日の気分は？"),
         "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
-            "この日の気分を-5から+5の気分値で記録してください\n迷ったら気分値目安表を確認しましょう！"),
+            "この日の気分を-5から+5の気分値で記録してください\n迷ったら気分値目安表を確認しましょう！\n+3以上or-3以下は早めの受診をお勧めします"),
         "next": MessageLookupByLibrary.simpleMessage("次へ"),
         "onboardingBodyFirst":
             MessageLookupByLibrary.simpleMessage("気分を記録してあなただけのグラフをつくろう"),
@@ -107,7 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("気分グラフへようこそ！"),
         "plannedVolume": MessageLookupByLibrary.simpleMessage("活動数"),
         "plannedVolumeQuestion":
-            MessageLookupByLibrary.simpleMessage("この活動 or 予定の数はいくつですか？"),
+            MessageLookupByLibrary.simpleMessage("この日の活動 or 予定の数はいくつ？"),
         "plannedVolumeQuestionTooltipMessage":
             MessageLookupByLibrary.simpleMessage(
                 "この日に行ったことの数を記録してください\n気分値より客観性のある数値で振り返りに役立ちます"),

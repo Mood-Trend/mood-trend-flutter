@@ -90,60 +90,60 @@ class S {
     );
   }
 
-  /// `Mood Chart`
+  /// `Mood Graph`
   String get onboardingTitleSecond {
     return Intl.message(
-      'Mood Chart',
+      'Mood Graph',
       name: 'onboardingTitleSecond',
       desc: '',
       args: [],
     );
   }
 
-  /// `Mood Value Reference Table`
+  /// `Mood Value Guide`
   String get onboardingTitleThird {
     return Intl.message(
-      'Mood Value Reference Table',
+      'Mood Value Guide',
       name: 'onboardingTitleThird',
       desc: '',
       args: [],
     );
   }
 
-  /// `Record your mood and create your own chart`
+  /// `Record your mood and create your own graph`
   String get onboardingBodyFirst {
     return Intl.message(
-      'Record your mood and create your own chart',
+      'Record your mood and create your own graph',
       name: 'onboardingBodyFirst',
       desc: '',
       args: [],
     );
   }
 
-  /// `Input mood values from -5 to +5 and stack them in a chart`
+  /// `Input mood values from -5 to +5 (excluding 0) and build up your graph`
   String get onboardingBodySecond {
     return Intl.message(
-      'Input mood values from -5 to +5 and stack them in a chart',
+      'Input mood values from -5 to +5 (excluding 0) and build up your graph',
       name: 'onboardingBodySecond',
       desc: '',
       args: [],
     );
   }
 
-  /// `Supports mood value input and allows for individual customization`
+  /// `Support for mood value input\nCustomize it to fit your needs`
   String get onboardingBodyThird {
     return Intl.message(
-      'Supports mood value input and allows for individual customization',
+      'Support for mood value input\nCustomize it to fit your needs',
       name: 'onboardingBodyThird',
       desc: '',
       args: [],
     );
   }
 
-  /// `Welcome to Mood Graph!`
+  /// `Welcome to the Mood Trend!`
   String get onboardingWelcome {
     return Intl.message(
-      'Welcome to Mood Graph!',
+      'Welcome to the Mood Trend!',
       name: 'onboardingWelcome',
       desc: '',
       args: [],
@@ -220,10 +220,10 @@ class S {
     );
   }
 
-  /// `Mood Value Reference Table`
+  /// `Mood Value Guide`
   String get table {
     return Intl.message(
-      'Mood Value Reference Table',
+      'Mood Value Guide',
       name: 'table',
       desc: '',
       args: [],
@@ -270,10 +270,10 @@ class S {
     );
   }
 
-  /// `Developers will dance with joy if you leave a review!`
+  /// `A review would make the developer very happy!`
   String get settingReviewRequest {
     return Intl.message(
-      'Developers will dance with joy if you leave a review!',
+      'A review would make the developer very happy!',
       name: 'settingReviewRequest',
       desc: '',
       args: [],
@@ -290,10 +290,10 @@ class S {
     );
   }
 
-  /// `Terms of Service`
+  /// `Terms of Use`
   String get settingTerms {
     return Intl.message(
-      'Terms of Service',
+      'Terms of Use',
       name: 'settingTerms',
       desc: '',
       args: [],
@@ -340,20 +340,20 @@ class S {
     );
   }
 
-  /// `All data will be deleted and cannot be restored.`
+  /// `All data will be deleted and cannot be restored`
   String get settingWithdrawConfirmDetail {
     return Intl.message(
-      'All data will be deleted and cannot be restored.',
+      'All data will be deleted and cannot be restored',
       name: 'settingWithdrawConfirmDetail',
       desc: '',
       args: [],
     );
   }
 
-  /// `Thank you for using our service!`
+  /// `Thank you for using our app`
   String get settingThank {
     return Intl.message(
-      'Thank you for using our service!',
+      'Thank you for using our app',
       name: 'settingThank',
       desc: '',
       args: [],
@@ -410,10 +410,10 @@ class S {
     );
   }
 
-  /// `Registration of Mood Value and Activity Count is complete.`
+  /// `Mood value and planned activity count have been successfully registered`
   String get inputSuccess {
     return Intl.message(
-      'Registration of Mood Value and Activity Count is complete.',
+      'Mood value and planned activity count have been successfully registered',
       name: 'inputSuccess',
       desc: '',
       args: [],
@@ -430,20 +430,20 @@ class S {
     );
   }
 
-  /// ` is already registered.`
+  /// `is already registered`
   String get inputAlreadyExist {
     return Intl.message(
-      ' is already registered.',
+      'is already registered',
       name: 'inputAlreadyExist',
       desc: '',
       args: [],
     );
   }
 
-  /// `Do you want to overwrite it?`
+  /// `Do you want to overwrite?`
   String get inputOverwritingQuestion {
     return Intl.message(
-      'Do you want to overwrite it?',
+      'Do you want to overwrite?',
       name: 'inputOverwritingQuestion',
       desc: '',
       args: [],
@@ -470,50 +470,50 @@ class S {
     );
   }
 
-  /// `Depressive State`
+  /// `Depression`
   String get depression {
     return Intl.message(
-      'Depressive State',
+      'Depression',
       name: 'depression',
       desc: '',
       args: [],
     );
   }
 
-  /// `Manic State`
+  /// `Mania`
   String get manic {
     return Intl.message(
-      'Manic State',
+      'Mania',
       name: 'manic',
       desc: '',
       args: [],
     );
   }
 
-  /// `Start Editing`
+  /// `Start setting up the Mood Value Guide`
   String get tableStartEdit {
     return Intl.message(
-      'Start Editing',
+      'Start setting up the Mood Value Guide',
       name: 'tableStartEdit',
       desc: '',
       args: [],
     );
   }
 
-  /// `Enter symptoms of depression`
+  /// `Enter depressive symptoms`
   String get inputDepression {
     return Intl.message(
-      'Enter symptoms of depression',
+      'Enter depressive symptoms',
       name: 'inputDepression',
       desc: '',
       args: [],
     );
   }
 
-  /// `Enter symptoms of mania`
+  /// `Enter manic symptoms`
   String get inputManic {
     return Intl.message(
-      'Enter symptoms of mania',
+      'Enter manic symptoms',
       name: 'inputManic',
       desc: '',
       args: [],
@@ -540,20 +540,20 @@ class S {
     );
   }
 
-  /// `Registration Confirmation`
+  /// `Confirm Registration`
   String get registerConfirm {
     return Intl.message(
-      'Registration Confirmation',
+      'Confirm Registration',
       name: 'registerConfirm',
       desc: '',
       args: [],
     );
   }
 
-  /// `Registration of Mood Value Reference Table is complete.`
+  /// `Mood Value Guide registration completed`
   String get registerSave {
     return Intl.message(
-      'Registration of Mood Value Reference Table is complete.',
+      'Mood Value Guide registration completed',
       name: 'registerSave',
       desc: '',
       args: [],
@@ -570,20 +570,20 @@ class S {
     );
   }
 
-  /// `What is your type of depression?`
+  /// `What type of depression do you have?`
   String get typeDepression {
     return Intl.message(
-      'What is your type of depression?',
+      'What type of depression do you have?',
       name: 'typeDepression',
       desc: '',
       args: [],
     );
   }
 
-  /// `What is your type of mania?`
+  /// `What type of mania do you have?`
   String get typeManic {
     return Intl.message(
-      'What is your type of mania?',
+      'What type of mania do you have?',
       name: 'typeManic',
       desc: '',
       args: [],
@@ -600,50 +600,50 @@ class S {
     );
   }
 
-  /// `Decreased\nCognitive Function`
+  /// `Poor\nThinking`
   String get typePoorThinking {
     return Intl.message(
-      'Decreased\nCognitive Function',
+      'Poor\nThinking',
       name: 'typePoorThinking',
       desc: '',
       args: [],
     );
   }
 
-  /// `Sleep\nDisorder`
+  /// `Sleep Disorder`
   String get typeSleepDisorder {
     return Intl.message(
-      'Sleep\nDisorder',
+      'Sleep Disorder',
       name: 'typeSleepDisorder',
       desc: '',
       args: [],
     );
   }
 
-  /// `Custom`
+  /// `Custom\nInput`
   String get typeOther {
     return Intl.message(
-      'Custom',
+      'Custom\nInput',
       name: 'typeOther',
       desc: '',
       args: [],
     );
   }
 
-  /// `Suggestions`
+  /// `Suggestion`
   String get typeSuggestion {
     return Intl.message(
-      'Suggestions',
+      'Suggestion',
       name: 'typeSuggestion',
       desc: '',
       args: [],
     );
   }
 
-  /// `Ideas`
+  /// `Idea`
   String get typeIdea {
     return Intl.message(
-      'Ideas',
+      'Idea',
       name: 'typeIdea',
       desc: '',
       args: [],
@@ -670,360 +670,360 @@ class S {
     );
   }
 
-  /// `Tend to be somewhat pessimistic`
+  /// `Somewhat pessimistic`
   String get melancholyMinus_1 {
     return Intl.message(
-      'Tend to be somewhat pessimistic',
+      'Somewhat pessimistic',
       name: 'melancholyMinus_1',
       desc: '',
       args: [],
     );
   }
 
-  /// `Mild sense of melancholy, with an increase in things you don't want to do in daily life`
+  /// `Mild melancholy, feeling reluctant to do daily activities`
   String get melancholyMinus_2 {
     return Intl.message(
-      'Mild sense of melancholy, with an increase in things you don\'t want to do in daily life',
+      'Mild melancholy, feeling reluctant to do daily activities',
       name: 'melancholyMinus_2',
       desc: '',
       args: [],
     );
   }
 
-  /// `Strong sense of melancholy, making life difficult. Almost no interest in usual activities`
+  /// `Strong melancholy, struggling with daily life, losing interest in usual activities`
   String get melancholyMinus_3 {
     return Intl.message(
-      'Strong sense of melancholy, making life difficult. Almost no interest in usual activities',
+      'Strong melancholy, struggling with daily life, losing interest in usual activities',
       name: 'melancholyMinus_3',
       desc: '',
       args: [],
     );
   }
 
-  /// `Intense feeling of melancholy, causing disruptions in daily life. Affecting daily functions`
+  /// `Severe melancholy, affecting daily function`
   String get melancholyMinus_4 {
     return Intl.message(
-      'Intense feeling of melancholy, causing disruptions in daily life. Affecting daily functions',
+      'Severe melancholy, affecting daily function',
       name: 'melancholyMinus_4',
       desc: '',
       args: [],
     );
   }
 
-  /// `Completely hopeless, living is only pain. Unable to perform daily activities`
+  /// `Completely hopeless, life feels unbearable, unable to function`
   String get melancholyMinus_5 {
     return Intl.message(
-      'Completely hopeless, living is only pain. Unable to perform daily activities',
+      'Completely hopeless, life feels unbearable, unable to function',
       name: 'melancholyMinus_5',
       desc: '',
       args: [],
     );
   }
 
-  /// `Sometimes feel a bit reluctant to think about things`
+  /// `Thinking feels slightly burdensome at times`
   String get thinkMinus_1 {
     return Intl.message(
-      'Sometimes feel a bit reluctant to think about things',
+      'Thinking feels slightly burdensome at times',
       name: 'thinkMinus_1',
       desc: '',
       args: [],
     );
   }
 
-  /// `Mild dullness in thinking`
+  /// `Mild sluggish thinking`
   String get thinkMinus_2 {
     return Intl.message(
-      'Mild dullness in thinking',
+      'Mild sluggish thinking',
       name: 'thinkMinus_2',
       desc: '',
       args: [],
     );
   }
 
-  /// `Dull thinking, significant decrease in problem-solving and judgment abilities`
+  /// `Noticeable cognitive decline, poor problem-solving and judgment`
   String get thinkMinus_3 {
     return Intl.message(
-      'Dull thinking, significant decrease in problem-solving and judgment abilities',
+      'Noticeable cognitive decline, poor problem-solving and judgment',
       name: 'thinkMinus_3',
       desc: '',
       args: [],
     );
   }
 
-  /// `Severe decrease in thinking, with major issues in concentration and memory`
+  /// `Significant cognitive impairment, severe issues with concentration and memory`
   String get thinkMinus_4 {
     return Intl.message(
-      'Severe decrease in thinking, with major issues in concentration and memory',
+      'Significant cognitive impairment, severe issues with concentration and memory',
       name: 'thinkMinus_4',
       desc: '',
       args: [],
     );
   }
 
-  /// `Thinking is non-functional, almost everything is incomprehensible`
+  /// `Thoughts are completely non-functional, unable to comprehend most things`
   String get thinkMinus_5 {
     return Intl.message(
-      'Thinking is non-functional, almost everything is incomprehensible',
+      'Thoughts are completely non-functional, unable to comprehend most things',
       name: 'thinkMinus_5',
       desc: '',
       args: [],
     );
   }
 
-  /// `Mornings are not refreshing`
+  /// `Wake up feeling sluggish`
   String get sleepMinus_1 {
     return Intl.message(
-      'Mornings are not refreshing',
+      'Wake up feeling sluggish',
       name: 'sleepMinus_1',
       desc: '',
       args: [],
     );
   }
 
-  /// `Low sleep quality, with daytime drowsiness and fatigue`
+  /// `Poor sleep quality, feeling sleepy or fatigued during the day`
   String get sleepMinus_2 {
     return Intl.message(
-      'Low sleep quality, with daytime drowsiness and fatigue',
+      'Poor sleep quality, feeling sleepy or fatigued during the day',
       name: 'sleepMinus_2',
       desc: '',
       args: [],
     );
   }
 
-  /// `Disrupted sleep, not getting sufficient rest. Strong daytime sleepiness`
+  /// `Disrupted sleep, not getting enough rest, strong daytime drowsiness`
   String get sleepMinus_3 {
     return Intl.message(
-      'Disrupted sleep, not getting sufficient rest. Strong daytime sleepiness',
+      'Disrupted sleep, not getting enough rest, strong daytime drowsiness',
       name: 'sleepMinus_3',
       desc: '',
       args: [],
     );
   }
 
-  /// `Extreme lack or excess of sleep, causing significant decline in daytime functioning`
+  /// `Extreme sleep deprivation or excessive sleep, major impact on daily function`
   String get sleepMinus_4 {
     return Intl.message(
-      'Extreme lack or excess of sleep, causing significant decline in daytime functioning',
+      'Extreme sleep deprivation or excessive sleep, major impact on daily function',
       name: 'sleepMinus_4',
       desc: '',
       args: [],
     );
   }
 
-  /// `Constantly in a severe state of insomnia, strong fatigue during the day. Alternatively, spending most of the day sleeping`
+  /// `Severe insomnia or sleeping most of the day, extreme fatigue`
   String get sleepMinus_5 {
     return Intl.message(
-      'Constantly in a severe state of insomnia, strong fatigue during the day. Alternatively, spending most of the day sleeping',
+      'Severe insomnia or sleeping most of the day, extreme fatigue',
       name: 'sleepMinus_5',
       desc: '',
       args: [],
     );
   }
 
-  /// `Capable of thinking of ideas when motivated`
+  /// `Can come up with ideas when needed`
   String get ideaPlus_1 {
     return Intl.message(
-      'Capable of thinking of ideas when motivated',
+      'Can come up with ideas when needed',
       name: 'ideaPlus_1',
       desc: '',
       args: [],
     );
   }
 
-  /// `Easily come up with ideas`
+  /// `Ideas come easily`
   String get ideaPlus_2 {
     return Intl.message(
-      'Easily come up with ideas',
+      'Ideas come easily',
       name: 'ideaPlus_2',
       desc: '',
       args: [],
     );
   }
 
-  /// `Ideas flow and continue to think incessantly`
+  /// `Ideas flow continuously, can't stop thinking`
   String get ideaPlus_3 {
     return Intl.message(
-      'Ideas flow and continue to think incessantly',
+      'Ideas flow continuously, can\'t stop thinking',
       name: 'ideaPlus_3',
       desc: '',
       args: [],
     );
   }
 
-  /// `Struggling to materialize a continuous flow of ideas`
+  /// `Struggling to bring a flood of ideas into reality`
   String get ideaPlus_4 {
     return Intl.message(
-      'Struggling to materialize a continuous flow of ideas',
+      'Struggling to bring a flood of ideas into reality',
       name: 'ideaPlus_4',
       desc: '',
       args: [],
     );
   }
 
-  /// `Confident that ideas will succeed and actively working towards realization`
+  /// `Certain of success and taking action to realize ideas`
   String get ideaPlus_5 {
     return Intl.message(
-      'Confident that ideas will succeed and actively working towards realization',
+      'Certain of success and taking action to realize ideas',
       name: 'ideaPlus_5',
       desc: '',
       args: [],
     );
   }
 
-  /// `Generally more positive than usual`
+  /// `Feeling more positive than usual`
   String get elationPlus_1 {
     return Intl.message(
-      'Generally more positive than usual',
+      'Feeling more positive than usual',
       name: 'elationPlus_1',
       desc: '',
       args: [],
     );
   }
 
-  /// `Positive and challenging, feeling positive energy`
+  /// `Feeling motivated and full of positive energy`
   String get elationPlus_2 {
     return Intl.message(
-      'Positive and challenging, feeling positive energy',
+      'Feeling motivated and full of positive energy',
       name: 'elationPlus_2',
       desc: '',
       args: [],
     );
   }
 
-  /// `Strong sense that everything will go well regardless of the situation`
+  /// `Strong belief that everything will go well`
   String get elationPlus_3 {
     return Intl.message(
-      'Strong sense that everything will go well regardless of the situation',
+      'Strong belief that everything will go well',
       name: 'elationPlus_3',
       desc: '',
       args: [],
     );
   }
 
-  /// `Confident that everything will succeed`
+  /// `Certain of personal success in everything`
   String get elationPlus_4 {
     return Intl.message(
-      'Confident that everything will succeed',
+      'Certain of personal success in everything',
       name: 'elationPlus_4',
       desc: '',
       args: [],
     );
   }
 
-  /// `Absolutely certain of being correct, and everything will go well`
+  /// `Absolute confidence in being right and succeeding in everything`
   String get elationPlus_5 {
     return Intl.message(
-      'Absolutely certain of being correct, and everything will go well',
+      'Absolute confidence in being right and succeeding in everything',
       name: 'elationPlus_5',
       desc: '',
       args: [],
     );
   }
 
-  /// `Capable of activity`
+  /// `Capable of doing activities`
   String get activityPlus_1 {
     return Intl.message(
-      'Capable of activity',
+      'Capable of doing activities',
       name: 'activityPlus_1',
       desc: '',
       args: [],
     );
   }
 
-  /// `In a more active mood than usual`
+  /// `More active than usual`
   String get activityPlus_2 {
     return Intl.message(
-      'In a more active mood than usual',
+      'More active than usual',
       name: 'activityPlus_2',
       desc: '',
       args: [],
     );
   }
 
-  /// `Active and energetic, with a lot of plans`
+  /// `Energetic and filling schedule with activities`
   String get activityPlus_3 {
     return Intl.message(
-      'Active and energetic, with a lot of plans',
+      'Energetic and filling schedule with activities',
       name: 'activityPlus_3',
       desc: '',
       args: [],
     );
   }
 
-  /// `Full day of scheduled activities`
+  /// `Entire day is packed with activities`
   String get activityPlus_4 {
     return Intl.message(
-      'Full day of scheduled activities',
+      'Entire day is packed with activities',
       name: 'activityPlus_4',
       desc: '',
       args: [],
     );
   }
 
-  /// `Continuing activities all day for several days, actively moving without feeling tired`
+  /// `Engaging in constant activities for days without feeling tired`
   String get activityPlus_5 {
     return Intl.message(
-      'Continuing activities all day for several days, actively moving without feeling tired',
+      'Engaging in constant activities for days without feeling tired',
       name: 'activityPlus_5',
       desc: '',
       args: [],
     );
   }
 
-  /// `Version Information`
+  /// `Version Info`
   String get version_info {
     return Intl.message(
-      'Version Information',
+      'Version Info',
       name: 'version_info',
       desc: '',
       args: [],
     );
   }
 
-  /// `How was your mood on this day?`
+  /// `How was your mood today?`
   String get moodValueQuestion {
     return Intl.message(
-      'How was your mood on this day?',
+      'How was your mood today?',
       name: 'moodValueQuestion',
       desc: '',
       args: [],
     );
   }
 
-  /// `How many activities or plans did you have on this day?`
+  /// `How many activities or plans did you have today?`
   String get plannedVolumeQuestion {
     return Intl.message(
-      'How many activities or plans did you have on this day?',
+      'How many activities or plans did you have today?',
       name: 'plannedVolumeQuestion',
       desc: '',
       args: [],
     );
   }
 
-  /// `Record your mood for the day with a mood value from -5 to +5\nCheck the mood value reference table if you're unsure!`
+  /// `Record your mood on a scale from -5 to +5\nIf unsure, refer to the Mood Value Guide!\nConsider seeking medical advice for values above +3 or below -3`
   String get moodValueQuestionTooltipMessage {
     return Intl.message(
-      'Record your mood for the day with a mood value from -5 to +5\nCheck the mood value reference table if you\'re unsure!',
+      'Record your mood on a scale from -5 to +5\nIf unsure, refer to the Mood Value Guide!\nConsider seeking medical advice for values above +3 or below -3',
       name: 'moodValueQuestionTooltipMessage',
       desc: '',
       args: [],
     );
   }
 
-  /// `Record the number of things you did on this day\nIt will be useful for reflection with more objective numbers than mood values`
+  /// `Record the number of activities you completed today\nThis objective measure can help in reviewing trends`
   String get plannedVolumeQuestionTooltipMessage {
     return Intl.message(
-      'Record the number of things you did on this day\nIt will be useful for reflection with more objective numbers than mood values',
+      'Record the number of activities you completed today\nThis objective measure can help in reviewing trends',
       name: 'plannedVolumeQuestionTooltipMessage',
       desc: '',
       args: [],
     );
   }
 
-  /// `Go to the Mood Value Reference Table`
+  /// `View Mood Value Guide`
   String get goTable {
     return Intl.message(
-      'Go to the Mood Value Reference Table',
+      'View Mood Value Guide',
       name: 'goTable',
       desc: '',
       args: [],
@@ -1040,10 +1040,10 @@ class S {
     );
   }
 
-  /// `You can record your mood values and activity numbers using the buttons below`
+  /// `Use the button below to record your mood value and activity count`
   String get homeCoachMarkBody {
     return Intl.message(
-      'You can record your mood values and activity numbers using the buttons below',
+      'Use the button below to record your mood value and activity count',
       name: 'homeCoachMarkBody',
       desc: '',
       args: [],

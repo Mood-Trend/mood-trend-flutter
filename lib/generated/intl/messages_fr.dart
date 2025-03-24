@@ -23,15 +23,15 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "activityPlus_1":
-            MessageLookupByLibrary.simpleMessage("Est capable d\'être actif"),
+            MessageLookupByLibrary.simpleMessage("Capacité à être actif"),
         "activityPlus_2": MessageLookupByLibrary.simpleMessage(
-            "A une humeur plus active que d\'habitude"),
+            "Énergie plus élevée que d\'habitude"),
         "activityPlus_3": MessageLookupByLibrary.simpleMessage(
-            "Est positif et énergique, planifie de nombreuses activités"),
-        "activityPlus_4": MessageLookupByLibrary.simpleMessage(
-            "La journée est pleine de plans"),
+            "Énergie débordante, nombreuses activités"),
+        "activityPlus_4":
+            MessageLookupByLibrary.simpleMessage("Journée totalement remplie"),
         "activityPlus_5": MessageLookupByLibrary.simpleMessage(
-            "Continue d\'être actif pendant plusieurs jours sans se sentir fatigué, et agit énergiquement tout au long de la journée"),
+            "Activité continue pendant plusieurs jours sans fatigue"),
         "cancel": MessageLookupByLibrary.simpleMessage("Annuler"),
         "depression": MessageLookupByLibrary.simpleMessage("État dépressif"),
         "dialogConfirm": MessageLookupByLibrary.simpleMessage("Confirmer"),
@@ -40,150 +40,153 @@ class MessageLookup extends MessageLookupByLibrary {
         "dialogOk": MessageLookupByLibrary.simpleMessage("OK"),
         "dialogYes": MessageLookupByLibrary.simpleMessage("Oui"),
         "elationPlus_1": MessageLookupByLibrary.simpleMessage(
-            "A une humeur plus positive que d\'habitude"),
+            "Humeur plus positive que d\'habitude"),
         "elationPlus_2": MessageLookupByLibrary.simpleMessage(
-            "Est positif et a une attitude ambitieuse, ressent une énergie positive"),
+            "Énergie et attitude positive"),
         "elationPlus_3": MessageLookupByLibrary.simpleMessage(
-            "Se sent confiant que tout ira bien dans n\'importe quelle situation"),
+            "Confiance en la réussite en toutes circonstances"),
         "elationPlus_4": MessageLookupByLibrary.simpleMessage(
-            "Est convaincu qu\'il réussira quoi qu\'il fasse"),
-        "elationPlus_5": MessageLookupByLibrary.simpleMessage(
-            "Est absolument sûr d\'avoir raison, et que tout ira bien"),
+            "Certitude absolue de réussite"),
+        "elationPlus_5":
+            MessageLookupByLibrary.simpleMessage("Sentiment d\'invincibilité"),
         "goTable": MessageLookupByLibrary.simpleMessage(
-            "Le tableau de référence de l\'humeur est ici"),
+            "Consulter le tableau des valeurs d\'humeur"),
         "homeCoachMarkBody": MessageLookupByLibrary.simpleMessage(
-            "Vous pouvez enregistrer vos valeurs d\'humeur et le nombre d\'activités avec les boutons ci-dessous"),
+            "Utilisez le bouton ci-dessous pour enregistrer votre humeur et vos activités."),
         "homeCoachMarkTitle": MessageLookupByLibrary.simpleMessage(
-            "Commençons l\'enregistrement"),
+            "Commençons l\'enregistrement !"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("6 mois"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1 mois"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1 an"),
         "ideaPlus_1": MessageLookupByLibrary.simpleMessage(
-            "Peut penser à des idées quand elles le veulent"),
-        "ideaPlus_2": MessageLookupByLibrary.simpleMessage(
-            "Peut facilement trouver des idées"),
-        "ideaPlus_3": MessageLookupByLibrary.simpleMessage(
-            "Les idées affluent constamment, pensent constamment"),
+            "Capacité à générer des idées"),
+        "ideaPlus_2":
+            MessageLookupByLibrary.simpleMessage("Idées faciles à trouver"),
+        "ideaPlus_3":
+            MessageLookupByLibrary.simpleMessage("Flux constant d\'idées"),
         "ideaPlus_4": MessageLookupByLibrary.simpleMessage(
-            "Lutte pour concrétiser les idées qui affluent"),
+            "Tentative de concrétisation des idées"),
         "ideaPlus_5": MessageLookupByLibrary.simpleMessage(
-            "Est convaincu que les idées réussiront, agit effectivement pour les réaliser"),
+            "Conviction de réussir et passage à l\'action"),
         "inputAlreadyExist":
             MessageLookupByLibrary.simpleMessage("est déjà enregistré"),
         "inputDepression": MessageLookupByLibrary.simpleMessage(
-            "Entrez les symptômes de la dépression"),
+            "Saisissez les symptômes de la dépression"),
         "inputManic": MessageLookupByLibrary.simpleMessage(
-            "Entrez les symptômes de la manie"),
+            "Saisissez les symptômes de la manie"),
         "inputOverwriting": MessageLookupByLibrary.simpleMessage("Écraser"),
         "inputOverwritingQuestion":
             MessageLookupByLibrary.simpleMessage("Voulez-vous écraser ?"),
         "inputRequest": MessageLookupByLibrary.simpleMessage(
-            "Veuillez entrer les symptômes"),
+            "Veuillez saisir les symptômes"),
         "inputSave": MessageLookupByLibrary.simpleMessage("Enregistrer"),
         "inputSuccess": MessageLookupByLibrary.simpleMessage(
-            "Enregistrement de la valeur de l\'humeur et du nombre prévu terminé"),
+            "L\'enregistrement de la valeur d\'humeur et du nombre d\'activités a réussi."),
         "manic": MessageLookupByLibrary.simpleMessage("État maniaque"),
-        "melancholyMinus_1": MessageLookupByLibrary.simpleMessage(
-            "Est généralement plus négatif"),
+        "melancholyMinus_1":
+            MessageLookupByLibrary.simpleMessage("Plutôt pessimiste"),
         "melancholyMinus_2": MessageLookupByLibrary.simpleMessage(
-            "Est légèrement mélancolique, avec une aversion accrue pour les activités quotidiennes"),
+            "Légère mélancolie, moins d\'envie dans la vie quotidienne"),
         "melancholyMinus_3": MessageLookupByLibrary.simpleMessage(
-            "Éprouve des sentiments mélancoliques intenses et vit une situation de vie difficile. N\'a presque aucun intérêt pour les activités quotidiennes"),
+            "Mélancolie forte, difficulté à s\'intéresser aux activités habituelles"),
         "melancholyMinus_4": MessageLookupByLibrary.simpleMessage(
-            "Éprouve des sentiments mélancoliques forts, affecte la vie quotidienne et le niveau de fonctionnement. Affecte les fonctions quotidiennes"),
+            "Mélancolie sévère, impact sur la vie quotidienne"),
         "melancholyMinus_5": MessageLookupByLibrary.simpleMessage(
-            "Est complètement désespéré, vit dans la douleur, peut à peine effectuer des activités quotidiennes"),
-        "moodValue":
-            MessageLookupByLibrary.simpleMessage("Valeur de l\'humeur"),
+            "Désespoir total, la vie est une souffrance, impossible de fonctionner"),
+        "moodValue": MessageLookupByLibrary.simpleMessage("Valeur d\'humeur"),
         "moodValueQuestion": MessageLookupByLibrary.simpleMessage(
-            "Comment était votre humeur ce jour-là ?"),
+            "Comment vous sentez-vous aujourd\'hui ?"),
         "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
-            "Veuillez enregistrer votre humeur de la journée sur une échelle de -5 à +5\nConsultez le tableau de référence de l\'humeur si vous hésitez !"),
+            "Enregistrez votre humeur avec une valeur de -5 à +5\nSi vous hésitez, consultez le tableau des valeurs d\'humeur !\n+3 ou plus / -3 ou moins : consultez un professionnel de santé"),
         "next": MessageLookupByLibrary.simpleMessage("Suivant"),
         "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
             "Enregistrez votre humeur et créez votre propre graphique"),
         "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
-            "Entrez des valeurs d\'humeur de -5 à +5 et superposez-les dans un graphique"),
+            "Saisissez une valeur d\'humeur de -5 à +5 (sauf 0) et accumulez les données"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
-            "Soutient la saisie des valeurs d\'humeur et permet des personnalisations individuelles"),
-        "onboardingNext": MessageLookupByLibrary.simpleMessage("  Suivant"),
-        "onboardingSkip": MessageLookupByLibrary.simpleMessage("   Passer"),
+            "Soutien à la saisie des valeurs d\'humeur\nPersonnalisation possible"),
+        "onboardingNext": MessageLookupByLibrary.simpleMessage("Suivant"),
+        "onboardingSkip": MessageLookupByLibrary.simpleMessage("Passer"),
         "onboardingStart": MessageLookupByLibrary.simpleMessage("Commencer"),
         "onboardingTitleFirst":
             MessageLookupByLibrary.simpleMessage("Bienvenue"),
         "onboardingTitleSecond":
-            MessageLookupByLibrary.simpleMessage("Graphique d\'humeur"),
+            MessageLookupByLibrary.simpleMessage("Graphique de l\'humeur"),
         "onboardingTitleThird": MessageLookupByLibrary.simpleMessage(
-            "Tableau de référence des valeurs d\'humeur"),
+            "Tableau des valeurs d\'humeur"),
         "onboardingWelcome": MessageLookupByLibrary.simpleMessage(
-            "Bienvenue sur le Graphique d\'Humeur !"),
-        "plannedVolume": MessageLookupByLibrary.simpleMessage("Volume prévu"),
+            "Bienvenue dans le Graphique de l\'humeur !"),
+        "plannedVolume":
+            MessageLookupByLibrary.simpleMessage("Nombre d\'activités"),
         "plannedVolumeQuestion": MessageLookupByLibrary.simpleMessage(
-            "Combien d\'activités ou de plans aviez-vous ce jour-là ?"),
+            "Combien d\'activités avez-vous réalisées aujourd\'hui ?"),
         "plannedVolumeQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
-            "Veuillez enregistrer le nombre d\'activités que vous avez faites ce jour-là\nCela vous aidera à réfléchir de manière plus objective que les valeurs d\'humeur"),
+            "Enregistrez le nombre d\'activités réalisées aujourd\'hui.\nUne valeur plus objective que l\'humeur, utile pour le suivi."),
         "registerConfirm":
-            MessageLookupByLibrary.simpleMessage("Confirmer l\'enregistrement"),
-        "registerRegister": MessageLookupByLibrary.simpleMessage("Enregistrer"),
+            MessageLookupByLibrary.simpleMessage("Confirmation d\'inscription"),
+        "registerRegister": MessageLookupByLibrary.simpleMessage("S\'inscrire"),
         "registerSave": MessageLookupByLibrary.simpleMessage(
-            "Enregistrement du tableau de référence de l\'humeur terminé"),
+            "L\'inscription au tableau des valeurs d\'humeur est terminée"),
         "settingAboutApp":
             MessageLookupByLibrary.simpleMessage("À propos de l\'application"),
-        "settingContact":
-            MessageLookupByLibrary.simpleMessage("Contactez-nous"),
-        "settingEdit": MessageLookupByLibrary.simpleMessage("Modifier"),
-        "settingOther": MessageLookupByLibrary.simpleMessage("Autre"),
+        "settingContact": MessageLookupByLibrary.simpleMessage("Contact"),
+        "settingEdit": MessageLookupByLibrary.simpleMessage("Éditer"),
+        "settingOnboarding": MessageLookupByLibrary.simpleMessage(
+            "À propos de cette application"),
+        "settingOther": MessageLookupByLibrary.simpleMessage("Autres"),
         "settingPrivacy": MessageLookupByLibrary.simpleMessage(
             "Politique de confidentialité"),
         "settingReview": MessageLookupByLibrary.simpleMessage("Avis"),
         "settingReviewRequest": MessageLookupByLibrary.simpleMessage(
-            "Les développeurs danseraient de joie si vous laissiez un avis"),
+            "Laisser un avis rendrait le développeur heureux !"),
         "settingSetting": MessageLookupByLibrary.simpleMessage("Paramètres"),
         "settingSupport": MessageLookupByLibrary.simpleMessage("Support"),
         "settingTerms":
             MessageLookupByLibrary.simpleMessage("Conditions d\'utilisation"),
-        "settingThank":
-            MessageLookupByLibrary.simpleMessage("Merci de votre utilisation"),
+        "settingThank": MessageLookupByLibrary.simpleMessage(
+            "Merci d\'avoir utilisé notre service"),
         "settingWithdraw":
             MessageLookupByLibrary.simpleMessage("Se désinscrire"),
         "settingWithdrawConfirm": MessageLookupByLibrary.simpleMessage(
             "Voulez-vous vous désinscrire ?"),
         "settingWithdrawConfirmDetail": MessageLookupByLibrary.simpleMessage(
-            "Toutes les données seront supprimées et ne pourront pas être récupérées"),
-        "sleepMinus_1": MessageLookupByLibrary.simpleMessage(
-            "Ne se sent pas frais au réveil"),
+            "Toutes les données seront supprimées de façon irréversible."),
+        "sleepMinus_1":
+            MessageLookupByLibrary.simpleMessage("Réveil difficile"),
         "sleepMinus_2": MessageLookupByLibrary.simpleMessage(
-            "Qualité de sommeil faible, se sent somnolent et fatigué pendant la journée"),
+            "Sommeil de mauvaise qualité, fatigue diurne"),
         "sleepMinus_3": MessageLookupByLibrary.simpleMessage(
-            "Le sommeil est perturbé, ne reçoit pas un repos adéquat, une forte somnolence pendant la journée"),
+            "Trouble du sommeil, somnolence diurne sévère"),
         "sleepMinus_4": MessageLookupByLibrary.simpleMessage(
-            "Très peu de sommeil ou trop de sommeil, fonction quotidienne considérablement réduite"),
+            "Insomnie sévère ou sommeil excessif, impact fonctionnel majeur"),
         "sleepMinus_5": MessageLookupByLibrary.simpleMessage(
-            "Ne peut pas dormir, insomnie constante et excessive, forte fatigue pendant la journée, ou passe la plupart du temps à dormir"),
+            "Insomnie totale ou sommeil excessif toute la journée"),
         "table": MessageLookupByLibrary.simpleMessage(
-            "Tableau de référence de l\'humeur"),
-        "tableStartEdit": MessageLookupByLibrary.simpleMessage("édition"),
-        "thinkMinus_1": MessageLookupByLibrary.simpleMessage(
-            "Parfois, penser semble un peu laborieux"),
-        "thinkMinus_2":
-            MessageLookupByLibrary.simpleMessage("A une pensée lente légère"),
+            "Tableau des valeurs d\'humeur"),
+        "tableStartEdit": MessageLookupByLibrary.simpleMessage(
+            "Commencer la configuration du tableau des valeurs d\'humeur"),
+        "thinkMinus_1":
+            MessageLookupByLibrary.simpleMessage("Légère difficulté à penser"),
+        "thinkMinus_2": MessageLookupByLibrary.simpleMessage(
+            "Ralentissement cognitif léger"),
         "thinkMinus_3": MessageLookupByLibrary.simpleMessage(
-            "A une pensée lente, une réduction significative de la résolution de problèmes et du jugement"),
+            "Pensée ralentie, capacité de jugement réduite"),
         "thinkMinus_4": MessageLookupByLibrary.simpleMessage(
-            "A une capacité de pensée considérablement réduite, de gros problèmes de concentration et de mémoire"),
+            "Déficit cognitif sévère, problèmes de concentration et de mémoire"),
         "thinkMinus_5": MessageLookupByLibrary.simpleMessage(
-            "N\'a aucune capacité de pensée fonctionnelle, ne comprend presque rien"),
+            "Pensée totalement bloquée, incompréhension de presque tout"),
         "typeActivity": MessageLookupByLibrary.simpleMessage("Activité"),
         "typeDepression": MessageLookupByLibrary.simpleMessage(
             "Quel est votre type de dépression ?"),
-        "typeElation": MessageLookupByLibrary.simpleMessage("Exaltation"),
+        "typeElation": MessageLookupByLibrary.simpleMessage("Euphorie"),
         "typeIdea": MessageLookupByLibrary.simpleMessage("Idée"),
         "typeManic": MessageLookupByLibrary.simpleMessage(
             "Quel est votre type de manie ?"),
         "typeMelancholy": MessageLookupByLibrary.simpleMessage("Mélancolie"),
-        "typeOther": MessageLookupByLibrary.simpleMessage("Autre"),
+        "typeOther":
+            MessageLookupByLibrary.simpleMessage("Saisie\npersonnalisée"),
         "typePoorThinking":
-            MessageLookupByLibrary.simpleMessage("Baisse de la pensée"),
+            MessageLookupByLibrary.simpleMessage("Réduction\ncognitive"),
         "typeSleepDisorder":
             MessageLookupByLibrary.simpleMessage("Trouble du sommeil"),
         "typeSuggestion": MessageLookupByLibrary.simpleMessage("Suggestion"),
