@@ -34,16 +34,16 @@ final selectedTermProvider = StateProvider<Term>((_) => Term.month);
 /// グラフの最小値を保持する [StateProvider]
 final visibleMinimumProvider = StateProvider<DateTime>(
   (ref) => ref.watch(selectedTermProvider) == Term.month
-      ? ref.watch(visibleMaximumProvider).subtract(
-            const Duration(days: 30),
-          )
+      ? DateTime.now().subtract(
+          const Duration(days: 30),
+        )
       : ref.watch(selectedTermProvider) == Term.halfYear
-          ? ref.watch(visibleMaximumProvider).subtract(
-                const Duration(days: 182),
-              )
-          : ref.watch(visibleMaximumProvider).subtract(
-                const Duration(days: 365),
-              ),
+          ? DateTime.now().subtract(
+              const Duration(days: 182),
+            )
+          : DateTime.now().subtract(
+              const Duration(days: 365),
+            ),
 );
 
 /// グラフの最大値を保持する [StateProvider]
@@ -60,6 +60,8 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedTerm = ref.watch(selectedTermProvider);
+
+    final visibleMinDate = ref.watch(visibleMinimumProvider);
 
     // コーチマーク用のターゲット
     final GlobalKey floatingActionButtonKey = GlobalKey();
@@ -165,12 +167,6 @@ class HomePage extends ConsumerWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () => ref
-                .watch(visibleMaximumProvider.notifier)
-                .update((_) => DateTime.now().toDateOnly()),
-            icon: const Icon(Icons.replay_outlined),
-          ),
-          IconButton(
             onPressed: () => PageNavigator.push(
               context,
               SettingPage(uid: userId),
@@ -184,89 +180,89 @@ class HomePage extends ConsumerWidget {
             value: ref.watch(subscribeMoodPointsProvider(userId)),
             loading: () => const OverlayLoading(),
             builder: (moodPoints) {
-              final term = ref.watch(selectedTermProvider) == Term.month
-                  ? const Duration(days: 30)
-                  : ref.watch(selectedTermProvider) == Term.halfYear
-                      ? const Duration(days: 182)
-                      : const Duration(days: 365);
               return Center(
-                child: GestureDetector(
-                  onHorizontalDragEnd: (details) {
-                    if (details.primaryVelocity! > 0) {
-                      ref
-                          .watch(visibleMaximumProvider.notifier)
-                          .update((state) => state.subtract(term));
-                    } else {
-                      ref
-                          .watch(visibleMaximumProvider.notifier)
-                          .update((state) => state.add(term));
-                    }
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
-                    child: SfCartesianChart(
-                      legend: const Legend(isVisible: true), // 凡例の表示
-                      backgroundColor: AppColors.white,
-                      primaryXAxis: DateTimeAxis(
-                        dateFormat: DateFormat('MM/dd',
-                            Localizations.localeOf(context).languageCode),
-                        minimum: ref.watch(visibleMinimumProvider),
-                        maximum: ref.watch(visibleMaximumProvider),
-                      ),
-                      primaryYAxis: NumericAxis(
-                        minimum: -5,
-                        maximum: 5,
-                        interval: 1,
-                        numberFormat: NumberFormat('0'),
-                        plotBands: [
-                          PlotBand(
-                            isVisible: true,
-                            start: double.infinity,
-                            end: 0,
-                            color: Colors.white,
-                          ),
-                          PlotBand(
-                            isVisible: true,
-                            start: -double.infinity,
-                            end: 0,
-                            color: const Color.fromRGBO(249, 249, 249, 1),
-                          ),
-                        ],
-                      ),
-                      axes: [
-                        NumericAxis(
-                          minimum: 0,
-                          maximum: 16,
-                          interval: 1,
-                          name: 'yAxis',
-                          opposedPosition: true,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+                  child: SfCartesianChart(
+                    key: ValueKey(visibleMinDate),
+                    zoomPanBehavior: ZoomPanBehavior(
+                      enablePanning: true, // スクロール（パンニング）を有効化
+                      zoomMode: ZoomMode.x, // X軸方向のズーム/パンのみ有効化
+                    ),
+                    legend: const Legend(isVisible: true), // 凡例の表示
+                    backgroundColor: AppColors.white,
+                    primaryXAxis: DateTimeAxis(
+                      dateFormat: DateFormat('MM/dd',
+                          Localizations.localeOf(context).languageCode),
+                      minimum: moodPoints.isNotEmpty &&
+                              moodPoints.first.moodDate
+                                  .toDateOnly()
+                                  .isBefore(visibleMinDate)
+                          ? moodPoints.first.moodDate.toDateOnly()
+                          : visibleMinDate,
+                      maximum: DateTime.now(),
+                      initialVisibleMinimum: visibleMinDate, // 表示範囲の最小値
+                      initialVisibleMaximum: DateTime.now(),
+                      interval: switch (ref.watch(selectedTermProvider)) {
+                        Term.month => 7,
+                        Term.halfYear => 1,
+                        Term.year => 1,
+                      },
+                    ),
+                    primaryYAxis: NumericAxis(
+                      minimum: -5,
+                      maximum: 5,
+                      interval: 1,
+                      numberFormat: NumberFormat('0'),
+                      plotBands: [
+                        PlotBand(
+                          isVisible: true,
+                          start: double.infinity,
+                          end: 0,
+                          color: Colors.white,
                         ),
-                      ],
-                      series: [
-                        // 塗りつぶす部分を描画するためのエリアチャート
-                        LineSeries<MoodPoint, DateTime>(
-                          name: S.of(context).moodValue, // 凡例の名前
-                          dataSource: moodPoints,
-                          xValueMapper: (MoodPoint value, _) =>
-                              value.moodDate.toDateOnly(),
-                          yValueMapper: (MoodPoint value, _) => value.point,
-                          color: AppColors.green.withOpacity(0.5),
-                          markerSettings: const MarkerSettings(isVisible: true),
-                          // borderDrawMode: RangeAreaBorderMode.excludeSides,
-                        ),
-                        LineSeries<MoodPoint, DateTime>(
-                          name: S.of(context).plannedVolume, // 凡例の名前
-                          dataSource: moodPoints,
-                          xValueMapper: (MoodPoint value, _) =>
-                              value.moodDate.toDateOnly(),
-                          yValueMapper: (MoodPoint value, _) =>
-                              value.plannedVolume,
-                          color: AppColors.blue.withOpacity(0.5),
-                          markerSettings: const MarkerSettings(isVisible: true),
-                          yAxisName: 'yAxis',
+                        PlotBand(
+                          isVisible: true,
+                          start: -double.infinity,
+                          end: 0,
+                          color: const Color.fromRGBO(249, 249, 249, 1),
                         ),
                       ],
                     ),
+                    axes: [
+                      NumericAxis(
+                        minimum: 0,
+                        maximum: 16,
+                        interval: 1,
+                        name: 'yAxis',
+                        opposedPosition: true,
+                      ),
+                    ],
+                    series: [
+                      // 塗りつぶす部分を描画するためのエリアチャート
+                      SplineAreaSeries<MoodPoint, DateTime>(
+                        name: S.of(context).moodValue, // 凡例の名前
+                        dataSource: moodPoints,
+                        xValueMapper: (MoodPoint value, _) =>
+                            value.moodDate.toDateOnly(),
+                        yValueMapper: (MoodPoint value, _) => value.point,
+                        color: AppColors.green.withOpacity(0.5),
+                        markerSettings: const MarkerSettings(isVisible: true),
+                        splineType: SplineType.monotonic,
+                      ),
+                      SplineAreaSeries<MoodPoint, DateTime>(
+                        name: S.of(context).plannedVolume, // 凡例の名前
+                        dataSource: moodPoints,
+                        xValueMapper: (MoodPoint value, _) =>
+                            value.moodDate.toDateOnly(),
+                        yValueMapper: (MoodPoint value, _) =>
+                            value.plannedVolume,
+                        color: AppColors.blue.withOpacity(0.5),
+                        markerSettings: const MarkerSettings(isVisible: true),
+                        yAxisName: 'yAxis',
+                        splineType: SplineType.monotonic,
+                      ),
+                    ],
                   ),
                 ),
               );
