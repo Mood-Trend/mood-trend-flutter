@@ -98,6 +98,29 @@ class MessageLookup extends MessageLookupByLibrary {
         "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
             "Record your mood on a scale from -5 to +5\nIf unsure, refer to the Mood Value Guide!\nConsider seeking medical advice for values above +3 or below -3"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "notificationDailyBody": MessageLookupByLibrary.simpleMessage(
+            "Track your mood changes by recording your daily reflection"),
+        "notificationDailyTitle":
+            MessageLookupByLibrary.simpleMessage("Record your mood today"),
+        "notificationSettingsDaily":
+            MessageLookupByLibrary.simpleMessage("Daily"),
+        "notificationSettingsDailyDescription":
+            MessageLookupByLibrary.simpleMessage("Notify at 8:00 PM daily"),
+        "notificationSettingsNone":
+            MessageLookupByLibrary.simpleMessage("No notifications"),
+        "notificationSettingsNoneDescription":
+            MessageLookupByLibrary.simpleMessage("Disable notifications"),
+        "notificationSettingsTitle": MessageLookupByLibrary.simpleMessage(
+            "Would you like to set up notification reminders?"),
+        "notificationSettingsWeekend":
+            MessageLookupByLibrary.simpleMessage("Weekend"),
+        "notificationSettingsWeekendDescription":
+            MessageLookupByLibrary.simpleMessage(
+                "Notify at 8:00 PM on weekends"),
+        "notificationWeekendBody": MessageLookupByLibrary.simpleMessage(
+            "Track your mood changes by recording your weekend reflection"),
+        "notificationWeekendTitle":
+            MessageLookupByLibrary.simpleMessage("Record your weekend mood"),
         "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
             "Record your mood and create your own graph"),
         "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
@@ -128,6 +151,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("About the App"),
         "settingContact": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "settingEdit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "settingNotifications":
+            MessageLookupByLibrary.simpleMessage("Notification Settings"),
         "settingOnboarding":
             MessageLookupByLibrary.simpleMessage("About This App"),
         "settingOther": MessageLookupByLibrary.simpleMessage("Other"),

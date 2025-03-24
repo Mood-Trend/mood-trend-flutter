@@ -78,6 +78,26 @@ class MessageLookup extends MessageLookupByLibrary {
         "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
             "请用 -5 到 +5 的心情值记录你的感受\n如果不确定，可以参考心情值参考表！\n+3 以上或 -3 以下建议尽早就诊"),
         "next": MessageLookupByLibrary.simpleMessage("下一步"),
+        "notificationDailyBody":
+            MessageLookupByLibrary.simpleMessage("记录今天的心情，追踪心情变化"),
+        "notificationDailyTitle":
+            MessageLookupByLibrary.simpleMessage("今天的心情如何？"),
+        "notificationSettingsDaily": MessageLookupByLibrary.simpleMessage("每天"),
+        "notificationSettingsDailyDescription":
+            MessageLookupByLibrary.simpleMessage("每天20:00通知"),
+        "notificationSettingsNone": MessageLookupByLibrary.simpleMessage("不通知"),
+        "notificationSettingsNoneDescription":
+            MessageLookupByLibrary.simpleMessage("禁用通知"),
+        "notificationSettingsTitle":
+            MessageLookupByLibrary.simpleMessage("是否设置提醒通知？"),
+        "notificationSettingsWeekend":
+            MessageLookupByLibrary.simpleMessage("周末"),
+        "notificationSettingsWeekendDescription":
+            MessageLookupByLibrary.simpleMessage("周末20:00通知"),
+        "notificationWeekendBody":
+            MessageLookupByLibrary.simpleMessage("记录周末的心情，追踪心情变化"),
+        "notificationWeekendTitle":
+            MessageLookupByLibrary.simpleMessage("周末的心情如何？"),
         "onboardingBodyFirst":
             MessageLookupByLibrary.simpleMessage("记录心情，创建属于你的图表"),
         "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
@@ -102,6 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingAboutApp": MessageLookupByLibrary.simpleMessage("关于应用"),
         "settingContact": MessageLookupByLibrary.simpleMessage("联系我们"),
         "settingEdit": MessageLookupByLibrary.simpleMessage("编辑"),
+        "settingNotifications": MessageLookupByLibrary.simpleMessage("通知设置"),
         "settingOnboarding": MessageLookupByLibrary.simpleMessage("关于此应用"),
         "settingOther": MessageLookupByLibrary.simpleMessage("其他"),
         "settingPrivacy": MessageLookupByLibrary.simpleMessage("隐私政策"),

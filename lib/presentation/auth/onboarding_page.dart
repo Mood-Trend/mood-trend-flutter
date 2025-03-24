@@ -15,59 +15,61 @@ class OnboardingPage extends ConsumerWidget with ErrorHandlerMixin {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      body: OverBoard(
-        skipText: S.of(context).onboardingSkip,
-        nextText: S.of(context).onboardingNext,
-        finishText: S.of(context).onboardingStart,
-        allowScroll: true,
-        buttonColor: AppColors.black,
-        activeBulletColor: AppColors.black,
-        inactiveBulletColor: AppColors.grey,
-        pages: [
-          PageModel(
-            titleColor: AppColors.black,
-            bodyColor: AppColors.black,
-            color: AppColors.white,
-            imageAssetPath: 'assets/logo.png',
-            title: S.of(context).onboardingTitleFirst,
-            body: S.of(context).onboardingBodyFirst,
-            doAnimateImage: true,
-          ),
-          PageModel(
-            titleColor: AppColors.black,
-            bodyColor: AppColors.black,
-            color: AppColors.white,
-            imageAssetPath: 'assets/graph.png',
-            title: S.of(context).onboardingTitleSecond,
-            body: S.of(context).onboardingBodySecond,
-            doAnimateImage: true,
-          ),
-          PageModel(
-            titleColor: AppColors.black,
-            bodyColor: AppColors.black,
-            color: AppColors.white,
-            imageAssetPath: 'assets/table.png',
-            title: S.of(context).onboardingTitleThird,
-            body: S.of(context).onboardingBodyThird,
-            doAnimateImage: true,
-          ),
-        ],
-        showBullets: true,
-        skipCallback: () async {
-          if (isFromSettings) {
-            PageNavigator.pop(context);
-            return;
-          }
-          await _signinAnonymously(context, ref);
-        },
-        finishCallback: () async {
-          if (isFromSettings) {
-            PageNavigator.pop(context);
-            return;
-          }
-          await _signinAnonymously(context, ref);
-        },
+    return SafeArea(
+      child: Scaffold(
+        body: OverBoard(
+          skipText: S.of(context).onboardingSkip,
+          nextText: S.of(context).onboardingNext,
+          finishText: S.of(context).onboardingStart,
+          allowScroll: true,
+          buttonColor: AppColors.black,
+          activeBulletColor: AppColors.black,
+          inactiveBulletColor: AppColors.grey,
+          pages: [
+            PageModel(
+              titleColor: AppColors.black,
+              bodyColor: AppColors.black,
+              color: AppColors.white,
+              imageAssetPath: 'assets/logo.png',
+              title: S.of(context).onboardingTitleFirst,
+              body: S.of(context).onboardingBodyFirst,
+              doAnimateImage: true,
+            ),
+            PageModel(
+              titleColor: AppColors.black,
+              bodyColor: AppColors.black,
+              color: AppColors.white,
+              imageAssetPath: 'assets/graph.png',
+              title: S.of(context).onboardingTitleSecond,
+              body: S.of(context).onboardingBodySecond,
+              doAnimateImage: true,
+            ),
+            PageModel(
+              titleColor: AppColors.black,
+              bodyColor: AppColors.black,
+              color: AppColors.white,
+              imageAssetPath: 'assets/table.png',
+              title: S.of(context).onboardingTitleThird,
+              body: S.of(context).onboardingBodyThird,
+              doAnimateImage: true,
+            ),
+          ],
+          showBullets: true,
+          skipCallback: () async {
+            if (isFromSettings) {
+              PageNavigator.pop(context);
+              return;
+            }
+            await _signinAnonymously(context, ref);
+          },
+          finishCallback: () async {
+            if (isFromSettings) {
+              PageNavigator.pop(context);
+              return;
+            }
+            await _signinAnonymously(context, ref);
+          },
+        ),
       ),
     );
   }

@@ -23,173 +23,193 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "activityPlus_1":
-            MessageLookupByLibrary.simpleMessage("Capax est agendi"),
+            MessageLookupByLibrary.simpleMessage("Possibilitas agendi"),
         "activityPlus_2": MessageLookupByLibrary.simpleMessage(
-            "Magis activum habet umorem quam solitus"),
-        "activityPlus_3": MessageLookupByLibrary.simpleMessage(
-            "Positivus et energicus est, multas actiones concinnat"),
+            "Plus activus et energicus quam solitum"),
+        "activityPlus_3":
+            MessageLookupByLibrary.simpleMessage("Energeticus, multa agenda"),
         "activityPlus_4":
-            MessageLookupByLibrary.simpleMessage("Dies plenus est planis"),
+            MessageLookupByLibrary.simpleMessage("Dies plenus actionibus"),
         "activityPlus_5": MessageLookupByLibrary.simpleMessage(
-            "Per dies multos activus manet sine fatiscentia, et eniti energetice per totum diem."),
-        "cancel": MessageLookupByLibrary.simpleMessage("Cancelle"),
-        "depression":
-            MessageLookupByLibrary.simpleMessage("Status Depressionis"),
-        "dialogConfirm": MessageLookupByLibrary.simpleMessage("Confirma"),
+            "Plures dies continuos agendo sine lassitudine"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Annullare"),
+        "depression": MessageLookupByLibrary.simpleMessage("Status depressus"),
+        "dialogConfirm": MessageLookupByLibrary.simpleMessage("Confirmare"),
         "dialogError": MessageLookupByLibrary.simpleMessage("Error"),
-        "dialogNo": MessageLookupByLibrary.simpleMessage("Minime"),
-        "dialogOk": MessageLookupByLibrary.simpleMessage("Bene"),
+        "dialogNo": MessageLookupByLibrary.simpleMessage("Non"),
+        "dialogOk": MessageLookupByLibrary.simpleMessage("OK"),
         "dialogYes": MessageLookupByLibrary.simpleMessage("Ita"),
-        "elationPlus_1": MessageLookupByLibrary.simpleMessage(
-            "Habet umorem positivum magis quam solitus"),
+        "elationPlus_1":
+            MessageLookupByLibrary.simpleMessage("Plus positivus quam solitum"),
         "elationPlus_2": MessageLookupByLibrary.simpleMessage(
-            "Positivus est et ambitiosus, vim positivam sentit"),
+            "Sententia positiva, energiae positivae"),
         "elationPlus_3": MessageLookupByLibrary.simpleMessage(
-            "Confidit omnia bene procedere, indifferenter ad circumstantias"),
+            "Sensus felicitas in qualibet re"),
         "elationPlus_4": MessageLookupByLibrary.simpleMessage(
-            "Certus est se in omnibus feliciter succedurum"),
+            "Confidens successu in omni re"),
         "elationPlus_5": MessageLookupByLibrary.simpleMessage(
-            "Absolute certus est se iure habere et omnia bene procedere"),
-        "goTable": MessageLookupByLibrary.simpleMessage(
-            "Tabula Indicis Mentis hic est"),
+            "Certe recte esse et omnia bene se habent"),
+        "goTable":
+            MessageLookupByLibrary.simpleMessage("Tabula mensurarum animi hic"),
         "homeCoachMarkBody": MessageLookupByLibrary.simpleMessage(
-            "Subter pulsantibus valorem mentis et numerum actuum notare potes"),
+            "Notare valores animi et numerum actuum infra puga"),
         "homeCoachMarkTitle":
-            MessageLookupByLibrary.simpleMessage("Incipiamus notare!"),
-        "homeHalfYear": MessageLookupByLibrary.simpleMessage("Semestrem"),
-        "homeMonth": MessageLookupByLibrary.simpleMessage("Mensem"),
-        "homeYear": MessageLookupByLibrary.simpleMessage("Annum"),
-        "ideaPlus_1": MessageLookupByLibrary.simpleMessage(
-            "Potest ideis cogitare cum velit"),
-        "ideaPlus_2": MessageLookupByLibrary.simpleMessage(
-            "Facile potest ideias invenire"),
+            MessageLookupByLibrary.simpleMessage("Incipe notare!"),
+        "homeHalfYear": MessageLookupByLibrary.simpleMessage("Dimidium annus"),
+        "homeMonth": MessageLookupByLibrary.simpleMessage("Mensis 1"),
+        "homeYear": MessageLookupByLibrary.simpleMessage("Annus 1"),
+        "ideaPlus_1":
+            MessageLookupByLibrary.simpleMessage("Ideas cogitare possibile"),
+        "ideaPlus_2":
+            MessageLookupByLibrary.simpleMessage("Ideas facile invenire"),
         "ideaPlus_3": MessageLookupByLibrary.simpleMessage(
-            "Ideae continue fluunt, continuo cogitat"),
-        "ideaPlus_4": MessageLookupByLibrary.simpleMessage(
-            "Pugnat ut fluens idearum concretizet"),
+            "Ideas fluxum continuatum, semper cogitando"),
+        "ideaPlus_4":
+            MessageLookupByLibrary.simpleMessage("Ideas effingere, curando"),
         "ideaPlus_5": MessageLookupByLibrary.simpleMessage(
-            "Certus est idearum successum, effice iterum"),
+            "Certe confido in ideis et actus incipere"),
         "inputAlreadyExist":
-            MessageLookupByLibrary.simpleMessage("iam registratum est"),
+            MessageLookupByLibrary.simpleMessage("Iam inscriptum est"),
         "inputDepression": MessageLookupByLibrary.simpleMessage(
-            "Symptoma Depressionis Inscribe"),
+            "Intrare symptomata depressiva"),
         "inputManic":
-            MessageLookupByLibrary.simpleMessage("Symptoma Maniae Inscribe"),
+            MessageLookupByLibrary.simpleMessage("Intrare symptomata manic"),
         "inputOverwriting":
-            MessageLookupByLibrary.simpleMessage("Super Scribere"),
+            MessageLookupByLibrary.simpleMessage("Superimponere"),
         "inputOverwritingQuestion":
-            MessageLookupByLibrary.simpleMessage("Vis super scribere?"),
+            MessageLookupByLibrary.simpleMessage("Vis superimponere?"),
         "inputRequest":
-            MessageLookupByLibrary.simpleMessage("Symptoma Inscribe"),
-        "inputSave": MessageLookupByLibrary.simpleMessage("Serva"),
+            MessageLookupByLibrary.simpleMessage("Intrare symptomata"),
+        "inputSave": MessageLookupByLibrary.simpleMessage("Servare"),
         "inputSuccess": MessageLookupByLibrary.simpleMessage(
-            "Registratio Valoris Mentis et Quantitatis Propositae Confecit"),
-        "manic": MessageLookupByLibrary.simpleMessage("Status Manicus"),
-        "melancholyMinus_1": MessageLookupByLibrary.simpleMessage(
-            "Generaliter est magis negativus"),
+            "Inscriptio valoris animi et numerus actuum confecta est"),
+        "manic": MessageLookupByLibrary.simpleMessage("Status manic"),
+        "melancholyMinus_1":
+            MessageLookupByLibrary.simpleMessage("Magis retrospicere"),
         "melancholyMinus_2": MessageLookupByLibrary.simpleMessage(
-            "Leviter melancholicus est, maior aversio ad cotidianas actiones"),
+            "Sensio levissimae melancholiae, plura non velle facere"),
         "melancholyMinus_3": MessageLookupByLibrary.simpleMessage(
-            "Intensos sentit melancholiae affectus, vitam difficilem agit. Vix ullum interesse in actionibus cotidianis"),
+            "Melancholia gravis, vita difficilis, parum interesse"),
         "melancholyMinus_4": MessageLookupByLibrary.simpleMessage(
-            "Fortes sentit melancholiae affectus, vitam quotidie afficit et modum functionis. Afficit actiones cotidianas"),
+            "Melancholia valida, vita impeditur"),
         "melancholyMinus_5": MessageLookupByLibrary.simpleMessage(
-            "Perfecte desperatus est, in dolore vivit, vix cotidianas actiones peragere potest"),
-        "moodValue": MessageLookupByLibrary.simpleMessage("Valorem Mentis"),
+            "Totum desperatio, vivere dolorosum, activitates difficulter"),
+        "moodValue": MessageLookupByLibrary.simpleMessage("Valor animi"),
         "moodValueQuestion":
-            MessageLookupByLibrary.simpleMessage("Quomodo hodie sentis?"),
+            MessageLookupByLibrary.simpleMessage("Quid de animo hodierno?"),
         "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
-            "Valorem mentis hodie in -5 ad +5 notare\nSi dubitas, tabulam indicis mentis consule!"),
-        "next": MessageLookupByLibrary.simpleMessage("Sequentem"),
+            "Recordare animum hodiernum inter -5 et +5\nSi dubitas, specta tabulam mensurarum animi! \n+3 vel -3 consilium medici commendatur"),
+        "next": MessageLookupByLibrary.simpleMessage("Proximo"),
+        "notificationDailyBody": MessageLookupByLibrary.simpleMessage(
+            "Notare animum hodiernum et accipere cognitionem ex graphico animi"),
+        "notificationDailyTitle": MessageLookupByLibrary.simpleMessage(
+            "Meministine animum hodiernum?"),
+        "notificationSettingsDaily":
+            MessageLookupByLibrary.simpleMessage("Cotidie"),
+        "notificationSettingsDailyDescription":
+            MessageLookupByLibrary.simpleMessage(
+                "Admonitio quotidiana hora 20:00"),
+        "notificationSettingsNone":
+            MessageLookupByLibrary.simpleMessage("Nulla admonitiones"),
+        "notificationSettingsNoneDescription":
+            MessageLookupByLibrary.simpleMessage("Admonitiones desactivatae"),
+        "notificationSettingsTitle": MessageLookupByLibrary.simpleMessage(
+            "Vis configuare admonitiones?"),
+        "notificationSettingsWeekend":
+            MessageLookupByLibrary.simpleMessage("Unus dies hebdomadis"),
+        "notificationSettingsWeekendDescription":
+            MessageLookupByLibrary.simpleMessage(
+                "Admonitio finem hebdomadis hora 20:00"),
+        "notificationWeekendBody": MessageLookupByLibrary.simpleMessage(
+            "Notare finem hebdomadis et accipere cognitionem ex graphico animi"),
+        "notificationWeekendTitle": MessageLookupByLibrary.simpleMessage(
+            "Meministine finem hebdomadis?"),
         "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
-            "Affectum tuum adnota et tuum proprium diagramma creā"),
+            "Animum tuum nota et proprium graphicum fac"),
         "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
-            "Valōrēs Affectūs ā -5 ad +5 inserē et in diagrammate collocā"),
+            "Intrare valores animi inter -5 et +5, praeter 0, et graphicum accumula"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
-            "Sustentat inputum valōrum Affectūs et personalizationem individualem permittit"),
-        "onboardingNext": MessageLookupByLibrary.simpleMessage("Sequentem"),
-        "onboardingSkip": MessageLookupByLibrary.simpleMessage(" Transire"),
-        "onboardingStart": MessageLookupByLibrary.simpleMessage(" Incipere"),
+            "Supporto ad intrandum valores animi\nPossibile est personalizare secundum tuum desiderium"),
+        "onboardingNext": MessageLookupByLibrary.simpleMessage("Proximo"),
+        "onboardingSkip": MessageLookupByLibrary.simpleMessage("Saltare"),
+        "onboardingStart": MessageLookupByLibrary.simpleMessage("Incipere"),
         "onboardingTitleFirst": MessageLookupByLibrary.simpleMessage("Salve"),
         "onboardingTitleSecond":
-            MessageLookupByLibrary.simpleMessage("Diagramma Affectūs"),
-        "onboardingTitleThird": MessageLookupByLibrary.simpleMessage(
-            "Tabula Referentiae Valōrum Affectūs"),
+            MessageLookupByLibrary.simpleMessage("Graphicum animi"),
+        "onboardingTitleThird":
+            MessageLookupByLibrary.simpleMessage("Tabula mensurarum animi"),
         "onboardingWelcome":
-            MessageLookupByLibrary.simpleMessage("Salve ad Chartam Mentis!"),
-        "plannedVolume":
-            MessageLookupByLibrary.simpleMessage("Quantitatem Propositam"),
+            MessageLookupByLibrary.simpleMessage("Salve ad graphicum animi!"),
+        "plannedVolume": MessageLookupByLibrary.simpleMessage("Actus numerus"),
         "plannedVolumeQuestion": MessageLookupByLibrary.simpleMessage(
-            "Quot sunt haec acta vel consilia?"),
+            "Quid de numero actuum hodierni?"),
         "plannedVolumeQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
-            "Acta hodie facta numerare\nAd mentis valorem quam obiectivum numerum respicere adiuvat"),
+            "Recorda numerum actuum per diem\nValor plus obiectivus ut auxiliari in recordatione"),
         "registerConfirm":
-            MessageLookupByLibrary.simpleMessage("Confirmatio Registratio"),
-        "registerRegister": MessageLookupByLibrary.simpleMessage("Registra"),
+            MessageLookupByLibrary.simpleMessage("Confirmatio inscriptionis"),
+        "registerRegister": MessageLookupByLibrary.simpleMessage("Inscriptio"),
         "registerSave": MessageLookupByLibrary.simpleMessage(
-            "Registratio Tabulae Indicis Mentis Confecit"),
-        "settingAboutApp":
-            MessageLookupByLibrary.simpleMessage("De Applicatio"),
+            "Inscriptio mensurarum animi confecta est"),
+        "settingAboutApp": MessageLookupByLibrary.simpleMessage("De app"),
         "settingContact": MessageLookupByLibrary.simpleMessage("Contactus"),
-        "settingEdit": MessageLookupByLibrary.simpleMessage("Edere"),
-        "settingOnboarding":
-            MessageLookupByLibrary.simpleMessage("De hac applicatione"),
+        "settingEdit": MessageLookupByLibrary.simpleMessage("Editare"),
+        "settingNotifications":
+            MessageLookupByLibrary.simpleMessage("Admonitiones"),
+        "settingOnboarding": MessageLookupByLibrary.simpleMessage("De hac app"),
         "settingOther": MessageLookupByLibrary.simpleMessage("Aliud"),
         "settingPrivacy":
-            MessageLookupByLibrary.simpleMessage("Lex Privationum"),
-        "settingReview": MessageLookupByLibrary.simpleMessage("Recensere"),
+            MessageLookupByLibrary.simpleMessage("Politica de secretum"),
+        "settingReview": MessageLookupByLibrary.simpleMessage("Recensio"),
         "settingReviewRequest": MessageLookupByLibrary.simpleMessage(
-            "Exsultant Developatores si recensas"),
-        "settingSetting":
-            MessageLookupByLibrary.simpleMessage("Configurationes"),
+            "Si recensionem facis, auctor gaudebit"),
+        "settingSetting": MessageLookupByLibrary.simpleMessage("Impositiones"),
         "settingSupport": MessageLookupByLibrary.simpleMessage("Auxilium"),
-        "settingTerms":
-            MessageLookupByLibrary.simpleMessage("Condictiones Usus"),
+        "settingTerms": MessageLookupByLibrary.simpleMessage("Termini usus"),
         "settingThank":
-            MessageLookupByLibrary.simpleMessage("Gratias tibi agimus pro usu"),
-        "settingWithdraw": MessageLookupByLibrary.simpleMessage("Discedere"),
+            MessageLookupByLibrary.simpleMessage("Gratias tibi ago pro usus"),
+        "settingWithdraw": MessageLookupByLibrary.simpleMessage("Exire"),
         "settingWithdrawConfirm":
-            MessageLookupByLibrary.simpleMessage("Certone discedere vis?"),
+            MessageLookupByLibrary.simpleMessage("Vis exire?"),
         "settingWithdrawConfirmDetail": MessageLookupByLibrary.simpleMessage(
-            "Data omnia delebuntur et recuperari nequeunt"),
-        "sleepMinus_1": MessageLookupByLibrary.simpleMessage(
-            "Non sentit recentem excitum post expergefactionem"),
+            "Omnia data deleuntur et restituere non possunt"),
+        "sleepMinus_1":
+            MessageLookupByLibrary.simpleMessage("Non bene surgere"),
         "sleepMinus_2": MessageLookupByLibrary.simpleMessage(
-            "Qualitas somni deficit, diurna somnolentia et lassitudo sentiuntur"),
+            "Somnus leviore qualitate, lassitudine diurna"),
         "sleepMinus_3": MessageLookupByLibrary.simpleMessage(
-            "Somnus perturbatus est, requiem satis non capit, diurna somnolentia valida est"),
+            "Somnus turbatus, pauci aut nulli recuperatio, somnolentia"),
         "sleepMinus_4": MessageLookupByLibrary.simpleMessage(
-            "Somnus deficit vel nimius est, functionem cotidianam valde deficit"),
+            "Somnus nimis brevis aut nimis longus, functiones diurnae deficit"),
         "sleepMinus_5": MessageLookupByLibrary.simpleMessage(
-            "Non potest dormire, insomnia perpetua et nimia, valida lassitudo diurna vel plerumque dormienti consumitur"),
-        "table": MessageLookupByLibrary.simpleMessage("Tabula Indicis Mentis"),
-        "tableStartEdit":
-            MessageLookupByLibrary.simpleMessage("Rozpocznij edycję"),
+            "Semper insomnia, invalidus aut plerumque somnum diei"),
+        "table":
+            MessageLookupByLibrary.simpleMessage("Tabula mensurarum animi"),
+        "tableStartEdit": MessageLookupByLibrary.simpleMessage(
+            "Incipere modum mensurarum animi"),
         "thinkMinus_1": MessageLookupByLibrary.simpleMessage(
-            "Interdum cogitare videtur leviter molestum"),
+            "Cogitare paulum difficile est"),
         "thinkMinus_2": MessageLookupByLibrary.simpleMessage(
-            "Leviter tardum cogitare habet"),
+            "Levis lentitudo cogitationis"),
         "thinkMinus_3": MessageLookupByLibrary.simpleMessage(
-            "Tardum cogitare habet, significanti solutione problematum et iudicio deest"),
+            "Cogitatio lentissima, facultas problemata solvendi minuitur"),
         "thinkMinus_4": MessageLookupByLibrary.simpleMessage(
-            "Cognitio multum deficit, magna difficultas concentrationis et memoriae est"),
+            "Cogitatio immensa difficulter, memoria et concentrationis problemas"),
         "thinkMinus_5": MessageLookupByLibrary.simpleMessage(
-            "Cognitio omnino non est, vix aliquid intellegit"),
-        "typeActivity": MessageLookupByLibrary.simpleMessage("Actio"),
+            "Cogitatio non fit, nihil intellegitur"),
+        "typeActivity": MessageLookupByLibrary.simpleMessage("Activitas"),
         "typeDepression": MessageLookupByLibrary.simpleMessage(
-            "Quale tuae depressionis genus est?"),
-        "typeElation": MessageLookupByLibrary.simpleMessage("Exaltatio"),
+            "Quis est genus depressivae tuae?"),
+        "typeElation":
+            MessageLookupByLibrary.simpleMessage("Exhilaratio animi"),
         "typeIdea": MessageLookupByLibrary.simpleMessage("Idea"),
-        "typeManic": MessageLookupByLibrary.simpleMessage(
-            "Quale tuae maniae genus est?"),
+        "typeManic":
+            MessageLookupByLibrary.simpleMessage("Quis est genus manic tuae?"),
         "typeMelancholy": MessageLookupByLibrary.simpleMessage("Melancholia"),
-        "typeOther": MessageLookupByLibrary.simpleMessage("Aliud"),
+        "typeOther": MessageLookupByLibrary.simpleMessage("Alia\nInputare"),
         "typePoorThinking":
-            MessageLookupByLibrary.simpleMessage("Cogitandi Inferioris"),
-        "typeSleepDisorder":
-            MessageLookupByLibrary.simpleMessage("Morbi Somni"),
+            MessageLookupByLibrary.simpleMessage("Cogitatio deficient"),
+        "typeSleepDisorder": MessageLookupByLibrary.simpleMessage("Insomnia"),
         "typeSuggestion": MessageLookupByLibrary.simpleMessage("Suggestio"),
-        "version_info":
-            MessageLookupByLibrary.simpleMessage("Informationes versionis")
+        "version_info": MessageLookupByLibrary.simpleMessage("Info de versione")
       };
 }

@@ -99,5 +99,17 @@
     "plannedVolumeQuestionTooltipMessage": "Record the number of activities you completed today\nThis objective measure can help in reviewing trends",
     "goTable": "View Mood Value Guide",
     "homeCoachMarkTitle": "Let's start recording!",
-    "homeCoachMarkBody": "Use the button below to record your mood value and activity count"
+    "homeCoachMarkBody": "Use the button below to record your mood value and activity count",
+    "notificationDailyTitle": "Record your mood today",
+    "notificationDailyBody": "Track your mood changes by recording your daily reflection",
+    "notificationWeekendTitle": "Record your weekend mood",
+    "notificationWeekendBody": "Track your mood changes by recording your weekend reflection",
+    "notificationSettingsTitle": "Would you like to set up notification reminders?",
+    "notificationSettingsDaily": "Daily",
+    "notificationSettingsDailyDescription": "Notify at 8:00 PM daily",
+    "notificationSettingsWeekend": "Weekend",
+    "notificationSettingsWeekendDescription": "Notify at 8:00 PM on weekends",
+    "notificationSettingsNone": "No notifications",
+    "notificationSettingsNoneDescription": "Disable notifications",
+    "settingNotifications": "Notification Settings"
 }

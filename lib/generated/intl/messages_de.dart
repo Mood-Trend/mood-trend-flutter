@@ -100,6 +100,31 @@ class MessageLookup extends MessageLookupByLibrary {
         "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
             "Erfasse deine Stimmung von -5 bis +5\nSchau in die Stimmungswert-Tabelle, falls du unsicher bist!\nBei +3 oder -3 solltest du ärztlichen Rat einholen"),
         "next": MessageLookupByLibrary.simpleMessage("Weiter"),
+        "notificationDailyBody": MessageLookupByLibrary.simpleMessage(
+            "Aufzeichnen Sie Ihre Stimmung und verfolgen Sie die Veränderungen"),
+        "notificationDailyTitle":
+            MessageLookupByLibrary.simpleMessage("Wie fühlen Sie sich heute?"),
+        "notificationSettingsDaily":
+            MessageLookupByLibrary.simpleMessage("Täglich"),
+        "notificationSettingsDailyDescription":
+            MessageLookupByLibrary.simpleMessage(
+                "Benachrichtigung um 20:00 Uhr täglich"),
+        "notificationSettingsNone":
+            MessageLookupByLibrary.simpleMessage("Keine Benachrichtigungen"),
+        "notificationSettingsNoneDescription":
+            MessageLookupByLibrary.simpleMessage(
+                "Benachrichtigungen deaktivieren"),
+        "notificationSettingsTitle": MessageLookupByLibrary.simpleMessage(
+            "Möchten Sie Erinnerungen einrichten?"),
+        "notificationSettingsWeekend":
+            MessageLookupByLibrary.simpleMessage("Wochenende"),
+        "notificationSettingsWeekendDescription":
+            MessageLookupByLibrary.simpleMessage(
+                "Benachrichtigung um 20:00 Uhr am Wochenende"),
+        "notificationWeekendBody": MessageLookupByLibrary.simpleMessage(
+            "Aufzeichnen Sie Ihre Wochenendstimmung und verfolgen Sie die Veränderungen"),
+        "notificationWeekendTitle": MessageLookupByLibrary.simpleMessage(
+            "Wie fühlen Sie sich am Wochenende?"),
         "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
             "Zeichne deine Stimmung auf und erstelle dein eigenes Diagramm"),
         "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
@@ -132,6 +157,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingAboutApp": MessageLookupByLibrary.simpleMessage("Über die App"),
         "settingContact": MessageLookupByLibrary.simpleMessage("Kontakt"),
         "settingEdit": MessageLookupByLibrary.simpleMessage("Bearbeiten"),
+        "settingNotifications": MessageLookupByLibrary.simpleMessage(
+            "Benachrichtigungseinstellungen"),
         "settingOnboarding":
             MessageLookupByLibrary.simpleMessage("Über diese App"),
         "settingOther": MessageLookupByLibrary.simpleMessage("Sonstiges"),

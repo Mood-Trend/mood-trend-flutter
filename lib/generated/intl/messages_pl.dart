@@ -23,15 +23,15 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "activityPlus_1":
-            MessageLookupByLibrary.simpleMessage("Jest w stanie być aktywnym"),
+            MessageLookupByLibrary.simpleMessage("Jestem w stanie działać"),
         "activityPlus_2": MessageLookupByLibrary.simpleMessage(
-            "Ma bardziej aktywny nastrój niż zazwyczaj"),
+            "Mam ochotę być bardziej aktywny niż zwykle"),
         "activityPlus_3": MessageLookupByLibrary.simpleMessage(
-            "Jest pozytywny i pełen energii, planuje wiele aktywności"),
-        "activityPlus_4":
-            MessageLookupByLibrary.simpleMessage("Dzień jest pełen planów"),
+            "Jestem pełen energii i chętnie planuję wiele rzeczy"),
+        "activityPlus_4": MessageLookupByLibrary.simpleMessage(
+            "Mój dzień jest pełen aktywności"),
         "activityPlus_5": MessageLookupByLibrary.simpleMessage(
-            "Kontynuuje aktywność przez kilka dni bez odczuwania zmęczenia, działa energetycznie przez cały dzień"),
+            "Spędzam kilka dni non-stop na aktywności, nie czując zmęczenia"),
         "cancel": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "depression": MessageLookupByLibrary.simpleMessage("Stan depresyjny"),
         "dialogConfirm": MessageLookupByLibrary.simpleMessage("Potwierdź"),
@@ -40,96 +40,121 @@ class MessageLookup extends MessageLookupByLibrary {
         "dialogOk": MessageLookupByLibrary.simpleMessage("OK"),
         "dialogYes": MessageLookupByLibrary.simpleMessage("Tak"),
         "elationPlus_1": MessageLookupByLibrary.simpleMessage(
-            "Ma nastrojową nastrój niż zazwyczaj"),
+            "Jestem bardziej optymistyczny niż zwykle"),
         "elationPlus_2": MessageLookupByLibrary.simpleMessage(
-            "Jest pozytywny i ambitny, odczuwa pozytywną energię"),
+            "Mam poczucie wyzwania i pozytywnej energii"),
         "elationPlus_3": MessageLookupByLibrary.simpleMessage(
-            "Czuje się pewnie, że wszystko pójdzie dobrze, niezależnie od sytuacji"),
+            "Mam poczucie, że wszystko mi się uda"),
         "elationPlus_4": MessageLookupByLibrary.simpleMessage(
-            "Jest przekonany, że odniesie sukces w każdym przedsięwzięciu"),
+            "Jestem pewny, że wszystko, co robię, zakończy się sukcesem"),
         "elationPlus_5": MessageLookupByLibrary.simpleMessage(
-            "Jest absolutnie pewny, że ma rację i że wszystko pójdzie dobrze"),
-        "goTable": MessageLookupByLibrary.simpleMessage(
-            "Tabela wartości nastroju znajduje się tutaj"),
+            "Jestem absolutnie pewny, że mam rację, wszystko pójdzie zgodnie z planem"),
+        "goTable":
+            MessageLookupByLibrary.simpleMessage("Zobacz tabelę nastroju"),
         "homeCoachMarkBody": MessageLookupByLibrary.simpleMessage(
-            "Możesz zarejestrować wartość nastroju i liczbę działań za pomocą poniższych przycisków"),
+            "Możesz zacząć zapisywać wartości nastroju i liczbę aktywności za pomocą poniższego przycisku"),
         "homeCoachMarkTitle":
             MessageLookupByLibrary.simpleMessage("Zacznij rejestrować!"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("Pół roku"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1 miesiąc"),
         "homeYear": MessageLookupByLibrary.simpleMessage("1 rok"),
         "ideaPlus_1": MessageLookupByLibrary.simpleMessage(
-            "Potrafi myśleć o pomysłach, gdy chce"),
+            "Mogę wymyślić pomysły, gdy chcę"),
         "ideaPlus_2": MessageLookupByLibrary.simpleMessage(
-            "Potrafi łatwo wymyślać pomysły"),
+            "Łatwo przychodzi mi wymyślanie pomysłów"),
         "ideaPlus_3": MessageLookupByLibrary.simpleMessage(
-            "Pomysły pojawiają się ciągle, myśli bez przerwy"),
+            "Pomysły pojawiają się w mojej głowie i nie przestaję myśleć"),
         "ideaPlus_4": MessageLookupByLibrary.simpleMessage(
-            "Walcząc, aby zrealizować napływające pomysły"),
+            "Próbuję urzeczywistnić pojawiające się pomysły"),
         "ideaPlus_5": MessageLookupByLibrary.simpleMessage(
-            "Jest przekonany, że pomysły będą udane i skutecznie je realizuje"),
+            "Jestem pewny, że moje pomysły będą udane, zaczynam działać w kierunku ich realizacji"),
         "inputAlreadyExist":
-            MessageLookupByLibrary.simpleMessage("już jest zarejestrowane"),
+            MessageLookupByLibrary.simpleMessage("Jest już zarejestrowany"),
         "inputDepression":
             MessageLookupByLibrary.simpleMessage("Wprowadź objawy depresji"),
         "inputManic":
             MessageLookupByLibrary.simpleMessage("Wprowadź objawy manii"),
-        "inputOverwriting": MessageLookupByLibrary.simpleMessage("Nadpisanie"),
+        "inputOverwriting": MessageLookupByLibrary.simpleMessage("Nadpisz"),
         "inputOverwritingQuestion":
             MessageLookupByLibrary.simpleMessage("Czy chcesz nadpisać?"),
         "inputRequest":
             MessageLookupByLibrary.simpleMessage("Proszę wprowadzić objawy"),
         "inputSave": MessageLookupByLibrary.simpleMessage("Zapisz"),
         "inputSuccess": MessageLookupByLibrary.simpleMessage(
-            "Rejestracja wartości nastroju i zaplanowanej ilości została zakończona"),
+            "Rejestracja wartości nastroju i liczby aktywności zakończona sukcesem"),
         "manic": MessageLookupByLibrary.simpleMessage("Stan maniakalny"),
-        "melancholyMinus_1": MessageLookupByLibrary.simpleMessage(
-            "Ogólnie jest bardziej negatywny"),
+        "melancholyMinus_1":
+            MessageLookupByLibrary.simpleMessage("Jestem raczej pesymistyczny"),
         "melancholyMinus_2": MessageLookupByLibrary.simpleMessage(
-            "Jest trochę melancholijny, z większą niechęcią do codziennych aktywności"),
+            "Odczuwam lekką melancholię i mam więcej rzeczy, które mnie męczą"),
         "melancholyMinus_3": MessageLookupByLibrary.simpleMessage(
-            "Doświadcza silnych uczuć melancholii i ma trudną sytuację życiową. Prawie brak zainteresowania codziennymi aktywnościami"),
+            "Melancholia jest silna, a życie staje się trudne. Nie mam zainteresowania codziennymi czynnościami"),
         "melancholyMinus_4": MessageLookupByLibrary.simpleMessage(
-            "Doświadcza silnych uczuć melancholii, wpływa na codzienne życie i poziom funkcjonowania. Wpływa na codzienne funkcje"),
+            "Silna melancholia wpływa na moje życie codzienne, utrudniając normalne funkcjonowanie"),
         "melancholyMinus_5": MessageLookupByLibrary.simpleMessage(
-            "Jest całkowicie zrozpaczony, żyje w cierpieniu, ledwo może wykonywać codzienne czynności"),
+            "Całkowita rozpacz, życie stało się tylko cierpieniem. Nie jestem w stanie wykonywać codziennych czynności"),
         "moodValue": MessageLookupByLibrary.simpleMessage("Wartość nastroju"),
         "moodValueQuestion": MessageLookupByLibrary.simpleMessage(
-            "Jaki był twój nastrój tego dnia?"),
+            "Jaki był twój nastrój dzisiaj?"),
         "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
-            "Zarejestruj swój nastrój tego dnia w skali od -5 do +5\nJeśli masz wątpliwości, sprawdź tabelę wartości nastroju!"),
+            "Zarejestruj swój nastrój od -5 do +5\nJeśli nie jesteś pewny, sprawdź tabelę nastroju!\nJeśli Twój nastrój to +3 lub wyżej, lub -3 lub niżej, skonsultuj się z lekarzem"),
         "next": MessageLookupByLibrary.simpleMessage("Dalej"),
+        "notificationDailyBody": MessageLookupByLibrary.simpleMessage(
+            "Zapisz swój nastrój i uzyskaj ciekawe spostrzeżenia na wykresie nastroju"),
+        "notificationDailyTitle": MessageLookupByLibrary.simpleMessage(
+            "Czy chcesz przypomnieć sobie swój nastrój dzisiaj?"),
+        "notificationSettingsDaily":
+            MessageLookupByLibrary.simpleMessage("Codziennie"),
+        "notificationSettingsDailyDescription":
+            MessageLookupByLibrary.simpleMessage(
+                "Przypomnienie codziennie o 20:00"),
+        "notificationSettingsNone":
+            MessageLookupByLibrary.simpleMessage("Brak przypomnień"),
+        "notificationSettingsNoneDescription":
+            MessageLookupByLibrary.simpleMessage("Wyłącz przypomnienia"),
+        "notificationSettingsTitle": MessageLookupByLibrary.simpleMessage(
+            "Chcesz ustawić przypomnienia?"),
+        "notificationSettingsWeekend":
+            MessageLookupByLibrary.simpleMessage("Raz w weekend"),
+        "notificationSettingsWeekendDescription":
+            MessageLookupByLibrary.simpleMessage(
+                "Przypomnienie w każdą sobotę o 20:00"),
+        "notificationWeekendBody": MessageLookupByLibrary.simpleMessage(
+            "Zapisz swój nastrój z weekendu i odkryj ciekawe spostrzeżenia na wykresie nastroju"),
+        "notificationWeekendTitle": MessageLookupByLibrary.simpleMessage(
+            "Czy chcesz przypomnieć sobie swój nastrój w weekend?"),
         "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
-            "Zapisz swój nastrój i stwórz swój własny wykres"),
+            "Zapisuj swój nastrój i twórz własne wykresy"),
         "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
-            "Wprowadź wartości nastroju od -5 do +5 i ułóż je w wykresie"),
+            "Wprowadź wartości nastroju od -5 do +5 (poza 0) i twórz wykresy"),
         "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
-            "Obsługuje wprowadzanie wartości nastroju i umożliwia indywidualne dostosowanie"),
-        "onboardingNext": MessageLookupByLibrary.simpleMessage("     Dalej"),
-        "onboardingSkip": MessageLookupByLibrary.simpleMessage("     Pomiń"),
+            "Wsparcie wprowadzania wartości nastroju\nMożliwość personalizacji"),
+        "onboardingNext": MessageLookupByLibrary.simpleMessage("Dalej"),
+        "onboardingSkip": MessageLookupByLibrary.simpleMessage("Pomiń"),
         "onboardingStart": MessageLookupByLibrary.simpleMessage("Rozpocznij"),
         "onboardingTitleFirst": MessageLookupByLibrary.simpleMessage("Witaj"),
         "onboardingTitleSecond":
-            MessageLookupByLibrary.simpleMessage("Wykres Nastroju"),
-        "onboardingTitleThird": MessageLookupByLibrary.simpleMessage(
-            "Tabela Referencyjna Wartości Nastroju"),
+            MessageLookupByLibrary.simpleMessage("Wykres nastroju"),
+        "onboardingTitleThird":
+            MessageLookupByLibrary.simpleMessage("Tabela nastroju"),
         "onboardingWelcome":
-            MessageLookupByLibrary.simpleMessage("Witaj w Grafie Nastroju!"),
+            MessageLookupByLibrary.simpleMessage("Witaj w wykresie nastroju!"),
         "plannedVolume":
-            MessageLookupByLibrary.simpleMessage("Zaplanowana ilość"),
+            MessageLookupByLibrary.simpleMessage("Liczba aktywności"),
         "plannedVolumeQuestion": MessageLookupByLibrary.simpleMessage(
-            "Ile aktywności lub planów miałaś tego dnia?"),
+            "Ile aktywności lub planów miało miejsce dzisiaj?"),
         "plannedVolumeQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
-            "Zarejestruj liczbę działań, które wykonałaś tego dnia\nPomoże to w analizie z większą obiektywnością niż wartości nastroju"),
+            "Zarejestruj liczbę rzeczy, które zrobiłeś w tym dniu\nTo pomoże w bardziej obiektywnej refleksji na podstawie wartości nastroju"),
         "registerConfirm":
-            MessageLookupByLibrary.simpleMessage("Potwierdź rejestrację"),
+            MessageLookupByLibrary.simpleMessage("Potwierdzenie rejestracji"),
         "registerRegister": MessageLookupByLibrary.simpleMessage("Zarejestruj"),
         "registerSave": MessageLookupByLibrary.simpleMessage(
-            "Rejestracja tabeli wartości nastroju została zakończona"),
+            "Rejestracja tabeli nastroju zakończona sukcesem"),
         "settingAboutApp": MessageLookupByLibrary.simpleMessage("O aplikacji"),
-        "settingContact":
-            MessageLookupByLibrary.simpleMessage("Skontaktuj się z nami"),
+        "settingContact": MessageLookupByLibrary.simpleMessage("Kontakt"),
         "settingEdit": MessageLookupByLibrary.simpleMessage("Edytuj"),
+        "settingNotifications":
+            MessageLookupByLibrary.simpleMessage("Przypomnienia"),
         "settingOnboarding":
             MessageLookupByLibrary.simpleMessage("O tej aplikacji"),
         "settingOther": MessageLookupByLibrary.simpleMessage("Inne"),
@@ -137,56 +162,54 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Polityka prywatności"),
         "settingReview": MessageLookupByLibrary.simpleMessage("Recenzja"),
         "settingReviewRequest": MessageLookupByLibrary.simpleMessage(
-            "Deweloperzy zatańczą z radości, jeśli napiszesz recenzję"),
+            "Twoja recenzja sprawi, że twórcy będą bardzo zadowoleni"),
         "settingSetting": MessageLookupByLibrary.simpleMessage("Ustawienia"),
         "settingSupport": MessageLookupByLibrary.simpleMessage("Wsparcie"),
-        "settingTerms":
-            MessageLookupByLibrary.simpleMessage("Warunki korzystania"),
+        "settingTerms": MessageLookupByLibrary.simpleMessage("Regulamin"),
         "settingThank": MessageLookupByLibrary.simpleMessage(
-            "Dziękujemy za korzystanie z naszej usługi"),
-        "settingWithdraw": MessageLookupByLibrary.simpleMessage("Wycofaj się"),
+            "Dziękujemy za korzystanie z aplikacji"),
+        "settingWithdraw": MessageLookupByLibrary.simpleMessage("Anuluj konto"),
         "settingWithdrawConfirm": MessageLookupByLibrary.simpleMessage(
-            "Czy na pewno chcesz się wycofać?"),
+            "Czy na pewno chcesz anulować konto?"),
         "settingWithdrawConfirmDetail": MessageLookupByLibrary.simpleMessage(
-            "Wszystkie dane zostaną usunięte i nie będzie możliwości ich przywrócenia"),
+            "Wszystkie dane zostaną usunięte i nie będzie można ich odzyskać"),
         "sleepMinus_1": MessageLookupByLibrary.simpleMessage(
-            "Nie czuje się świeży po przebudzeniu"),
+            "Czuję się zmęczony zaraz po przebudzeniu"),
         "sleepMinus_2": MessageLookupByLibrary.simpleMessage(
-            "Niska jakość snu, odczuwa senność i zmęczenie w ciągu dnia"),
+            "Jakość snu jest niska, czuję senność i zmęczenie w ciągu dnia"),
         "sleepMinus_3": MessageLookupByLibrary.simpleMessage(
-            "Sen jest zakłócony, nie uzyskuje odpowiedniego odpoczynku, silne uczucie senności w ciągu dnia"),
+            "Mój sen jest zaburzony, nie mam wystarczającego odpoczynku, odczuwam silną senność w ciągu dnia"),
         "sleepMinus_4": MessageLookupByLibrary.simpleMessage(
-            "Bardzo mało snu lub nadmierna ilość snu, znaczne obniżenie codziennej funkcji"),
+            "Brak snu lub nadmierna ilość snu znacznie pogarsza moją wydajność w ciągu dnia"),
         "sleepMinus_5": MessageLookupByLibrary.simpleMessage(
-            "Nie może spać, stała nadmierna bezsenność, silne zmęczenie w ciągu dnia lub większość czasu spędza na śnie"),
-        "table":
-            MessageLookupByLibrary.simpleMessage("Tabela wartości nastroju"),
-        "tableStartEdit":
-            MessageLookupByLibrary.simpleMessage("Rozpocznij edycję"),
-        "thinkMinus_1": MessageLookupByLibrary.simpleMessage(
-            "Czasami myślenie wydaje się trochę uciążliwe"),
+            "Ciągła bezsenność, czuję silne zmęczenie przez cały dzień lub większość dnia spędzam w łóżku"),
+        "table": MessageLookupByLibrary.simpleMessage("Tabela nastroju"),
+        "tableStartEdit": MessageLookupByLibrary.simpleMessage(
+            "Rozpocznij edytowanie tabeli nastroju"),
+        "thinkMinus_1":
+            MessageLookupByLibrary.simpleMessage("Czasami trudno mi myśleć"),
         "thinkMinus_2": MessageLookupByLibrary.simpleMessage(
-            "Ma lekko spowolnione myślenie"),
+            "Odczuwam lekką niezdolność do myślenia"),
         "thinkMinus_3": MessageLookupByLibrary.simpleMessage(
-            "Ma spowolnione myślenie, znaczne obniżenie zdolności do rozwiązywania problemów i osądzania"),
+            "Myślenie jest opóźnione, mam problemy z rozwiązywaniem problemów i podejmowaniem decyzji"),
         "thinkMinus_4": MessageLookupByLibrary.simpleMessage(
-            "Ma znacznie obniżoną zdolność myślową, duże problemy z koncentracją i pamięcią"),
+            "Moje myślenie jest poważnie spowolnione, mam problemy z koncentracją i pamięcią"),
         "thinkMinus_5": MessageLookupByLibrary.simpleMessage(
-            "Nie ma żadnej funkcjonalnej zdolności myślowej, nie rozumie prawie nic"),
+            "Myślenie praktycznie nie funkcjonuje, nie rozumiem większości rzeczy"),
         "typeActivity": MessageLookupByLibrary.simpleMessage("Aktywność"),
         "typeDepression": MessageLookupByLibrary.simpleMessage(
-            "Jaki jest twój rodzaj depresji?"),
-        "typeElation": MessageLookupByLibrary.simpleMessage("Podniecenie"),
+            "Jaki jest twój typ depresji?"),
+        "typeElation": MessageLookupByLibrary.simpleMessage("Euforia"),
         "typeIdea": MessageLookupByLibrary.simpleMessage("Pomysł"),
-        "typeManic": MessageLookupByLibrary.simpleMessage(
-            "Jaki jest twój rodzaj manii?"),
+        "typeManic":
+            MessageLookupByLibrary.simpleMessage("Jaki jest twój typ manii?"),
         "typeMelancholy": MessageLookupByLibrary.simpleMessage("Melancholia"),
-        "typeOther": MessageLookupByLibrary.simpleMessage("Inne"),
+        "typeOther": MessageLookupByLibrary.simpleMessage("Własny typ"),
         "typePoorThinking":
-            MessageLookupByLibrary.simpleMessage("Spadek myślenia"),
+            MessageLookupByLibrary.simpleMessage("Słaba zdolność myślenia"),
         "typeSleepDisorder":
             MessageLookupByLibrary.simpleMessage("Zaburzenia snu"),
-        "typeSuggestion": MessageLookupByLibrary.simpleMessage("Sugestia"),
+        "typeSuggestion": MessageLookupByLibrary.simpleMessage("Propozycja"),
         "version_info":
             MessageLookupByLibrary.simpleMessage("Informacje o wersji")
       };
