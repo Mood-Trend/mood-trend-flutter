@@ -9,6 +9,9 @@ import 'package:mood_trend_flutter/application/graph/add_mood_point_usecase.dart
 import 'package:mood_trend_flutter/application/graph/states/is_saving_provider.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/utils/get_ad_mob_unit_id.dart';
+import 'package:mood_trend_flutter/infrastructure/services/notification_service.dart';
+import 'package:mood_trend_flutter/presentation/common/components/notification_settings_dialog.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../domain/app_exception.dart';
 import '../../utils/app_colors.dart';
@@ -154,13 +157,31 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                               // isContinueSaving: _isContinueSaving,
                             );
                           }
+                          // 初回記録時のみ通知設定ダイアログを表示
+                          final prefs = await SharedPreferences.getInstance();
+                          final hasShownNotificationDialog =
+                              prefs.getBool('has_shown_notification_dialog') ??
+                                  false;
 
-                          loadInterstitialAd();
+                          if (hasShownNotificationDialog) {
+                            loadInterstitialAd();
+                          }
 
                           await Future.delayed(
                             const Duration(milliseconds: 500),
                           );
                           if (!_isModalPop) return;
+
+                          if (!hasShownNotificationDialog && context.mounted) {
+                            await showDialog(
+                              context: context,
+                              builder: (context) =>
+                                  const NotificationSettingsDialog(),
+                            );
+                            await prefs.setBool(
+                                'has_shown_notification_dialog', true);
+                          }
+
                           Navigator.pop(context);
                         } on AppException catch (e) {
                           FailureSnackBar.show(
@@ -434,10 +455,28 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   // if (isContinueSaving) return;
                   // // 続けて保存が選択されていない場合はモーダルを閉じる
 
-                  loadInterstitialAd();
+                  // 初回記録時のみ通知設定ダイアログを表示
+                  final prefs = await SharedPreferences.getInstance();
+                  final hasShownNotificationDialog =
+                      prefs.getBool('has_shown_notification_dialog') ?? false;
 
-                  await Future.delayed(const Duration(milliseconds: 500));
+                  if (hasShownNotificationDialog) {
+                    loadInterstitialAd();
+                  }
+
+                  await Future.delayed(
+                    const Duration(milliseconds: 500),
+                  );
                   if (!_isModalPop) return;
+
+                  if (!hasShownNotificationDialog && parent.mounted) {
+                    await showDialog(
+                      context: parent,
+                      builder: (context) => const NotificationSettingsDialog(),
+                    );
+                    await prefs.setBool('has_shown_notification_dialog', true);
+                  }
+
                   await PageNavigator.pop(parent);
                 } on AppException catch (e) {
                   FailureSnackBar.show(

@@ -37,6 +37,8 @@ dependencies:
   tutorial_coach_mark: ^1.2.12
   google_mobile_ads: ^5.2.0
   firebase_analytics: ^11.3.6
+  flutter_local_notifications: ^19.0.0
+  timezone: ^0.10.0
 
 dev_dependencies:
   flutter_test:

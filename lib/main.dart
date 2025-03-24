@@ -15,6 +15,7 @@ import 'package:mood_trend_flutter/presentation/auth/root_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/constants.dart';
 import 'package:package_info/package_info.dart';
+import 'package:mood_trend_flutter/infrastructure/services/notification_service.dart';
 
 import 'application/common/states/overlay_loading_provider.dart';
 import 'domain/app_info.dart';
@@ -27,6 +28,10 @@ Future<void> main() async {
         ? prod.DefaultFirebaseOptions.currentPlatform
         : dev.DefaultFirebaseOptions.currentPlatform,
   );
+
+  // 通知サービスの初期化
+  final notificationService = NotificationService();
+  await notificationService.initialize();
 
   SystemChrome.setEnabledSystemUIMode(
     SystemUiMode.manual,
