@@ -110,5 +110,6 @@
     "notificationSettingsWeekend": "Fim de semana 1 vez",
     "notificationSettingsWeekendDescription": "Notificação aos sábados às 20:00",
     "notificationSettingsNone": "Sem notificações",
-    "notificationSettingsNoneDescription": "Desativar notificações"
+    "notificationSettingsNoneDescription": "Desativar notificações",
+    "settingNotifications": "Lembretes"
 }

@@ -110,5 +110,6 @@
     "notificationSettingsWeekend": "Raz w weekend",
     "notificationSettingsWeekendDescription": "Przypomnienie w każdą sobotę o 20:00",
     "notificationSettingsNone": "Brak przypomnień",
-    "notificationSettingsNoneDescription": "Wyłącz przypomnienia"
+    "notificationSettingsNoneDescription": "Wyłącz przypomnienia",
+    "settingNotifications": "Przypomnienia"
 }

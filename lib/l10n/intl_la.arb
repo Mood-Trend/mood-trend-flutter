@@ -110,5 +110,6 @@
     "notificationSettingsWeekend": "Unus dies hebdomadis",
     "notificationSettingsWeekendDescription": "Admonitio finem hebdomadis hora 20:00",
     "notificationSettingsNone": "Nulla admonitiones",
-    "notificationSettingsNoneDescription": "Admonitiones desactivatae"
+    "notificationSettingsNoneDescription": "Admonitiones desactivatae",
+    "settingNotifications": "Admonitiones"
 }

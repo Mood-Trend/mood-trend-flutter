@@ -110,5 +110,6 @@
     "notificationSettingsWeekend": "Week-end",
     "notificationSettingsWeekendDescription": "Notification à 20h00 le week-end",
     "notificationSettingsNone": "Aucune notification",
-    "notificationSettingsNoneDescription": "Désactiver les notifications"
+    "notificationSettingsNoneDescription": "Désactiver les notifications",
+    "settingNotifications": "Paramètres de notification"
 }

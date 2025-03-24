@@ -110,5 +110,6 @@
     "notificationSettingsWeekend": "Weekend",
     "notificationSettingsWeekendDescription": "Notify at 8:00 PM on weekends",
     "notificationSettingsNone": "No notifications",
-    "notificationSettingsNoneDescription": "Disable notifications"
+    "notificationSettingsNoneDescription": "Disable notifications",
+    "settingNotifications": "Notification Settings"
 }

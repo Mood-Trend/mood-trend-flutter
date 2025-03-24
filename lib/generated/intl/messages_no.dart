@@ -154,6 +154,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingAboutApp": MessageLookupByLibrary.simpleMessage("Om appen"),
         "settingContact": MessageLookupByLibrary.simpleMessage("Kontakt oss"),
         "settingEdit": MessageLookupByLibrary.simpleMessage("Rediger"),
+        "settingNotifications":
+            MessageLookupByLibrary.simpleMessage("Påminnelser"),
         "settingOnboarding":
             MessageLookupByLibrary.simpleMessage("Om denne appen"),
         "settingOther": MessageLookupByLibrary.simpleMessage("Annet"),

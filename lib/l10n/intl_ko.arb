@@ -110,5 +110,6 @@
     "notificationSettingsWeekend": "주말",
     "notificationSettingsWeekendDescription": "주말 20:00에 알림",
     "notificationSettingsNone": "알림 없음",
-    "notificationSettingsNoneDescription": "알림 비활성화"
+    "notificationSettingsNoneDescription": "알림 비활성화",
+    "settingNotifications": "알림 설정"
 }

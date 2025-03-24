@@ -21,6 +21,7 @@ import '../../application/common/states/overlay_loading_provider.dart';
 import '../../application/common/url_launcher_service.dart';
 import '../../domain/app_info.dart';
 import 'components/custom_about_dialog.dart';
+import 'components/notification_settings_dialog.dart';
 
 class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
   const SettingPage({super.key, required this.uid});
@@ -102,6 +103,32 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                     padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
                     child: Text(
                       S.of(context).settingContact,
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
+              ),
+              Divider(
+                height: 0,
+                thickness: 0.7,
+                indent: 16,
+                endIndent: 16,
+                color: AppColors.grey,
+              ),
+              GestureDetector(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => const NotificationSettingsDialog(),
+                  );
+                },
+                child: Container(
+                  color: AppColors.white,
+                  width: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
+                    child: Text(
+                      S.of(context).settingNotifications,
                       style: const TextStyle(fontSize: 18),
                     ),
                   ),

@@ -110,5 +110,6 @@
     "notificationSettingsWeekend": "週末一次",
     "notificationSettingsWeekendDescription": "每週末20:00發送通知",
     "notificationSettingsNone": "無通知",
-    "notificationSettingsNoneDescription": "禁用通知"
+    "notificationSettingsNoneDescription": "禁用通知",
+    "settingNotifications": "通知"
 }

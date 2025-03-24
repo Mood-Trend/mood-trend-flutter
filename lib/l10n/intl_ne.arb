@@ -110,5 +110,6 @@
     "notificationSettingsWeekend": "हप्तामा १ पटक",
     "notificationSettingsWeekendDescription": "हप्ताको अन्त्यमा २०:०० मा सूचना",
     "notificationSettingsNone": "सूचना छैन",
-    "notificationSettingsNoneDescription": "सूचना निष्क्रिय गरियो"
+    "notificationSettingsNoneDescription": "सूचना निष्क्रिय गरियो",
+    "settingNotifications": "सूचना सेटिङ"
 }

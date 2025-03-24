@@ -157,6 +157,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("सम्पर्क गर्नुहोस्"),
         "settingEdit":
             MessageLookupByLibrary.simpleMessage("सम्पादन गर्नुहोस्"),
+        "settingNotifications":
+            MessageLookupByLibrary.simpleMessage("सूचना सेटिङ"),
         "settingOnboarding":
             MessageLookupByLibrary.simpleMessage("यस एपको बारेमा"),
         "settingOther": MessageLookupByLibrary.simpleMessage("अन्य"),

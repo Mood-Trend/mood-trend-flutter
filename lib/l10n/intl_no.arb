@@ -110,5 +110,6 @@
     "notificationSettingsWeekend": "Hver helg",
     "notificationSettingsWeekendDescription": "Påminnelse hver helg kl 20:00",
     "notificationSettingsNone": "Ingen påminnelser",
-    "notificationSettingsNoneDescription": "Deaktiver påminnelser"
+    "notificationSettingsNoneDescription": "Deaktiver påminnelser",
+    "settingNotifications": "Påminnelser"
 }

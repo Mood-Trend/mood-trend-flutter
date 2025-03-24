@@ -153,6 +153,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingAboutApp": MessageLookupByLibrary.simpleMessage("Sobre o app"),
         "settingContact": MessageLookupByLibrary.simpleMessage("Contato"),
         "settingEdit": MessageLookupByLibrary.simpleMessage("Editar"),
+        "settingNotifications":
+            MessageLookupByLibrary.simpleMessage("Lembretes"),
         "settingOnboarding":
             MessageLookupByLibrary.simpleMessage("Sobre este app"),
         "settingOther": MessageLookupByLibrary.simpleMessage("Outros"),

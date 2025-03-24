@@ -110,5 +110,6 @@
     "notificationSettingsWeekend": "Fin de semana",
     "notificationSettingsWeekendDescription": "Notificación a las 20:00 los fines de semana",
     "notificationSettingsNone": "Sin notificaciones",
-    "notificationSettingsNoneDescription": "Desactivar notificaciones"
+    "notificationSettingsNoneDescription": "Desactivar notificaciones",
+    "settingNotifications": "Configuración de notificaciones"
 }

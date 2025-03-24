@@ -110,5 +110,6 @@
     "notificationSettingsWeekend": "週末1回",
     "notificationSettingsWeekendDescription": "週末の20:00に通知",
     "notificationSettingsNone": "通知なし",
-    "notificationSettingsNoneDescription": "通知を無効化"
+    "notificationSettingsNoneDescription": "通知を無効化",
+    "settingNotifications": "通知設定"
 }
