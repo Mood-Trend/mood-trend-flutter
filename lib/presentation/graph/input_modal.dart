@@ -228,6 +228,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                         ),
                       ),
                       Tooltip(
+                        showDuration: const Duration(seconds: 3),
                         triggerMode: TooltipTriggerMode.tap,
                         message: S.of(context).moodValueQuestionTooltipMessage,
                         child: Icon(
@@ -325,6 +326,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                         ),
                       ),
                       Tooltip(
+                        showDuration: const Duration(seconds: 3),
                         triggerMode: TooltipTriggerMode.tap,
                         message:
                             S.of(context).plannedVolumeQuestionTooltipMessage,
