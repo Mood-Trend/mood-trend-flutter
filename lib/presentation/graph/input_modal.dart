@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:intl/intl.dart';
+import 'package:in_app_review/in_app_review.dart';
 import 'package:mood_trend_flutter/application/graph/add_mood_point_usecase.dart';
 import 'package:mood_trend_flutter/application/graph/states/is_saving_provider.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
@@ -35,6 +36,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
   double _plannedValue = 0.0;
   DateTime date = DateTime.now();
   bool _isModalPop = true;
+  final InAppReview _inAppReview = InAppReview.instance;
   // bool _isContinueSaving = false;
 
   int moodNum = 1;
@@ -161,8 +163,16 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                           final hasShownNotificationDialog =
                               prefs.getBool('has_shown_notification_dialog') ??
                                   false;
+                          final recordCount = prefs.getInt('record_count') ?? 0;
+                          final newRecordCount = recordCount + 1;
+                          await prefs.setInt('record_count', newRecordCount);
 
-                          if (hasShownNotificationDialog) {
+                          // 3回目 or 10の倍数回目 の記録時にレビュー促進
+                          if (newRecordCount == 3 || newRecordCount % 10 == 0) {
+                            if (await _inAppReview.isAvailable()) {
+                              await _inAppReview.requestReview();
+                            }
+                          } else if (hasShownNotificationDialog) {
                             loadInterstitialAd();
                           }
 
@@ -455,11 +465,20 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   // // 続けて保存が選択されていない場合はモーダルを閉じる
 
                   // 初回記録時のみ通知設定ダイアログを表示
+                  // 初回記録時のみ通知設定ダイアログを表示
                   final prefs = await SharedPreferences.getInstance();
                   final hasShownNotificationDialog =
                       prefs.getBool('has_shown_notification_dialog') ?? false;
+                  final recordCount = prefs.getInt('record_count') ?? 0;
+                  final newRecordCount = recordCount + 1;
+                  await prefs.setInt('record_count', newRecordCount);
 
-                  if (hasShownNotificationDialog) {
+                  // 3回目 or 10の倍数回目 の記録時にレビュー促進
+                  if (newRecordCount == 3 || newRecordCount % 10 == 0) {
+                    if (await _inAppReview.isAvailable()) {
+                      await _inAppReview.requestReview();
+                    }
+                  } else if (hasShownNotificationDialog) {
                     loadInterstitialAd();
                   }
 
