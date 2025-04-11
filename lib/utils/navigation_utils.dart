@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 /// 画面遷移の深さを追跡するグローバル変数
 /// 画面が追加されるとインクリメント、画面が閉じられるとデクリメントされる
 int popCount = 0;

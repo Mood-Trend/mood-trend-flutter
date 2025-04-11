@@ -1,6 +1,5 @@
 // ignore_for_file: overridden_fields
 
-import 'package:mood_trend_flutter/domain/app_exception.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 
 /// 躁のタイプを示す列挙体
@@ -40,8 +39,6 @@ class ManicWorksheetFactory {
           plus_4: plus_4 ?? '',
           plus_5: plus_5 ?? '',
         );
-      default:
-        throw AppException('Unsupported ManicType: $type');
     }
   }
 }
