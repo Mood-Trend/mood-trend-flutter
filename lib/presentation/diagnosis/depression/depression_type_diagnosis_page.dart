@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
+import 'package:mood_trend_flutter/presentation/common/components/buttons.dart';
+import 'package:mood_trend_flutter/presentation/common/navigation/navigation_service.dart';
+import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/providers/diagnosis_providers.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/self_input_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
-import 'package:mood_trend_flutter/utils/page_navigator.dart';
-import '../register_diagnosis_page.dart';
 import 'depression_type_table_page.dart';
 import 'entity/depression_worksheet.dart';
-
-/// 選択された鬱のタイプを提供する [StateProvider]
-final selectedDepressionTypeProvider =
-    StateProvider.autoDispose<DepressionType>(
-  (_) => DepressionType.other,
-);
 
 /// 鬱のタイプの診断画面
 class DepressionTypeDiagnosisPage extends ConsumerWidget {
@@ -22,23 +18,32 @@ class DepressionTypeDiagnosisPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedDepressionType = ref.watch(selectedDepressionTypeProvider);
-    ButtonStyle buttonStyle(DepressionType depressionType) {
-      return OutlinedButton.styleFrom(
-        backgroundColor: selectedDepressionType == depressionType
-            ? AppColors.green.withOpacity(0.3)
-            : Colors.transparent,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30),
+    
+    // ナビゲーション深度を増加
+    void incrementNavigationDepth() {
+      ref.read(navigationDepthProvider.notifier).update((state) => state + 1);
+    }
+    
+    // ナビゲーション深度を減少
+    void decrementNavigationDepth() {
+      ref.read(navigationDepthProvider.notifier).update((state) => state - 1);
+    }
+
+    // 鬱タイプの選択ボタンを作成
+    Widget buildTypeButton(DepressionType type, String label) {
+      return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: AppButtons.outlined(
+          onPressed: () {
+            ref.read(selectedDepressionTypeProvider.notifier).update((_) => type);
+          },
+          isSelected: selectedDepressionType == type,
+          fixedSize: const Size(145, 145),
+          child: Text(
+            label,
+            style: AppTextStyles.body,
+          ),
         ),
-        side: BorderSide(
-          color: selectedDepressionType == depressionType
-              ? AppColors.green
-              : AppColors.grey,
-          width: 1,
-        ),
-        fixedSize: const Size(145, 145),
-        foregroundColor: AppColors.black,
-        splashFactory: NoSplash.splashFactory,
       );
     }
 
@@ -53,117 +58,51 @@ class DepressionTypeDiagnosisPage extends ConsumerWidget {
           children: <Widget>[
             Text(
               S.of(context).typeDepression,
-              style: const TextStyle(
-                fontSize: 26,
-              ),
+              style: AppTextStyles.heading,
             ),
-            const SizedBox(
-              height: 80,
-            ),
+            const SizedBox(height: 80),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: OutlinedButton(
-                    onPressed: () {
-                      ref.read(selectedDepressionTypeProvider.notifier).update(
-                            (_) => DepressionType.melancholy,
-                          );
-                    },
-                    style: buttonStyle(DepressionType.melancholy),
-                    child: Text(
-                      S.of(context).typeMelancholy,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
+                buildTypeButton(
+                  DepressionType.melancholy, 
+                  S.of(context).typeMelancholy
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: OutlinedButton(
-                      onPressed: () {
-                        ref
-                            .read(selectedDepressionTypeProvider.notifier)
-                            .update((_) => DepressionType.poorThinking);
-                      },
-                      style: buttonStyle(DepressionType.poorThinking),
-                      child: Text(
-                        S.of(context).typePoorThinking,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                        ),
-                      )),
+                buildTypeButton(
+                  DepressionType.poorThinking, 
+                  S.of(context).typePoorThinking
                 ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: OutlinedButton(
-                      onPressed: () {
-                        ref
-                            .read(selectedDepressionTypeProvider.notifier)
-                            .update((_) => DepressionType.sleepDisorders);
-                      },
-                      style: buttonStyle(DepressionType.sleepDisorders),
-                      child: Text(
-                        S.of(context).typeSleepDisorder,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                        ),
-                      )),
+                buildTypeButton(
+                  DepressionType.sleepDisorders, 
+                  S.of(context).typeSleepDisorder
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: OutlinedButton(
-                    onPressed: () {
-                      ref.read(selectedDepressionTypeProvider.notifier).update(
-                            (_) => DepressionType.other,
-                          );
-                    },
-                    style: buttonStyle(DepressionType.other),
-                    child: Text(
-                      S.of(context).typeOther,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
+                buildTypeButton(
+                  DepressionType.other, 
+                  S.of(context).typeOther
                 ),
               ],
             ),
             Flexible(
               child: Center(
-                child: ElevatedButton(
+                child: AppButtons.primary(
                   onPressed: () {
-                    popCount++;
-                    PageNavigator.push(
+                    incrementNavigationDepth();
+                    NavigationService.push(
                       context,
-                      ref.read(selectedDepressionTypeProvider) ==
-                              DepressionType.other
+                      ref.read(selectedDepressionTypeProvider) == DepressionType.other
                           ? SelfInputPage(isManic: false, uid: uid)
                           : DepressionTypeTablePage(uid: uid),
-                    ).then((value) => popCount--);
+                    ).then((_) => decrementNavigationDepth());
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.green,
-                    foregroundColor: AppColors.white,
-                    fixedSize: const Size(300, 60),
-                  ),
+                  fixedSize: const Size(300, 60),
                   child: Text(
                     S.of(context).next,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: AppTextStyles.buttonText,
                   ),
                 ),
               ),
