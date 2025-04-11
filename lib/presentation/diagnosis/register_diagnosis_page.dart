@@ -4,20 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/application/diagnosis/register_mood_worksheet_usecase.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
+import 'package:mood_trend_flutter/presentation/common/components/app_dividers.dart';
+import 'package:mood_trend_flutter/presentation/common/components/buttons.dart';
 import 'package:mood_trend_flutter/presentation/common/error_handler_mixin.dart';
+import 'package:mood_trend_flutter/presentation/common/navigation/navigation_service.dart';
+import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/register_manic_entity_provider.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/providers/diagnosis_providers.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/table_page.dart';
+import 'package:mood_trend_flutter/utils/navigation_utils.dart';
+import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../../utils/app_colors.dart';
-import '../../utils/page_navigator.dart';
 import 'components/worksheet_table_cell.dart';
 import 'depression/register_depression_entity_provider.dart';
-
-/// 選択された気分値目安表の状態を保持する [StateProvider]
-final selectedMoodButtonStateProvider = StateProvider<MoodState>(
-  (_) => MoodState.manic,
-);
-int popCount = 0;
 
 /// 気分値目安表登録画面
 class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
@@ -28,12 +28,80 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
   Widget build(BuildContext context, WidgetRef ref) {
     // 登録用のエンティティを取得
     // 取得ロジックは StateProvider 内に隠蔽されている
-    final registerManicWorksheet = ref.watch(
-      registerManicEntityProvider,
-    );
-    final registerDepressionWorksheet = ref.watch(
-      registerDepressionEntityProvider,
-    );
+    final registerManicWorksheet = ref.watch(registerManicEntityProvider);
+    final registerDepressionWorksheet =
+        ref.watch(registerDepressionEntityProvider);
+    final selectedMoodState = ref.watch(selectedMoodStateProvider);
+
+    // 気分状態切り替えボタンを作成
+    Widget buildMoodStateButton(MoodState state, String label) {
+      return AppButtons.secondary(
+        onPressed: () {
+          ref.read(selectedMoodStateProvider.notifier).update((_) => state);
+        },
+        isSelected: selectedMoodState == state,
+        child: Text(label),
+      );
+    }
+
+    // 気分値テーブルのセルとディバイダーを作成
+    List<Widget> buildTableCells(bool isManic) {
+      if (isManic) {
+        return [
+          WorksheetTableCell(
+            moodValue: '+5',
+            actionText: registerManicWorksheet.plus_5,
+          ),
+          AppDividers.thick(color: AppColors.white),
+          WorksheetTableCell(
+            moodValue: '+4',
+            actionText: registerManicWorksheet.plus_4,
+          ),
+          AppDividers.thick(color: AppColors.white),
+          WorksheetTableCell(
+            moodValue: '+3',
+            actionText: registerManicWorksheet.plus_3,
+          ),
+          AppDividers.thick(color: AppColors.white),
+          WorksheetTableCell(
+            moodValue: '+2',
+            actionText: registerManicWorksheet.plus_2,
+          ),
+          AppDividers.thick(color: AppColors.white),
+          WorksheetTableCell(
+            moodValue: '+1',
+            actionText: registerManicWorksheet.plus_1,
+          ),
+        ];
+      } else {
+        return [
+          WorksheetTableCell(
+            moodValue: '-1',
+            actionText: registerDepressionWorksheet.minus_1,
+          ),
+          AppDividers.thick(color: AppColors.white),
+          WorksheetTableCell(
+            moodValue: '-2',
+            actionText: registerDepressionWorksheet.minus_2,
+          ),
+          AppDividers.thick(color: AppColors.white),
+          WorksheetTableCell(
+            moodValue: '-3',
+            actionText: registerDepressionWorksheet.minus_3,
+          ),
+          AppDividers.thick(color: AppColors.white),
+          WorksheetTableCell(
+            moodValue: '-4',
+            actionText: registerDepressionWorksheet.minus_4,
+          ),
+          AppDividers.thick(color: AppColors.white),
+          WorksheetTableCell(
+            moodValue: '-5',
+            actionText: registerDepressionWorksheet.minus_5,
+          ),
+        ];
+      }
+    }
 
     return Scaffold(
       backgroundColor: AppColors.white,
@@ -49,53 +117,9 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextButton(
-                  onPressed: () {
-                    ref.read(selectedMoodButtonStateProvider.notifier).update(
-                          (_) => MoodState.manic,
-                        );
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(
-                      ref.watch(selectedMoodButtonStateProvider) ==
-                              MoodState.manic
-                          ? AppColors.green
-                          : Colors.transparent,
-                    ),
-                  ),
-                  child: Text(
-                    S.of(context).manic,
-                    style: TextStyle(
-                      color: ref.watch(selectedMoodButtonStateProvider) ==
-                              MoodState.manic
-                          ? AppColors.white
-                          : AppColors.black,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    ref.read(selectedMoodButtonStateProvider.notifier).update(
-                          (_) => MoodState.depression,
-                        );
-                  },
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                          ref.watch(selectedMoodButtonStateProvider) ==
-                                  MoodState.depression
-                              ? AppColors.green
-                              : Colors.transparent)),
-                  child: Text(
-                    S.of(context).depression,
-                    style: TextStyle(
-                        color: ref.watch(selectedMoodButtonStateProvider) ==
-                                MoodState.depression
-                            ? AppColors.white
-                            : AppColors.black,
-                        fontSize: 20),
-                  ),
-                ),
+                buildMoodStateButton(MoodState.manic, S.of(context).manic),
+                buildMoodStateButton(
+                    MoodState.depression, S.of(context).depression),
               ],
             ),
             Expanded(
@@ -109,119 +133,14 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
                       color: AppColors.green.withOpacity(0.4),
                     ),
                     child: Column(
-                      children: ref.watch(selectedMoodButtonStateProvider) ==
-                              MoodState.manic
-                          ? [
-                              WorksheetTableCell(
-                                moodValue: '+5',
-                                actionText: registerManicWorksheet.plus_5,
-                              ),
-                              Divider(
-                                height: 0,
-                                thickness: 2,
-                                indent: 16,
-                                endIndent: 16,
-                                color: AppColors.white,
-                              ),
-                              WorksheetTableCell(
-                                moodValue: '+4',
-                                actionText: registerManicWorksheet.plus_4,
-                              ),
-                              Divider(
-                                height: 0,
-                                thickness: 2,
-                                indent: 16,
-                                endIndent: 16,
-                                color: AppColors.white,
-                              ),
-                              WorksheetTableCell(
-                                moodValue: '+3',
-                                actionText: registerManicWorksheet.plus_3,
-                              ),
-                              Divider(
-                                height: 0,
-                                thickness: 2,
-                                indent: 16,
-                                endIndent: 16,
-                                color: AppColors.white,
-                              ),
-                              WorksheetTableCell(
-                                moodValue: '+2',
-                                actionText: registerManicWorksheet.plus_2,
-                              ),
-                              Divider(
-                                height: 0,
-                                thickness: 2,
-                                indent: 16,
-                                endIndent: 16,
-                                color: AppColors.white,
-                              ),
-                              WorksheetTableCell(
-                                moodValue: '+1',
-                                actionText: registerManicWorksheet.plus_1,
-                              ),
-                            ]
-                          : [
-                              WorksheetTableCell(
-                                moodValue: '-1',
-                                actionText: registerDepressionWorksheet.minus_1,
-                              ),
-                              Divider(
-                                height: 0,
-                                thickness: 2,
-                                indent: 16,
-                                endIndent: 16,
-                                color: AppColors.white,
-                              ),
-                              WorksheetTableCell(
-                                moodValue: '-2',
-                                actionText: registerDepressionWorksheet.minus_2,
-                              ),
-                              Divider(
-                                height: 0,
-                                thickness: 2,
-                                indent: 16,
-                                endIndent: 16,
-                                color: AppColors.white,
-                              ),
-                              WorksheetTableCell(
-                                moodValue: '-3',
-                                actionText: registerDepressionWorksheet.minus_3,
-                              ),
-                              Divider(
-                                height: 0,
-                                thickness: 2,
-                                indent: 16,
-                                endIndent: 16,
-                                color: AppColors.white,
-                              ),
-                              WorksheetTableCell(
-                                moodValue: '-4',
-                                actionText: registerDepressionWorksheet.minus_4,
-                              ),
-                              Divider(
-                                height: 0,
-                                thickness: 2,
-                                indent: 16,
-                                endIndent: 16,
-                                color: AppColors.white,
-                              ),
-                              WorksheetTableCell(
-                                moodValue: '-5',
-                                actionText: registerDepressionWorksheet.minus_5,
-                              ),
-                            ],
+                      children:
+                          buildTableCells(selectedMoodState == MoodState.manic),
                     ),
                   ),
                 ],
               ),
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.green,
-                foregroundColor: AppColors.white,
-                fixedSize: const Size(330, 60),
-              ),
+            AppButtons.primary(
               onPressed: () async {
                 await run(ref, action: () async {
                   await ref
@@ -238,25 +157,21 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
                         plus_4: registerManicWorksheet.plus_4,
                         plus_5: registerManicWorksheet.plus_5,
                       );
-                  int count = 0;
-                  await PageNavigator.popUntil(
+
+                  // ナビゲーション深度に基づいて画面を戻る
+                  await NavigationService.popTimes(
                     context,
-                    predicate: (_) => count++ >= popCount,
+                    count: 6,
                   );
-                  popCount = 0;
                 }, successMessage: S.of(context).registerSave);
               },
+              fixedSize: const Size(330, 60),
               child: Text(
                 S.of(context).registerRegister,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: AppTextStyles.buttonText,
               ),
             ),
-            const SizedBox(
-              height: 80,
-            )
+            const SizedBox(height: 80)
           ],
         ),
       ),

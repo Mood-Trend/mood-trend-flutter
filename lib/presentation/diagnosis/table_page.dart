@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
+import 'package:mood_trend_flutter/presentation/common/components/app_dividers.dart';
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
+import 'package:mood_trend_flutter/presentation/common/components/buttons.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/register_diagnosis_page.dart';
+import 'package:mood_trend_flutter/presentation/common/navigation/navigation_service.dart';
+import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/providers/diagnosis_providers.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
+import 'package:mood_trend_flutter/utils/navigation_utils.dart';
+import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../../application/diagnosis/states/subscribe_mood_work_sheet_provider.dart';
-import '../../utils/page_navigator.dart';
 import 'components/worksheet_table_cell.dart';
 import 'manic/manic_type_diagnosis_page.dart';
 
@@ -18,11 +23,6 @@ enum MoodState {
   // 躁状態
   manic,
 }
-
-/// 選択された気分値目安表の状態を保持する [StateProvider]
-final selectedMoodButtonStateProvider = StateProvider<MoodState>(
-  (_) => MoodState.manic,
-);
 
 /// 気分値目安表を表示するページ
 class TablePage extends ConsumerWidget {
@@ -39,10 +39,83 @@ class TablePage extends ConsumerWidget {
         body: Center(
           child: Text(
             p0.toString(),
+            style: AppTextStyles.body,
           ),
         ),
       ),
       builder: (worksheet) {
+        final selectedMoodState = ref.watch(selectedMoodStateProvider);
+
+        // 気分状態切り替えボタンを作成
+        Widget buildMoodStateButton(MoodState state, String label) {
+          return AppButtons.secondary(
+            onPressed: () {
+              ref.read(selectedMoodStateProvider.notifier).update((_) => state);
+            },
+            isSelected: selectedMoodState == state,
+            child: Text(label),
+          );
+        }
+
+        // 気分値テーブルのセルとディバイダーを作成
+        List<Widget> buildTableCells(bool isManic) {
+          if (isManic) {
+            return [
+              WorksheetTableCell(
+                moodValue: '+5',
+                actionText: worksheet.plus_5,
+              ),
+              AppDividers.thick(color: AppColors.white),
+              WorksheetTableCell(
+                moodValue: '+4',
+                actionText: worksheet.plus_4,
+              ),
+              AppDividers.thick(color: AppColors.white),
+              WorksheetTableCell(
+                moodValue: '+3',
+                actionText: worksheet.plus_3,
+              ),
+              AppDividers.thick(color: AppColors.white),
+              WorksheetTableCell(
+                moodValue: '+2',
+                actionText: worksheet.plus_2,
+              ),
+              AppDividers.thick(color: AppColors.white),
+              WorksheetTableCell(
+                moodValue: '+1',
+                actionText: worksheet.plus_1,
+              ),
+            ];
+          } else {
+            return [
+              WorksheetTableCell(
+                moodValue: '-1',
+                actionText: worksheet.minus_1,
+              ),
+              AppDividers.thick(color: AppColors.white),
+              WorksheetTableCell(
+                moodValue: '-2',
+                actionText: worksheet.minus_2,
+              ),
+              AppDividers.thick(color: AppColors.white),
+              WorksheetTableCell(
+                moodValue: '-3',
+                actionText: worksheet.minus_3,
+              ),
+              AppDividers.thick(color: AppColors.white),
+              WorksheetTableCell(
+                moodValue: '-4',
+                actionText: worksheet.minus_4,
+              ),
+              AppDividers.thick(color: AppColors.white),
+              WorksheetTableCell(
+                moodValue: '-5',
+                actionText: worksheet.minus_5,
+              ),
+            ];
+          }
+        }
+
         return Scaffold(
           backgroundColor: AppColors.white,
           appBar: AppBar(
@@ -51,11 +124,11 @@ class TablePage extends ConsumerWidget {
             centerTitle: true,
             title: Text(
               S.of(context).table,
-              style: const TextStyle(fontSize: 20),
+              style: AppTextStyles.subheading,
             ),
             leading: IconButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                PageNavigator.pop(context);
               },
               icon: const Icon(Icons.close),
             ),
@@ -66,57 +139,9 @@ class TablePage extends ConsumerWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    TextButton(
-                      onPressed: () {
-                        ref
-                            .read(selectedMoodButtonStateProvider.notifier)
-                            .update(
-                              (_) => MoodState.manic,
-                            );
-                      },
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                          ref.watch(selectedMoodButtonStateProvider) ==
-                                  MoodState.manic
-                              ? AppColors.green
-                              : Colors.transparent,
-                        ),
-                      ),
-                      child: Text(
-                        S.of(context).manic,
-                        style: TextStyle(
-                          color: ref.watch(selectedMoodButtonStateProvider) ==
-                                  MoodState.manic
-                              ? AppColors.white
-                              : AppColors.black,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        ref
-                            .read(selectedMoodButtonStateProvider.notifier)
-                            .update(
-                              (_) => MoodState.depression,
-                            );
-                      },
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                              ref.watch(selectedMoodButtonStateProvider) ==
-                                      MoodState.depression
-                                  ? AppColors.green
-                                  : Colors.transparent)),
-                      child: Text(
-                        S.of(context).depression,
-                        style: TextStyle(
-                            color: ref.watch(selectedMoodButtonStateProvider) ==
-                                    MoodState.depression
-                                ? AppColors.white
-                                : AppColors.black,
-                            fontSize: 20),
-                      ),
-                    ),
+                    buildMoodStateButton(MoodState.manic, S.of(context).manic),
+                    buildMoodStateButton(
+                        MoodState.depression, S.of(context).depression),
                   ],
                 ),
                 Expanded(
@@ -130,140 +155,27 @@ class TablePage extends ConsumerWidget {
                           color: AppColors.green.withOpacity(0.4),
                         ),
                         child: Column(
-                          children:
-                              ref.watch(selectedMoodButtonStateProvider) ==
-                                      MoodState.manic
-                                  ? [
-                                      WorksheetTableCell(
-                                        moodValue: '+5',
-                                        actionText: worksheet.plus_5,
-                                      ),
-                                      Divider(
-                                        height: 0,
-                                        thickness: 2,
-                                        indent: 16,
-                                        endIndent: 16,
-                                        color: AppColors.white,
-                                      ),
-                                      WorksheetTableCell(
-                                        moodValue: '+4',
-                                        actionText: worksheet.plus_4,
-                                      ),
-                                      Divider(
-                                        height: 0,
-                                        thickness: 2,
-                                        indent: 16,
-                                        endIndent: 16,
-                                        color: AppColors.white,
-                                      ),
-                                      WorksheetTableCell(
-                                        moodValue: '+3',
-                                        actionText: worksheet.plus_3,
-                                      ),
-                                      Divider(
-                                        height: 0,
-                                        thickness: 2,
-                                        indent: 16,
-                                        endIndent: 16,
-                                        color: AppColors.white,
-                                      ),
-                                      WorksheetTableCell(
-                                        moodValue: '+2',
-                                        actionText: worksheet.plus_2,
-                                      ),
-                                      Divider(
-                                        height: 0,
-                                        thickness: 2,
-                                        indent: 16,
-                                        endIndent: 16,
-                                        color: AppColors.white,
-                                      ),
-                                      WorksheetTableCell(
-                                        moodValue: '+1',
-                                        actionText: worksheet.plus_1,
-                                      ),
-                                    ]
-                                  : [
-                                      WorksheetTableCell(
-                                        moodValue: '-1',
-                                        actionText: worksheet.minus_1,
-                                      ),
-                                      Divider(
-                                        height: 0,
-                                        thickness: 2,
-                                        indent: 16,
-                                        endIndent: 16,
-                                        color: AppColors.white,
-                                      ),
-                                      WorksheetTableCell(
-                                        moodValue: '-2',
-                                        actionText: worksheet.minus_2,
-                                      ),
-                                      Divider(
-                                        height: 0,
-                                        thickness: 2,
-                                        indent: 16,
-                                        endIndent: 16,
-                                        color: AppColors.white,
-                                      ),
-                                      WorksheetTableCell(
-                                        moodValue: '-3',
-                                        actionText: worksheet.minus_3,
-                                      ),
-                                      Divider(
-                                        height: 0,
-                                        thickness: 2,
-                                        indent: 16,
-                                        endIndent: 16,
-                                        color: AppColors.white,
-                                      ),
-                                      WorksheetTableCell(
-                                        moodValue: '-4',
-                                        actionText: worksheet.minus_4,
-                                      ),
-                                      Divider(
-                                        height: 0,
-                                        thickness: 2,
-                                        indent: 16,
-                                        endIndent: 16,
-                                        color: AppColors.white,
-                                      ),
-                                      WorksheetTableCell(
-                                        moodValue: '-5',
-                                        actionText: worksheet.minus_5,
-                                      ),
-                                    ],
+                          children: buildTableCells(
+                              selectedMoodState == MoodState.manic),
                         ),
                       ),
                     ],
                   ),
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.green,
-                    foregroundColor: AppColors.white,
-                    fixedSize: const Size(330, 60),
-                  ),
+                AppButtons.primary(
                   onPressed: () {
-                    popCount++;
-                    PageNavigator.push(
+                    NavigationService.push(
                       context,
-                      ManicTypeDiagnosisPage(
-                        uid: uid,
-                      ),
-                    ).then((value) => popCount = 0);
+                      ManicTypeDiagnosisPage(uid: uid),
+                    );
                   },
+                  fixedSize: const Size(330, 60),
                   child: Text(
                     S.of(context).tableStartEdit,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: AppTextStyles.buttonText,
                   ),
                 ),
-                const SizedBox(
-                  height: 80,
-                )
+                const SizedBox(height: 80)
               ],
             ),
           ),

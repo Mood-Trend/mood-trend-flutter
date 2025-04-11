@@ -3,11 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/entity/manic_worksheet.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
+import 'package:mood_trend_flutter/utils/navigation_utils.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../../common/error_handler_mixin.dart';
 import '../depression/depression_type_diagnosis_page.dart';
-import '../register_diagnosis_page.dart';
 import 'manic_type_diagnosis_page.dart';
 
 /// 躁のタイプを表示するテーブル画面
