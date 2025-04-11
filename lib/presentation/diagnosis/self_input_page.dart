@@ -201,11 +201,10 @@ class SelfInputPage extends ConsumerWidget with ErrorHandlerMixin {
                                           plus5TextController.text,
                                         ),
                                       );
-                                  popCount++;
                                   PageNavigator.push(
                                     context,
                                     DepressionTypeDiagnosisPage(uid: uid),
-                                  ).then((value) => popCount--);
+                                  );
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: AppColors.green,
@@ -387,10 +386,8 @@ class SelfInputPage extends ConsumerWidget with ErrorHandlerMixin {
                                         minus5TextController.text,
                                       ),
                                     );
-                                popCount++;
                                 PageNavigator.push(context,
-                                        RegisterDiagnosisPage(uid: uid))
-                                    .then((value) => popCount--);
+                                        RegisterDiagnosisPage(uid: uid));
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: AppColors.green,

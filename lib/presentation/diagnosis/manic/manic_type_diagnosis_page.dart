@@ -142,13 +142,12 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
               child: Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    popCount++;
                     PageNavigator.push(
                       context,
                       ref.read(selectedManicTypeProvider) == ManicType.other
                           ? SelfInputPage(isManic: true, uid: uid)
                           : ManicTypeTablePage(uid: uid),
-                    ).then((value) => popCount--);
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.green,

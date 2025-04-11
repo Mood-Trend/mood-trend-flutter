@@ -115,11 +115,10 @@ class ManicTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                     fixedSize: const Size(330, 60),
                   ),
                   onPressed: () async {
-                    popCount++;
                     PageNavigator.push(
                       context,
                       DepressionTypeDiagnosisPage(uid: uid),
-                    ).then((value) => popCount--);
+                    );
                   },
                   child: Text(
                     S.of(context).next,
