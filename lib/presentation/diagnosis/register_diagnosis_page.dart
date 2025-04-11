@@ -156,11 +156,8 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
                       );
                   
                   // popCountに基づいて画面を戻る
-                  int count = 0;
-                  await PageNavigator.popUntil(
-                    context,
-                    predicate: (_) => count++ >= popCount,
-                  );
+                  // 複数画面を戻るために、Navigator.popUntilを直接使用
+                  Navigator.of(context).popUntil((_) => popCount-- <= 0);
                   
                   // popCountをリセット
                   popCount = 0;
