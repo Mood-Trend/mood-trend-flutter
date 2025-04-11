@@ -5,6 +5,7 @@ import 'package:mood_trend_flutter/presentation/common/components/app_dividers.d
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/common/components/buttons.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
+import 'package:mood_trend_flutter/presentation/common/navigation/navigation_service.dart';
 import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/providers/diagnosis_providers.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
@@ -44,17 +45,7 @@ class TablePage extends ConsumerWidget {
       ),
       builder: (worksheet) {
         final selectedMoodState = ref.watch(selectedMoodStateProvider);
-        
-        // ナビゲーション深度を増加
-        void incrementNavigationDepth() {
-          ref.read(navigationDepthProvider.notifier).update((state) => state + 1);
-        }
-        
-        // ナビゲーション深度をリセット
-        void resetNavigationDepth() {
-          ref.read(navigationDepthProvider.notifier).state = 0;
-        }
-        
+
         // 気分状態切り替えボタンを作成
         Widget buildMoodStateButton(MoodState state, String label) {
           return AppButtons.secondary(
@@ -65,7 +56,7 @@ class TablePage extends ConsumerWidget {
             child: Text(label),
           );
         }
-        
+
         // 気分値テーブルのセルとディバイダーを作成
         List<Widget> buildTableCells(bool isManic) {
           if (isManic) {
@@ -149,7 +140,8 @@ class TablePage extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     buildMoodStateButton(MoodState.manic, S.of(context).manic),
-                    buildMoodStateButton(MoodState.depression, S.of(context).depression),
+                    buildMoodStateButton(
+                        MoodState.depression, S.of(context).depression),
                   ],
                 ),
                 Expanded(
@@ -163,7 +155,8 @@ class TablePage extends ConsumerWidget {
                           color: AppColors.green.withOpacity(0.4),
                         ),
                         child: Column(
-                          children: buildTableCells(selectedMoodState == MoodState.manic),
+                          children: buildTableCells(
+                              selectedMoodState == MoodState.manic),
                         ),
                       ),
                     ],
@@ -171,11 +164,10 @@ class TablePage extends ConsumerWidget {
                 ),
                 AppButtons.primary(
                   onPressed: () {
-                    popCount++;
-                    PageNavigator.push(
+                    NavigationService.push(
                       context,
                       ManicTypeDiagnosisPage(uid: uid),
-                    ).then((_) => popCount = 0);
+                    );
                   },
                   fixedSize: const Size(330, 60),
                   child: Text(

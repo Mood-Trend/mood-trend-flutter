@@ -16,11 +16,6 @@ final selectedDepressionTypeProvider =
 );
 
 /// 選択された躁のタイプを提供する [StateProvider]
-final selectedManicTypeProvider =
-    StateProvider.autoDispose<ManicType>(
+final selectedManicTypeProvider = StateProvider.autoDispose<ManicType>(
   (_) => ManicType.other,
 );
-
-/// 画面遷移の深さを管理するプロバイダー
-/// グローバル変数の代わりにプロバイダーで状態管理
-final navigationDepthProvider = StateProvider<int>((_) => 0);

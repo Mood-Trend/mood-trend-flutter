@@ -12,9 +12,9 @@ import 'package:mood_trend_flutter/presentation/common/components/async_value_ha
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/common/error_handler_mixin.dart';
 import 'package:mood_trend_flutter/presentation/auth/root_page.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/manic/manic_type_diagnosis_page.dart';
+import 'package:mood_trend_flutter/presentation/common/navigation/navigation_service.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/table_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
-import 'package:mood_trend_flutter/utils/navigation_utils.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../../application/common/states/overlay_loading_provider.dart';
@@ -58,9 +58,7 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
               ),
               GestureDetector(
                 onTap: () {
-                  popCount++;
-                  PageNavigator.push(context, ManicTypeDiagnosisPage(uid: uid))
-                      .then((value) => popCount = 0);
+                  NavigationService.push(context, TablePage(uid: uid));
                 },
                 child: Container(
                   color: AppColors.white,

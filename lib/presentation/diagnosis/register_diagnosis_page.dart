@@ -7,6 +7,7 @@ import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/components/app_dividers.dart';
 import 'package:mood_trend_flutter/presentation/common/components/buttons.dart';
 import 'package:mood_trend_flutter/presentation/common/error_handler_mixin.dart';
+import 'package:mood_trend_flutter/presentation/common/navigation/navigation_service.dart';
 import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/register_manic_entity_provider.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/providers/diagnosis_providers.dart';
@@ -28,9 +29,9 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
     // 登録用のエンティティを取得
     // 取得ロジックは StateProvider 内に隠蔽されている
     final registerManicWorksheet = ref.watch(registerManicEntityProvider);
-    final registerDepressionWorksheet = ref.watch(registerDepressionEntityProvider);
+    final registerDepressionWorksheet =
+        ref.watch(registerDepressionEntityProvider);
     final selectedMoodState = ref.watch(selectedMoodStateProvider);
-    final navigationDepth = ref.watch(navigationDepthProvider);
 
     // 気分状態切り替えボタンを作成
     Widget buildMoodStateButton(MoodState state, String label) {
@@ -117,7 +118,8 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 buildMoodStateButton(MoodState.manic, S.of(context).manic),
-                buildMoodStateButton(MoodState.depression, S.of(context).depression),
+                buildMoodStateButton(
+                    MoodState.depression, S.of(context).depression),
               ],
             ),
             Expanded(
@@ -131,7 +133,8 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
                       color: AppColors.green.withOpacity(0.4),
                     ),
                     child: Column(
-                      children: buildTableCells(selectedMoodState == MoodState.manic),
+                      children:
+                          buildTableCells(selectedMoodState == MoodState.manic),
                     ),
                   ),
                 ],
@@ -154,13 +157,12 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
                         plus_4: registerManicWorksheet.plus_4,
                         plus_5: registerManicWorksheet.plus_5,
                       );
-                  
-                  // popCountに基づいて画面を戻る
-                  // 複数画面を戻るために、Navigator.popUntilを直接使用
-                  Navigator.of(context).popUntil((_) => popCount-- <= 0);
-                  
-                  // popCountをリセット
-                  popCount = 0;
+
+                  // ナビゲーション深度に基づいて画面を戻る
+                  await NavigationService.popTimes(
+                    context,
+                    count: 6,
+                  );
                 }, successMessage: S.of(context).registerSave);
               },
               fixedSize: const Size(330, 60),
