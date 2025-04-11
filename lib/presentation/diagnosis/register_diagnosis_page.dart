@@ -12,6 +12,8 @@ import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dar
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/register_manic_entity_provider.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/providers/diagnosis_providers.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/table_page.dart';
+import 'package:mood_trend_flutter/utils/navigation_utils.dart';
+import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../../utils/app_colors.dart';
 import 'components/worksheet_table_cell.dart';
