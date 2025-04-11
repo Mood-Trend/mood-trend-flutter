@@ -5,6 +5,7 @@ import 'package:mood_trend_flutter/presentation/diagnosis/depression/depression_
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/register_manic_entity_provider.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/register_diagnosis_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
+import 'package:mood_trend_flutter/utils/navigation_utils.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../common/error_handler_mixin.dart';
@@ -201,10 +202,11 @@ class SelfInputPage extends ConsumerWidget with ErrorHandlerMixin {
                                           plus5TextController.text,
                                         ),
                                       );
+                                  popCount++;
                                   PageNavigator.push(
                                     context,
                                     DepressionTypeDiagnosisPage(uid: uid),
-                                  );
+                                  ).then((value) => popCount--);
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: AppColors.green,
@@ -386,8 +388,10 @@ class SelfInputPage extends ConsumerWidget with ErrorHandlerMixin {
                                         minus5TextController.text,
                                       ),
                                     );
+                                popCount++;
                                 PageNavigator.push(context,
-                                        RegisterDiagnosisPage(uid: uid));
+                                        RegisterDiagnosisPage(uid: uid))
+                                    .then((value) => popCount--);
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: AppColors.green,
