@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/providers/diagnosis_providers.dart';
 
-import 'depression_type_diagnosis_page.dart';
 import 'entity/depression_worksheet.dart';
 
 /// 選択された鬱のタイプを元にした登録用エンティティを提供する [StateProvider]

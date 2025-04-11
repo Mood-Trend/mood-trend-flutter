@@ -2,8 +2,6 @@
 
 import 'package:mood_trend_flutter/generated/l10n.dart';
 
-import '../../../../domain/app_exception.dart';
-
 /// 鬱のタイプを示す列挙体
 enum DepressionType {
   // 憂鬱
@@ -42,8 +40,6 @@ class DepressionWorksheetFactory {
           minus_4: minus_4 ?? '',
           minus_5: minus_5 ?? '',
         );
-      default:
-        throw AppException('Unsupported ManicType: $type');
     }
   }
 }

@@ -8,7 +8,6 @@ import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../../common/error_handler_mixin.dart';
 import '../depression/depression_type_diagnosis_page.dart';
-import '../register_diagnosis_page.dart';
 import 'manic_type_diagnosis_page.dart';
 
 /// 躁のタイプを表示するテーブル画面
