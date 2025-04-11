@@ -226,6 +226,10 @@ class AuthException extends DomainException {
         'Indicates the email used to attempt a sign up is already in use.',
         AuthExceptionCode.emailAlreadyInUse,
       );
+  factory AuthException.credentialAlreadyInUse() => const AuthException._(
+        'The account corresponding to the credential already exists, or is already linked to a Firebase User.',
+        AuthExceptionCode.credentialAlreadyInUse,
+      );
   factory AuthException.userMismatch() => const AuthException._(
         'Indicates that an attempt was made to reauthenticate '
         'with a user which is not the current user',
@@ -295,6 +299,9 @@ enum AuthExceptionCode {
 
   /// 既に使われているメールアドレス
   emailAlreadyInUse,
+
+  /// 既に使われている認証情報
+  credentialAlreadyInUse,
 
   /// 異なるユーザーで再認証が実施された
   userMismatch,
