@@ -58,9 +58,7 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
               ),
               GestureDetector(
                 onTap: () {
-                  popCount++;
-                  PageNavigator.push(context, ManicTypeDiagnosisPage(uid: uid))
-                      .then((value) => popCount = 0);
+                  PageNavigator.push(context, ManicTypeDiagnosisPage(uid: uid));
                 },
                 child: Container(
                   color: AppColors.white,
