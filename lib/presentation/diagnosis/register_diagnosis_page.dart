@@ -7,11 +7,12 @@ import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/components/app_dividers.dart';
 import 'package:mood_trend_flutter/presentation/common/components/buttons.dart';
 import 'package:mood_trend_flutter/presentation/common/error_handler_mixin.dart';
-import 'package:mood_trend_flutter/presentation/common/navigation/navigation_service.dart';
 import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/register_manic_entity_provider.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/providers/diagnosis_providers.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/table_page.dart';
+import 'package:mood_trend_flutter/utils/navigation_utils.dart';
+import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../../utils/app_colors.dart';
 import 'components/worksheet_table_cell.dart';
@@ -154,14 +155,15 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
                         plus_5: registerManicWorksheet.plus_5,
                       );
                   
-                  // ナビゲーション深度に基づいて画面を戻る
-                  await NavigationService.popTimes(
+                  // popCountに基づいて画面を戻る
+                  int count = 0;
+                  await PageNavigator.popUntil(
                     context,
-                    count: navigationDepth,
+                    predicate: (_) => count++ >= popCount,
                   );
                   
-                  // ナビゲーション深度をリセット
-                  ref.read(navigationDepthProvider.notifier).state = 0;
+                  // popCountをリセット
+                  popCount = 0;
                 }, successMessage: S.of(context).registerSave);
               },
               fixedSize: const Size(330, 60),
