@@ -99,13 +99,11 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                       // 匿名ユーザーの場合のみGoogleアカウント連携を表示
                       if (auth.auth.currentUser?.isAnonymous ?? false) {
                         await ref.read(linkAnonymousWithGoogleUsecaseProvider).execute();
-                        return '成功';
                       } else {
                         throw const AppException('既にアカウント連携されています');
                       }
                     },
                     successMessage: 'Googleアカウントと連携しました',
-                    failureMessage: (e) => 'アカウント連携に失敗しました: $e',
                   );
                 },
                 child: Container(
@@ -138,11 +136,8 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                         sourceUid: googleUid,
                         targetUid: currentUid,
                       );
-                      
-                      return '成功';
                     },
                     successMessage: 'データを復元しました',
-                    failureMessage: (e) => 'データ復元に失敗しました: $e',
                   );
                 },
                 child: Container(
