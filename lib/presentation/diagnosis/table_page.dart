@@ -5,10 +5,11 @@ import 'package:mood_trend_flutter/presentation/common/components/app_dividers.d
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/common/components/buttons.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
-import 'package:mood_trend_flutter/presentation/common/navigation/navigation_service.dart';
 import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/providers/diagnosis_providers.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
+import 'package:mood_trend_flutter/utils/navigation_utils.dart';
+import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../../application/diagnosis/states/subscribe_mood_work_sheet_provider.dart';
 import 'components/worksheet_table_cell.dart';
@@ -136,7 +137,7 @@ class TablePage extends ConsumerWidget {
             ),
             leading: IconButton(
               onPressed: () {
-                NavigationService.pop(context);
+                PageNavigator.pop(context);
               },
               icon: const Icon(Icons.close),
             ),
@@ -170,11 +171,11 @@ class TablePage extends ConsumerWidget {
                 ),
                 AppButtons.primary(
                   onPressed: () {
-                    incrementNavigationDepth();
-                    NavigationService.push(
+                    popCount++;
+                    PageNavigator.push(
                       context,
                       ManicTypeDiagnosisPage(uid: uid),
-                    ).then((_) => resetNavigationDepth());
+                    ).then((_) => popCount = 0);
                   },
                   fixedSize: const Size(330, 60),
                   child: Text(
