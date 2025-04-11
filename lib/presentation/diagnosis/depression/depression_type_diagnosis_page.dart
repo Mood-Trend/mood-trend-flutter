@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/components/buttons.dart';
-import 'package:mood_trend_flutter/presentation/common/navigation/navigation_service.dart';
 import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/providers/diagnosis_providers.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/self_input_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
+import 'package:mood_trend_flutter/utils/navigation_utils.dart';
+import 'package:mood_trend_flutter/utils/page_navigator.dart';
 import 'depression_type_table_page.dart';
 import 'entity/depression_worksheet.dart';
 
@@ -91,13 +92,13 @@ class DepressionTypeDiagnosisPage extends ConsumerWidget {
               child: Center(
                 child: AppButtons.primary(
                   onPressed: () {
-                    incrementNavigationDepth();
-                    NavigationService.push(
+                    popCount++;
+                    PageNavigator.push(
                       context,
                       ref.read(selectedDepressionTypeProvider) == DepressionType.other
                           ? SelfInputPage(isManic: false, uid: uid)
                           : DepressionTypeTablePage(uid: uid),
-                    ).then((_) => decrementNavigationDepth());
+                    ).then((value) => popCount--);
                   },
                   fixedSize: const Size(300, 60),
                   child: Text(
