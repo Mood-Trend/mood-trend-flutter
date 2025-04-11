@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/entity/manic_worksheet.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
+import 'package:mood_trend_flutter/utils/navigation_utils.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../../common/error_handler_mixin.dart';
@@ -115,10 +116,11 @@ class ManicTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                     fixedSize: const Size(330, 60),
                   ),
                   onPressed: () async {
+                    popCount++;
                     PageNavigator.push(
                       context,
                       DepressionTypeDiagnosisPage(uid: uid),
-                    );
+                    ).then((value) => popCount--);
                   },
                   child: Text(
                     S.of(context).next,
