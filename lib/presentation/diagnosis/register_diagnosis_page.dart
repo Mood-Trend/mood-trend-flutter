@@ -27,9 +27,9 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
     // 登録用のエンティティを取得
     // 取得ロジックは StateProvider 内に隠蔽されている
     final registerManicWorksheet = ref.watch(registerManicEntityProvider);
-    final registerDepressionWorksheet = ref.watch(registerDepressionEntityProvider);
+    final registerDepressionWorksheet =
+        ref.watch(registerDepressionEntityProvider);
     final selectedMoodState = ref.watch(selectedMoodStateProvider);
-    final navigationDepth = ref.watch(navigationDepthProvider);
 
     // 気分状態切り替えボタンを作成
     Widget buildMoodStateButton(MoodState state, String label) {
@@ -116,7 +116,8 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 buildMoodStateButton(MoodState.manic, S.of(context).manic),
-                buildMoodStateButton(MoodState.depression, S.of(context).depression),
+                buildMoodStateButton(
+                    MoodState.depression, S.of(context).depression),
               ],
             ),
             Expanded(
@@ -130,7 +131,8 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
                       color: AppColors.green.withOpacity(0.4),
                     ),
                     child: Column(
-                      children: buildTableCells(selectedMoodState == MoodState.manic),
+                      children:
+                          buildTableCells(selectedMoodState == MoodState.manic),
                     ),
                   ),
                 ],
@@ -153,15 +155,12 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
                         plus_4: registerManicWorksheet.plus_4,
                         plus_5: registerManicWorksheet.plus_5,
                       );
-                  
+
                   // ナビゲーション深度に基づいて画面を戻る
                   await NavigationService.popTimes(
                     context,
-                    count: navigationDepth,
+                    count: 6,
                   );
-                  
-                  // ナビゲーション深度をリセット
-                  ref.read(navigationDepthProvider.notifier).state = 0;
                 }, successMessage: S.of(context).registerSave);
               },
               fixedSize: const Size(330, 60),
