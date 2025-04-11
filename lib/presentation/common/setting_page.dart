@@ -15,6 +15,7 @@ import 'package:mood_trend_flutter/presentation/auth/root_page.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/manic_type_diagnosis_page.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/register_diagnosis_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
+import 'package:mood_trend_flutter/utils/navigation_utils.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../../application/common/states/overlay_loading_provider.dart';
@@ -58,7 +59,9 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
               ),
               GestureDetector(
                 onTap: () {
-                  PageNavigator.push(context, ManicTypeDiagnosisPage(uid: uid));
+                  popCount++;
+                  PageNavigator.push(context, ManicTypeDiagnosisPage(uid: uid))
+                      .then((value) => popCount = 0);
                 },
                 child: Container(
                   color: AppColors.white,
