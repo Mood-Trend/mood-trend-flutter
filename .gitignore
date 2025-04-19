@@ -49,5 +49,5 @@ app.*.map.json
 /lib/firebase_options_prod.dart
 
 # iOS ビルド
-ios/Podfile.lock
-ios/Runner.xcodeproj/project.pbxproj
+/ios/Podfile.lock
+/ios/Runner.xcodeproj/project.pbxproj
