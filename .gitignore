@@ -51,3 +51,6 @@ app.*.map.json
 # iOS ビルド
 ios/Podfile.lock
 ios/Runner.xcodeproj/project.pbxproj
+
+# FVM Version Cache
+.fvm/
