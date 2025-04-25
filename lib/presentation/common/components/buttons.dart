@@ -53,8 +53,8 @@ class AppButtons {
     return OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
-        backgroundColor: isSelected 
-            ? AppColors.green.withOpacity(0.3)
+        backgroundColor: isSelected
+            ? AppColors.green.withValues(alpha: 0.3)
             : Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
