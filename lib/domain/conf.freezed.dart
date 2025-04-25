@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,85 +10,66 @@ part of 'conf.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Conf {
   /// Conf ID
-  String get confId => throw _privateConstructorUsedError;
+  String get confId;
 
   /// ユーザーが入力できる最大の予定数
-  int get maxPlannedVolume => throw _privateConstructorUsedError;
+  int get maxPlannedVolume;
 
   /// オンボーディング完了済みかどうか
-  bool get isOnboardingCompleted => throw _privateConstructorUsedError;
+  bool get isOnboardingCompleted;
 
-  @JsonKey(ignore: true)
-  $ConfCopyWith<Conf> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ConfCopyWith<$Res> {
-  factory $ConfCopyWith(Conf value, $Res Function(Conf) then) =
-      _$ConfCopyWithImpl<$Res, Conf>;
-  @useResult
-  $Res call({String confId, int maxPlannedVolume, bool isOnboardingCompleted});
-}
-
-/// @nodoc
-class _$ConfCopyWithImpl<$Res, $Val extends Conf>
-    implements $ConfCopyWith<$Res> {
-  _$ConfCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of Conf
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $ConfCopyWith<Conf> get copyWith =>
+      _$ConfCopyWithImpl<Conf>(this as Conf, _$identity);
+
   @override
-  $Res call({
-    Object? confId = null,
-    Object? maxPlannedVolume = null,
-    Object? isOnboardingCompleted = null,
-  }) {
-    return _then(_value.copyWith(
-      confId: null == confId
-          ? _value.confId
-          : confId // ignore: cast_nullable_to_non_nullable
-              as String,
-      maxPlannedVolume: null == maxPlannedVolume
-          ? _value.maxPlannedVolume
-          : maxPlannedVolume // ignore: cast_nullable_to_non_nullable
-              as int,
-      isOnboardingCompleted: null == isOnboardingCompleted
-          ? _value.isOnboardingCompleted
-          : isOnboardingCompleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Conf &&
+            (identical(other.confId, confId) || other.confId == confId) &&
+            (identical(other.maxPlannedVolume, maxPlannedVolume) ||
+                other.maxPlannedVolume == maxPlannedVolume) &&
+            (identical(other.isOnboardingCompleted, isOnboardingCompleted) ||
+                other.isOnboardingCompleted == isOnboardingCompleted));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, confId, maxPlannedVolume, isOnboardingCompleted);
+
+  @override
+  String toString() {
+    return 'Conf(confId: $confId, maxPlannedVolume: $maxPlannedVolume, isOnboardingCompleted: $isOnboardingCompleted)';
   }
 }
 
 /// @nodoc
-abstract class _$$ConfImplCopyWith<$Res> implements $ConfCopyWith<$Res> {
-  factory _$$ConfImplCopyWith(
-          _$ConfImpl value, $Res Function(_$ConfImpl) then) =
-      __$$ConfImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $ConfCopyWith<$Res> {
+  factory $ConfCopyWith(Conf value, $Res Function(Conf) _then) =
+      _$ConfCopyWithImpl;
   @useResult
   $Res call({String confId, int maxPlannedVolume, bool isOnboardingCompleted});
 }
 
 /// @nodoc
-class __$$ConfImplCopyWithImpl<$Res>
-    extends _$ConfCopyWithImpl<$Res, _$ConfImpl>
-    implements _$$ConfImplCopyWith<$Res> {
-  __$$ConfImplCopyWithImpl(_$ConfImpl _value, $Res Function(_$ConfImpl) _then)
-      : super(_value, _then);
+class _$ConfCopyWithImpl<$Res> implements $ConfCopyWith<$Res> {
+  _$ConfCopyWithImpl(this._self, this._then);
 
+  final Conf _self;
+  final $Res Function(Conf) _then;
+
+  /// Create a copy of Conf
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -95,17 +77,17 @@ class __$$ConfImplCopyWithImpl<$Res>
     Object? maxPlannedVolume = null,
     Object? isOnboardingCompleted = null,
   }) {
-    return _then(_$ConfImpl(
+    return _then(_self.copyWith(
       confId: null == confId
-          ? _value.confId
+          ? _self.confId
           : confId // ignore: cast_nullable_to_non_nullable
               as String,
       maxPlannedVolume: null == maxPlannedVolume
-          ? _value.maxPlannedVolume
+          ? _self.maxPlannedVolume
           : maxPlannedVolume // ignore: cast_nullable_to_non_nullable
               as int,
       isOnboardingCompleted: null == isOnboardingCompleted
-          ? _value.isOnboardingCompleted
+          ? _self.isOnboardingCompleted
           : isOnboardingCompleted // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
@@ -114,8 +96,8 @@ class __$$ConfImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ConfImpl implements _Conf {
-  const _$ConfImpl(
+class _Conf implements Conf {
+  const _Conf(
       {required this.confId,
       required this.maxPlannedVolume,
       required this.isOnboardingCompleted});
@@ -132,16 +114,19 @@ class _$ConfImpl implements _Conf {
   @override
   final bool isOnboardingCompleted;
 
+  /// Create a copy of Conf
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'Conf(confId: $confId, maxPlannedVolume: $maxPlannedVolume, isOnboardingCompleted: $isOnboardingCompleted)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ConfCopyWith<_Conf> get copyWith =>
+      __$ConfCopyWithImpl<_Conf>(this, _$identity);
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ConfImpl &&
+            other is _Conf &&
             (identical(other.confId, confId) || other.confId == confId) &&
             (identical(other.maxPlannedVolume, maxPlannedVolume) ||
                 other.maxPlannedVolume == maxPlannedVolume) &&
@@ -153,33 +138,52 @@ class _$ConfImpl implements _Conf {
   int get hashCode =>
       Object.hash(runtimeType, confId, maxPlannedVolume, isOnboardingCompleted);
 
-  @JsonKey(ignore: true)
+  @override
+  String toString() {
+    return 'Conf(confId: $confId, maxPlannedVolume: $maxPlannedVolume, isOnboardingCompleted: $isOnboardingCompleted)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$ConfCopyWith<$Res> implements $ConfCopyWith<$Res> {
+  factory _$ConfCopyWith(_Conf value, $Res Function(_Conf) _then) =
+      __$ConfCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String confId, int maxPlannedVolume, bool isOnboardingCompleted});
+}
+
+/// @nodoc
+class __$ConfCopyWithImpl<$Res> implements _$ConfCopyWith<$Res> {
+  __$ConfCopyWithImpl(this._self, this._then);
+
+  final _Conf _self;
+  final $Res Function(_Conf) _then;
+
+  /// Create a copy of Conf
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$ConfImplCopyWith<_$ConfImpl> get copyWith =>
-      __$$ConfImplCopyWithImpl<_$ConfImpl>(this, _$identity);
+  $Res call({
+    Object? confId = null,
+    Object? maxPlannedVolume = null,
+    Object? isOnboardingCompleted = null,
+  }) {
+    return _then(_Conf(
+      confId: null == confId
+          ? _self.confId
+          : confId // ignore: cast_nullable_to_non_nullable
+              as String,
+      maxPlannedVolume: null == maxPlannedVolume
+          ? _self.maxPlannedVolume
+          : maxPlannedVolume // ignore: cast_nullable_to_non_nullable
+              as int,
+      isOnboardingCompleted: null == isOnboardingCompleted
+          ? _self.isOnboardingCompleted
+          : isOnboardingCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
-abstract class _Conf implements Conf {
-  const factory _Conf(
-      {required final String confId,
-      required final int maxPlannedVolume,
-      required final bool isOnboardingCompleted}) = _$ConfImpl;
-
-  @override
-
-  /// Conf ID
-  String get confId;
-  @override
-
-  /// ユーザーが入力できる最大の予定数
-  int get maxPlannedVolume;
-  @override
-
-  /// オンボーディング完了済みかどうか
-  bool get isOnboardingCompleted;
-  @override
-  @JsonKey(ignore: true)
-  _$$ConfImplCopyWith<_$ConfImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on
