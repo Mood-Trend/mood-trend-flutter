@@ -29,7 +29,7 @@ class AppButtons {
     return TextButton(
       onPressed: onPressed,
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(
+        backgroundColor: WidgetStateProperty.all(
           isSelected ? AppColors.green : Colors.transparent,
         ),
       ),
