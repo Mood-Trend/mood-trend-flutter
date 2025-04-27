@@ -4,7 +4,7 @@ part 'mood_worksheet.freezed.dart';
 
 /// 気分値目安表
 @freezed
-class MoodWorksheet with _$MoodWorksheet {
+abstract class MoodWorksheet with _$MoodWorksheet {
   const factory MoodWorksheet({
     /// ワークシート ID
     required String worksheetId,

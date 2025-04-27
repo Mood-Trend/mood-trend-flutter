@@ -24,7 +24,7 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
     ButtonStyle buttonStyle(ManicType manicType) {
       return OutlinedButton.styleFrom(
         backgroundColor: selectedManicType == manicType
-            ? AppColors.green.withOpacity(0.3)
+            ? AppColors.green.withValues(alpha: 0.3)
             : Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
