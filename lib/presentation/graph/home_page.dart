@@ -66,6 +66,63 @@ class HomePage extends ConsumerWidget {
     // コーチマーク用のターゲット
     final GlobalKey floatingActionButtonKey = GlobalKey();
 
+    // ツールチップの設定
+    final TooltipBehavior tooltipBehavior = TooltipBehavior(
+      enable: true,
+      canShowMarker: false,
+      color: AppColors.green,
+      textStyle: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+        color: AppColors.white,
+      ),
+      // builder プロパティを追加
+      builder: (dynamic data, dynamic point, dynamic series, int pointIndex,
+          int seriesIndex) {
+        // data から必要な情報を取得
+        final moodPoint = data as MoodPoint;
+        // 日付をフォーマット
+        final formattedDate =
+            DateFormat('MM/dd', Localizations.localeOf(context).languageCode);
+        // 動的なヘッダー文字列を作成
+        final dynamicHeader = formattedDate.format(moodPoint.moodDate);
+
+        // ツールチップに表示する内容を構築
+        return Container(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                dynamicHeader,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  color: AppColors.white,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                '${S.of(context).moodValue}: ${moodPoint.point}',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: AppColors.white,
+                ),
+              ),
+              Text(
+                '${S.of(context).plannedVolume}: ${moodPoint.plannedVolume}',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: AppColors.white,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+
     // コーチマークのセットアップ
     Future<void> showCoachMark() async {
       final prefs = await SharedPreferences.getInstance();
@@ -185,6 +242,7 @@ class HomePage extends ConsumerWidget {
                   padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
                   child: SfCartesianChart(
                     key: ValueKey(visibleMinDate),
+                    tooltipBehavior: tooltipBehavior,
                     zoomPanBehavior: ZoomPanBehavior(
                       enablePanning: true, // スクロール（パンニング）を有効化
                       zoomMode: ZoomMode.x, // X軸方向のズーム/パンのみ有効化
