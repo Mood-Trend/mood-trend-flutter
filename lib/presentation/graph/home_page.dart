@@ -6,6 +6,7 @@ import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/common/setting_page.dart';
+import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
 import 'package:mood_trend_flutter/utils/datetime_extension.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -96,26 +97,16 @@ class HomePage extends ConsumerWidget {
             children: [
               Text(
                 dynamicHeader,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                  color: AppColors.white,
-                ),
+                style: AppTextStyles.selectedButtonText,
               ),
               const SizedBox(height: 4),
               Text(
                 '${S.of(context).moodValue}: ${moodPoint.point}',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: AppColors.white,
-                ),
+                style: AppTextStyles.selectedButtonText,
               ),
               Text(
                 '${S.of(context).plannedVolume}: ${moodPoint.plannedVolume}',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: AppColors.white,
-                ),
+                style: AppTextStyles.selectedButtonText,
               ),
             ],
           ),
