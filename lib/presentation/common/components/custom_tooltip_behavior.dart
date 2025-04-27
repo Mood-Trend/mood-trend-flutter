@@ -12,8 +12,7 @@ TooltipBehavior createCustomTooltipBehavior(BuildContext context) {
     canShowMarker: false,
     color: AppColors.green,
     // builder プロパティを追加
-    builder: (dynamic data, dynamic point, dynamic series, int pointIndex,
-        int seriesIndex) {
+    builder: (dynamic data, __, ___, ____, _____) {
       // data から必要な情報を取得
       final moodPoint = data as MoodPoint;
       // 日付をフォーマット
