@@ -55,24 +55,26 @@ class FirebaseAuthRepository {
     try {
       // GoogleSignIn インスタンスを作成
       final GoogleSignIn googleSignIn = GoogleSignIn();
-      
+
       // Googleサインインダイアログを表示
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
       if (googleUser == null) {
         throw AuthException.userNotFound();
       }
-      
+
       // 認証情報を取得
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-      
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
       // Firebaseの認証情報を作成
       final OAuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
-      
+
       // Firebase Auth でサインイン
-      final UserCredential userCredential = await auth.signInWithCredential(credential);
+      final UserCredential userCredential =
+          await auth.signInWithCredential(credential);
       return userCredential.user!.uid;
     } on FirebaseAuthException catch (e) {
       throw e.toAuthException();
@@ -89,27 +91,29 @@ class FirebaseAuthRepository {
       if (currentUser == null || !currentUser.isAnonymous) {
         throw AuthException.operationNotAllowed();
       }
-      
+
       // GoogleSignIn インスタンスを作成
       final GoogleSignIn googleSignIn = GoogleSignIn();
-      
+
       // Googleサインインダイアログを表示
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
       if (googleUser == null) {
         throw AuthException.userNotFound();
       }
-      
+
       // 認証情報を取得
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-      
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
       // Firebaseの認証情報を作成
       final OAuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
-      
+
       // 匿名アカウントをGoogleアカウントにリンク
-      final UserCredential userCredential = await currentUser.linkWithCredential(credential);
+      final UserCredential userCredential =
+          await currentUser.linkWithCredential(credential);
       return userCredential.user!.uid;
     } on FirebaseAuthException catch (e) {
       throw e.toAuthException();
