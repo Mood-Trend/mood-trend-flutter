@@ -6,7 +6,6 @@ import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/common/setting_page.dart';
-import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
 import 'package:mood_trend_flutter/presentation/common/components/custom_tooltip_behavior.dart';
 import 'package:mood_trend_flutter/utils/datetime_extension.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
