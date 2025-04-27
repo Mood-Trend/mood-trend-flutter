@@ -11,11 +11,6 @@ TooltipBehavior createCustomTooltipBehavior(BuildContext context) {
     enable: true,
     canShowMarker: false,
     color: AppColors.green,
-    textStyle: TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.bold,
-      color: AppColors.white,
-    ),
     // builder プロパティを追加
     builder: (dynamic data, dynamic point, dynamic series, int pointIndex,
         int seriesIndex) {
