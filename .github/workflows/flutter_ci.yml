@@ -1,0 +1,53 @@
+name: Flutter CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Set JAVA_HOME for Gradle
+        run: echo "org.gradle.java.home=$JAVA_HOME" >> android/gradle.properties
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.x'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Generate code
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+
+      - name: Run Lint analysis
+        run: dart analyze
+
+      - name: Check code formatting
+        run: dart format --set-exit-if-changed .
+
+      - name: Build APK (Development)
+        run: flutter build apk --dart-define=FLAVOR=dev
+
+      - name: Build APK (Staging)
+        if: github.event_name == 'push'
+        run: flutter build apk --dart-define=FLAVOR=stg
+
+      - name: Build APK (Production)
+        if: github.event_name == 'push'
+        run: flutter build apk --dart-define=FLAVOR=prod
