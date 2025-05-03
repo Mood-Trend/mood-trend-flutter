@@ -41,6 +41,3 @@ jobs:
       - name: Check code formatting
         run: dart format --set-exit-if-changed .
 
-      - name: Build APK (Development)
-        run: flutter build apk --dart-define=FLAVOR=dev
-
