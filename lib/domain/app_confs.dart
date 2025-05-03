@@ -4,7 +4,7 @@ part 'app_confs.freezed.dart';
 
 /// AppConfs コレクションのドキュメント群
 @freezed
-class AppConfs with _$AppConfs {
+abstract class AppConfs with _$AppConfs {
   const factory AppConfs({
     /// レビューメニューを表示するかどうか
     required bool isShowReviewMenu,
