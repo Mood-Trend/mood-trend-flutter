@@ -44,10 +44,3 @@ jobs:
       - name: Build APK (Development)
         run: flutter build apk --dart-define=FLAVOR=dev
 
-      - name: Build APK (Staging)
-        if: github.event_name == 'push'
-        run: flutter build apk --dart-define=FLAVOR=stg
-
-      - name: Build APK (Production)
-        if: github.event_name == 'push'
-        run: flutter build apk --dart-define=FLAVOR=prod
