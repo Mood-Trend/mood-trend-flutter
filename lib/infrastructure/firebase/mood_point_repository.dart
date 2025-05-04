@@ -42,6 +42,9 @@ class MoodPointRepository {
   Future<void> add({
     required int point,
     required int plannedVolume,
+    required double sleepHours,
+    required int stepCount,
+    required String memo,
     required DateTime moodDate,
   }) {
     try {
@@ -50,6 +53,9 @@ class MoodPointRepository {
           pointId: '',
           point: point,
           plannedVolume: plannedVolume,
+          sleepHours: sleepHours,
+          stepCount: stepCount,
+          memo: memo,
           moodDate: moodDate,
         ),
       );
@@ -65,12 +71,19 @@ class MoodPointRepository {
     required String pointId,
     required int point,
     required int plannedVolume,
+    required double sleepHours,
+    required String memo,
+    required int stepCount,
+
     required DateTime moodDate,
   }) async {
     final moodPointDoc = MoodPointDocument(
       pointId: pointId,
       point: point,
       plannedVolume: plannedVolume,
+      sleepHours: sleepHours,
+      stepCount: stepCount,
+      memo: memo,
       moodDate: moodDate,
     );
     try {
@@ -169,6 +182,7 @@ class MoodPointRepository {
         var moodPointList =
             snapshot.docs.map((doc) => doc.data().toMoodPoint()).toList();
         moodPointList.sort((a, b) => a.moodDate.compareTo(b.moodDate));
+        print('=== MoodPointList: $moodPointList');
         return moodPointList;
       },
     );
@@ -206,6 +220,9 @@ class MoodPointDocument {
     required this.pointId,
     required this.point,
     required this.plannedVolume,
+    required this.sleepHours,
+    required this.stepCount,
+    required this.memo,
     required this.moodDate,
     DateTime? createdAt,
     DateTime? updatedAt,
@@ -215,6 +232,9 @@ class MoodPointDocument {
   final String pointId;
   final int point;
   final int plannedVolume;
+  final double sleepHours;
+  final int stepCount;
+  final String memo;
   final DateTime moodDate;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -227,6 +247,9 @@ class MoodPointDocument {
         pointId: uid,
         point: json['point'] as int,
         plannedVolume: json['planned_volume'] as int,
+        sleepHours: json['sleep_hours'] as double,
+        stepCount: json['step_count'] as int,
+        memo: json['memo'] as String,
         moodDate: (json['mood_date'] as Timestamp).toDate(),
         createdAt: (json['created_at'] as Timestamp).toDate(),
         updatedAt: (json['updated_at'] as Timestamp).toDate(),
@@ -235,6 +258,9 @@ class MoodPointDocument {
   Map<String, dynamic> toJson() => {
         'point': point,
         'planned_volume': plannedVolume,
+        'sleep_hours': sleepHours,
+        'step_count': stepCount,
+        'memo': memo,
         'mood_date': moodDate,
         'created_at': createdAt,
         'updated_at': FieldValue.serverTimestamp(),
@@ -248,6 +274,9 @@ extension on MoodPointDocument {
         pointId: pointId,
         point: point,
         plannedVolume: plannedVolume,
+        sleepHours: sleepHours,
+        stepCount: stepCount,
+        memo: memo,
         moodDate: moodDate,
       );
 }

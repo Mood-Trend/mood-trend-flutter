@@ -12,7 +12,7 @@ part of 'mood_point.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$MoodPoint {
@@ -23,12 +23,17 @@ mixin _$MoodPoint {
   int get point => throw _privateConstructorUsedError;
 
   /// 予定量
-  int get plannedVolume => throw _privateConstructorUsedError;
+  int get plannedVolume => throw _privateConstructorUsedError; // 睡眠時間
+  double get sleepHours => throw _privateConstructorUsedError; // 歩数
+  int get stepCount => throw _privateConstructorUsedError; // メモ
+  String get memo => throw _privateConstructorUsedError;
 
   /// 気分日
   DateTime get moodDate => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MoodPoint
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MoodPointCopyWith<MoodPoint> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -38,7 +43,14 @@ abstract class $MoodPointCopyWith<$Res> {
   factory $MoodPointCopyWith(MoodPoint value, $Res Function(MoodPoint) then) =
       _$MoodPointCopyWithImpl<$Res, MoodPoint>;
   @useResult
-  $Res call({String pointId, int point, int plannedVolume, DateTime moodDate});
+  $Res call(
+      {String pointId,
+      int point,
+      int plannedVolume,
+      double sleepHours,
+      int stepCount,
+      String memo,
+      DateTime moodDate});
 }
 
 /// @nodoc
@@ -51,12 +63,17 @@ class _$MoodPointCopyWithImpl<$Res, $Val extends MoodPoint>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MoodPoint
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? pointId = null,
     Object? point = null,
     Object? plannedVolume = null,
+    Object? sleepHours = null,
+    Object? stepCount = null,
+    Object? memo = null,
     Object? moodDate = null,
   }) {
     return _then(_value.copyWith(
@@ -72,6 +89,18 @@ class _$MoodPointCopyWithImpl<$Res, $Val extends MoodPoint>
           ? _value.plannedVolume
           : plannedVolume // ignore: cast_nullable_to_non_nullable
               as int,
+      sleepHours: null == sleepHours
+          ? _value.sleepHours
+          : sleepHours // ignore: cast_nullable_to_non_nullable
+              as double,
+      stepCount: null == stepCount
+          ? _value.stepCount
+          : stepCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      memo: null == memo
+          ? _value.memo
+          : memo // ignore: cast_nullable_to_non_nullable
+              as String,
       moodDate: null == moodDate
           ? _value.moodDate
           : moodDate // ignore: cast_nullable_to_non_nullable
@@ -88,7 +117,14 @@ abstract class _$$MoodPointImplCopyWith<$Res>
       __$$MoodPointImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String pointId, int point, int plannedVolume, DateTime moodDate});
+  $Res call(
+      {String pointId,
+      int point,
+      int plannedVolume,
+      double sleepHours,
+      int stepCount,
+      String memo,
+      DateTime moodDate});
 }
 
 /// @nodoc
@@ -99,12 +135,17 @@ class __$$MoodPointImplCopyWithImpl<$Res>
       _$MoodPointImpl _value, $Res Function(_$MoodPointImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MoodPoint
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? pointId = null,
     Object? point = null,
     Object? plannedVolume = null,
+    Object? sleepHours = null,
+    Object? stepCount = null,
+    Object? memo = null,
     Object? moodDate = null,
   }) {
     return _then(_$MoodPointImpl(
@@ -120,6 +161,18 @@ class __$$MoodPointImplCopyWithImpl<$Res>
           ? _value.plannedVolume
           : plannedVolume // ignore: cast_nullable_to_non_nullable
               as int,
+      sleepHours: null == sleepHours
+          ? _value.sleepHours
+          : sleepHours // ignore: cast_nullable_to_non_nullable
+              as double,
+      stepCount: null == stepCount
+          ? _value.stepCount
+          : stepCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      memo: null == memo
+          ? _value.memo
+          : memo // ignore: cast_nullable_to_non_nullable
+              as String,
       moodDate: null == moodDate
           ? _value.moodDate
           : moodDate // ignore: cast_nullable_to_non_nullable
@@ -135,6 +188,9 @@ class _$MoodPointImpl implements _MoodPoint {
       {required this.pointId,
       required this.point,
       required this.plannedVolume,
+      required this.sleepHours,
+      required this.stepCount,
+      required this.memo,
       required this.moodDate});
 
   /// 気分値 ID
@@ -148,6 +204,15 @@ class _$MoodPointImpl implements _MoodPoint {
   /// 予定量
   @override
   final int plannedVolume;
+// 睡眠時間
+  @override
+  final double sleepHours;
+// 歩数
+  @override
+  final int stepCount;
+// メモ
+  @override
+  final String memo;
 
   /// 気分日
   @override
@@ -155,11 +220,11 @@ class _$MoodPointImpl implements _MoodPoint {
 
   @override
   String toString() {
-    return 'MoodPoint(: $pointId, point: $point, plannedVolume: $plannedVolume, moodDate: $moodDate)';
+    return 'MoodPoint(pointId: $pointId, point: $point, plannedVolume: $plannedVolume, sleepHours: $sleepHours, stepCount: $stepCount, memo: $memo, moodDate: $moodDate)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MoodPointImpl &&
@@ -167,15 +232,22 @@ class _$MoodPointImpl implements _MoodPoint {
             (identical(other.point, point) || other.point == point) &&
             (identical(other.plannedVolume, plannedVolume) ||
                 other.plannedVolume == plannedVolume) &&
+            (identical(other.sleepHours, sleepHours) ||
+                other.sleepHours == sleepHours) &&
+            (identical(other.stepCount, stepCount) ||
+                other.stepCount == stepCount) &&
+            (identical(other.memo, memo) || other.memo == memo) &&
             (identical(other.moodDate, moodDate) ||
                 other.moodDate == moodDate));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, pointId, point, plannedVolume, moodDate);
+  int get hashCode => Object.hash(runtimeType, pointId, point, plannedVolume,
+      sleepHours, stepCount, memo, moodDate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MoodPoint
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MoodPointImplCopyWith<_$MoodPointImpl> get copyWith =>
@@ -187,26 +259,37 @@ abstract class _MoodPoint implements MoodPoint {
       {required final String pointId,
       required final int point,
       required final int plannedVolume,
+      required final double sleepHours,
+      required final int stepCount,
+      required final String memo,
       required final DateTime moodDate}) = _$MoodPointImpl;
 
-  @override
-
   /// 気分値 ID
-  String get pointId;
   @override
+  String get pointId;
 
   /// 気分値
-  int get point;
   @override
+  int get point;
 
   /// 予定量
-  int get plannedVolume;
   @override
+  int get plannedVolume; // 睡眠時間
+  @override
+  double get sleepHours; // 歩数
+  @override
+  int get stepCount; // メモ
+  @override
+  String get memo;
 
   /// 気分日
-  DateTime get moodDate;
   @override
-  @JsonKey(ignore: true)
+  DateTime get moodDate;
+
+  /// Create a copy of MoodPoint
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MoodPointImplCopyWith<_$MoodPointImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

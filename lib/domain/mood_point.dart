@@ -15,6 +15,15 @@ class MoodPoint with _$MoodPoint {
     /// 予定量
     required int plannedVolume,
 
+    // 睡眠時間
+    required double sleepHours,
+
+    // 歩数
+    required int stepCount,
+
+    // メモ
+    required String memo,
+    
     /// 気分日
     required DateTime moodDate,
   }) = _MoodPoint;

@@ -45,6 +45,12 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
       });
   double _moodValue = 1.0;
 
+  double _sleepHours = 8.0;
+
+  int _stepCount = 1000;
+
+  String _memo = '';
+
   @override
   void dispose() {
     _isModalPop = false;
@@ -143,6 +149,9 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                               .execute(
                                 point: _moodValue.toInt(),
                                 plannedVolume: _plannedValue.toInt(),
+                                sleepHours: _sleepHours.toDouble(),
+                                stepCount: _stepCount.toInt(),
+                                memo: _memo.toString(),
                                 moodDate: date,
                               );
 
@@ -458,6 +467,9 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       .executeForUpdate(
                         point: _moodValue.toInt(),
                         plannedVolume: _plannedValue.toInt(),
+                        sleepHours: _sleepHours.toDouble(),
+                        stepCount: _stepCount.toInt(),
+                        memo: _memo.toString(),
                         moodDate: date,
                       );
                   // // 続けて保存が選択されている場合はモーダル継続
