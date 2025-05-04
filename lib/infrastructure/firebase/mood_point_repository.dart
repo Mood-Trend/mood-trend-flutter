@@ -95,6 +95,20 @@ class MoodPointRepository {
     }
   }
 
+  /// MoodPoint の全てのドキュメントを削除する。
+  Future<void> deleteAll() async {
+      try {
+      final querySnapshot = await moodPointsCollectionRef.get();
+      for (var doc in querySnapshot.docs) {
+        await doc.reference.delete();
+      }
+    } on FirebaseException catch (e) {
+      throw AppException('Firestore の削除処理でエラーが発生しました: ${e.code}');
+    } catch (e) {
+      throw AppException('予期しないエラーが発生しました: $e');
+    }
+  }
+
   /// MoodPoint のドキュメントを取得する。
   Future<MoodPoint> get({required String pointId}) async {
     try {

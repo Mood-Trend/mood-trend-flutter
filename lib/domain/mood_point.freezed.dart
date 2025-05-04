@@ -155,7 +155,7 @@ class _$MoodPointImpl implements _MoodPoint {
 
   @override
   String toString() {
-    return 'MoodPoint(pointId: $pointId, point: $point, plannedVolume: $plannedVolume, moodDate: $moodDate)';
+    return 'MoodPoint(: $pointId, point: $point, plannedVolume: $plannedVolume, moodDate: $moodDate)';
   }
 
   @override
