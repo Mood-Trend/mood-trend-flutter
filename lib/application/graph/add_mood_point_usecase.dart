@@ -2,6 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../infrastructure/firebase/mood_point_repository.dart';
 import '../usecase_mixin.dart';
 
+import '../../presentation/graph/input_modal.dart';
+
 /// [AddMoodPointUsecase] のインスタンスを作成するためのプロバイダ
 ///
 /// UI 層にユースケースを注入するために使用され、認証プロセスを抽象化する
@@ -38,6 +40,9 @@ class AddMoodPointUsecase with UsecaseMixin {
     // 歩数
     required int stepCount,
 
+    // 天気
+    required List<Weather> weather, 
+
     // メモ
     required String memo,
 
@@ -60,6 +65,7 @@ class AddMoodPointUsecase with UsecaseMixin {
               plannedVolume: plannedVolume,
               sleepHours: sleepHours,
               stepCount: stepCount,
+              weather: weather,
               memo: memo,
               moodDate: moodDate,
             );
@@ -83,6 +89,9 @@ class AddMoodPointUsecase with UsecaseMixin {
     // 歩数
     required int stepCount,
 
+    // 天気
+    required List<Weather> weather, 
+
     // メモ
     required String memo,
 
@@ -102,6 +111,7 @@ class AddMoodPointUsecase with UsecaseMixin {
               plannedVolume: plannedVolume,
               sleepHours: sleepHours,
               stepCount: stepCount,
+              weather: weather,
               memo: memo,
               moodDate: moodDate,
             );

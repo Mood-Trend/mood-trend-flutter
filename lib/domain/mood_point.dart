@@ -1,6 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../presentation/graph/input_modal.dart';
 part 'mood_point.freezed.dart';
+
 
 /// MoodPoint コレクションのドキュメント
 @freezed
@@ -20,6 +22,9 @@ class MoodPoint with _$MoodPoint {
 
     // 歩数
     required int stepCount,
+
+    // 天気
+    required List<Weather> weather,
 
     // メモ
     required String memo,

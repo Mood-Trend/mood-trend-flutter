@@ -22,6 +22,13 @@ import '../diagnosis/table_page.dart';
 
 final selectedTermProvider = StateProvider<RewardedAd?>((_) => null);
 
+enum Weather {
+  sunny,
+  rainy,
+  cloudy,
+  lowPressure,
+}
+
 /// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
   const InputModal({super.key, required this.uid});
@@ -48,6 +55,11 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
   double _sleepHours = 8.0;
 
   int _stepCount = 1000;
+
+  List<Weather> _weather = [
+    Weather.sunny,
+    Weather.lowPressure,
+  ];
 
   String _memo = '';
 
@@ -151,6 +163,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                                 plannedVolume: _plannedValue.toInt(),
                                 sleepHours: _sleepHours.toDouble(),
                                 stepCount: _stepCount.toInt(),
+                                weather: _weather,
                                 memo: _memo.toString(),
                                 moodDate: date,
                               );
@@ -469,6 +482,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                         plannedVolume: _plannedValue.toInt(),
                         sleepHours: _sleepHours.toDouble(),
                         stepCount: _stepCount.toInt(),
+                        weather: _weather.toList(),
                         memo: _memo.toString(),
                         moodDate: date,
                       );

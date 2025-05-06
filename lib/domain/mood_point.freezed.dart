@@ -25,7 +25,8 @@ mixin _$MoodPoint {
   /// 予定量
   int get plannedVolume => throw _privateConstructorUsedError; // 睡眠時間
   double get sleepHours => throw _privateConstructorUsedError; // 歩数
-  int get stepCount => throw _privateConstructorUsedError; // メモ
+  int get stepCount => throw _privateConstructorUsedError; // 天気
+  List<Weather> get weather => throw _privateConstructorUsedError; // メモ
   String get memo => throw _privateConstructorUsedError;
 
   /// 気分日
@@ -49,6 +50,7 @@ abstract class $MoodPointCopyWith<$Res> {
       int plannedVolume,
       double sleepHours,
       int stepCount,
+      List<Weather> weather,
       String memo,
       DateTime moodDate});
 }
@@ -73,6 +75,7 @@ class _$MoodPointCopyWithImpl<$Res, $Val extends MoodPoint>
     Object? plannedVolume = null,
     Object? sleepHours = null,
     Object? stepCount = null,
+    Object? weather = null,
     Object? memo = null,
     Object? moodDate = null,
   }) {
@@ -97,6 +100,10 @@ class _$MoodPointCopyWithImpl<$Res, $Val extends MoodPoint>
           ? _value.stepCount
           : stepCount // ignore: cast_nullable_to_non_nullable
               as int,
+      weather: null == weather
+          ? _value.weather
+          : weather // ignore: cast_nullable_to_non_nullable
+              as List<Weather>,
       memo: null == memo
           ? _value.memo
           : memo // ignore: cast_nullable_to_non_nullable
@@ -123,6 +130,7 @@ abstract class _$$MoodPointImplCopyWith<$Res>
       int plannedVolume,
       double sleepHours,
       int stepCount,
+      List<Weather> weather,
       String memo,
       DateTime moodDate});
 }
@@ -145,6 +153,7 @@ class __$$MoodPointImplCopyWithImpl<$Res>
     Object? plannedVolume = null,
     Object? sleepHours = null,
     Object? stepCount = null,
+    Object? weather = null,
     Object? memo = null,
     Object? moodDate = null,
   }) {
@@ -169,6 +178,10 @@ class __$$MoodPointImplCopyWithImpl<$Res>
           ? _value.stepCount
           : stepCount // ignore: cast_nullable_to_non_nullable
               as int,
+      weather: null == weather
+          ? _value._weather
+          : weather // ignore: cast_nullable_to_non_nullable
+              as List<Weather>,
       memo: null == memo
           ? _value.memo
           : memo // ignore: cast_nullable_to_non_nullable
@@ -190,8 +203,10 @@ class _$MoodPointImpl implements _MoodPoint {
       required this.plannedVolume,
       required this.sleepHours,
       required this.stepCount,
+      required final List<Weather> weather,
       required this.memo,
-      required this.moodDate});
+      required this.moodDate})
+      : _weather = weather;
 
   /// 気分値 ID
   @override
@@ -210,6 +225,16 @@ class _$MoodPointImpl implements _MoodPoint {
 // 歩数
   @override
   final int stepCount;
+// 天気
+  final List<Weather> _weather;
+// 天気
+  @override
+  List<Weather> get weather {
+    if (_weather is EqualUnmodifiableListView) return _weather;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_weather);
+  }
+
 // メモ
   @override
   final String memo;
@@ -220,7 +245,7 @@ class _$MoodPointImpl implements _MoodPoint {
 
   @override
   String toString() {
-    return 'MoodPoint(pointId: $pointId, point: $point, plannedVolume: $plannedVolume, sleepHours: $sleepHours, stepCount: $stepCount, memo: $memo, moodDate: $moodDate)';
+    return 'MoodPoint(pointId: $pointId, point: $point, plannedVolume: $plannedVolume, sleepHours: $sleepHours, stepCount: $stepCount, weather: $weather, memo: $memo, moodDate: $moodDate)';
   }
 
   @override
@@ -236,14 +261,23 @@ class _$MoodPointImpl implements _MoodPoint {
                 other.sleepHours == sleepHours) &&
             (identical(other.stepCount, stepCount) ||
                 other.stepCount == stepCount) &&
+            const DeepCollectionEquality().equals(other._weather, _weather) &&
             (identical(other.memo, memo) || other.memo == memo) &&
             (identical(other.moodDate, moodDate) ||
                 other.moodDate == moodDate));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pointId, point, plannedVolume,
-      sleepHours, stepCount, memo, moodDate);
+  int get hashCode => Object.hash(
+      runtimeType,
+      pointId,
+      point,
+      plannedVolume,
+      sleepHours,
+      stepCount,
+      const DeepCollectionEquality().hash(_weather),
+      memo,
+      moodDate);
 
   /// Create a copy of MoodPoint
   /// with the given fields replaced by the non-null parameter values.
@@ -261,6 +295,7 @@ abstract class _MoodPoint implements MoodPoint {
       required final int plannedVolume,
       required final double sleepHours,
       required final int stepCount,
+      required final List<Weather> weather,
       required final String memo,
       required final DateTime moodDate}) = _$MoodPointImpl;
 
@@ -278,7 +313,9 @@ abstract class _MoodPoint implements MoodPoint {
   @override
   double get sleepHours; // 歩数
   @override
-  int get stepCount; // メモ
+  int get stepCount; // 天気
+  @override
+  List<Weather> get weather; // メモ
   @override
   String get memo;
 

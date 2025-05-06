@@ -5,6 +5,8 @@ import '../../domain/app_exception.dart';
 import '../../domain/mood_point.dart';
 import 'firebase_provider.dart';
 
+import '../../presentation/graph/input_modal.dart';
+
 /// [MoodPointRepository] のインスタンスを提供する [Provider]
 final moodPointRepositoryProvider =
     Provider.family<MoodPointRepository, String>(
@@ -44,6 +46,7 @@ class MoodPointRepository {
     required int plannedVolume,
     required double sleepHours,
     required int stepCount,
+    required List<Weather> weather,
     required String memo,
     required DateTime moodDate,
   }) {
@@ -55,6 +58,7 @@ class MoodPointRepository {
           plannedVolume: plannedVolume,
           sleepHours: sleepHours,
           stepCount: stepCount,
+          weather: weather,
           memo: memo,
           moodDate: moodDate,
         ),
@@ -72,6 +76,7 @@ class MoodPointRepository {
     required int point,
     required int plannedVolume,
     required double sleepHours,
+    required List<Weather> weather,
     required String memo,
     required int stepCount,
 
@@ -83,6 +88,7 @@ class MoodPointRepository {
       plannedVolume: plannedVolume,
       sleepHours: sleepHours,
       stepCount: stepCount,
+      weather: weather,
       memo: memo,
       moodDate: moodDate,
     );
@@ -222,6 +228,7 @@ class MoodPointDocument {
     required this.plannedVolume,
     required this.sleepHours,
     required this.stepCount,
+    required this.weather,
     required this.memo,
     required this.moodDate,
     DateTime? createdAt,
@@ -235,6 +242,7 @@ class MoodPointDocument {
   final double sleepHours;
   final int stepCount;
   final String memo;
+  final List<Weather> weather;
   final DateTime moodDate;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -250,6 +258,7 @@ class MoodPointDocument {
         sleepHours: json['sleep_hours'] as double,
         stepCount: json['step_count'] as int,
         memo: json['memo'] as String,
+        weather: json['weather'] as List<Weather>,           
         moodDate: (json['mood_date'] as Timestamp).toDate(),
         createdAt: (json['created_at'] as Timestamp).toDate(),
         updatedAt: (json['updated_at'] as Timestamp).toDate(),
@@ -260,6 +269,7 @@ class MoodPointDocument {
         'planned_volume': plannedVolume,
         'sleep_hours': sleepHours,
         'step_count': stepCount,
+        'weather': weather,
         'memo': memo,
         'mood_date': moodDate,
         'created_at': createdAt,
@@ -276,6 +286,7 @@ extension on MoodPointDocument {
         plannedVolume: plannedVolume,
         sleepHours: sleepHours,
         stepCount: stepCount,
+        weather: weather,
         memo: memo,
         moodDate: moodDate,
       );
