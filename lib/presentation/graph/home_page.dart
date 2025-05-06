@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:mood_trend_flutter/application/common/states/is_read_only_provider.dart';
 import 'package:mood_trend_flutter/domain/mood_point.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
@@ -60,6 +61,7 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedTerm = ref.watch(selectedTermProvider);
+    final readOnlyState = ref.watch(isReadOnlyProvider);
 
     final visibleMinDate = ref.watch(visibleMinimumProvider);
 
@@ -136,10 +138,27 @@ class HomePage extends ConsumerWidget {
         centerTitle: true,
         backgroundColor: AppColors.white,
         foregroundColor: AppColors.black,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
+        title: Column(
           children: [
+            if (readOnlyState.isReadOnly)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 4.0),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                  decoration: BoxDecoration(
+                    color: AppColors.lightGrey,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: const Text(
+                    '読み取り専用モード',
+                    style: TextStyle(fontSize: 12, color: Colors.grey),
+                  ),
+                ),
+              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
             TextButton(
               onPressed: () => ref
                   .read(selectedTermProvider.notifier)
@@ -268,21 +287,23 @@ class HomePage extends ConsumerWidget {
               );
             }),
       ),
-      floatingActionButton: FloatingActionButton(
-        key: floatingActionButtonKey,
-        backgroundColor: AppColors.green,
-        foregroundColor: AppColors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(100),
-        ),
-        onPressed: () {
-          PageNavigator.pushWithSlideFromBottom(
-            context,
-            InputModal(uid: userId),
-          );
-        },
-        child: Icon(Icons.add, color: AppColors.white),
-      ),
+      floatingActionButton: readOnlyState.isReadOnly 
+          ? null // 読み取り専用モードの場合はボタンを表示しない
+          : FloatingActionButton(
+              key: floatingActionButtonKey,
+              backgroundColor: AppColors.green,
+              foregroundColor: AppColors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(100),
+              ),
+              onPressed: () {
+                PageNavigator.pushWithSlideFromBottom(
+                  context,
+                  InputModal(uid: userId),
+                );
+              },
+              child: Icon(Icons.add, color: AppColors.white),
+            ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         color: AppColors.lightGreen,

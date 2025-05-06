@@ -100,6 +100,40 @@ class UserRepository {
       throw AppException('予期しないエラーが発生しました: $e');
     }
   }
+  
+  /// ユーザーに支援者を追加する
+  Future<void> addSupporter({
+    required String uid,
+    required String supporterId,
+  }) async {
+    try {
+      await userCollectionRef.doc(uid).update({
+        'supporter_ids': FieldValue.arrayUnion([supporterId]),
+      });
+    } on FirebaseException catch (e) {
+      throw AppException('Firestore の更新処理でエラーが発生しました: ${e.code}');
+    } catch (e) {
+      throw AppException('予期しないエラーが発生しました: $e');
+    }
+  }
+
+  /// ユーザーが特定のユーザーの支援者かどうかをチェックする
+  Future<bool> isSupporterOf(String supporterId, String ownerUid) async {
+    try {
+      final doc = await userCollectionRef.doc(ownerUid).get();
+      if (!doc.exists) return false;
+      
+      final userData = doc.data();
+      if (userData == null) return false;
+      
+      final supporterIds = userData.supporterIds ?? [];
+      return supporterIds.contains(supporterId);
+    } on FirebaseException catch (e) {
+      throw AppException('Firestore の取得処理でエラーが発生しました: ${e.code}');
+    } catch (e) {
+      throw AppException('予期しないエラーが発生しました: $e');
+    }
+  }
 }
 
 /// Firebase Firestore に保存されるユーザーのドキュメントモデル
@@ -108,6 +142,7 @@ class UserDocument {
     required this.uid,
     required this.displayName,
     required this.imageUrl,
+    this.supporterIds = const [],
     DateTime? createdAt,
     DateTime? updatedAt,
   })  : createdAt = createdAt ?? DateTime.now(),
@@ -116,6 +151,7 @@ class UserDocument {
   final String uid;
   final String displayName;
   final String imageUrl;
+  final List<String> supporterIds;
   final DateTime createdAt;
   final DateTime updatedAt;
 
@@ -124,6 +160,9 @@ class UserDocument {
         uid: uid,
         displayName: json['display_name'] as String,
         imageUrl: json['image_url'] as String,
+        supporterIds: json['supporter_ids'] != null 
+            ? List<String>.from(json['supporter_ids'] as List)
+            : const [],
         createdAt: (json['created_at'] as Timestamp).toDate(),
         updatedAt: (json['updated_at'] as Timestamp).toDate(),
       );
@@ -131,6 +170,7 @@ class UserDocument {
   Map<String, dynamic> toJson() => {
         'display_name': displayName,
         'image_url': imageUrl,
+        'supporter_ids': supporterIds,
         'created_at': createdAt,
         'updated_at': FieldValue.serverTimestamp(),
       };
@@ -143,5 +183,6 @@ extension on UserDocument {
         uid: uid,
         displayName: displayName,
         imageUrl: imageUrl,
+        supporterIds: supporterIds,
       );
 }
