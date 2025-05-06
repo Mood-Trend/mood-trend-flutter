@@ -6,8 +6,11 @@ import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/common/setting_page.dart';
+import 'package:mood_trend_flutter/presentation/graph/components/export_graph_dialog.dart';
 import 'package:mood_trend_flutter/utils/datetime_extension.dart';
+import 'package:mood_trend_flutter/utils/graph_export_utils.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
+import 'package:pdf/pdf.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
@@ -56,6 +59,77 @@ class HomePage extends ConsumerWidget {
   const HomePage({super.key, required this.userId});
 
   final String userId;
+
+  /// グラフを出力するダイアログを表示
+  void _showExportDialog(BuildContext context, WidgetRef ref) {
+    showDialog(
+      context: context,
+      builder: (context) => ExportGraphDialog(
+        onExport: (format) {
+          _exportGraph(context, ref, format);
+        },
+      ),
+    );
+  }
+
+  /// グラフを出力
+  Future<void> _exportGraph(BuildContext context, WidgetRef ref, ExportFormat format) async {
+    // Get the SfCartesianChart widget with current configuration
+    final visibleMinDate = ref.read(visibleMinimumProvider);
+    
+    // Create a widget that includes just the chart with A4 proportions
+    final chartWidget = Container(
+      color: AppColors.white,
+      width: PdfPageFormat.a4.width * 0.8,
+      height: PdfPageFormat.a4.height * 0.8,
+      child: SfCartesianChart(
+        key: ValueKey(visibleMinDate),
+        zoomPanBehavior: ZoomPanBehavior(
+          enablePanning: true,
+          zoomMode: ZoomMode.x,
+        ),
+        primaryXAxis: DateTimeAxis(),
+        primaryYAxis: NumericAxis(),
+        series: [
+          SplineAreaSeries<MoodPoint, DateTime>(
+            name: S.of(context).moodValue,
+            dataSource: ref.read(subscribeMoodPointsProvider(userId)).value ?? [],
+            xValueMapper: (MoodPoint value, _) => value.moodDate.toDateOnly(),
+            yValueMapper: (MoodPoint value, _) => value.point,
+            color: AppColors.green.withOpacity(0.5),
+            markerSettings: const MarkerSettings(isVisible: true),
+            splineType: SplineType.monotonic,
+          ),
+          SplineAreaSeries<MoodPoint, DateTime>(
+            name: S.of(context).plannedVolume,
+            dataSource: ref.read(subscribeMoodPointsProvider(userId)).value ?? [],
+            xValueMapper: (MoodPoint value, _) => value.moodDate.toDateOnly(),
+            yValueMapper: (MoodPoint value, _) => value.plannedVolume,
+            color: AppColors.blue.withOpacity(0.5),
+            markerSettings: const MarkerSettings(isVisible: true),
+            yAxisName: 'yAxis',
+            splineType: SplineType.monotonic,
+          ),
+        ],
+      ),
+    );
+    
+    // Export the chart
+    final filePath = await GraphExportUtils.exportWidgetAs(
+      widget: chartWidget,
+      format: format,
+      title: 'mood_trend',
+    );
+    
+    if (filePath != null && context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(S.of(context).graphSavedSuccessfully),
+          duration: const Duration(seconds: 2),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -268,20 +342,39 @@ class HomePage extends ConsumerWidget {
               );
             }),
       ),
-      floatingActionButton: FloatingActionButton(
-        key: floatingActionButtonKey,
-        backgroundColor: AppColors.green,
-        foregroundColor: AppColors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(100),
-        ),
-        onPressed: () {
-          PageNavigator.pushWithSlideFromBottom(
-            context,
-            InputModal(uid: userId),
-          );
-        },
-        child: Icon(Icons.add, color: AppColors.white),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox(width: 30),
+          // Export button
+          FloatingActionButton(
+            heroTag: 'exportButton',
+            backgroundColor: AppColors.blue,
+            foregroundColor: AppColors.white,
+            onPressed: () {
+              _showExportDialog(context, ref);
+            },
+            child: const Icon(Icons.save_alt),
+          ),
+          const SizedBox(width: 16),
+          // Existing Add button
+          FloatingActionButton(
+            key: floatingActionButtonKey,
+            heroTag: 'addButton',
+            backgroundColor: AppColors.green,
+            foregroundColor: AppColors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            onPressed: () {
+              PageNavigator.pushWithSlideFromBottom(
+                context,
+                InputModal(uid: userId),
+              );
+            },
+            child: Icon(Icons.add, color: AppColors.white),
+          ),
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(

@@ -111,5 +111,11 @@
     "notificationSettingsWeekendDescription": "週末の20:00に通知",
     "notificationSettingsNone": "通知なし",
     "notificationSettingsNoneDescription": "通知を無効化",
-    "settingNotifications": "通知設定"
+    "settingNotifications": "通知設定",
+    "exportGraph": "グラフを出力",
+    "exportAs": "出力形式",
+    "pdf": "PDF",
+    "png": "PNG",
+    "saveToDevice": "デバイスに保存",
+    "graphSavedSuccessfully": "グラフを保存しました"
 }

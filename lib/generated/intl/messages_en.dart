@@ -49,8 +49,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Certain of personal success in everything"),
         "elationPlus_5": MessageLookupByLibrary.simpleMessage(
             "Absolute confidence in being right and succeeding in everything"),
+        "exportAs": MessageLookupByLibrary.simpleMessage("Export as"),
+        "exportGraph": MessageLookupByLibrary.simpleMessage("Export Graph"),
         "goTable":
             MessageLookupByLibrary.simpleMessage("View Mood Value Guide"),
+        "graphSavedSuccessfully":
+            MessageLookupByLibrary.simpleMessage("Graph saved successfully"),
         "homeCoachMarkBody": MessageLookupByLibrary.simpleMessage(
             "Use the button below to record your mood value and activity count"),
         "homeCoachMarkTitle":
@@ -137,16 +141,19 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mood Value Guide"),
         "onboardingWelcome":
             MessageLookupByLibrary.simpleMessage("Welcome to the Mood Trend!"),
+        "pdf": MessageLookupByLibrary.simpleMessage("PDF"),
         "plannedVolume": MessageLookupByLibrary.simpleMessage("Activity Count"),
         "plannedVolumeQuestion": MessageLookupByLibrary.simpleMessage(
             "How many activities or plans did you have today?"),
         "plannedVolumeQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
             "Record the number of activities you completed today\nThis objective measure can help in reviewing trends"),
+        "png": MessageLookupByLibrary.simpleMessage("PNG"),
         "registerConfirm":
             MessageLookupByLibrary.simpleMessage("Confirm Registration"),
         "registerRegister": MessageLookupByLibrary.simpleMessage("Register"),
         "registerSave": MessageLookupByLibrary.simpleMessage(
             "Mood Value Guide registration completed"),
+        "saveToDevice": MessageLookupByLibrary.simpleMessage("Save to Device"),
         "settingAboutApp":
             MessageLookupByLibrary.simpleMessage("About the App"),
         "settingContact": MessageLookupByLibrary.simpleMessage("Contact Us"),

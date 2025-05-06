@@ -111,5 +111,11 @@
     "notificationSettingsWeekendDescription": "Notify at 8:00 PM on weekends",
     "notificationSettingsNone": "No notifications",
     "notificationSettingsNoneDescription": "Disable notifications",
-    "settingNotifications": "Notification Settings"
+    "settingNotifications": "Notification Settings",
+    "exportGraph": "Export Graph",
+    "exportAs": "Export as",
+    "pdf": "PDF",
+    "png": "PNG",
+    "saveToDevice": "Save to Device",
+    "graphSavedSuccessfully": "Graph saved successfully"
 }

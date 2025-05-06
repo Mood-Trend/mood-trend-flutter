@@ -1169,6 +1169,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Export Graph`
+  String get exportGraph {
+    return Intl.message(
+      'Export Graph',
+      name: 'exportGraph',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Export as`
+  String get exportAs {
+    return Intl.message(
+      'Export as',
+      name: 'exportAs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PDF`
+  String get pdf {
+    return Intl.message(
+      'PDF',
+      name: 'pdf',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PNG`
+  String get png {
+    return Intl.message(
+      'PNG',
+      name: 'png',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save to Device`
+  String get saveToDevice {
+    return Intl.message(
+      'Save to Device',
+      name: 'saveToDevice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Graph saved successfully`
+  String get graphSavedSuccessfully {
+    return Intl.message(
+      'Graph saved successfully',
+      name: 'graphSavedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

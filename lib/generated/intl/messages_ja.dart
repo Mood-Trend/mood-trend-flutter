@@ -46,7 +46,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("どんなことでも自分は成功すると確信している"),
         "elationPlus_5":
             MessageLookupByLibrary.simpleMessage("自分は絶対に正しく、すべてが上手くいくと確信する"),
+        "exportAs": MessageLookupByLibrary.simpleMessage("出力形式"),
+        "exportGraph": MessageLookupByLibrary.simpleMessage("グラフを出力"),
         "goTable": MessageLookupByLibrary.simpleMessage("気分値目安表はこちら"),
+        "graphSavedSuccessfully":
+            MessageLookupByLibrary.simpleMessage("グラフを保存しました"),
         "homeCoachMarkBody":
             MessageLookupByLibrary.simpleMessage("下のボタンから気分値と活動数の記録ができます"),
         "homeCoachMarkTitle":
@@ -126,16 +130,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "onboardingTitleThird": MessageLookupByLibrary.simpleMessage("気分値目安表"),
         "onboardingWelcome":
             MessageLookupByLibrary.simpleMessage("気分グラフへようこそ！"),
+        "pdf": MessageLookupByLibrary.simpleMessage("PDF"),
         "plannedVolume": MessageLookupByLibrary.simpleMessage("活動数"),
         "plannedVolumeQuestion":
             MessageLookupByLibrary.simpleMessage("この日の活動 or 予定の数はいくつ？"),
         "plannedVolumeQuestionTooltipMessage":
             MessageLookupByLibrary.simpleMessage(
                 "この日に行ったことの数を記録してください\n気分値より客観性のある数値で振り返りに役立ちます"),
+        "png": MessageLookupByLibrary.simpleMessage("PNG"),
         "registerConfirm": MessageLookupByLibrary.simpleMessage("登録確認"),
         "registerRegister": MessageLookupByLibrary.simpleMessage("登録"),
         "registerSave":
             MessageLookupByLibrary.simpleMessage("気分値目安表の登録が完了しました"),
+        "saveToDevice": MessageLookupByLibrary.simpleMessage("デバイスに保存"),
         "settingAboutApp": MessageLookupByLibrary.simpleMessage("アプリについて"),
         "settingContact": MessageLookupByLibrary.simpleMessage("お問い合わせ"),
         "settingEdit": MessageLookupByLibrary.simpleMessage("編集"),
