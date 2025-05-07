@@ -61,7 +61,7 @@ class MoodPointRepository {
           plannedVolume: plannedVolume,
           sleepHours: sleepHours,
           stepCount: stepCount,
-          weather: weather,
+          weather: weather.map((w) => w.toString()).toList(),
           //weather: ['rain','sunny'],
           memo: memo,
           moodDate: moodDate,
@@ -192,12 +192,13 @@ class MoodPointRepository {
     try {
       final snapshot = await moodPointsCollectionRef.get();
       print('=== MoodPointList.snapshop: $snapshot');
-      inspect(snapshot);
+      
 
       for (final doc in snapshot.docs) {
         try {
           final data = doc.data();
           print('✅ raw data for ${doc.id}: $data');
+          inspect(data);
 
           final moodPoint = data.toMoodPoint();
           print('🎯 converted: $moodPoint');
