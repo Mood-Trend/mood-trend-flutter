@@ -24,7 +24,8 @@ class MoodPoint with _$MoodPoint {
     required int stepCount,
 
     // 天気
-    required List<Weather> weather,
+    required List<String> weather,
+    //required String weather,
 
     // メモ
     required String memo,

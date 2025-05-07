@@ -56,10 +56,8 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
 
   int _stepCount = 1000;
 
-  List<Weather> _weather = [
-    Weather.sunny,
-    Weather.lowPressure,
-  ];
+  List<String> _weather = ['sunny','cloudy'];
+  //String _weather = 'sunny';
 
   String _memo = '';
 
@@ -163,7 +161,8 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                                 plannedVolume: _plannedValue.toInt(),
                                 sleepHours: _sleepHours.toDouble(),
                                 stepCount: _stepCount.toInt(),
-                                weather: _weather,
+                                weather: _weather.toList(),
+                                //weather: _weather.toString(),
                                 memo: _memo.toString(),
                                 moodDate: date,
                               );
@@ -483,6 +482,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                         sleepHours: _sleepHours.toDouble(),
                         stepCount: _stepCount.toInt(),
                         weather: _weather.toList(),
+                        //weather: _weather.toString(),
                         memo: _memo.toString(),
                         moodDate: date,
                       );

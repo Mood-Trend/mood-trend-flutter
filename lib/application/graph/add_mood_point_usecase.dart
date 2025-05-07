@@ -41,7 +41,8 @@ class AddMoodPointUsecase with UsecaseMixin {
     required int stepCount,
 
     // 天気
-    required List<Weather> weather, 
+    required List<String> weather, 
+    //required String weather, 
 
     // メモ
     required String memo,
@@ -60,6 +61,8 @@ class AddMoodPointUsecase with UsecaseMixin {
         if (isExist) return false;
 
         // [MoodPointRepository] を使用して気分値を追加
+        print("---ref,reaed(moodPointRepositoryProvider(uid))---");
+        print(weather);
         await ref.read(moodPointRepositoryProvider(uid)).add(
               point: point,
               plannedVolume: plannedVolume,
@@ -69,6 +72,7 @@ class AddMoodPointUsecase with UsecaseMixin {
               memo: memo,
               moodDate: moodDate,
             );
+        print("--- await ended ---");
         return true;
       },
       isOverlayLoading: false,
@@ -90,7 +94,8 @@ class AddMoodPointUsecase with UsecaseMixin {
     required int stepCount,
 
     // 天気
-    required List<Weather> weather, 
+    required List<String> weather, 
+    //required String weather, 
 
     // メモ
     required String memo,

@@ -46,11 +46,13 @@ class MoodPointRepository {
     required int plannedVolume,
     required double sleepHours,
     required int stepCount,
-    required List<Weather> weather,
+    required List<String> weather,
+    //required String weather,
     required String memo,
     required DateTime moodDate,
   }) {
     try {
+      print('---- add ------');
       return moodPointsCollectionRef.add(
         MoodPointDocument(
           pointId: '',
@@ -59,6 +61,7 @@ class MoodPointRepository {
           sleepHours: sleepHours,
           stepCount: stepCount,
           weather: weather,
+          //weather: ['rain','sunny'],
           memo: memo,
           moodDate: moodDate,
         ),
@@ -76,7 +79,8 @@ class MoodPointRepository {
     required int point,
     required int plannedVolume,
     required double sleepHours,
-    required List<Weather> weather,
+    required List<String> weather,
+    //required String weather,
     required String memo,
     required int stepCount,
 
@@ -241,8 +245,9 @@ class MoodPointDocument {
   final int plannedVolume;
   final double sleepHours;
   final int stepCount;
+  final List<String> weather;
+  //final String weather;
   final String memo;
-  final List<Weather> weather;
   final DateTime moodDate;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -258,7 +263,8 @@ class MoodPointDocument {
         sleepHours: json['sleep_hours'] as double,
         stepCount: json['step_count'] as int,
         memo: json['memo'] as String,
-        weather: json['weather'] as List<Weather>,           
+        weather: json['weather'] as List<String>, 
+        //weather: json['weather'] as String,        
         moodDate: (json['mood_date'] as Timestamp).toDate(),
         createdAt: (json['created_at'] as Timestamp).toDate(),
         updatedAt: (json['updated_at'] as Timestamp).toDate(),

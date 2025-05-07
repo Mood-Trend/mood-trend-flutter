@@ -26,7 +26,9 @@ mixin _$MoodPoint {
   int get plannedVolume => throw _privateConstructorUsedError; // 睡眠時間
   double get sleepHours => throw _privateConstructorUsedError; // 歩数
   int get stepCount => throw _privateConstructorUsedError; // 天気
-  List<Weather> get weather => throw _privateConstructorUsedError; // メモ
+  List<String> get weather =>
+      throw _privateConstructorUsedError; //required String weather,
+// メモ
   String get memo => throw _privateConstructorUsedError;
 
   /// 気分日
@@ -50,7 +52,7 @@ abstract class $MoodPointCopyWith<$Res> {
       int plannedVolume,
       double sleepHours,
       int stepCount,
-      List<Weather> weather,
+      List<String> weather,
       String memo,
       DateTime moodDate});
 }
@@ -103,7 +105,7 @@ class _$MoodPointCopyWithImpl<$Res, $Val extends MoodPoint>
       weather: null == weather
           ? _value.weather
           : weather // ignore: cast_nullable_to_non_nullable
-              as List<Weather>,
+              as List<String>,
       memo: null == memo
           ? _value.memo
           : memo // ignore: cast_nullable_to_non_nullable
@@ -130,7 +132,7 @@ abstract class _$$MoodPointImplCopyWith<$Res>
       int plannedVolume,
       double sleepHours,
       int stepCount,
-      List<Weather> weather,
+      List<String> weather,
       String memo,
       DateTime moodDate});
 }
@@ -181,7 +183,7 @@ class __$$MoodPointImplCopyWithImpl<$Res>
       weather: null == weather
           ? _value._weather
           : weather // ignore: cast_nullable_to_non_nullable
-              as List<Weather>,
+              as List<String>,
       memo: null == memo
           ? _value.memo
           : memo // ignore: cast_nullable_to_non_nullable
@@ -203,7 +205,7 @@ class _$MoodPointImpl implements _MoodPoint {
       required this.plannedVolume,
       required this.sleepHours,
       required this.stepCount,
-      required final List<Weather> weather,
+      required final List<String> weather,
       required this.memo,
       required this.moodDate})
       : _weather = weather;
@@ -226,15 +228,16 @@ class _$MoodPointImpl implements _MoodPoint {
   @override
   final int stepCount;
 // 天気
-  final List<Weather> _weather;
+  final List<String> _weather;
 // 天気
   @override
-  List<Weather> get weather {
+  List<String> get weather {
     if (_weather is EqualUnmodifiableListView) return _weather;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_weather);
   }
 
+//required String weather,
 // メモ
   @override
   final String memo;
@@ -295,7 +298,7 @@ abstract class _MoodPoint implements MoodPoint {
       required final int plannedVolume,
       required final double sleepHours,
       required final int stepCount,
-      required final List<Weather> weather,
+      required final List<String> weather,
       required final String memo,
       required final DateTime moodDate}) = _$MoodPointImpl;
 
@@ -315,7 +318,8 @@ abstract class _MoodPoint implements MoodPoint {
   @override
   int get stepCount; // 天気
   @override
-  List<Weather> get weather; // メモ
+  List<String> get weather; //required String weather,
+// メモ
   @override
   String get memo;
 
