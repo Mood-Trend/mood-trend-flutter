@@ -48,12 +48,10 @@ class MoodPointRepository {
     required double sleepHours,
     required int stepCount,
     required List<String> weather,
-    //required String weather,
     required String memo,
     required DateTime moodDate,
   }) {
     try {
-      print('---- add ------');
       return moodPointsCollectionRef.add(
         MoodPointDocument(
           pointId: '',
@@ -62,7 +60,6 @@ class MoodPointRepository {
           sleepHours: sleepHours,
           stepCount: stepCount,
           weather: weather.map((w) => w.toString()).toList(),
-          //weather: ['rain','sunny'],
           memo: memo,
           moodDate: moodDate,
         ),
@@ -81,7 +78,6 @@ class MoodPointRepository {
     required int plannedVolume,
     required double sleepHours,
     required List<String> weather,
-    //required String weather,
     required String memo,
     required int stepCount,
 
@@ -93,7 +89,7 @@ class MoodPointRepository {
       plannedVolume: plannedVolume,
       sleepHours: sleepHours,
       stepCount: stepCount,
-      weather: weather,
+      weather: weather.map((w) => w.toString()).toList(),
       memo: memo,
       moodDate: moodDate,
     );
@@ -189,52 +185,13 @@ class MoodPointRepository {
   
   // デバッグ専用の関数（一度だけ取得して print する）
   Future<void> debugFetchMoodPointsOnce() async {
-    try {
-      final snapshot = await moodPointsCollectionRef.get();
-      print('=== MoodPointList.snapshop: $snapshot');
-      
-
-      for (final doc in snapshot.docs) {
-        try {
-          final data = doc.data();
-          print('✅ raw data for ${doc.id}: $data');
-          inspect(data);
-
-          final moodPoint = data.toMoodPoint();
-          print('🎯 converted: $moodPoint');
-        } catch (e, stackTrace) {
-          print('🔥 Error processing doc ${doc.id}: $e');
-          print(stackTrace);
-        }
-      }
-    } catch (e) {
-      print('❌ Failed to fetch snapshot: $e');
-    }
+    final querySnapshot = await moodPointsCollectionRef.get();
+    for (final doc in querySnapshot.docs) {
+      final data = doc.data(); 
+      print('--- data: $data');
+      inspect(data);
+    }  
   }
-  
-  /*
-  Stream<List<MoodPoint>> subscribeMoodPoints() {
-    return moodPointsCollectionRef.snapshots().map((snapshot) {
-      final List<MoodPoint> moodPointList = [];
-      print('--- step 1');
-      for (final doc in snapshot.docs) {
-        try {
-          final moodPoint = doc.data().toMoodPoint();
-          print("---step 2---");
-          print('🎯 converted: $moodPoint');
-          moodPointList.add(moodPoint);
-        } catch (e, stackTrace) {
-          // ここでエラーの詳細をログ出力（doc.id付きで）
-          print('🔥 Error converting doc ${doc.id}: $e');
-          print(stackTrace);
-        }
-      }
-
-      moodPointList.sort((a, b) => a.moodDate.compareTo(b.moodDate));
-      return moodPointList;
-    });
-  }
-  */
   
   /// [MoodPoint] のドキュメントを購読する。
   Stream<List<MoodPoint>> subscribeMoodPoints() {
@@ -245,7 +202,6 @@ class MoodPointRepository {
         var moodPointList =
             snapshot.docs.map((doc) => doc.data().toMoodPoint()).toList();
         moodPointList.sort((a, b) => a.moodDate.compareTo(b.moodDate));
-        print('=== MoodPointList: $moodPointList');
         return moodPointList;
       },
     );
@@ -300,7 +256,6 @@ class MoodPointDocument {
   final double sleepHours;
   final int stepCount;
   final List<String> weather;
-  //final String weather;
   final String memo;
   final DateTime moodDate;
   final DateTime createdAt;
@@ -315,10 +270,9 @@ class MoodPointDocument {
         point: json['point'] as int,
         plannedVolume: json['planned_volume'] as int,
         sleepHours: json['sleep_hours'] as double,
-        stepCount: json['step_count'] as int,
-        weather: json['weather'] as List<String>, 
-        //weather: json['weather'] as String,
-        memo: json['memo'] as String,        
+        stepCount: json['step_count'] is int ? json['step_count'] as int : 0,
+        weather: List<String>.from(json['weather'] ?? []),
+        memo: json['memo'] is String ? json['memo']as String : '',
         moodDate: (json['mood_date'] as Timestamp).toDate(),
         createdAt: (json['created_at'] as Timestamp).toDate(),
         updatedAt: (json['updated_at'] as Timestamp).toDate(),
