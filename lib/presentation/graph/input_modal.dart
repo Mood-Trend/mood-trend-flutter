@@ -29,6 +29,25 @@ enum Weather {
   lowPressure,
 }
 
+extension WeatherExtension on Weather {
+  String get label {
+    switch (this) {
+      case Weather.sunny:
+        return '晴れ';
+      case Weather.rainy:
+        return '雨';
+      case Weather.cloudy:
+        return '曇り';
+      case Weather.lowPressure:
+        return '低気圧';
+    }
+  }
+  
+   static Weather fromName(String value) {
+    return Weather.values.firstWhere((e) => e.name == value);
+  }
+}
+
 /// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
   const InputModal({super.key, required this.uid});
@@ -57,7 +76,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
   int _stepCount = 1000;
 
   List<String> _weather = ['sunny','cloudy'];
-  //String _weather = 'sunny';
 
   String _memo = '';
 
