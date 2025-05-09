@@ -56,7 +56,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
 
   int _stepCount = 1000;
 
-  List<String> _weather = ['sunny','rainy'];
+  List<String> _weather = ['sunny','cloudy'];
   //String _weather = 'sunny';
 
   String _memo = '';

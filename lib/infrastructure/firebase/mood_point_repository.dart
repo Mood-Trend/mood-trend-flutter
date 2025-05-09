@@ -186,22 +186,35 @@ class MoodPointRepository {
   // デバッグ専用の関数（一度だけ取得して print する）
   Future<void> debugFetchMoodPointsOnce() async {
     final querySnapshot = await moodPointsCollectionRef.get();
-    for (final doc in querySnapshot.docs) {
-      final data = doc.data(); 
-      print('--- data: $data');
-      inspect(data);
-    }  
+
+    // for (final doc in querySnapshot.docs) {
+    //   final data = doc.data(); 
+    //   // print('--- data: $data');
+    //   // inspect(data);
+    //   final weather = data.weather;
+    //   print('--- weather: $weather');
+    // }  
+   
+    final weathers = querySnapshot.docs.map((doc) {
+      final data = doc.data();
+      return data.weather; // ここは MoodPointDocument 形式
+    });//.toList();
+
+    for (final weather in weathers) {
+      print('weather: $weather');
+    }
   }
   
   /// [MoodPoint] のドキュメントを購読する。
   Stream<List<MoodPoint>> subscribeMoodPoints() {
-    debugFetchMoodPointsOnce();
+    //debugFetchMoodPointsOnce();
 
     return moodPointsCollectionRef.snapshots().map(
       (snapshot) {
         var moodPointList =
             snapshot.docs.map((doc) => doc.data().toMoodPoint()).toList();
         moodPointList.sort((a, b) => a.moodDate.compareTo(b.moodDate));
+        print(moodPointList);
         return moodPointList;
       },
     );
