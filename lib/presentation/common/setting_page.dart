@@ -98,7 +98,9 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                       final auth = ref.read(firebaseAuthRepositoryProvider);
                       // 匿名ユーザーの場合のみGoogleアカウント連携を表示
                       if (auth.auth.currentUser?.isAnonymous ?? false) {
-                        await ref.read(linkAnonymousWithGoogleUsecaseProvider).execute();
+                        await ref
+                            .read(linkAnonymousWithGoogleUsecaseProvider)
+                            .execute();
                       } else {
                         throw const AppException('既にアカウント連携されています');
                       }
@@ -112,7 +114,7 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
                     child: Text(
-                      'Googleアカウント連携',
+                      '現在のデータをGoogleアカウント連携',
                       style: const TextStyle(fontSize: 18),
                     ),
                   ),
@@ -127,15 +129,17 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                       if (currentUid == null) {
                         throw const AppException('ログインしていません');
                       }
-                      
+
                       // Googleアカウントでサインイン
-                      final googleUid = await ref.read(signinWithGoogleUsecaseProvider).execute();
-                      
+                      final googleUid = await ref
+                          .read(signinWithGoogleUsecaseProvider)
+                          .execute();
+
                       // データ移行
                       await ref.read(migrateUserDataUsecaseProvider).execute(
-                        sourceUid: googleUid,
-                        targetUid: currentUid,
-                      );
+                            sourceUid: googleUid,
+                            targetUid: currentUid,
+                          );
                     },
                     successMessage: 'データを復元しました',
                   );
