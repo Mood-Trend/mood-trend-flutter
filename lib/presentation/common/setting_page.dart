@@ -412,12 +412,12 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                               ),
                               onPressed: () async {
                                 // 読み取り専用モードを終了
-                                ref.read(isReadOnlyProvider.notifier).state = 
+                                ref.read(isReadOnlyProvider.notifier).state =
                                     const ReadOnlyState();
-                                
+
                                 // ダイアログを閉じる
                                 Navigator.pop(context);
-                                
+
                                 // ルート画面に戻る
                                 await PageNavigator.popUntilRoot(context);
                               },
@@ -439,7 +439,8 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                               title: Text(
                                 S.of(context).settingWithdraw,
                               ),
-                              content: Text(S.of(context).settingWithdrawConfirm),
+                              content:
+                                  Text(S.of(context).settingWithdrawConfirm),
                               actions: [
                                 TextButton(
                                   child: Text(
@@ -461,12 +462,14 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                                             .read(
                                                 signoutAnonymouslyUsecaseProvider)
                                             .execute();
-                                        await PageNavigator.popUntilRoot(context);
+                                        await PageNavigator.popUntilRoot(
+                                            context);
                                         await PageNavigator.popUntilRoot(ref
                                             .read(rootPageKey)
                                             .currentContext!);
                                       },
-                                      successMessage: S.of(context).settingThank,
+                                      successMessage:
+                                          S.of(context).settingThank,
                                     );
                                   },
                                 ),

@@ -40,7 +40,7 @@ class InviteRepository {
     try {
       final inviteCode = const Uuid().v4().substring(0, 8);
       final expiresAt = DateTime.now().add(const Duration(days: 7));
-      
+
       await inviteCollectionRef.doc(inviteCode).set(
             InviteDocument(
               id: inviteCode,
@@ -49,7 +49,7 @@ class InviteRepository {
               isUsed: false,
             ),
           );
-          
+
       return inviteCode;
     } on FirebaseException catch (e) {
       throw AppException('Firestore の追加処理でエラーが発生しました: ${e.code}');
@@ -62,24 +62,24 @@ class InviteRepository {
   Future<String?> validateAndUseInviteCode(String inviteCode) async {
     try {
       final doc = await inviteCollectionRef.doc(inviteCode).get();
-      
+
       if (!doc.exists) {
         throw const AppException('無効な招待コードです');
       }
-      
+
       final invite = doc.data()!;
-      
+
       if (invite.isUsed) {
         throw const AppException('この招待コードは既に使用されています');
       }
-      
+
       if (DateTime.now().isAfter(invite.expiresAt)) {
         throw const AppException('この招待コードは有効期限が切れています');
       }
-      
+
       // 招待コードを使用済みにマーク
       await inviteCollectionRef.doc(inviteCode).update({'is_used': true});
-      
+
       return invite.ownerUid;
     } on FirebaseException catch (e) {
       throw AppException('Firestore の取得処理でエラーが発生しました: ${e.code}');

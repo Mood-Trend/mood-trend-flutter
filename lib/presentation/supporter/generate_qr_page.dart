@@ -33,9 +33,8 @@ class _GenerateQRPageState extends ConsumerState<GenerateQRPage>
     });
 
     try {
-      final inviteCode = await ref
-          .read(inviteRepositoryProvider)
-          .createInviteCode(widget.uid);
+      final inviteCode =
+          await ref.read(inviteRepositoryProvider).createInviteCode(widget.uid);
       setState(() {
         _inviteCode = inviteCode;
         _isLoading = false;

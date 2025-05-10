@@ -100,7 +100,7 @@ class UserRepository {
       throw AppException('予期しないエラーが発生しました: $e');
     }
   }
-  
+
   /// ユーザーに支援者を追加する
   Future<void> addSupporter({
     required String uid,
@@ -122,10 +122,10 @@ class UserRepository {
     try {
       final doc = await userCollectionRef.doc(ownerUid).get();
       if (!doc.exists) return false;
-      
+
       final userData = doc.data();
       if (userData == null) return false;
-      
+
       final supporterIds = userData.supporterIds;
       return supporterIds.contains(supporterId);
     } on FirebaseException catch (e) {
@@ -160,7 +160,7 @@ class UserDocument {
         uid: uid,
         displayName: json['display_name'] as String,
         imageUrl: json['image_url'] as String,
-        supporterIds: json['supporter_ids'] != null 
+        supporterIds: json['supporter_ids'] != null
             ? List<String>.from(json['supporter_ids'] as List)
             : const [],
         createdAt: (json['created_at'] as Timestamp).toDate(),

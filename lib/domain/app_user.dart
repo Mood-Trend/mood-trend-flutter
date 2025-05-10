@@ -14,7 +14,7 @@ abstract class AppUser with _$AppUser {
 
     /// プロフィール画像の URL
     required String imageUrl,
-    
+
     /// 支援者のUIDリスト
     @Default([]) List<String> supporterIds,
   }) = _AppUser;
