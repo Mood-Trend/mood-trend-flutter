@@ -127,7 +127,6 @@ class App extends ConsumerWidget {
       builder: (context, child) {
         return Navigator(
           key: ref.watch(navigatorKeyProvider),
-          onPopPage: (route, dynamic _) => false,
           pages: [
             MaterialPage<Widget>(
               child: Stack(

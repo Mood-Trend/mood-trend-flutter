@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,90 +10,68 @@ part of 'app_confs.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AppConfs {
   /// レビューメニューを表示するかどうか
-  bool get isShowReviewMenu => throw _privateConstructorUsedError;
+  bool get isShowReviewMenu;
 
   /// iOS のレビュー URL
-  String get reviewUrlIos => throw _privateConstructorUsedError;
+  String get reviewUrlIos;
 
   /// Android のレビュー URL
-  String get reviewUrlAndroid => throw _privateConstructorUsedError;
+  String get reviewUrlAndroid;
 
-  @JsonKey(ignore: true)
-  $AppConfsCopyWith<AppConfs> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AppConfsCopyWith<$Res> {
-  factory $AppConfsCopyWith(AppConfs value, $Res Function(AppConfs) then) =
-      _$AppConfsCopyWithImpl<$Res, AppConfs>;
-  @useResult
-  $Res call(
-      {bool isShowReviewMenu, String reviewUrlIos, String reviewUrlAndroid});
-}
-
-/// @nodoc
-class _$AppConfsCopyWithImpl<$Res, $Val extends AppConfs>
-    implements $AppConfsCopyWith<$Res> {
-  _$AppConfsCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of AppConfs
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $AppConfsCopyWith<AppConfs> get copyWith =>
+      _$AppConfsCopyWithImpl<AppConfs>(this as AppConfs, _$identity);
+
   @override
-  $Res call({
-    Object? isShowReviewMenu = null,
-    Object? reviewUrlIos = null,
-    Object? reviewUrlAndroid = null,
-  }) {
-    return _then(_value.copyWith(
-      isShowReviewMenu: null == isShowReviewMenu
-          ? _value.isShowReviewMenu
-          : isShowReviewMenu // ignore: cast_nullable_to_non_nullable
-              as bool,
-      reviewUrlIos: null == reviewUrlIos
-          ? _value.reviewUrlIos
-          : reviewUrlIos // ignore: cast_nullable_to_non_nullable
-              as String,
-      reviewUrlAndroid: null == reviewUrlAndroid
-          ? _value.reviewUrlAndroid
-          : reviewUrlAndroid // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AppConfs &&
+            (identical(other.isShowReviewMenu, isShowReviewMenu) ||
+                other.isShowReviewMenu == isShowReviewMenu) &&
+            (identical(other.reviewUrlIos, reviewUrlIos) ||
+                other.reviewUrlIos == reviewUrlIos) &&
+            (identical(other.reviewUrlAndroid, reviewUrlAndroid) ||
+                other.reviewUrlAndroid == reviewUrlAndroid));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, isShowReviewMenu, reviewUrlIos, reviewUrlAndroid);
+
+  @override
+  String toString() {
+    return 'AppConfs(isShowReviewMenu: $isShowReviewMenu, reviewUrlIos: $reviewUrlIos, reviewUrlAndroid: $reviewUrlAndroid)';
   }
 }
 
 /// @nodoc
-abstract class _$$AppConfsImplCopyWith<$Res>
-    implements $AppConfsCopyWith<$Res> {
-  factory _$$AppConfsImplCopyWith(
-          _$AppConfsImpl value, $Res Function(_$AppConfsImpl) then) =
-      __$$AppConfsImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $AppConfsCopyWith<$Res> {
+  factory $AppConfsCopyWith(AppConfs value, $Res Function(AppConfs) _then) =
+      _$AppConfsCopyWithImpl;
   @useResult
   $Res call(
       {bool isShowReviewMenu, String reviewUrlIos, String reviewUrlAndroid});
 }
 
 /// @nodoc
-class __$$AppConfsImplCopyWithImpl<$Res>
-    extends _$AppConfsCopyWithImpl<$Res, _$AppConfsImpl>
-    implements _$$AppConfsImplCopyWith<$Res> {
-  __$$AppConfsImplCopyWithImpl(
-      _$AppConfsImpl _value, $Res Function(_$AppConfsImpl) _then)
-      : super(_value, _then);
+class _$AppConfsCopyWithImpl<$Res> implements $AppConfsCopyWith<$Res> {
+  _$AppConfsCopyWithImpl(this._self, this._then);
 
+  final AppConfs _self;
+  final $Res Function(AppConfs) _then;
+
+  /// Create a copy of AppConfs
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -100,17 +79,17 @@ class __$$AppConfsImplCopyWithImpl<$Res>
     Object? reviewUrlIos = null,
     Object? reviewUrlAndroid = null,
   }) {
-    return _then(_$AppConfsImpl(
+    return _then(_self.copyWith(
       isShowReviewMenu: null == isShowReviewMenu
-          ? _value.isShowReviewMenu
+          ? _self.isShowReviewMenu
           : isShowReviewMenu // ignore: cast_nullable_to_non_nullable
               as bool,
       reviewUrlIos: null == reviewUrlIos
-          ? _value.reviewUrlIos
+          ? _self.reviewUrlIos
           : reviewUrlIos // ignore: cast_nullable_to_non_nullable
               as String,
       reviewUrlAndroid: null == reviewUrlAndroid
-          ? _value.reviewUrlAndroid
+          ? _self.reviewUrlAndroid
           : reviewUrlAndroid // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -119,8 +98,8 @@ class __$$AppConfsImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AppConfsImpl implements _AppConfs {
-  const _$AppConfsImpl(
+class _AppConfs implements AppConfs {
+  const _AppConfs(
       {required this.isShowReviewMenu,
       required this.reviewUrlIos,
       required this.reviewUrlAndroid});
@@ -137,16 +116,19 @@ class _$AppConfsImpl implements _AppConfs {
   @override
   final String reviewUrlAndroid;
 
+  /// Create a copy of AppConfs
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'AppConfs(isShowReviewMenu: $isShowReviewMenu, reviewUrlIos: $reviewUrlIos, reviewUrlAndroid: $reviewUrlAndroid)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AppConfsCopyWith<_AppConfs> get copyWith =>
+      __$AppConfsCopyWithImpl<_AppConfs>(this, _$identity);
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AppConfsImpl &&
+            other is _AppConfs &&
             (identical(other.isShowReviewMenu, isShowReviewMenu) ||
                 other.isShowReviewMenu == isShowReviewMenu) &&
             (identical(other.reviewUrlIos, reviewUrlIos) ||
@@ -159,33 +141,54 @@ class _$AppConfsImpl implements _AppConfs {
   int get hashCode => Object.hash(
       runtimeType, isShowReviewMenu, reviewUrlIos, reviewUrlAndroid);
 
-  @JsonKey(ignore: true)
+  @override
+  String toString() {
+    return 'AppConfs(isShowReviewMenu: $isShowReviewMenu, reviewUrlIos: $reviewUrlIos, reviewUrlAndroid: $reviewUrlAndroid)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$AppConfsCopyWith<$Res>
+    implements $AppConfsCopyWith<$Res> {
+  factory _$AppConfsCopyWith(_AppConfs value, $Res Function(_AppConfs) _then) =
+      __$AppConfsCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {bool isShowReviewMenu, String reviewUrlIos, String reviewUrlAndroid});
+}
+
+/// @nodoc
+class __$AppConfsCopyWithImpl<$Res> implements _$AppConfsCopyWith<$Res> {
+  __$AppConfsCopyWithImpl(this._self, this._then);
+
+  final _AppConfs _self;
+  final $Res Function(_AppConfs) _then;
+
+  /// Create a copy of AppConfs
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$AppConfsImplCopyWith<_$AppConfsImpl> get copyWith =>
-      __$$AppConfsImplCopyWithImpl<_$AppConfsImpl>(this, _$identity);
+  $Res call({
+    Object? isShowReviewMenu = null,
+    Object? reviewUrlIos = null,
+    Object? reviewUrlAndroid = null,
+  }) {
+    return _then(_AppConfs(
+      isShowReviewMenu: null == isShowReviewMenu
+          ? _self.isShowReviewMenu
+          : isShowReviewMenu // ignore: cast_nullable_to_non_nullable
+              as bool,
+      reviewUrlIos: null == reviewUrlIos
+          ? _self.reviewUrlIos
+          : reviewUrlIos // ignore: cast_nullable_to_non_nullable
+              as String,
+      reviewUrlAndroid: null == reviewUrlAndroid
+          ? _self.reviewUrlAndroid
+          : reviewUrlAndroid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
-abstract class _AppConfs implements AppConfs {
-  const factory _AppConfs(
-      {required final bool isShowReviewMenu,
-      required final String reviewUrlIos,
-      required final String reviewUrlAndroid}) = _$AppConfsImpl;
-
-  @override
-
-  /// レビューメニューを表示するかどうか
-  bool get isShowReviewMenu;
-  @override
-
-  /// iOS のレビュー URL
-  String get reviewUrlIos;
-  @override
-
-  /// Android のレビュー URL
-  String get reviewUrlAndroid;
-  @override
-  @JsonKey(ignore: true)
-  _$$AppConfsImplCopyWith<_$AppConfsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

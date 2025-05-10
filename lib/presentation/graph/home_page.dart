@@ -246,7 +246,7 @@ class HomePage extends ConsumerWidget {
                         xValueMapper: (MoodPoint value, _) =>
                             value.moodDate.toDateOnly(),
                         yValueMapper: (MoodPoint value, _) => value.point,
-                        color: AppColors.green.withOpacity(0.5),
+                        color: AppColors.green.withValues(alpha: 0.5),
                         markerSettings: const MarkerSettings(isVisible: true),
                         splineType: SplineType.monotonic,
                       ),

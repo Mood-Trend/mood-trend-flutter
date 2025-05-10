@@ -9,12 +9,12 @@ class CustomAboutDialog extends StatelessWidget {
   final String applicationLegalese;
 
   const CustomAboutDialog({
-    Key? key,
+    super.key,
     required this.applicationName,
     required this.applicationVersion,
     required this.applicationIcon,
     required this.applicationLegalese,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

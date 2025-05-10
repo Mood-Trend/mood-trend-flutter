@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,131 +10,91 @@ part of 'app_info.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AppInfo {
   /// アプリ名
-  String get appName => throw _privateConstructorUsedError;
+  String get appName;
 
   /// パッケージ名
-  String get packageName => throw _privateConstructorUsedError;
+  String get packageName;
 
   /// バージョン
-  String get version => throw _privateConstructorUsedError;
+  String get version;
 
   /// ビルド番号
-  String get buildNumber => throw _privateConstructorUsedError;
+  String get buildNumber;
 
   /// CopyRight
-  String get copyRight => throw _privateConstructorUsedError;
+  String get copyRight;
 
   /// アイコン画像へのパス
-  String get iconImagePath => throw _privateConstructorUsedError;
+  String get iconImagePath;
 
   /// プライバシーポリシーのURL
-  Uri get privacyPolicyUrl => throw _privateConstructorUsedError;
+  Uri get privacyPolicyUrl;
 
   /// 利用規約のURL
-  Uri get termsOfServiceUrl => throw _privateConstructorUsedError;
+  Uri get termsOfServiceUrl;
 
   /// コンタクトのURL
-  Uri get contactUrl => throw _privateConstructorUsedError;
+  Uri get contactUrl;
 
-  @JsonKey(ignore: true)
-  $AppInfoCopyWith<AppInfo> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AppInfoCopyWith<$Res> {
-  factory $AppInfoCopyWith(AppInfo value, $Res Function(AppInfo) then) =
-      _$AppInfoCopyWithImpl<$Res, AppInfo>;
-  @useResult
-  $Res call(
-      {String appName,
-      String packageName,
-      String version,
-      String buildNumber,
-      String copyRight,
-      String iconImagePath,
-      Uri privacyPolicyUrl,
-      Uri termsOfServiceUrl,
-      Uri contactUrl});
-}
-
-/// @nodoc
-class _$AppInfoCopyWithImpl<$Res, $Val extends AppInfo>
-    implements $AppInfoCopyWith<$Res> {
-  _$AppInfoCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of AppInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $AppInfoCopyWith<AppInfo> get copyWith =>
+      _$AppInfoCopyWithImpl<AppInfo>(this as AppInfo, _$identity);
+
   @override
-  $Res call({
-    Object? appName = null,
-    Object? packageName = null,
-    Object? version = null,
-    Object? buildNumber = null,
-    Object? copyRight = null,
-    Object? iconImagePath = null,
-    Object? privacyPolicyUrl = null,
-    Object? termsOfServiceUrl = null,
-    Object? contactUrl = null,
-  }) {
-    return _then(_value.copyWith(
-      appName: null == appName
-          ? _value.appName
-          : appName // ignore: cast_nullable_to_non_nullable
-              as String,
-      packageName: null == packageName
-          ? _value.packageName
-          : packageName // ignore: cast_nullable_to_non_nullable
-              as String,
-      version: null == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as String,
-      buildNumber: null == buildNumber
-          ? _value.buildNumber
-          : buildNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      copyRight: null == copyRight
-          ? _value.copyRight
-          : copyRight // ignore: cast_nullable_to_non_nullable
-              as String,
-      iconImagePath: null == iconImagePath
-          ? _value.iconImagePath
-          : iconImagePath // ignore: cast_nullable_to_non_nullable
-              as String,
-      privacyPolicyUrl: null == privacyPolicyUrl
-          ? _value.privacyPolicyUrl
-          : privacyPolicyUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      termsOfServiceUrl: null == termsOfServiceUrl
-          ? _value.termsOfServiceUrl
-          : termsOfServiceUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-      contactUrl: null == contactUrl
-          ? _value.contactUrl
-          : contactUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AppInfo &&
+            (identical(other.appName, appName) || other.appName == appName) &&
+            (identical(other.packageName, packageName) ||
+                other.packageName == packageName) &&
+            (identical(other.version, version) || other.version == version) &&
+            (identical(other.buildNumber, buildNumber) ||
+                other.buildNumber == buildNumber) &&
+            (identical(other.copyRight, copyRight) ||
+                other.copyRight == copyRight) &&
+            (identical(other.iconImagePath, iconImagePath) ||
+                other.iconImagePath == iconImagePath) &&
+            (identical(other.privacyPolicyUrl, privacyPolicyUrl) ||
+                other.privacyPolicyUrl == privacyPolicyUrl) &&
+            (identical(other.termsOfServiceUrl, termsOfServiceUrl) ||
+                other.termsOfServiceUrl == termsOfServiceUrl) &&
+            (identical(other.contactUrl, contactUrl) ||
+                other.contactUrl == contactUrl));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      appName,
+      packageName,
+      version,
+      buildNumber,
+      copyRight,
+      iconImagePath,
+      privacyPolicyUrl,
+      termsOfServiceUrl,
+      contactUrl);
+
+  @override
+  String toString() {
+    return 'AppInfo(appName: $appName, packageName: $packageName, version: $version, buildNumber: $buildNumber, copyRight: $copyRight, iconImagePath: $iconImagePath, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, contactUrl: $contactUrl)';
   }
 }
 
 /// @nodoc
-abstract class _$$AppInfoImplCopyWith<$Res> implements $AppInfoCopyWith<$Res> {
-  factory _$$AppInfoImplCopyWith(
-          _$AppInfoImpl value, $Res Function(_$AppInfoImpl) then) =
-      __$$AppInfoImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $AppInfoCopyWith<$Res> {
+  factory $AppInfoCopyWith(AppInfo value, $Res Function(AppInfo) _then) =
+      _$AppInfoCopyWithImpl;
   @useResult
   $Res call(
       {String appName,
@@ -148,13 +109,14 @@ abstract class _$$AppInfoImplCopyWith<$Res> implements $AppInfoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$AppInfoImplCopyWithImpl<$Res>
-    extends _$AppInfoCopyWithImpl<$Res, _$AppInfoImpl>
-    implements _$$AppInfoImplCopyWith<$Res> {
-  __$$AppInfoImplCopyWithImpl(
-      _$AppInfoImpl _value, $Res Function(_$AppInfoImpl) _then)
-      : super(_value, _then);
+class _$AppInfoCopyWithImpl<$Res> implements $AppInfoCopyWith<$Res> {
+  _$AppInfoCopyWithImpl(this._self, this._then);
 
+  final AppInfo _self;
+  final $Res Function(AppInfo) _then;
+
+  /// Create a copy of AppInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -168,41 +130,41 @@ class __$$AppInfoImplCopyWithImpl<$Res>
     Object? termsOfServiceUrl = null,
     Object? contactUrl = null,
   }) {
-    return _then(_$AppInfoImpl(
+    return _then(_self.copyWith(
       appName: null == appName
-          ? _value.appName
+          ? _self.appName
           : appName // ignore: cast_nullable_to_non_nullable
               as String,
       packageName: null == packageName
-          ? _value.packageName
+          ? _self.packageName
           : packageName // ignore: cast_nullable_to_non_nullable
               as String,
       version: null == version
-          ? _value.version
+          ? _self.version
           : version // ignore: cast_nullable_to_non_nullable
               as String,
       buildNumber: null == buildNumber
-          ? _value.buildNumber
+          ? _self.buildNumber
           : buildNumber // ignore: cast_nullable_to_non_nullable
               as String,
       copyRight: null == copyRight
-          ? _value.copyRight
+          ? _self.copyRight
           : copyRight // ignore: cast_nullable_to_non_nullable
               as String,
       iconImagePath: null == iconImagePath
-          ? _value.iconImagePath
+          ? _self.iconImagePath
           : iconImagePath // ignore: cast_nullable_to_non_nullable
               as String,
       privacyPolicyUrl: null == privacyPolicyUrl
-          ? _value.privacyPolicyUrl
+          ? _self.privacyPolicyUrl
           : privacyPolicyUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       termsOfServiceUrl: null == termsOfServiceUrl
-          ? _value.termsOfServiceUrl
+          ? _self.termsOfServiceUrl
           : termsOfServiceUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
       contactUrl: null == contactUrl
-          ? _value.contactUrl
+          ? _self.contactUrl
           : contactUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
     ));
@@ -211,8 +173,8 @@ class __$$AppInfoImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AppInfoImpl extends _AppInfo {
-  const _$AppInfoImpl(
+class _AppInfo extends AppInfo {
+  const _AppInfo(
       {required this.appName,
       required this.packageName,
       required this.version,
@@ -260,16 +222,19 @@ class _$AppInfoImpl extends _AppInfo {
   @override
   final Uri contactUrl;
 
+  /// Create a copy of AppInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'AppInfo(appName: $appName, packageName: $packageName, version: $version, buildNumber: $buildNumber, copyRight: $copyRight, iconImagePath: $iconImagePath, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, contactUrl: $contactUrl)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AppInfoCopyWith<_AppInfo> get copyWith =>
+      __$AppInfoCopyWithImpl<_AppInfo>(this, _$identity);
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AppInfoImpl &&
+            other is _AppInfo &&
             (identical(other.appName, appName) || other.appName == appName) &&
             (identical(other.packageName, packageName) ||
                 other.packageName == packageName) &&
@@ -301,64 +266,91 @@ class _$AppInfoImpl extends _AppInfo {
       termsOfServiceUrl,
       contactUrl);
 
-  @JsonKey(ignore: true)
+  @override
+  String toString() {
+    return 'AppInfo(appName: $appName, packageName: $packageName, version: $version, buildNumber: $buildNumber, copyRight: $copyRight, iconImagePath: $iconImagePath, privacyPolicyUrl: $privacyPolicyUrl, termsOfServiceUrl: $termsOfServiceUrl, contactUrl: $contactUrl)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$AppInfoCopyWith<$Res> implements $AppInfoCopyWith<$Res> {
+  factory _$AppInfoCopyWith(_AppInfo value, $Res Function(_AppInfo) _then) =
+      __$AppInfoCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String appName,
+      String packageName,
+      String version,
+      String buildNumber,
+      String copyRight,
+      String iconImagePath,
+      Uri privacyPolicyUrl,
+      Uri termsOfServiceUrl,
+      Uri contactUrl});
+}
+
+/// @nodoc
+class __$AppInfoCopyWithImpl<$Res> implements _$AppInfoCopyWith<$Res> {
+  __$AppInfoCopyWithImpl(this._self, this._then);
+
+  final _AppInfo _self;
+  final $Res Function(_AppInfo) _then;
+
+  /// Create a copy of AppInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$AppInfoImplCopyWith<_$AppInfoImpl> get copyWith =>
-      __$$AppInfoImplCopyWithImpl<_$AppInfoImpl>(this, _$identity);
+  $Res call({
+    Object? appName = null,
+    Object? packageName = null,
+    Object? version = null,
+    Object? buildNumber = null,
+    Object? copyRight = null,
+    Object? iconImagePath = null,
+    Object? privacyPolicyUrl = null,
+    Object? termsOfServiceUrl = null,
+    Object? contactUrl = null,
+  }) {
+    return _then(_AppInfo(
+      appName: null == appName
+          ? _self.appName
+          : appName // ignore: cast_nullable_to_non_nullable
+              as String,
+      packageName: null == packageName
+          ? _self.packageName
+          : packageName // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: null == version
+          ? _self.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as String,
+      buildNumber: null == buildNumber
+          ? _self.buildNumber
+          : buildNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      copyRight: null == copyRight
+          ? _self.copyRight
+          : copyRight // ignore: cast_nullable_to_non_nullable
+              as String,
+      iconImagePath: null == iconImagePath
+          ? _self.iconImagePath
+          : iconImagePath // ignore: cast_nullable_to_non_nullable
+              as String,
+      privacyPolicyUrl: null == privacyPolicyUrl
+          ? _self.privacyPolicyUrl
+          : privacyPolicyUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      termsOfServiceUrl: null == termsOfServiceUrl
+          ? _self.termsOfServiceUrl
+          : termsOfServiceUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+      contactUrl: null == contactUrl
+          ? _self.contactUrl
+          : contactUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+    ));
+  }
 }
 
-abstract class _AppInfo extends AppInfo {
-  const factory _AppInfo(
-      {required final String appName,
-      required final String packageName,
-      required final String version,
-      required final String buildNumber,
-      required final String copyRight,
-      required final String iconImagePath,
-      required final Uri privacyPolicyUrl,
-      required final Uri termsOfServiceUrl,
-      required final Uri contactUrl}) = _$AppInfoImpl;
-  const _AppInfo._() : super._();
-
-  @override
-
-  /// アプリ名
-  String get appName;
-  @override
-
-  /// パッケージ名
-  String get packageName;
-  @override
-
-  /// バージョン
-  String get version;
-  @override
-
-  /// ビルド番号
-  String get buildNumber;
-  @override
-
-  /// CopyRight
-  String get copyRight;
-  @override
-
-  /// アイコン画像へのパス
-  String get iconImagePath;
-  @override
-
-  /// プライバシーポリシーのURL
-  Uri get privacyPolicyUrl;
-  @override
-
-  /// 利用規約のURL
-  Uri get termsOfServiceUrl;
-  @override
-
-  /// コンタクトのURL
-  Uri get contactUrl;
-  @override
-  @JsonKey(ignore: true)
-  _$$AppInfoImplCopyWith<_$AppInfoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

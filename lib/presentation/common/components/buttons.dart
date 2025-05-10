@@ -29,7 +29,7 @@ class AppButtons {
     return TextButton(
       onPressed: onPressed,
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(
+        backgroundColor: WidgetStateProperty.all(
           isSelected ? AppColors.green : Colors.transparent,
         ),
       ),
@@ -53,8 +53,8 @@ class AppButtons {
     return OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
-        backgroundColor: isSelected 
-            ? AppColors.green.withOpacity(0.3)
+        backgroundColor: isSelected
+            ? AppColors.green.withValues(alpha: 0.3)
             : Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),

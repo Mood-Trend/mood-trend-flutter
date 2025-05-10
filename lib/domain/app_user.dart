@@ -4,7 +4,7 @@ part 'app_user.freezed.dart';
 
 /// ユーザー
 @freezed
-class AppUser with _$AppUser {
+abstract class AppUser with _$AppUser {
   const factory AppUser({
     /// Auth の uid
     required String uid,
