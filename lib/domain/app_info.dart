@@ -10,7 +10,7 @@ final appInfoProvider = Provider<AppInfo>(
 
 /// アプリ情報
 @freezed
-class AppInfo with _$AppInfo {
+abstract class AppInfo with _$AppInfo {
   const factory AppInfo({
     /// アプリ名
     required String appName,

@@ -50,7 +50,7 @@ class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
                   width: 350,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: AppColors.green.withOpacity(0.4),
+                    color: AppColors.green.withValues(alpha: 0.4),
                   ),
                   child: Column(children: [
                     TableCell(

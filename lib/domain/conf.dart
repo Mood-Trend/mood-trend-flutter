@@ -4,7 +4,7 @@ part 'conf.freezed.dart';
 
 /// ユーザー Conf
 @freezed
-class Conf with _$Conf {
+abstract class Conf with _$Conf {
   const factory Conf({
     /// Conf ID
     required String confId,

@@ -48,9 +48,12 @@ app.*.map.json
 /lib/firebase_options_dev.dart
 /lib/firebase_options_prod.dart
 
-# FVM Version Cache
-.fvm/
-
 # GoogleService
 /ios/Runner/GoogleService-Info.plist
 /android/app/google-services.json
+
+# iOS ビルド
+/ios/Podfile.lock
+
+# FVM
+.fvm/

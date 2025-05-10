@@ -4,7 +4,7 @@ part 'mood_point.freezed.dart';
 
 /// MoodPoint コレクションのドキュメント
 @freezed
-class MoodPoint with _$MoodPoint {
+abstract class MoodPoint with _$MoodPoint {
   const factory MoodPoint({
     /// 気分値 ID
     required String pointId,
