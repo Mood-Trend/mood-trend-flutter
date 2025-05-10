@@ -24,6 +24,9 @@ mixin _$AppUser {
   /// プロフィール画像の URL
   String get imageUrl;
 
+  /// 支援者のUIDリスト
+  List<String> get supporterIds;
+
   /// Create a copy of AppUser
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -40,15 +43,18 @@ mixin _$AppUser {
             (identical(other.displayName, displayName) ||
                 other.displayName == displayName) &&
             (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl));
+                other.imageUrl == imageUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.supporterIds, supporterIds));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, uid, displayName, imageUrl);
+  int get hashCode => Object.hash(runtimeType, uid, displayName, imageUrl,
+      const DeepCollectionEquality().hash(supporterIds));
 
   @override
   String toString() {
-    return 'AppUser(uid: $uid, displayName: $displayName, imageUrl: $imageUrl)';
+    return 'AppUser(uid: $uid, displayName: $displayName, imageUrl: $imageUrl, supporterIds: $supporterIds)';
   }
 }
 
@@ -57,7 +63,11 @@ abstract mixin class $AppUserCopyWith<$Res> {
   factory $AppUserCopyWith(AppUser value, $Res Function(AppUser) _then) =
       _$AppUserCopyWithImpl;
   @useResult
-  $Res call({String uid, String displayName, String imageUrl});
+  $Res call(
+      {String uid,
+      String displayName,
+      String imageUrl,
+      List<String> supporterIds});
 }
 
 /// @nodoc
@@ -75,6 +85,7 @@ class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
     Object? uid = null,
     Object? displayName = null,
     Object? imageUrl = null,
+    Object? supporterIds = null,
   }) {
     return _then(_self.copyWith(
       uid: null == uid
@@ -89,6 +100,10 @@ class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
           ? _self.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      supporterIds: null == supporterIds
+          ? _self.supporterIds
+          : supporterIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -97,7 +112,11 @@ class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
 
 class _AppUser implements AppUser {
   const _AppUser(
-      {required this.uid, required this.displayName, required this.imageUrl});
+      {required this.uid,
+      required this.displayName,
+      required this.imageUrl,
+      final List<String> supporterIds = const []})
+      : _supporterIds = supporterIds;
 
   /// Auth の uid
   @override
@@ -110,6 +129,18 @@ class _AppUser implements AppUser {
   /// プロフィール画像の URL
   @override
   final String imageUrl;
+
+  /// 支援者のUIDリスト
+  final List<String> _supporterIds;
+
+  /// 支援者のUIDリスト
+  @override
+  @JsonKey()
+  List<String> get supporterIds {
+    if (_supporterIds is EqualUnmodifiableListView) return _supporterIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_supporterIds);
+  }
 
   /// Create a copy of AppUser
   /// with the given fields replaced by the non-null parameter values.
@@ -128,15 +159,18 @@ class _AppUser implements AppUser {
             (identical(other.displayName, displayName) ||
                 other.displayName == displayName) &&
             (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl));
+                other.imageUrl == imageUrl) &&
+            const DeepCollectionEquality()
+                .equals(other._supporterIds, _supporterIds));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, uid, displayName, imageUrl);
+  int get hashCode => Object.hash(runtimeType, uid, displayName, imageUrl,
+      const DeepCollectionEquality().hash(_supporterIds));
 
   @override
   String toString() {
-    return 'AppUser(uid: $uid, displayName: $displayName, imageUrl: $imageUrl)';
+    return 'AppUser(uid: $uid, displayName: $displayName, imageUrl: $imageUrl, supporterIds: $supporterIds)';
   }
 }
 
@@ -146,7 +180,11 @@ abstract mixin class _$AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       __$AppUserCopyWithImpl;
   @override
   @useResult
-  $Res call({String uid, String displayName, String imageUrl});
+  $Res call(
+      {String uid,
+      String displayName,
+      String imageUrl,
+      List<String> supporterIds});
 }
 
 /// @nodoc
@@ -164,6 +202,7 @@ class __$AppUserCopyWithImpl<$Res> implements _$AppUserCopyWith<$Res> {
     Object? uid = null,
     Object? displayName = null,
     Object? imageUrl = null,
+    Object? supporterIds = null,
   }) {
     return _then(_AppUser(
       uid: null == uid
@@ -178,6 +217,10 @@ class __$AppUserCopyWithImpl<$Res> implements _$AppUserCopyWith<$Res> {
           ? _self.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      supporterIds: null == supporterIds
+          ? _self._supporterIds
+          : supporterIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }

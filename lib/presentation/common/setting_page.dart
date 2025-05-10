@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/application/auth/signout_anonymously_usecase.dart';
 import 'package:mood_trend_flutter/application/common/states/app_confs_provider.dart';
+import 'package:mood_trend_flutter/application/common/states/is_read_only_provider.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/auth/onboarding_page.dart';
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
@@ -14,6 +15,8 @@ import 'package:mood_trend_flutter/presentation/common/error_handler_mixin.dart'
 import 'package:mood_trend_flutter/presentation/auth/root_page.dart';
 import 'package:mood_trend_flutter/presentation/common/navigation/navigation_service.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/table_page.dart';
+import 'package:mood_trend_flutter/presentation/supporter/generate_qr_page.dart';
+import 'package:mood_trend_flutter/presentation/supporter/scan_qr_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
@@ -84,6 +87,56 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                     ),
                   ],
                 ),
+              ),
+              // 支援者共有QRコード生成ボタンを追加
+              GestureDetector(
+                onTap: () {
+                  // QRコード生成ページへ
+                  PageNavigator.push(context, GenerateQRPage(uid: uid));
+                },
+                child: Container(
+                  color: AppColors.white,
+                  width: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
+                    child: Text(
+                      "支援者QRコードを表示",
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
+              ),
+              Divider(
+                height: 0,
+                thickness: 0.7,
+                indent: 16,
+                endIndent: 16,
+                color: AppColors.grey,
+              ),
+              // 支援者QRコード読み取りボタンを追加
+              GestureDetector(
+                onTap: () {
+                  // QRコード読み取りページへ
+                  PageNavigator.push(context, ScanQRPage(uid: uid));
+                },
+                child: Container(
+                  color: AppColors.white,
+                  width: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
+                    child: Text(
+                      "支援者QRコードを読み取る",
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
+              ),
+              Divider(
+                height: 0,
+                thickness: 0.7,
+                indent: 16,
+                endIndent: 16,
+                color: AppColors.grey,
               ),
               GestureDetector(
                 onTap: () async => await run(
@@ -333,56 +386,102 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
               ),
               GestureDetector(
                 onTap: () {
-                  showDialog(
-                    context: ref.read(rootPageKey).currentContext!,
-                    builder: (context) {
-                      return Stack(
-                        children: [
-                          AlertDialog(
-                            surfaceTintColor: Colors.transparent,
-                            backgroundColor: AppColors.white,
-                            title: Text(
-                              S.of(context).settingWithdraw,
+                  final readOnlyState = ref.read(isReadOnlyProvider);
+                  if (readOnlyState.isReadOnly) {
+                    // 読み取り専用モードを終了する確認ダイアログ
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          surfaceTintColor: Colors.transparent,
+                          backgroundColor: AppColors.white,
+                          title: const Text('読み取り専用モードを終了'),
+                          content: const Text('読み取り専用モードを終了しますか？'),
+                          actions: [
+                            TextButton(
+                              child: Text(
+                                S.of(context).cancel,
+                                style: TextStyle(color: AppColors.black),
+                              ),
+                              onPressed: () => Navigator.pop(context),
                             ),
-                            content: Text(S.of(context).settingWithdrawConfirm),
-                            actions: [
-                              TextButton(
-                                child: Text(
-                                  S.of(context).cancel,
-                                  style: TextStyle(color: AppColors.black),
-                                ),
-                                onPressed: () => Navigator.pop(context),
+                            TextButton(
+                              child: Text(
+                                '終了する',
+                                style: TextStyle(color: AppColors.red),
                               ),
-                              TextButton(
-                                child: Text(
-                                  S.of(context).settingWithdraw,
-                                  style: TextStyle(color: AppColors.red),
-                                ),
-                                onPressed: () {
-                                  run(
-                                    ref,
-                                    action: () async {
-                                      await ref
-                                          .read(
-                                              signoutAnonymouslyUsecaseProvider)
-                                          .execute();
-                                      await PageNavigator.popUntilRoot(context);
-                                      await PageNavigator.popUntilRoot(ref
-                                          .read(rootPageKey)
-                                          .currentContext!);
-                                    },
-                                    successMessage: S.of(context).settingThank,
-                                  );
-                                },
+                              onPressed: () async {
+                                // 読み取り専用モードを終了
+                                ref.read(isReadOnlyProvider.notifier).state =
+                                    const ReadOnlyState();
+
+                                // ダイアログを閉じる
+                                Navigator.pop(context);
+
+                                // ルート画面に戻る
+                                await PageNavigator.popUntilRoot(context);
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  } else {
+                    // 通常の退会処理
+                    showDialog(
+                      context: ref.read(rootPageKey).currentContext!,
+                      builder: (context) {
+                        return Stack(
+                          children: [
+                            AlertDialog(
+                              surfaceTintColor: Colors.transparent,
+                              backgroundColor: AppColors.white,
+                              title: Text(
+                                S.of(context).settingWithdraw,
                               ),
-                            ],
-                          ),
-                          if (ref.watch(overlayLoadingProvider))
-                            const OverlayLoading(),
-                        ],
-                      );
-                    },
-                  );
+                              content:
+                                  Text(S.of(context).settingWithdrawConfirm),
+                              actions: [
+                                TextButton(
+                                  child: Text(
+                                    S.of(context).cancel,
+                                    style: TextStyle(color: AppColors.black),
+                                  ),
+                                  onPressed: () => Navigator.pop(context),
+                                ),
+                                TextButton(
+                                  child: Text(
+                                    S.of(context).settingWithdraw,
+                                    style: TextStyle(color: AppColors.red),
+                                  ),
+                                  onPressed: () {
+                                    run(
+                                      ref,
+                                      action: () async {
+                                        await ref
+                                            .read(
+                                                signoutAnonymouslyUsecaseProvider)
+                                            .execute();
+                                        await PageNavigator.popUntilRoot(
+                                            context);
+                                        await PageNavigator.popUntilRoot(ref
+                                            .read(rootPageKey)
+                                            .currentContext!);
+                                      },
+                                      successMessage:
+                                          S.of(context).settingThank,
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
+                            if (ref.watch(overlayLoadingProvider))
+                              const OverlayLoading(),
+                          ],
+                        );
+                      },
+                    );
+                  }
                 },
                 child: Container(
                   color: AppColors.white,
@@ -390,7 +489,9 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
                     child: Text(
-                      S.of(context).settingWithdraw,
+                      ref.watch(isReadOnlyProvider).isReadOnly
+                          ? '読み取り専用モードを終了'
+                          : S.of(context).settingWithdraw,
                       style: TextStyle(color: AppColors.red, fontSize: 18),
                     ),
                   ),
