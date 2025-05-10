@@ -12,7 +12,7 @@ final dataMigrationServiceProvider = Provider<DataMigrationService>(
 );
 
 /// データ移行サービス
-/// 
+///
 /// 匿名アカウントからGoogleアカウント、またはGoogleアカウントから別のアカウントへのデータ移行を行う
 class DataMigrationService {
   DataMigrationService({
@@ -22,7 +22,7 @@ class DataMigrationService {
   final FirebaseFirestore firestore;
 
   /// ソースユーザーからターゲットユーザーへデータを移行する
-  /// 
+  ///
   /// 移行が成功した場合は `true` を返し、失敗した場合は例外をスローします
   Future<bool> migrateUserData({
     required String sourceUid,
@@ -33,7 +33,7 @@ class DataMigrationService {
       return await firestore.runTransaction<bool>((transaction) async {
         // 移行するコレクション
         final collections = ['conf', 'mood_points', 'mood_worksheet'];
-        
+
         // 各コレクションのデータを移行
         for (final collectionName in collections) {
           // ソースユーザーのコレクションを取得
@@ -41,28 +41,28 @@ class DataMigrationService {
               .collection('users')
               .doc(sourceUid)
               .collection(collectionName);
-          
+
           final sourceSnapshot = await sourceCollectionRef.get();
-          
+
           // ターゲットユーザーのコレクションへの参照
           final targetCollectionRef = firestore
               .collection('users')
               .doc(targetUid)
               .collection(collectionName);
-              
+
           // ターゲットコレクションの既存データを削除（上書きモード）
           final targetSnapshot = await targetCollectionRef.get();
           for (final doc in targetSnapshot.docs) {
             transaction.delete(doc.reference);
           }
-          
+
           // ソースのデータをターゲットにコピー
           for (final doc in sourceSnapshot.docs) {
             final targetDocRef = targetCollectionRef.doc();
             transaction.set(targetDocRef, doc.data());
           }
         }
-        
+
         return true;
       });
     } on FirebaseException catch (e) {

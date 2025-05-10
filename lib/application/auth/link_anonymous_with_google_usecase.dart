@@ -5,7 +5,8 @@ import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart'
 /// [LinkAnonymousWithGoogleUsecase] のインスタンスを作成するためのプロバイダ
 ///
 /// UI 層にユースケースを注入するために使用され、認証プロセスを抽象化する
-final linkAnonymousWithGoogleUsecaseProvider = Provider<LinkAnonymousWithGoogleUsecase>(
+final linkAnonymousWithGoogleUsecaseProvider =
+    Provider<LinkAnonymousWithGoogleUsecase>(
   LinkAnonymousWithGoogleUsecase.new,
 );
 
@@ -25,7 +26,9 @@ class LinkAnonymousWithGoogleUsecase with UsecaseMixin {
   Future<String> execute() async {
     return await run(
       ref,
-      action: () async => await ref.read(firebaseAuthRepositoryProvider).linkAnonymousWithGoogle(),
+      action: () async => await ref
+          .read(firebaseAuthRepositoryProvider)
+          .linkAnonymousWithGoogle(),
     );
   }
 }

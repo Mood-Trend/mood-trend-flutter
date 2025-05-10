@@ -27,10 +27,11 @@ class MigrateUserDataUsecase with UsecaseMixin {
   }) async {
     return await run(
       ref,
-      action: () async => await ref.read(dataMigrationServiceProvider).migrateUserData(
-        sourceUid: sourceUid,
-        targetUid: targetUid,
-      ),
+      action: () async =>
+          await ref.read(dataMigrationServiceProvider).migrateUserData(
+                sourceUid: sourceUid,
+                targetUid: targetUid,
+              ),
     );
   }
 }

@@ -25,7 +25,8 @@ class SigninWithGoogleUsecase with UsecaseMixin {
   Future<String> execute() async {
     return await run(
       ref,
-      action: () async => await ref.read(firebaseAuthRepositoryProvider).signInWithGoogle(),
+      action: () async =>
+          await ref.read(firebaseAuthRepositoryProvider).signInWithGoogle(),
     );
   }
 }
