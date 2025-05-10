@@ -157,28 +157,30 @@ class HomePage extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-            TextButton(
-              onPressed: () => ref
-                  .read(selectedTermProvider.notifier)
-                  .update((state) => Term.year),
-              style: buttonStyle(Term.year),
-              child: Text(S.of(context).homeYear),
-            ),
-            const SizedBox(width: 10),
-            TextButton(
-              onPressed: () => ref
-                  .read(selectedTermProvider.notifier)
-                  .update((state) => Term.halfYear),
-              style: buttonStyle(Term.halfYear),
-              child: Text(S.of(context).homeHalfYear),
-            ),
-            const SizedBox(width: 10),
-            TextButton(
-              onPressed: () => ref
-                  .read(selectedTermProvider.notifier)
-                  .update((state) => Term.month),
-              style: buttonStyle(Term.month),
-              child: Text(S.of(context).homeMonth),
+                TextButton(
+                  onPressed: () => ref
+                      .read(selectedTermProvider.notifier)
+                      .update((state) => Term.year),
+                  style: buttonStyle(Term.year),
+                  child: Text(S.of(context).homeYear),
+                ),
+                const SizedBox(width: 10),
+                TextButton(
+                  onPressed: () => ref
+                      .read(selectedTermProvider.notifier)
+                      .update((state) => Term.halfYear),
+                  style: buttonStyle(Term.halfYear),
+                  child: Text(S.of(context).homeHalfYear),
+                ),
+                const SizedBox(width: 10),
+                TextButton(
+                  onPressed: () => ref
+                      .read(selectedTermProvider.notifier)
+                      .update((state) => Term.month),
+                  style: buttonStyle(Term.month),
+                  child: Text(S.of(context).homeMonth),
+                ),
+              ],
             ),
           ],
         ),
@@ -201,7 +203,7 @@ class HomePage extends ConsumerWidget {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
                   child: SfCartesianChart(
-                    key: ValueKey(visibleMinDate),
+                    key: ValueKey(ref.watch(visibleMinimumProvider)),
                     zoomPanBehavior: ZoomPanBehavior(
                       enablePanning: true, // スクロール（パンニング）を有効化
                       zoomMode: ZoomMode.x, // X軸方向のズーム/パンのみ有効化
@@ -214,11 +216,11 @@ class HomePage extends ConsumerWidget {
                       minimum: moodPoints.isNotEmpty &&
                               moodPoints.first.moodDate
                                   .toDateOnly()
-                                  .isBefore(visibleMinDate)
+                                  .isBefore(ref.watch(visibleMinimumProvider))
                           ? moodPoints.first.moodDate.toDateOnly()
-                          : visibleMinDate,
+                          : ref.watch(visibleMinimumProvider),
                       maximum: DateTime.now(),
-                      initialVisibleMinimum: visibleMinDate, // 表示範囲の最小値
+                      initialVisibleMinimum: ref.watch(visibleMinimumProvider), // 表示範囲の最小値
                       initialVisibleMaximum: DateTime.now(),
                       interval: switch (ref.watch(selectedTermProvider)) {
                         Term.month => 7,
