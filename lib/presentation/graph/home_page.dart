@@ -63,8 +63,6 @@ class HomePage extends ConsumerWidget {
     final selectedTerm = ref.watch(selectedTermProvider);
     final readOnlyState = ref.watch(isReadOnlyProvider);
 
-    final visibleMinDate = ref.watch(visibleMinimumProvider);
-
     // コーチマーク用のターゲット
     final GlobalKey floatingActionButtonKey = GlobalKey();
 
