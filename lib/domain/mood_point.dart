@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../presentation/graph/input_modal.dart';
 part 'mood_point.freezed.dart';
 
 

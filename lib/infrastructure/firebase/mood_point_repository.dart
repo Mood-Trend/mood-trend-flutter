@@ -5,9 +5,6 @@ import '../../domain/app_exception.dart';
 import '../../domain/mood_point.dart';
 import 'firebase_provider.dart';
 
-import '../../presentation/graph/input_modal.dart';
-import 'dart:developer';
-
 /// [MoodPointRepository] のインスタンスを提供する [Provider]
 final moodPointRepositoryProvider =
     Provider.family<MoodPointRepository, String>(
@@ -115,20 +112,6 @@ class MoodPointRepository {
     }
   }
 
-  /// MoodPoint の全てのドキュメントを削除する。
-  Future<void> deleteAll() async {
-      try {
-      final querySnapshot = await moodPointsCollectionRef.get();
-      for (var doc in querySnapshot.docs) {
-        await doc.reference.delete();
-      }
-    } on FirebaseException catch (e) {
-      throw AppException('Firestore の削除処理でエラーが発生しました: ${e.code}');
-    } catch (e) {
-      throw AppException('予期しないエラーが発生しました: $e');
-    }
-  }
-
   /// MoodPoint のドキュメントを取得する。
   Future<MoodPoint> get({required String pointId}) async {
     try {
@@ -182,45 +165,18 @@ class MoodPointRepository {
     }
   }
 
-  
-  // デバッグ専用の関数（一度だけ取得して print する）
-  Future<void> debugFetchMoodPointsOnce() async {
-    final querySnapshot = await moodPointsCollectionRef.get();
-
-    // for (final doc in querySnapshot.docs) {
-    //   final data = doc.data(); 
-    //   // print('--- data: $data');
-    //   // inspect(data);
-    //   final weather = data.weather;
-    //   print('--- weather: $weather');
-    // }  
-   
-    final weathers = querySnapshot.docs.map((doc) {
-      final data = doc.data();
-      return data.weather; // ここは MoodPointDocument 形式
-    });//.toList();
-
-    for (final weather in weathers) {
-      print('weather: $weather');
-    }
-  }
-  
   /// [MoodPoint] のドキュメントを購読する。
   Stream<List<MoodPoint>> subscribeMoodPoints() {
-    //debugFetchMoodPointsOnce();
-
     return moodPointsCollectionRef.snapshots().map(
       (snapshot) {
         var moodPointList =
             snapshot.docs.map((doc) => doc.data().toMoodPoint()).toList();
         moodPointList.sort((a, b) => a.moodDate.compareTo(b.moodDate));
-        print(moodPointList);
         return moodPointList;
       },
     );
   }
   
-
   /// 指定された日付の [MoodPoint] が既に存在するか確認する。
   Future<bool> isExist({required DateTime moodDate}) async {
     try {

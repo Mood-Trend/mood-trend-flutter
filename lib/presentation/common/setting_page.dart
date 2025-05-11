@@ -23,9 +23,6 @@ import '../../domain/app_info.dart';
 import 'components/custom_about_dialog.dart';
 import 'components/notification_settings_dialog.dart';
 
-/* デバッグ用に全履歴を削除するボタンを追加 */
-import '../../infrastructure/firebase/mood_point_repository.dart';
-
 class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
   const SettingPage({super.key, required this.uid});
   final String uid;
@@ -33,12 +30,6 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncValue = ref.watch(appConfsProvider);
-
-    /* デバッグ用に全履歴を削除するボタンを追加 */
-    final moodPointRepository = MoodPointRepository(
-      moodPointsCollectionRef: ref.watch(moodPointsCollectionRefProvider(uid))/* 適切な Firebase コレクション参照をここに渡す */
-    );
-    /* ここまで */
 
     return Scaffold(
       backgroundColor: AppColors.lightGrey,
@@ -82,36 +73,6 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                   ),
                 ),
               ),
-
-              /* デバッグ用に全履歴を削除するボタンを追加 */
-              GestureDetector(
-                onTap: () async{
-                  //MoodPointRepository.deleteAll();
-                   try {
-                    await moodPointRepository.deleteAll();
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('削除が完了しました')),
-                    );
-                  } catch (e) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('エラーが発生しました: $e')),
-                    );
-                  }
-                },
-                child: Container(
-                  color: AppColors.white,
-                  width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
-                    child: Text(
-                      'Delete All',
-                      style: const TextStyle(fontSize: 18),
-                    ),
-                  ),
-                ),
-              ),
-              /* ここまで */
-
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 20, 20, 8),
                 child: Row(

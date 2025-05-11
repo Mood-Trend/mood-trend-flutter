@@ -2,8 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../infrastructure/firebase/mood_point_repository.dart';
 import '../usecase_mixin.dart';
 
-import '../../presentation/graph/input_modal.dart';
-
 /// [AddMoodPointUsecase] のインスタンスを作成するためのプロバイダ
 ///
 /// UI 層にユースケースを注入するために使用され、認証プロセスを抽象化する
@@ -61,8 +59,6 @@ class AddMoodPointUsecase with UsecaseMixin {
         if (isExist) return false;
 
         // [MoodPointRepository] を使用して気分値を追加
-        print("---ref,reaed(moodPointRepositoryProvider(uid))---");
-        print(weather);
         await ref.read(moodPointRepositoryProvider(uid)).add(
               point: point,
               plannedVolume: plannedVolume,
@@ -72,7 +68,6 @@ class AddMoodPointUsecase with UsecaseMixin {
               memo: memo,
               moodDate: moodDate,
             );
-        print("--- await ended ---");
         return true;
       },
       isOverlayLoading: false,
