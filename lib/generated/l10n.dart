@@ -18,8 +18,10 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(
+      _current != null,
+      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
+    );
     return _current!;
   }
 
@@ -41,8 +43,10 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(
+      instance != null,
+      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
+    );
     return instance!;
   }
 
@@ -52,32 +56,17 @@ class S {
 
   /// ` Skip`
   String get onboardingSkip {
-    return Intl.message(
-      ' Skip',
-      name: 'onboardingSkip',
-      desc: '',
-      args: [],
-    );
+    return Intl.message(' Skip', name: 'onboardingSkip', desc: '', args: []);
   }
 
   /// ` Next`
   String get onboardingNext {
-    return Intl.message(
-      ' Next',
-      name: 'onboardingNext',
-      desc: '',
-      args: [],
-    );
+    return Intl.message(' Next', name: 'onboardingNext', desc: '', args: []);
   }
 
   /// `Start`
   String get onboardingStart {
-    return Intl.message(
-      'Start',
-      name: 'onboardingStart',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Start', name: 'onboardingStart', desc: '', args: []);
   }
 
   /// `Welcome`
@@ -152,69 +141,44 @@ class S {
 
   /// `Error`
   String get dialogError {
-    return Intl.message(
-      'Error',
-      name: 'dialogError',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Error', name: 'dialogError', desc: '', args: []);
   }
 
   /// `OK`
   String get dialogOk {
-    return Intl.message(
-      'OK',
-      name: 'dialogOk',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('OK', name: 'dialogOk', desc: '', args: []);
   }
 
   /// `Confirm`
   String get dialogConfirm {
-    return Intl.message(
-      'Confirm',
-      name: 'dialogConfirm',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Confirm', name: 'dialogConfirm', desc: '', args: []);
   }
 
   /// `Yes`
   String get dialogYes {
-    return Intl.message(
-      'Yes',
-      name: 'dialogYes',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Yes', name: 'dialogYes', desc: '', args: []);
   }
 
   /// `No`
   String get dialogNo {
-    return Intl.message(
-      'No',
-      name: 'dialogNo',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('No', name: 'dialogNo', desc: '', args: []);
   }
 
   /// `Settings`
   String get settingSetting {
-    return Intl.message(
-      'Settings',
-      name: 'settingSetting',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Settings', name: 'settingSetting', desc: '', args: []);
   }
 
   /// `Edit`
   String get settingEdit {
+    return Intl.message('Edit', name: 'settingEdit', desc: '', args: []);
+  }
+
+  /// `Record Item`
+  String get settingRecordItem {
     return Intl.message(
-      'Edit',
-      name: 'settingEdit',
+      'Record Item',
+      name: 'settingRecordItem',
       desc: '',
       args: [],
     );
@@ -222,22 +186,12 @@ class S {
 
   /// `Mood Value Guide`
   String get table {
-    return Intl.message(
-      'Mood Value Guide',
-      name: 'table',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Mood Value Guide', name: 'table', desc: '', args: []);
   }
 
   /// `Support`
   String get settingSupport {
-    return Intl.message(
-      'Support',
-      name: 'settingSupport',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Support', name: 'settingSupport', desc: '', args: []);
   }
 
   /// `Contact Us`
@@ -262,12 +216,7 @@ class S {
 
   /// `Review`
   String get settingReview {
-    return Intl.message(
-      'Review',
-      name: 'settingReview',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Review', name: 'settingReview', desc: '', args: []);
   }
 
   /// `A review would make the developer very happy!`
@@ -312,12 +261,7 @@ class S {
 
   /// `Other`
   String get settingOther {
-    return Intl.message(
-      'Other',
-      name: 'settingOther',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Other', name: 'settingOther', desc: '', args: []);
   }
 
   /// `Withdraw`
@@ -362,42 +306,22 @@ class S {
 
   /// `1 Year`
   String get homeYear {
-    return Intl.message(
-      '1 Year',
-      name: 'homeYear',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('1 Year', name: 'homeYear', desc: '', args: []);
   }
 
   /// `6 Months`
   String get homeHalfYear {
-    return Intl.message(
-      '6 Months',
-      name: 'homeHalfYear',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('6 Months', name: 'homeHalfYear', desc: '', args: []);
   }
 
   /// `1 Month`
   String get homeMonth {
-    return Intl.message(
-      '1 Month',
-      name: 'homeMonth',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('1 Month', name: 'homeMonth', desc: '', args: []);
   }
 
   /// `Mood Value`
   String get moodValue {
-    return Intl.message(
-      'Mood Value',
-      name: 'moodValue',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Mood Value', name: 'moodValue', desc: '', args: []);
   }
 
   /// `Activity Count`
@@ -422,12 +346,7 @@ class S {
 
   /// `Save`
   String get inputSave {
-    return Intl.message(
-      'Save',
-      name: 'inputSave',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Save', name: 'inputSave', desc: '', args: []);
   }
 
   /// `is already registered`
@@ -452,12 +371,7 @@ class S {
 
   /// `Cancel`
   String get cancel {
-    return Intl.message(
-      'Cancel',
-      name: 'cancel',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
   }
 
   /// `Overwrite`
@@ -472,22 +386,12 @@ class S {
 
   /// `Depression`
   String get depression {
-    return Intl.message(
-      'Depression',
-      name: 'depression',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Depression', name: 'depression', desc: '', args: []);
   }
 
   /// `Mania`
   String get manic {
-    return Intl.message(
-      'Mania',
-      name: 'manic',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Mania', name: 'manic', desc: '', args: []);
   }
 
   /// `Start setting up the Mood Value Guide`
@@ -532,12 +436,7 @@ class S {
 
   /// `Next`
   String get next {
-    return Intl.message(
-      'Next',
-      name: 'next',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Next', name: 'next', desc: '', args: []);
   }
 
   /// `Confirm Registration`
@@ -622,12 +521,7 @@ class S {
 
   /// `Custom\nInput`
   String get typeOther {
-    return Intl.message(
-      'Custom\nInput',
-      name: 'typeOther',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Custom\nInput', name: 'typeOther', desc: '', args: []);
   }
 
   /// `Suggestion`
@@ -642,32 +536,17 @@ class S {
 
   /// `Idea`
   String get typeIdea {
-    return Intl.message(
-      'Idea',
-      name: 'typeIdea',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Idea', name: 'typeIdea', desc: '', args: []);
   }
 
   /// `Elation`
   String get typeElation {
-    return Intl.message(
-      'Elation',
-      name: 'typeElation',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Elation', name: 'typeElation', desc: '', args: []);
   }
 
   /// `Active`
   String get typeActivity {
-    return Intl.message(
-      'Active',
-      name: 'typeActivity',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Active', name: 'typeActivity', desc: '', args: []);
   }
 
   /// `Somewhat pessimistic`

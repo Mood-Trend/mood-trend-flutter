@@ -41,8 +41,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "elationPlus_4": MessageLookupByLibrary.simpleMessage("確信自己能成功"),
         "elationPlus_5": MessageLookupByLibrary.simpleMessage("認為自己絕對正確，一切順利"),
         "goTable": MessageLookupByLibrary.simpleMessage("前往心情值參考表"),
-        "homeCoachMarkBody":
-            MessageLookupByLibrary.simpleMessage("點擊下方按鈕記錄心情值與活動數"),
+        "homeCoachMarkBody": MessageLookupByLibrary.simpleMessage(
+          "點擊下方按鈕記錄心情值與活動數",
+        ),
         "homeCoachMarkTitle": MessageLookupByLibrary.simpleMessage("開始記錄吧！"),
         "homeHalfYear": MessageLookupByLibrary.simpleMessage("半年"),
         "homeMonth": MessageLookupByLibrary.simpleMessage("1個月"),
@@ -63,8 +64,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "inputSuccess": MessageLookupByLibrary.simpleMessage("心情值與活動數登錄完成"),
         "manic": MessageLookupByLibrary.simpleMessage("躁狂狀態"),
         "melancholyMinus_1": MessageLookupByLibrary.simpleMessage("有些消極"),
-        "melancholyMinus_2":
-            MessageLookupByLibrary.simpleMessage("輕微憂鬱，對日常事物提不起興趣"),
+        "melancholyMinus_2": MessageLookupByLibrary.simpleMessage(
+          "輕微憂鬱，對日常事物提不起興趣",
+        ),
         "melancholyMinus_3":
             MessageLookupByLibrary.simpleMessage("憂鬱感強烈，難以維持正常生活"),
         "melancholyMinus_4":
@@ -74,34 +76,45 @@ class MessageLookup extends MessageLookupByLibrary {
         "moodValue": MessageLookupByLibrary.simpleMessage("心情值"),
         "moodValueQuestion": MessageLookupByLibrary.simpleMessage("這天的心情如何？"),
         "moodValueQuestionTooltipMessage": MessageLookupByLibrary.simpleMessage(
-            "請用-5到+5的心情值記錄這天的心情\n如果不確定，可以參考心情值參考表！\n+3以上或-3以下時，建議提前就醫"),
+          "請用-5到+5的心情值記錄這天的心情\n如果不確定，可以參考心情值參考表！\n+3以上或-3以下時，建議提前就醫",
+        ),
         "next": MessageLookupByLibrary.simpleMessage("下一步"),
-        "notificationDailyBody":
-            MessageLookupByLibrary.simpleMessage("記錄今天的心情，通過心情圖表獲得一些啟示"),
-        "notificationDailyTitle":
-            MessageLookupByLibrary.simpleMessage("今天的心情回顧一下吧？"),
+        "notificationDailyBody": MessageLookupByLibrary.simpleMessage(
+          "記錄今天的心情，通過心情圖表獲得一些啟示",
+        ),
+        "notificationDailyTitle": MessageLookupByLibrary.simpleMessage(
+          "今天的心情回顧一下吧？",
+        ),
         "notificationSettingsDaily": MessageLookupByLibrary.simpleMessage("每天"),
         "notificationSettingsDailyDescription":
             MessageLookupByLibrary.simpleMessage("每天20:00發送通知"),
         "notificationSettingsNone": MessageLookupByLibrary.simpleMessage("無通知"),
         "notificationSettingsNoneDescription":
-            MessageLookupByLibrary.simpleMessage("禁用通知"),
-        "notificationSettingsTitle":
-            MessageLookupByLibrary.simpleMessage("設定通知提醒嗎？"),
+            MessageLookupByLibrary.simpleMessage(
+          "禁用通知",
+        ),
+        "notificationSettingsTitle": MessageLookupByLibrary.simpleMessage(
+          "設定通知提醒嗎？",
+        ),
         "notificationSettingsWeekend":
             MessageLookupByLibrary.simpleMessage("週末一次"),
         "notificationSettingsWeekendDescription":
             MessageLookupByLibrary.simpleMessage("每週末20:00發送通知"),
-        "notificationWeekendBody":
-            MessageLookupByLibrary.simpleMessage("記錄週末的回顧，通過心情圖表獲得一些啟示"),
-        "notificationWeekendTitle":
-            MessageLookupByLibrary.simpleMessage("週末的心情回顧一下吧？"),
-        "onboardingBodyFirst":
-            MessageLookupByLibrary.simpleMessage("記錄心情，製作專屬你的圖表"),
-        "onboardingBodySecond":
-            MessageLookupByLibrary.simpleMessage("輸入-5到+5（不含0）的心情值，累積圖表"),
-        "onboardingBodyThird":
-            MessageLookupByLibrary.simpleMessage("支援心情值輸入\n也可自行客製化"),
+        "notificationWeekendBody": MessageLookupByLibrary.simpleMessage(
+          "記錄週末的回顧，通過心情圖表獲得一些啟示",
+        ),
+        "notificationWeekendTitle": MessageLookupByLibrary.simpleMessage(
+          "週末的心情回顧一下吧？",
+        ),
+        "onboardingBodyFirst": MessageLookupByLibrary.simpleMessage(
+          "記錄心情，製作專屬你的圖表",
+        ),
+        "onboardingBodySecond": MessageLookupByLibrary.simpleMessage(
+          "輸入-5到+5（不含0）的心情值，累積圖表",
+        ),
+        "onboardingBodyThird": MessageLookupByLibrary.simpleMessage(
+          "支援心情值輸入\n也可自行客製化",
+        ),
         "onboardingNext": MessageLookupByLibrary.simpleMessage("下一步"),
         "onboardingSkip": MessageLookupByLibrary.simpleMessage("　跳過"),
         "onboardingStart": MessageLookupByLibrary.simpleMessage("　開始"),
@@ -114,7 +127,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("這天的活動數是多少？"),
         "plannedVolumeQuestionTooltipMessage":
             MessageLookupByLibrary.simpleMessage(
-                "記錄當天進行的活動數\n這是一個比心情值更客觀的指標，能幫助回顧"),
+          "記錄當天進行的活動數\n這是一個比心情值更客觀的指標，能幫助回顧",
+        ),
         "registerConfirm": MessageLookupByLibrary.simpleMessage("註冊確認"),
         "registerRegister": MessageLookupByLibrary.simpleMessage("註冊"),
         "registerSave": MessageLookupByLibrary.simpleMessage("心情值參考表登錄完成"),
@@ -125,9 +139,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingOnboarding": MessageLookupByLibrary.simpleMessage("關於此應用程式"),
         "settingOther": MessageLookupByLibrary.simpleMessage("其他"),
         "settingPrivacy": MessageLookupByLibrary.simpleMessage("隱私政策"),
+        "settingRecordItem": MessageLookupByLibrary.simpleMessage("要記錄的項目"),
         "settingReview": MessageLookupByLibrary.simpleMessage("評論"),
-        "settingReviewRequest":
-            MessageLookupByLibrary.simpleMessage("如果能留下評論，開發者會很開心！"),
+        "settingReviewRequest": MessageLookupByLibrary.simpleMessage(
+          "如果能留下評論，開發者會很開心！",
+        ),
         "settingSetting": MessageLookupByLibrary.simpleMessage("設定"),
         "settingSupport": MessageLookupByLibrary.simpleMessage("支援"),
         "settingTerms": MessageLookupByLibrary.simpleMessage("使用條款"),
@@ -135,8 +151,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingWithdraw": MessageLookupByLibrary.simpleMessage("退出帳號"),
         "settingWithdrawConfirm":
             MessageLookupByLibrary.simpleMessage("確定要退出帳號？"),
-        "settingWithdrawConfirmDetail":
-            MessageLookupByLibrary.simpleMessage("所有數據將被刪除且無法復原"),
+        "settingWithdrawConfirmDetail": MessageLookupByLibrary.simpleMessage(
+          "所有數據將被刪除且無法復原",
+        ),
         "sleepMinus_1": MessageLookupByLibrary.simpleMessage("起床時感覺不清醒"),
         "sleepMinus_2": MessageLookupByLibrary.simpleMessage("睡眠品質差，白天感到疲勞"),
         "sleepMinus_3": MessageLookupByLibrary.simpleMessage("睡眠紊亂，白天嚴重嗜睡"),
@@ -162,6 +179,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "typePoorThinking": MessageLookupByLibrary.simpleMessage("思考\n遲鈍"),
         "typeSleepDisorder": MessageLookupByLibrary.simpleMessage("睡眠障礙"),
         "typeSuggestion": MessageLookupByLibrary.simpleMessage("建議"),
-        "version_info": MessageLookupByLibrary.simpleMessage("版本資訊")
+        "version_info": MessageLookupByLibrary.simpleMessage("版本資訊"),
       };
 }
