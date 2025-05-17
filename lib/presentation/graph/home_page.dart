@@ -6,6 +6,7 @@ import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/common/setting_page.dart';
+import 'package:mood_trend_flutter/presentation/common/components/custom_tooltip_behavior.dart';
 import 'package:mood_trend_flutter/utils/datetime_extension.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -130,6 +131,10 @@ class HomePage extends ConsumerWidget {
       );
     }
 
+    // ツールチップの設定
+    final TooltipBehavior tooltipBehavior =
+        createCustomTooltipBehavior(context);
+
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
@@ -185,6 +190,7 @@ class HomePage extends ConsumerWidget {
                   padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
                   child: SfCartesianChart(
                     key: ValueKey(visibleMinDate),
+                    tooltipBehavior: tooltipBehavior,
                     zoomPanBehavior: ZoomPanBehavior(
                       enablePanning: true, // スクロール（パンニング）を有効化
                       zoomMode: ZoomMode.x, // X軸方向のズーム/パンのみ有効化
