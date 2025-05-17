@@ -220,6 +220,16 @@ class S {
     );
   }
 
+  /// `Record Item`
+  String get settingRecordItem {
+    return Intl.message(
+      'Record Item',
+      name: 'settingRecordItem',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Mood Value Guide`
   String get table {
     return Intl.message(
