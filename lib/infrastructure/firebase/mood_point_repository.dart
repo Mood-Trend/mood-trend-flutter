@@ -42,6 +42,10 @@ class MoodPointRepository {
   Future<void> add({
     required int point,
     required int plannedVolume,
+    required double sleepHours,
+    required int stepCount,
+    required List<String> weather,
+    required String memo,
     required DateTime moodDate,
   }) {
     try {
@@ -50,6 +54,10 @@ class MoodPointRepository {
           pointId: '',
           point: point,
           plannedVolume: plannedVolume,
+          sleepHours: sleepHours,
+          stepCount: stepCount,
+          weather: weather.map((w) => w.toString()).toList(),
+          memo: memo,
           moodDate: moodDate,
         ),
       );
@@ -65,12 +73,21 @@ class MoodPointRepository {
     required String pointId,
     required int point,
     required int plannedVolume,
+    required double sleepHours,
+    required List<String> weather,
+    required String memo,
+    required int stepCount,
+
     required DateTime moodDate,
   }) async {
     final moodPointDoc = MoodPointDocument(
       pointId: pointId,
       point: point,
       plannedVolume: plannedVolume,
+      sleepHours: sleepHours,
+      stepCount: stepCount,
+      weather: weather.map((w) => w.toString()).toList(),
+      memo: memo,
       moodDate: moodDate,
     );
     try {
@@ -159,7 +176,7 @@ class MoodPointRepository {
       },
     );
   }
-
+  
   /// 指定された日付の [MoodPoint] が既に存在するか確認する。
   Future<bool> isExist({required DateTime moodDate}) async {
     try {
@@ -192,6 +209,10 @@ class MoodPointDocument {
     required this.pointId,
     required this.point,
     required this.plannedVolume,
+    required this.sleepHours,
+    required this.stepCount,
+    required this.weather,
+    required this.memo,
     required this.moodDate,
     DateTime? createdAt,
     DateTime? updatedAt,
@@ -201,6 +222,10 @@ class MoodPointDocument {
   final String pointId;
   final int point;
   final int plannedVolume;
+  final double sleepHours;
+  final int stepCount;
+  final List<String> weather;
+  final String memo;
   final DateTime moodDate;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -213,6 +238,10 @@ class MoodPointDocument {
         pointId: uid,
         point: json['point'] as int,
         plannedVolume: json['planned_volume'] as int,
+        sleepHours: json['sleep_hours'] as double,
+        stepCount: json['step_count'] is int ? json['step_count'] as int : 0,
+        weather: List<String>.from(json['weather'] ?? []),
+        memo: json['memo'] is String ? json['memo']as String : '',
         moodDate: (json['mood_date'] as Timestamp).toDate(),
         createdAt: (json['created_at'] as Timestamp).toDate(),
         updatedAt: (json['updated_at'] as Timestamp).toDate(),
@@ -221,6 +250,10 @@ class MoodPointDocument {
   Map<String, dynamic> toJson() => {
         'point': point,
         'planned_volume': plannedVolume,
+        'sleep_hours': sleepHours,
+        'step_count': stepCount,
+        'weather': weather,
+        'memo': memo,
         'mood_date': moodDate,
         'created_at': createdAt,
         'updated_at': FieldValue.serverTimestamp(),
@@ -234,6 +267,10 @@ extension on MoodPointDocument {
         pointId: pointId,
         point: point,
         plannedVolume: plannedVolume,
+        sleepHours: sleepHours,
+        stepCount: stepCount,
+        weather: weather,
+        memo: memo,
         moodDate: moodDate,
       );
 }

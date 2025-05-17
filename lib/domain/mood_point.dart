@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'mood_point.freezed.dart';
 
+
 /// MoodPoint コレクションのドキュメント
 @freezed
 abstract class MoodPoint with _$MoodPoint {
@@ -15,6 +16,19 @@ abstract class MoodPoint with _$MoodPoint {
     /// 予定量
     required int plannedVolume,
 
+    // 睡眠時間
+    required double sleepHours,
+
+    // 歩数
+    required int stepCount,
+
+    // 天気
+    required List<String> weather,
+    //required String weather,
+
+    // メモ
+    required String memo,
+    
     /// 気分日
     required DateTime moodDate,
   }) = _MoodPoint;

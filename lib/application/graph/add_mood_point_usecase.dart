@@ -32,6 +32,19 @@ class AddMoodPointUsecase with UsecaseMixin {
     /// 予定数
     required int plannedVolume,
 
+    // 睡眠時間
+    required double sleepHours,
+
+    // 歩数
+    required int stepCount,
+
+    // 天気
+    required List<String> weather, 
+    //required String weather, 
+
+    // メモ
+    required String memo,
+
     /// 気分値の日付
     required DateTime moodDate,
   }) async {
@@ -49,6 +62,10 @@ class AddMoodPointUsecase with UsecaseMixin {
         await ref.read(moodPointRepositoryProvider(uid)).add(
               point: point,
               plannedVolume: plannedVolume,
+              sleepHours: sleepHours,
+              stepCount: stepCount,
+              weather: weather,
+              memo: memo,
               moodDate: moodDate,
             );
         return true;
@@ -65,6 +82,19 @@ class AddMoodPointUsecase with UsecaseMixin {
     /// 予定数
     required int plannedVolume,
 
+    // 睡眠時間
+    required double sleepHours,
+
+    // 歩数
+    required int stepCount,
+
+    // 天気
+    required List<String> weather, 
+    //required String weather, 
+
+    // メモ
+    required String memo,
+
     /// 気分値の日付
     required DateTime moodDate,
   }) async {
@@ -79,6 +109,10 @@ class AddMoodPointUsecase with UsecaseMixin {
               pointId: oldMoodPoint.pointId,
               point: point,
               plannedVolume: plannedVolume,
+              sleepHours: sleepHours,
+              stepCount: stepCount,
+              weather: weather,
+              memo: memo,
               moodDate: moodDate,
             );
       },

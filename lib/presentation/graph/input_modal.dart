@@ -22,6 +22,32 @@ import '../diagnosis/table_page.dart';
 
 final selectedTermProvider = StateProvider<RewardedAd?>((_) => null);
 
+enum Weather {
+  sunny,
+  rainy,
+  cloudy,
+  lowPressure,
+}
+
+extension WeatherExtension on Weather {
+  String get label {
+    switch (this) {
+      case Weather.sunny:
+        return '晴れ';
+      case Weather.rainy:
+        return '雨';
+      case Weather.cloudy:
+        return '曇り';
+      case Weather.lowPressure:
+        return '低気圧';
+    }
+  }
+  
+   static Weather fromName(String value) {
+    return Weather.values.firstWhere((e) => e.name == value);
+  }
+}
+
 /// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
   const InputModal({super.key, required this.uid});
@@ -44,6 +70,14 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
         _plannedValue = e;
       });
   double _moodValue = 1.0;
+
+  double _sleepHours = 8.0;
+
+  int _stepCount = 1000;
+
+  List<String> _weather = ['sunny','cloudy'];
+
+  String _memo = '';
 
   @override
   void dispose() {
@@ -143,6 +177,10 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                               .execute(
                                 point: _moodValue.toInt(),
                                 plannedVolume: _plannedValue.toInt(),
+                                sleepHours: _sleepHours.toDouble(),
+                                stepCount: _stepCount.toInt(),
+                                weather: _weather.toList(),
+                                memo: _memo.toString(),
                                 moodDate: date,
                               );
 
@@ -458,6 +496,11 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       .executeForUpdate(
                         point: _moodValue.toInt(),
                         plannedVolume: _plannedValue.toInt(),
+                        sleepHours: _sleepHours.toDouble(),
+                        stepCount: _stepCount.toInt(),
+                        weather: _weather.toList(),
+                        //weather: _weather.toString(),
+                        memo: _memo.toString(),
                         moodDate: date,
                       );
                   // // 続けて保存が選択されている場合はモーダル継続
