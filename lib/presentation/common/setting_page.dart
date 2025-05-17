@@ -86,7 +86,7 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
                     child: Text(
-                      S.of(context).settingAddRecordItem,
+                      S.of(context).settingRecordItem,
                       style: const TextStyle(fontSize: 18),
                     ),
                   ),
