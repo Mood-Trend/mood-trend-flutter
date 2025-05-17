@@ -180,7 +180,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                                 sleepHours: _sleepHours.toDouble(),
                                 stepCount: _stepCount.toInt(),
                                 weather: _weather.toList(),
-                                //weather: _weather.toString(),
                                 memo: _memo.toString(),
                                 moodDate: date,
                               );
