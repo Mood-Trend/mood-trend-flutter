@@ -143,6 +143,7 @@ class App extends ConsumerWidget {
               ),
             ),
           ],
+          onDidRemovePage: (_) {},
         );
       },
     );
