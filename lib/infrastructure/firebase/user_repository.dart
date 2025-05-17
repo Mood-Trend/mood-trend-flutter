@@ -127,7 +127,7 @@ class UserRepository {
       if (userData == null) return false;
 
       final supporterIds = userData.supporterIds;
-      return supporterIds.contains(supporterId);
+      return supporterIds?.contains(supporterId) ?? false;
     } on FirebaseException catch (e) {
       throw AppException('Firestore の取得処理でエラーが発生しました: ${e.code}');
     } catch (e) {

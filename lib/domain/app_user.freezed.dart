@@ -25,7 +25,7 @@ mixin _$AppUser {
   String get imageUrl;
 
   /// 支援者のUIDリスト
-  List<String> get supporterIds;
+  List<String>? get supporterIds;
 
   /// Create a copy of AppUser
   /// with the given fields replaced by the non-null parameter values.
@@ -67,7 +67,7 @@ abstract mixin class $AppUserCopyWith<$Res> {
       {String uid,
       String displayName,
       String imageUrl,
-      List<String> supporterIds});
+      List<String>? supporterIds});
 }
 
 /// @nodoc
@@ -85,7 +85,7 @@ class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
     Object? uid = null,
     Object? displayName = null,
     Object? imageUrl = null,
-    Object? supporterIds = null,
+    Object? supporterIds = freezed,
   }) {
     return _then(_self.copyWith(
       uid: null == uid
@@ -100,10 +100,10 @@ class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
           ? _self.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      supporterIds: null == supporterIds
+      supporterIds: freezed == supporterIds
           ? _self.supporterIds
           : supporterIds // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
     ));
   }
 }
@@ -115,7 +115,7 @@ class _AppUser implements AppUser {
       {required this.uid,
       required this.displayName,
       required this.imageUrl,
-      final List<String> supporterIds = const []})
+      final List<String>? supporterIds})
       : _supporterIds = supporterIds;
 
   /// Auth の uid
@@ -131,15 +131,16 @@ class _AppUser implements AppUser {
   final String imageUrl;
 
   /// 支援者のUIDリスト
-  final List<String> _supporterIds;
+  final List<String>? _supporterIds;
 
   /// 支援者のUIDリスト
   @override
-  @JsonKey()
-  List<String> get supporterIds {
+  List<String>? get supporterIds {
+    final value = _supporterIds;
+    if (value == null) return null;
     if (_supporterIds is EqualUnmodifiableListView) return _supporterIds;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_supporterIds);
+    return EqualUnmodifiableListView(value);
   }
 
   /// Create a copy of AppUser
@@ -184,7 +185,7 @@ abstract mixin class _$AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       {String uid,
       String displayName,
       String imageUrl,
-      List<String> supporterIds});
+      List<String>? supporterIds});
 }
 
 /// @nodoc
@@ -202,7 +203,7 @@ class __$AppUserCopyWithImpl<$Res> implements _$AppUserCopyWith<$Res> {
     Object? uid = null,
     Object? displayName = null,
     Object? imageUrl = null,
-    Object? supporterIds = null,
+    Object? supporterIds = freezed,
   }) {
     return _then(_AppUser(
       uid: null == uid
@@ -217,10 +218,10 @@ class __$AppUserCopyWithImpl<$Res> implements _$AppUserCopyWith<$Res> {
           ? _self.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      supporterIds: null == supporterIds
+      supporterIds: freezed == supporterIds
           ? _self._supporterIds
           : supporterIds // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
     ));
   }
 }

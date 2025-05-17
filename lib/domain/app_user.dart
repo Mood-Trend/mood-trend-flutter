@@ -16,6 +16,6 @@ abstract class AppUser with _$AppUser {
     required String imageUrl,
 
     /// 支援者のUIDリスト
-    @Default([]) List<String> supporterIds,
+    List<String>? supporterIds,
   }) = _AppUser;
 }
