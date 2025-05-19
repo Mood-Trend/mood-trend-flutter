@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../presentation/graph/input_modal.dart';
 
 part 'mood_point.freezed.dart';
 
@@ -23,7 +24,7 @@ abstract class MoodPoint with _$MoodPoint {
     required int stepCount,
 
     // 天気
-    required List<String> weather,
+    required List weather,
     //required String weather,
 
     // メモ

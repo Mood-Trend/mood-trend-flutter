@@ -43,7 +43,12 @@ extension WeatherExtension on Weather {
     }
   }
   
-   static Weather fromName(String value) {
+  String toShortString() => toString().split('.').last;
+
+  static Weather fromString(String value) =>
+    Weather.values.firstWhere((e) => e.toShortString() == value);
+
+  static Weather fromName(String value) {
     return Weather.values.firstWhere((e) => e.name == value);
   }
 }
@@ -75,7 +80,10 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
 
   int _stepCount = 1000;
 
-  List<String> _weather = ['sunny','cloudy'];
+  //List<String> _weather = ['sunny','cloudy'];
+  //List<Weather> _weather = ['Weather.sunny','Weather.cloudy'];
+  List<Weather> _weather = [];
+
 
   String _memo = '';
 
@@ -179,7 +187,8 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                                 plannedVolume: _plannedValue.toInt(),
                                 sleepHours: _sleepHours.toDouble(),
                                 stepCount: _stepCount.toInt(),
-                                weather: _weather.toList(),
+                                weather: _weather.toList(),     //original
+                              //  weather: _weather.toString(),
                                 memo: _memo.toString(),
                                 moodDate: date,
                               );
@@ -499,7 +508,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                         sleepHours: _sleepHours.toDouble(),
                         stepCount: _stepCount.toInt(),
                         weather: _weather.toList(),
-                        //weather: _weather.toString(),
+                        //weather: _weather.toString(),   // original
                         memo: _memo.toString(),
                         moodDate: date,
                       );
