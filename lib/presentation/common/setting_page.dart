@@ -14,6 +14,7 @@ import 'package:mood_trend_flutter/presentation/common/error_handler_mixin.dart'
 import 'package:mood_trend_flutter/presentation/auth/root_page.dart';
 import 'package:mood_trend_flutter/presentation/common/navigation/navigation_service.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/table_page.dart';
+import 'package:mood_trend_flutter/presentation/common/record_item_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
@@ -80,6 +81,9 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                 color: AppColors.grey,
               ),
               GestureDetector(
+                onTap: () {
+                  PageNavigator.push(context, const RecordItemPage());
+                },
                 child: Container(
                   color: AppColors.white,
                   width: double.infinity,
