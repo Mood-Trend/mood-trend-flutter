@@ -41,7 +41,7 @@ class AddMoodPointUsecase with UsecaseMixin {
     required int stepCount,
 
     // 天気
-    required List<Weather> weather, 
+    required List<String> weather, 
     //required String weather, 
 
     // メモ
@@ -91,7 +91,7 @@ class AddMoodPointUsecase with UsecaseMixin {
     required int stepCount,
 
     // 天気
-    required List<Weather> weather, 
+    required List<String> weather, 
     //required List<String> weather, 
     //required String weather, 
 

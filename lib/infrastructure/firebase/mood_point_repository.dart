@@ -46,7 +46,7 @@ class MoodPointRepository {
     required int plannedVolume,
     required double sleepHours,
     required int stepCount,
-    required List<Weather> weather,
+    required List<String> weather,
     required String memo,
     required DateTime moodDate,
   }) {
@@ -76,7 +76,7 @@ class MoodPointRepository {
     required int point,
     required int plannedVolume,
     required double sleepHours,
-    required List<Weather> weather,
+    required List<String> weather,
     required String memo,
     required int stepCount,
 
@@ -88,7 +88,6 @@ class MoodPointRepository {
       plannedVolume: plannedVolume,
       sleepHours: sleepHours,
       stepCount: stepCount,
-      //weather: weather.map((w) => w.toString()).toList(),
       weather: weather,
       memo: memo,
       moodDate: moodDate,
@@ -227,7 +226,7 @@ class MoodPointDocument {
   final int plannedVolume;
   final double sleepHours;
   final int stepCount;
-  final List<Weather> weather;
+  final List<String> weather;
   final String memo;
   final DateTime moodDate;
   final DateTime createdAt;
@@ -243,10 +242,7 @@ class MoodPointDocument {
         plannedVolume: json['planned_volume'] as int,
         sleepHours: json['sleep_hours'] as double,
         stepCount: json['step_count'] is int ? json['step_count'] as int : 0,
-        //weather: List<String>.from(json['weather'] ?? []),
-        weather: (json['weather'] as List<dynamic>)
-            .map((w) => WeatherExtension.fromString(w as String))
-            .toList(),
+        weather: List<String>.from(json['weather'] ?? []),
         memo: json['memo'] is String ? json['memo']as String : '',
         moodDate: (json['mood_date'] as Timestamp).toDate(),
         createdAt: (json['created_at'] as Timestamp).toDate(),
@@ -258,8 +254,7 @@ class MoodPointDocument {
         'planned_volume': plannedVolume,
         'sleep_hours': sleepHours,
         'step_count': stepCount,
-        //'weather': weather,
-        'weather': weather.map((w) => w.toShortString()).toList(),
+        'weather': weather,
         'memo': memo,
         'mood_date': moodDate,
         'created_at': createdAt,
