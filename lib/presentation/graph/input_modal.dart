@@ -19,39 +19,9 @@ import '../../utils/page_navigator.dart';
 import '../common/components/snackbars.dart';
 import '../common/error_handler_mixin.dart';
 import '../diagnosis/table_page.dart';
+import '../../domain/weather.dart';
 
 final selectedTermProvider = StateProvider<RewardedAd?>((_) => null);
-
-enum Weather {
-  sunny,
-  rainy,
-  cloudy,
-  lowPressure,
-}
-
-extension WeatherExtension on Weather {
-  String get label {
-    switch (this) {
-      case Weather.sunny:
-        return '晴れ';
-      case Weather.rainy:
-        return '雨';
-      case Weather.cloudy:
-        return '曇り';
-      case Weather.lowPressure:
-        return '低気圧';
-    }
-  }
-  
-  String toShortString() => toString().split('.').last;
-
-  static Weather fromString(String value) =>
-    Weather.values.firstWhere((e) => e.toShortString() == value);
-
-  static Weather fromName(String value) {
-    return Weather.values.firstWhere((e) => e.name == value);
-  }
-}
 
 /// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
@@ -80,10 +50,11 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
 
   int _stepCount = 1000;
 
-  //List<String> _weather = ['sunny','cloudy'];
-  //List<Weather> _weather = ['Weather.sunny','Weather.cloudy'];
   List<Weather> _weather = [];
 
+  // List<Weather> _weather = ['sunny', 'lowPressure']        // 動作確認用コード
+  //     .map((w) => WeatherExtension.fromString(w))
+  //     .toList();
 
   String _memo = '';
 

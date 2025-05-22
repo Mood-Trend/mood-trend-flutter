@@ -185,6 +185,7 @@ class HomePage extends ConsumerWidget {
             value: ref.watch(subscribeMoodPointsProvider(userId)),
             loading: () => const OverlayLoading(),
             builder: (moodPoints) {
+              // print(moodPoints);          // 動作確認用コード
               return Center(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
