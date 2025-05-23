@@ -44,16 +44,15 @@ class PageNavigator {
           const begin = Offset(0.0, 1.0); // 下から上への開始位置
           const end = Offset.zero; // 最終位置（中央）
           const curve = Curves.easeInOut;
-
           var tween =
               Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
           var offsetAnimation = animation.drive(tween);
-
           return SlideTransition(
             position: offsetAnimation,
             child: child,
           );
         },
+
         settings: RouteSettings(
           name: page.toString(),
         ),

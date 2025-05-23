@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../domain/app_exception.dart';
 import '../../domain/mood_point.dart';
+import '../../domain/weather.dart';
 import 'firebase_provider.dart';
 
-import '../../presentation/graph/input_modal.dart';
 
 /// [MoodPointRepository] のインスタンスを提供する [Provider]
 final moodPointRepositoryProvider =
@@ -46,7 +46,7 @@ class MoodPointRepository {
     required int plannedVolume,
     required double sleepHours,
     required int stepCount,
-    required List<String> weather,
+    required List<Weather> weather,
     required String memo,
     required DateTime moodDate,
   }) {
@@ -76,7 +76,7 @@ class MoodPointRepository {
     required int point,
     required int plannedVolume,
     required double sleepHours,
-    required List<String> weather,
+    required List<Weather> weather,
     required String memo,
     required int stepCount,
 
@@ -226,7 +226,7 @@ class MoodPointDocument {
   final int plannedVolume;
   final double sleepHours;
   final int stepCount;
-  final List<String> weather;
+  final List<Weather> weather;
   final String memo;
   final DateTime moodDate;
   final DateTime createdAt;
@@ -242,7 +242,9 @@ class MoodPointDocument {
         plannedVolume: json['planned_volume'] as int,
         sleepHours: json['sleep_hours'] as double,
         stepCount: json['step_count'] is int ? json['step_count'] as int : 0,
-        weather: List<String>.from(json['weather'] ?? []),
+        weather: (json['weather'] as List)
+            .map((m) => WeatherExtension.fromString(m))
+            .toList(),
         memo: json['memo'] is String ? json['memo']as String : '',
         moodDate: (json['mood_date'] as Timestamp).toDate(),
         createdAt: (json['created_at'] as Timestamp).toDate(),
@@ -254,7 +256,7 @@ class MoodPointDocument {
         'planned_volume': plannedVolume,
         'sleep_hours': sleepHours,
         'step_count': stepCount,
-        'weather': weather,
+        'weather': weather.map((m) => m.name).toList(),
         'memo': memo,
         'mood_date': moodDate,
         'created_at': createdAt,
