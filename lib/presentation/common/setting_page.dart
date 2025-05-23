@@ -73,6 +73,26 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                   ),
                 ),
               ),
+              Divider(
+                height: 0,
+                thickness: 0.7,
+                indent: 16,
+                endIndent: 16,
+                color: AppColors.grey,
+              ),
+              GestureDetector(
+                child: Container(
+                  color: AppColors.white,
+                  width: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
+                    child: Text(
+                      S.of(context).settingRecordItem,
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 20, 20, 8),
                 child: Row(
