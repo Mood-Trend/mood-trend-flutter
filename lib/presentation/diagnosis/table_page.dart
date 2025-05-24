@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/domain/mood_state.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/components/app_dividers.dart';
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
@@ -14,14 +15,6 @@ import 'package:mood_trend_flutter/utils/page_navigator.dart';
 import '../../application/diagnosis/states/subscribe_mood_work_sheet_provider.dart';
 import 'components/worksheet_table_cell.dart';
 import 'manic/manic_type_diagnosis_page.dart';
-
-/// [MoodState] は、気分値目安表の状態を表す
-enum MoodState {
-  // 鬱状態
-  depression,
-  // 躁状態
-  manic,
-}
 
 /// 気分値目安表を表示するページ
 class TablePage extends ConsumerWidget {
