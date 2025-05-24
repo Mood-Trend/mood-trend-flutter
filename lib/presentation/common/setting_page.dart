@@ -17,7 +17,7 @@ import 'package:mood_trend_flutter/presentation/diagnosis/table_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
-import '../../application/common/states/overlay_loading_provider.dart';
+import '../../application/common/states/overlay_loading_notifier.dart';
 import '../../application/common/url_launcher_service.dart';
 import '../../domain/app_info.dart';
 import 'components/custom_about_dialog.dart';
@@ -397,7 +397,7 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                               ),
                             ],
                           ),
-                          if (ref.watch(overlayLoadingProvider))
+                          if (ref.watch(overlayLoadingNotifierProvider))
                             const OverlayLoading(),
                         ],
                       );

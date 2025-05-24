@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/application/graph/states/saving_status_notifier.dart';
 
-import 'common/states/overlay_loading_provider.dart';
+import 'common/states/overlay_loading_notifier.dart';
 
 /// ユースケース実行のためのメソッドを備えた Mixin
 mixin UsecaseMixin {
@@ -11,7 +11,7 @@ mixin UsecaseMixin {
     bool isOverlayLoading = true,
   }) async {
     isOverlayLoading
-        ? ref.read(overlayLoadingProvider.notifier).update((_) => true)
+        ? ref.read(overlayLoadingNotifierProvider.notifier).show()
         : ref.read(isSavingProvider.notifier).setSaving();
     try {
       return await action();
@@ -19,7 +19,7 @@ mixin UsecaseMixin {
       rethrow;
     } finally {
       isOverlayLoading
-          ? ref.read(overlayLoadingProvider.notifier).update((_) => false)
+          ? ref.read(overlayLoadingNotifierProvider.notifier).hide()
           : ref.read(isSavingProvider.notifier).setSaved();
     }
   }
