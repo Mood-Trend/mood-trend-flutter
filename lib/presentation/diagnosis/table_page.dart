@@ -9,7 +9,6 @@ import 'package:mood_trend_flutter/presentation/common/components/buttons.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/common/navigation/navigation_service.dart';
 import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/providers/diagnosis_providers.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
@@ -44,7 +43,9 @@ class TablePage extends ConsumerWidget {
         Widget buildMoodStateButton(MoodState state, String label) {
           return AppButtons.secondary(
             onPressed: () {
-              ref.read(selectedMoodStateProvider.notifier).update((_) => state);
+              ref
+                  .read(selectedMoodConditionNotifierProvider.notifier)
+                  .select(state);
             },
             isSelected: selectedMoodState == state,
             child: Text(label),

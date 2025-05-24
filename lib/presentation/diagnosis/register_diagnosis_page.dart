@@ -13,7 +13,6 @@ import 'package:mood_trend_flutter/presentation/common/navigation/navigation_ser
 import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/depression/register_depression_entity_notifier.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/register_manic_entity_notifier.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/providers/diagnosis_providers.dart';
 
 import '../../utils/app_colors.dart';
 import 'components/worksheet_table_cell.dart';
@@ -37,7 +36,9 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
     Widget buildMoodStateButton(MoodState state, String label) {
       return AppButtons.secondary(
         onPressed: () {
-          ref.read(selectedMoodStateProvider.notifier).update((_) => state);
+          ref
+              .read(selectedMoodConditionNotifierProvider.notifier)
+              .select(state);
         },
         isSelected: selectedMoodState == state,
         child: Text(label),
