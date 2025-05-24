@@ -11,6 +11,38 @@ import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/presentation/common/components/buttons.dart';
 import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
 
+enum RecordItemType {
+  sleep("睡眠時間"),
+  steps("歩数"),
+  weather("天気"),
+  memo("一言メモ");
+
+  const RecordItemType(this.label);
+
+  final String label;
+
+  static final Map<String, RecordItemType> _map = {
+    for (final item in RecordItemType.values) item.label: item
+  };
+
+  static RecordItemType fromLabel(String value) {
+    return _map[value] ?? RecordItemType.sleep;
+  }
+}
+
+class RecordItem {
+  final RecordItemType type;
+  bool selected;
+  RecordItem({required this.type, this.selected = false});
+}
+
+final List<RecordItem> recordItems = [
+  RecordItem(type: RecordItemType.sleep, selected: true),
+  RecordItem(type: RecordItemType.steps, selected: false),
+  RecordItem(type: RecordItemType.weather, selected: true),
+  RecordItem(type: RecordItemType.memo, selected: false),
+];
+
 class RecordItemPage extends ConsumerWidget with ErrorHandlerMixin {
   const RecordItemPage({super.key});
 
@@ -28,25 +60,23 @@ class RecordItemPage extends ConsumerWidget with ErrorHandlerMixin {
       body: AsyncValueHandler(
         value: asyncValue,
         builder: (appConfs) {
-          List<String> items = ['睡眠時間', '歩数', '天気', '一言メモ'];
-          List<bool> selected = [true, false, true, false];
           return Scaffold(
             backgroundColor: AppColors.lightGrey,
             body: ListView(
               padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
               children: [
                 const SizedBox(height: 28),
-                for (int i = 0; i < items.length; i++) ...[
+                for (int i = 0; i < recordItems.length; i++) ...[
                   AppButtons.outlined(
                     onPressed: () {},
-                    isSelected: selected[i],
+                    isSelected: recordItems[i].selected,
                     fixedSize: const Size(double.infinity, 100),
                     child: Text(
-                      items[i],
+                      recordItems[i].type.label,
                       style: AppTextStyles.body.copyWith(fontSize: 22),
                     ),
                   ),
-                  if (i != items.length - 1) const SizedBox(height: 28),
+                  if (i != recordItems.length - 1) const SizedBox(height: 28),
                 ],
               ],
             ),
