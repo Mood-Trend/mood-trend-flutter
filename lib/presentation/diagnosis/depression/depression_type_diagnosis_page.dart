@@ -4,7 +4,7 @@ import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/components/buttons.dart';
 import 'package:mood_trend_flutter/presentation/common/navigation/navigation_service.dart';
 import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/providers/diagnosis_providers.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/depression/selected_depression_type_notifier.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/self_input_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'depression_type_table_page.dart';
@@ -17,7 +17,8 @@ class DepressionTypeDiagnosisPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedDepressionType = ref.watch(selectedDepressionTypeProvider);
+    final selectedDepressionType =
+        ref.watch(selectedDepressionTypeNotifierProvider);
 
     // 鬱タイプの選択ボタンを作成
     Widget buildTypeButton(DepressionType type, String label) {
@@ -26,8 +27,8 @@ class DepressionTypeDiagnosisPage extends ConsumerWidget {
         child: AppButtons.outlined(
           onPressed: () {
             ref
-                .read(selectedDepressionTypeProvider.notifier)
-                .update((_) => type);
+                .read(selectedDepressionTypeNotifierProvider.notifier)
+                .select(type);
           },
           isSelected: selectedDepressionType == type,
           fixedSize: const Size(145, 145),
@@ -76,7 +77,7 @@ class DepressionTypeDiagnosisPage extends ConsumerWidget {
                   onPressed: () {
                     NavigationService.push(
                       context,
-                      ref.read(selectedDepressionTypeProvider) ==
+                      ref.read(selectedDepressionTypeNotifierProvider) ==
                               DepressionType.other
                           ? SelfInputPage(isManic: false, uid: uid)
                           : DepressionTypeTablePage(uid: uid),
