@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:mood_trend_flutter/application/graph/states/selected_term_notifier.dart';
+import 'package:mood_trend_flutter/application/graph/states/visible_minimum_notifier.dart';
 import 'package:mood_trend_flutter/domain/mood_point.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
@@ -17,41 +19,6 @@ import '../../application/graph/states/subscribe_mood_points_provider.dart';
 import '../../utils/app_colors.dart';
 import 'input_modal.dart';
 
-// グラフ表示期間を示す列挙体
-enum Term {
-  /// 1 ヶ月
-  month,
-
-  /// 半年
-  halfYear,
-
-  /// 1 年
-  year,
-}
-
-/// 表示期間選択状態を示す [StateProvider]
-final selectedTermProvider = StateProvider<Term>((_) => Term.month);
-
-/// グラフの最小値を保持する [StateProvider]
-final visibleMinimumProvider = StateProvider<DateTime>(
-  (ref) => ref.watch(selectedTermProvider) == Term.month
-      ? DateTime.now().subtract(
-          const Duration(days: 30),
-        )
-      : ref.watch(selectedTermProvider) == Term.halfYear
-          ? DateTime.now().subtract(
-              const Duration(days: 182),
-            )
-          : DateTime.now().subtract(
-              const Duration(days: 365),
-            ),
-);
-
-/// グラフの最大値を保持する [StateProvider]
-final visibleMaximumProvider = StateProvider<DateTime>(
-  (ref) => DateTime.now().toDateOnly(),
-);
-
 /// グラフを表示するメインの画面
 class HomePage extends ConsumerWidget {
   const HomePage({super.key, required this.userId});
@@ -60,9 +27,9 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedTerm = ref.watch(selectedTermProvider);
+    final selectedTerm = ref.watch(selectedTermNotifierProvider);
 
-    final visibleMinDate = ref.watch(visibleMinimumProvider);
+    final visibleMinDate = ref.watch(visibleMinimumNotifierProvider);
 
     // コーチマーク用のターゲット
     final GlobalKey floatingActionButtonKey = GlobalKey();
@@ -147,24 +114,24 @@ class HomePage extends ConsumerWidget {
           children: [
             TextButton(
               onPressed: () => ref
-                  .read(selectedTermProvider.notifier)
-                  .update((state) => Term.year),
+                  .read(selectedTermNotifierProvider.notifier)
+                  .select(Term.year),
               style: buttonStyle(Term.year),
               child: Text(S.of(context).homeYear),
             ),
             const SizedBox(width: 10),
             TextButton(
               onPressed: () => ref
-                  .read(selectedTermProvider.notifier)
-                  .update((state) => Term.halfYear),
+                  .read(selectedTermNotifierProvider.notifier)
+                  .select(Term.year),
               style: buttonStyle(Term.halfYear),
               child: Text(S.of(context).homeHalfYear),
             ),
             const SizedBox(width: 10),
             TextButton(
               onPressed: () => ref
-                  .read(selectedTermProvider.notifier)
-                  .update((state) => Term.month),
+                  .read(selectedTermNotifierProvider.notifier)
+                  .select(Term.year),
               style: buttonStyle(Term.month),
               child: Text(S.of(context).homeMonth),
             ),
@@ -209,7 +176,8 @@ class HomePage extends ConsumerWidget {
                       maximum: DateTime.now(),
                       initialVisibleMinimum: visibleMinDate, // 表示範囲の最小値
                       initialVisibleMaximum: DateTime.now(),
-                      interval: switch (ref.watch(selectedTermProvider)) {
+                      interval: switch (
+                          ref.watch(selectedTermNotifierProvider)) {
                         Term.month => 7,
                         Term.halfYear => 1,
                         Term.year => 1,
