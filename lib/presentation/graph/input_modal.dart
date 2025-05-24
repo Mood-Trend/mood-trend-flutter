@@ -20,8 +20,6 @@ import '../common/components/snackbars.dart';
 import '../common/error_handler_mixin.dart';
 import '../diagnosis/table_page.dart';
 
-final selectedTermProvider = StateProvider<RewardedAd?>((_) => null);
-
 /// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
   const InputModal({super.key, required this.uid});

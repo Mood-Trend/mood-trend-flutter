@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-/// ナビゲーション履歴を管理するためのプロバイダー
-final navigationStackProvider = StateProvider<List<String>>((ref) => []);
 
 /// 画面遷移を管理するサービス
 class NavigationService {
