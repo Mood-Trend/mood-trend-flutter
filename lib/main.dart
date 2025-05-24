@@ -17,7 +17,7 @@ import 'package:mood_trend_flutter/utils/constants.dart';
 import 'package:package_info/package_info.dart';
 import 'package:mood_trend_flutter/infrastructure/services/notification_service.dart';
 
-import 'application/common/states/overlay_loading_provider.dart';
+import 'application/common/states/overlay_loading_notifier.dart';
 import 'domain/app_info.dart';
 
 Future<void> main() async {
@@ -138,7 +138,8 @@ class App extends ConsumerWidget {
                       child: child!,
                     ),
                   ),
-                  if (ref.watch(overlayLoadingProvider)) const OverlayLoading(),
+                  if (ref.watch(overlayLoadingNotifierProvider))
+                    const OverlayLoading(),
                 ],
               ),
             ),
