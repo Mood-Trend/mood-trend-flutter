@@ -19,6 +19,7 @@ import '../../utils/page_navigator.dart';
 import '../common/components/snackbars.dart';
 import '../common/error_handler_mixin.dart';
 import '../diagnosis/table_page.dart';
+import '../../domain/weather.dart';
 
 final selectedTermProvider = StateProvider<RewardedAd?>((_) => null);
 
@@ -44,6 +45,18 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
         _plannedValue = e;
       });
   double _moodValue = 1.0;
+
+  double _sleepHours = 8.0;
+
+  int _stepCount = 1000;
+
+  List<Weather> _weather = [];
+
+  // List<Weather> _weather = ['sunny','cloudy']        // 動作確認用コード
+  //      .map((w) => WeatherExtension.fromString(w))
+  //      .toList();
+
+  String _memo = '';
 
   @override
   void dispose() {
@@ -143,6 +156,10 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                               .execute(
                                 point: _moodValue.toInt(),
                                 plannedVolume: _plannedValue.toInt(),
+                                sleepHours: _sleepHours.toDouble(),
+                                stepCount: _stepCount.toInt(),
+                                weather: _weather.toList(),
+                                memo: _memo.toString(),
                                 moodDate: date,
                               );
 
@@ -458,6 +475,10 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       .executeForUpdate(
                         point: _moodValue.toInt(),
                         plannedVolume: _plannedValue.toInt(),
+                        sleepHours: _sleepHours.toDouble(),
+                        stepCount: _stepCount.toInt(),
+                        weather: _weather.toList(),
+                        memo: _memo.toString(),
                         moodDate: date,
                       );
                   // // 続けて保存が選択されている場合はモーダル継続

@@ -30,6 +30,7 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncValue = ref.watch(appConfsProvider);
+
     return Scaffold(
       backgroundColor: AppColors.lightGrey,
       appBar: AppBar(
