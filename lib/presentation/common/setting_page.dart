@@ -4,9 +4,14 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/application/auth/link_anonymous_with_google_usecase.dart';
+import 'package:mood_trend_flutter/application/auth/migrate_user_data_usecase.dart';
+import 'package:mood_trend_flutter/application/auth/signin_with_google_usecase.dart';
 import 'package:mood_trend_flutter/application/auth/signout_anonymously_usecase.dart';
 import 'package:mood_trend_flutter/application/common/states/app_confs_provider.dart';
+import 'package:mood_trend_flutter/domain/app_exception.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
+import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
 import 'package:mood_trend_flutter/presentation/auth/onboarding_page.dart';
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
@@ -88,6 +93,85 @@ class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
                     padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
                     child: Text(
                       S.of(context).settingRecordItem,
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 20, 16, 8),
+                child: Row(
+                  children: [
+                    Text(
+                      'アカウント連携',
+                      style: const TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              GestureDetector(
+                onTap: () async {
+                  await run(
+                    ref,
+                    action: () async {
+                      final auth = ref.read(firebaseAuthRepositoryProvider);
+                      // 匿名ユーザーの場合のみGoogleアカウント連携を表示
+                      if (auth.auth.currentUser?.isAnonymous ?? false) {
+                        await ref
+                            .read(linkAnonymousWithGoogleUsecaseProvider)
+                            .execute();
+                      } else {
+                        throw const AppException('既にアカウント連携されています');
+                      }
+                    },
+                    successMessage: 'Googleアカウントと連携しました',
+                  );
+                },
+                child: Container(
+                  color: AppColors.white,
+                  width: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
+                    child: Text(
+                      '現在のデータをGoogleアカウント連携',
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () async {
+                  await run(
+                    ref,
+                    action: () async {
+                      final currentUid = ref.read(userIdProvider);
+                      if (currentUid == null) {
+                        throw const AppException('ログインしていません');
+                      }
+
+                      // Googleアカウントでサインイン
+                      final googleUid = await ref
+                          .read(signinWithGoogleUsecaseProvider)
+                          .execute();
+
+                      // データ移行
+                      await ref.read(migrateUserDataUsecaseProvider).execute(
+                            sourceUid: googleUid,
+                            targetUid: currentUid,
+                          );
+                    },
+                    successMessage: 'データを復元しました',
+                  );
+                },
+                child: Container(
+                  color: AppColors.white,
+                  width: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
+                    child: Text(
+                      'Googleアカウントからデータ復元',
                       style: const TextStyle(fontSize: 18),
                     ),
                   ),
