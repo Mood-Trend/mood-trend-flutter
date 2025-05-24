@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/depression/depression_type_diagnosis_page.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/depression/self_input_depression_notifier.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/manic/register_manic_entity_provider.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/manic/self_input_manic_notifier.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/register_diagnosis_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/navigation_utils.dart';
@@ -192,15 +192,14 @@ class SelfInputPage extends ConsumerWidget with ErrorHandlerMixin {
                               ElevatedButton(
                                 onPressed: () async {
                                   ref
-                                      .read(selfInputManicProvider.notifier)
+                                      .read(selfInputManicNotifierProvider
+                                          .notifier)
                                       .update(
-                                        (_) => (
-                                          plus1TextController.text,
-                                          plus2TextController.text,
-                                          plus3TextController.text,
-                                          plus4TextController.text,
-                                          plus5TextController.text,
-                                        ),
+                                        plus1: plus1TextController.text,
+                                        plus2: plus2TextController.text,
+                                        plus3: plus3TextController.text,
+                                        plus4: plus4TextController.text,
+                                        plus5: plus5TextController.text,
                                       );
                                   popCount++;
                                   PageNavigator.push(
