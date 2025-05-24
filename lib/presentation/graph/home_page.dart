@@ -123,7 +123,7 @@ class HomePage extends ConsumerWidget {
             TextButton(
               onPressed: () => ref
                   .read(selectedTermNotifierProvider.notifier)
-                  .select(Term.year),
+                  .select(Term.halfYear),
               style: buttonStyle(Term.halfYear),
               child: Text(S.of(context).homeHalfYear),
             ),
@@ -131,7 +131,7 @@ class HomePage extends ConsumerWidget {
             TextButton(
               onPressed: () => ref
                   .read(selectedTermNotifierProvider.notifier)
-                  .select(Term.year),
+                  .select(Term.month),
               style: buttonStyle(Term.month),
               child: Text(S.of(context).homeMonth),
             ),
