@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/depression/selected_depression_type_notifier.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/depression/self_input_depression_notifier.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/providers/diagnosis_providers.dart';
 import 'entity/depression_worksheet.dart';
 
 /// 選択された鬱のタイプと手入力内容をもとに、
@@ -15,7 +15,7 @@ class RegisterDepressionEntityNotifier
   @override
   DepressionWorksheet build() {
     final param = ref.watch(selfInputDepressionNotifierProvider);
-    final type = ref.watch(selectedDepressionTypeProvider);
+    final type = ref.watch(selectedDepressionTypeNotifierProvider);
     return DepressionWorksheetFactory.create(
       type,
       param.$1,
