@@ -52,7 +52,6 @@ class PageNavigator {
             child: child,
           );
         },
-
         settings: RouteSettings(
           name: page.toString(),
         ),

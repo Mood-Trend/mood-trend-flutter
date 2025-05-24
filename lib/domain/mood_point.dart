@@ -3,7 +3,6 @@ import '../../presentation/graph/input_modal.dart';
 
 part 'mood_point.freezed.dart';
 
-
 /// MoodPoint コレクションのドキュメント
 @freezed
 abstract class MoodPoint with _$MoodPoint {
@@ -29,7 +28,7 @@ abstract class MoodPoint with _$MoodPoint {
 
     // メモ
     required String memo,
-    
+
     /// 気分日
     required DateTime moodDate,
   }) = _MoodPoint;

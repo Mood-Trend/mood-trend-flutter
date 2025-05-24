@@ -6,7 +6,6 @@ import '../../domain/mood_point.dart';
 import '../../domain/weather.dart';
 import 'firebase_provider.dart';
 
-
 /// [MoodPointRepository] のインスタンスを提供する [Provider]
 final moodPointRepositoryProvider =
     Provider.family<MoodPointRepository, String>(
@@ -79,7 +78,6 @@ class MoodPointRepository {
     required List<Weather> weather,
     required String memo,
     required int stepCount,
-
     required DateTime moodDate,
   }) async {
     final moodPointDoc = MoodPointDocument(
@@ -178,7 +176,7 @@ class MoodPointRepository {
       },
     );
   }
-  
+
   /// 指定された日付の [MoodPoint] が既に存在するか確認する。
   Future<bool> isExist({required DateTime moodDate}) async {
     try {
@@ -245,7 +243,7 @@ class MoodPointDocument {
         weather: (json['weather'] as List)
             .map((m) => WeatherExtension.fromString(m))
             .toList(),
-        memo: json['memo'] is String ? json['memo']as String : '',
+        memo: json['memo'] is String ? json['memo'] as String : '',
         moodDate: (json['mood_date'] as Timestamp).toDate(),
         createdAt: (json['created_at'] as Timestamp).toDate(),
         updatedAt: (json['updated_at'] as Timestamp).toDate(),

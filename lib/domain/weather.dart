@@ -18,11 +18,10 @@ extension WeatherExtension on Weather {
         return '低気圧';
     }
   }
-  
+
   static Weather fromString(String value) =>
-    Weather.values.firstWhere((e) => e.name == value);
+      Weather.values.firstWhere((e) => e.name == value);
 
   static Weather fromName(String value) =>
-    Weather.values.firstWhere((e) => e.name == value);
-  
+      Weather.values.firstWhere((e) => e.name == value);
 }

@@ -52,7 +52,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
 
   List<Weather> _weather = [];
 
-  // List<Weather> _weather = ['sunny','cloudy']        // 動作確認用コード 
+  // List<Weather> _weather = ['sunny','cloudy']        // 動作確認用コード
   //      .map((w) => WeatherExtension.fromString(w))
   //      .toList();
 
@@ -158,7 +158,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                                 plannedVolume: _plannedValue.toInt(),
                                 sleepHours: _sleepHours.toDouble(),
                                 stepCount: _stepCount.toInt(),
-                                weather: _weather.toList(),    
+                                weather: _weather.toList(),
                                 memo: _memo.toString(),
                                 moodDate: date,
                               );
