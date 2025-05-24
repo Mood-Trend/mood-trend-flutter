@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/manic/manic_type_diagnosis_page.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/manic/selected_manic_type_notifier.dart';
 
 import 'entity/manic_worksheet.dart';
 
@@ -8,7 +8,7 @@ final registerManicEntityProvider = StateProvider.autoDispose<ManicWorksheet>(
   (ref) {
     final param = ref.watch(selfInputManicProvider);
     return ManicWorksheetFactory.create(
-      ref.watch(selectedManicTypeProvider),
+      ref.watch(selectedManicTypeNotifierProvider),
       param.$1,
       param.$2,
       param.$3,
