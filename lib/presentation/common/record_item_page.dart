@@ -30,43 +30,39 @@ class RecordItemPage extends ConsumerWidget with ErrorHandlerMixin {
         builder: (appConfs) {
           List<String> items = ['睡眠時間', '歩数', '天気', '一言メモ'];
           List<bool> selected = [true, false, true, false];
-          return Stack(
-            children: [
-              ListView(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
-                children: [
-                  const SizedBox(height: 28),
-                  for (int i = 0; i < items.length; i++) ...[
-                    AppButtons.outlined(
-                      onPressed: () {},
-                      isSelected: selected[i],
-                      fixedSize: const Size(double.infinity, 100),
-                      child: Text(
-                        items[i],
-                        style: AppTextStyles.body.copyWith(fontSize: 22),
-                      ),
-                    ),
-                    if (i != items.length - 1) const SizedBox(height: 28),
-                  ],
-                ],
-              ),
-              Positioned(
-                left: 16,
-                right: 16,
-                bottom: 32,
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 64,
-                  child: AppButtons.secondary(
+          return Scaffold(
+            backgroundColor: AppColors.lightGrey,
+            body: ListView(
+              padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
+              children: [
+                const SizedBox(height: 28),
+                for (int i = 0; i < items.length; i++) ...[
+                  AppButtons.outlined(
                     onPressed: () {},
-                    isSelected: true,
-                    child: Text(S.of(context).inputSave,
-                        style: AppTextStyles.buttonText),
+                    isSelected: selected[i],
+                    fixedSize: const Size(double.infinity, 100),
+                    child: Text(
+                      items[i],
+                      style: AppTextStyles.body.copyWith(fontSize: 22),
+                    ),
                   ),
+                  if (i != items.length - 1) const SizedBox(height: 28),
+                ],
+              ],
+            ),
+            bottomNavigationBar: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+              child: SizedBox(
+                width: double.infinity,
+                height: 64,
+                child: AppButtons.secondary(
+                  onPressed: () {},
+                  isSelected: true,
+                  child: Text(S.of(context).inputSave,
+                      style: AppTextStyles.buttonText),
                 ),
               ),
-            ],
+            ),
           );
         },
         loading: () => const OverlayLoading(),
