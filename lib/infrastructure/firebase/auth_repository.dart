@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../domain/exceptions.dart';
 
@@ -49,6 +50,78 @@ class FirebaseAuthRepository {
     }
   }
 
+  /// Googleアカウントでサインインする
+  Future<String> signInWithGoogle() async {
+    try {
+      // GoogleSignIn インスタンスを作成
+      final GoogleSignIn googleSignIn = GoogleSignIn();
+
+      // Googleサインインダイアログを表示
+      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+      if (googleUser == null) {
+        throw AuthException.userNotFound();
+      }
+
+      // 認証情報を取得
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      // Firebaseの認証情報を作成
+      final OAuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      // Firebase Auth でサインイン
+      final UserCredential userCredential =
+          await auth.signInWithCredential(credential);
+      return userCredential.user!.uid;
+    } on FirebaseAuthException catch (e) {
+      throw e.toAuthException();
+    } catch (e) {
+      throw AuthException.unknown();
+    }
+  }
+
+  /// 匿名アカウントをGoogleアカウントにリンクする
+  Future<String> linkAnonymousWithGoogle() async {
+    try {
+      // 現在のユーザーが匿名かチェック
+      final User? currentUser = auth.currentUser;
+      if (currentUser == null || !currentUser.isAnonymous) {
+        throw AuthException.operationNotAllowed();
+      }
+
+      // GoogleSignIn インスタンスを作成
+      final GoogleSignIn googleSignIn = GoogleSignIn();
+
+      // Googleサインインダイアログを表示
+      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+      if (googleUser == null) {
+        throw AuthException.userNotFound();
+      }
+
+      // 認証情報を取得
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      // Firebaseの認証情報を作成
+      final OAuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      // 匿名アカウントをGoogleアカウントにリンク
+      final UserCredential userCredential =
+          await currentUser.linkWithCredential(credential);
+      return userCredential.user!.uid;
+    } on FirebaseAuthException catch (e) {
+      throw e.toAuthException();
+    } catch (e) {
+      throw AuthException.unknown();
+    }
+  }
+
   /// サインアウトする
   Future<void> signOut() async {
     // Firebase Auth からログアウトする
@@ -83,8 +156,9 @@ extension on FirebaseAuthException {
       case 'network-request-failed':
         return AuthException.networkRequestFailed();
       case 'email-already-in-use':
-      case 'credential-already-in-use':
         return AuthException.emailAlreadyInUse();
+      case 'credential-already-in-use':
+        return AuthException.credentialAlreadyInUse();
       case 'user-mismatch':
         return AuthException.userMismatch();
       case 'invalid-action-code':
