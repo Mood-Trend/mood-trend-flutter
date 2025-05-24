@@ -9,13 +9,13 @@ import 'package:mood_trend_flutter/presentation/common/components/buttons.dart';
 import 'package:mood_trend_flutter/presentation/common/error_handler_mixin.dart';
 import 'package:mood_trend_flutter/presentation/common/navigation/navigation_service.dart';
 import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/depression/register_depression_entity_notifier.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/register_manic_entity_provider.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/providers/diagnosis_providers.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/table_page.dart';
 
 import '../../utils/app_colors.dart';
 import 'components/worksheet_table_cell.dart';
-import 'depression/register_depression_entity_provider.dart';
 
 /// 気分値目安表登録画面
 class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
@@ -25,10 +25,10 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // 登録用のエンティティを取得
-    // 取得ロジックは StateProvider 内に隠蔽されている
+    // 取得ロジックは NotifierProvider 内に隠蔽されている
     final registerManicWorksheet = ref.watch(registerManicEntityProvider);
     final registerDepressionWorksheet =
-        ref.watch(registerDepressionEntityProvider);
+        ref.watch(registerDepressionEntityNotifierProvider);
     final selectedMoodState = ref.watch(selectedMoodStateProvider);
 
     // 気分状態切り替えボタンを作成
