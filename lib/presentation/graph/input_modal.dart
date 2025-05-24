@@ -7,7 +7,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:intl/intl.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:mood_trend_flutter/application/graph/add_mood_point_usecase.dart';
-import 'package:mood_trend_flutter/application/graph/states/is_saving_provider.dart';
+import 'package:mood_trend_flutter/application/graph/states/saving_status_notifier.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/utils/get_ad_mob_unit_id.dart';
 import 'package:mood_trend_flutter/presentation/common/components/notification_settings_dialog.dart';
@@ -148,9 +148,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
 
                           // 同じ日付に既に登録されている場合は上書きされる旨の確認ダイアログを表示
                           if (!result) {
-                            ref
-                                .read(isSavingProvider.notifier)
-                                .update((_) => SavingType.saving);
+                            ref.read(isSavingProvider.notifier).setSaving();
                             return _showConfirmDialog(
                               date: date,
                               uid: widget.uid,
@@ -509,6 +507,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
         );
       },
     );
-    ref.read(isSavingProvider.notifier).update((_) => SavingType.none);
+    ref.read(isSavingProvider.notifier).setSaved();
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/application/graph/states/is_saving_provider.dart';
+import 'package:mood_trend_flutter/application/graph/states/saving_status_notifier.dart';
 
 import 'common/states/overlay_loading_provider.dart';
 
@@ -12,7 +12,7 @@ mixin UsecaseMixin {
   }) async {
     isOverlayLoading
         ? ref.read(overlayLoadingProvider.notifier).update((_) => true)
-        : ref.read(isSavingProvider.notifier).update((_) => SavingType.saving);
+        : ref.read(isSavingProvider.notifier).setSaving();
     try {
       return await action();
     } catch (e) {
@@ -20,7 +20,7 @@ mixin UsecaseMixin {
     } finally {
       isOverlayLoading
           ? ref.read(overlayLoadingProvider.notifier).update((_) => false)
-          : ref.read(isSavingProvider.notifier).update((_) => SavingType.saved);
+          : ref.read(isSavingProvider.notifier).setSaved();
     }
   }
 }
