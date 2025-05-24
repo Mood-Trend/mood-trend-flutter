@@ -25,8 +25,7 @@ mixin _$MoodPoint {
   int get plannedVolume; // 睡眠時間
   double get sleepHours; // 歩数
   int get stepCount; // 天気
-  List get weather; //required String weather,
-// メモ
+  List<Weather> get weather; // メモ
   String get memo;
 
   /// 気分日
@@ -87,7 +86,7 @@ abstract mixin class $MoodPointCopyWith<$Res> {
       int plannedVolume,
       double sleepHours,
       int stepCount,
-      List weather,
+      List<Weather> weather,
       String memo,
       DateTime moodDate});
 }
@@ -137,7 +136,7 @@ class _$MoodPointCopyWithImpl<$Res> implements $MoodPointCopyWith<$Res> {
       weather: null == weather
           ? _self.weather
           : weather // ignore: cast_nullable_to_non_nullable
-              as List,
+              as List<Weather>,
       memo: null == memo
           ? _self.memo
           : memo // ignore: cast_nullable_to_non_nullable
@@ -159,7 +158,7 @@ class _MoodPoint implements MoodPoint {
       required this.plannedVolume,
       required this.sleepHours,
       required this.stepCount,
-      required final List weather,
+      required final List<Weather> weather,
       required this.memo,
       required this.moodDate})
       : _weather = weather;
@@ -182,16 +181,15 @@ class _MoodPoint implements MoodPoint {
   @override
   final int stepCount;
 // 天気
-  final List _weather;
+  final List<Weather> _weather;
 // 天気
   @override
-  List get weather {
+  List<Weather> get weather {
     if (_weather is EqualUnmodifiableListView) return _weather;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_weather);
   }
 
-//required String weather,
 // メモ
   @override
   final String memo;
@@ -259,7 +257,7 @@ abstract mixin class _$MoodPointCopyWith<$Res>
       int plannedVolume,
       double sleepHours,
       int stepCount,
-      List weather,
+      List<Weather> weather,
       String memo,
       DateTime moodDate});
 }
@@ -309,7 +307,7 @@ class __$MoodPointCopyWithImpl<$Res> implements _$MoodPointCopyWith<$Res> {
       weather: null == weather
           ? _self._weather
           : weather // ignore: cast_nullable_to_non_nullable
-              as List,
+              as List<Weather>,
       memo: null == memo
           ? _self.memo
           : memo // ignore: cast_nullable_to_non_nullable

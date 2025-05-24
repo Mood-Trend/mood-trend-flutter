@@ -240,9 +240,11 @@ class MoodPointDocument {
         plannedVolume: json['planned_volume'] as int,
         sleepHours: json['sleep_hours'] as double,
         stepCount: json['step_count'] is int ? json['step_count'] as int : 0,
-        weather: (json['weather'] as List)
-            .map((m) => WeatherExtension.fromString(m))
-            .toList(),
+        weather: json['weather'] is List
+            ? (json['weather'] as List<dynamic>)
+                .map((m) => Weather.fromString(m as String))
+                .toList()
+            : [],
         memo: json['memo'] is String ? json['memo'] as String : '',
         moodDate: (json['mood_date'] as Timestamp).toDate(),
         createdAt: (json['created_at'] as Timestamp).toDate(),
