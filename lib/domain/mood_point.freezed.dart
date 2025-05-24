@@ -23,10 +23,10 @@ mixin _$MoodPoint {
 
   /// 予定量
   int get plannedVolume; // 睡眠時間
-  double get sleepHours; // 歩数
-  int get stepCount; // 天気
+  double? get sleepHours; // 歩数
+  int? get stepCount; // 天気
   List<Weather> get weather; // メモ
-  String get memo;
+  String? get memo;
 
   /// 気分日
   DateTime get moodDate;
@@ -84,10 +84,10 @@ abstract mixin class $MoodPointCopyWith<$Res> {
       {String pointId,
       int point,
       int plannedVolume,
-      double sleepHours,
-      int stepCount,
+      double? sleepHours,
+      int? stepCount,
       List<Weather> weather,
-      String memo,
+      String? memo,
       DateTime moodDate});
 }
 
@@ -106,10 +106,10 @@ class _$MoodPointCopyWithImpl<$Res> implements $MoodPointCopyWith<$Res> {
     Object? pointId = null,
     Object? point = null,
     Object? plannedVolume = null,
-    Object? sleepHours = null,
-    Object? stepCount = null,
+    Object? sleepHours = freezed,
+    Object? stepCount = freezed,
     Object? weather = null,
-    Object? memo = null,
+    Object? memo = freezed,
     Object? moodDate = null,
   }) {
     return _then(_self.copyWith(
@@ -125,22 +125,22 @@ class _$MoodPointCopyWithImpl<$Res> implements $MoodPointCopyWith<$Res> {
           ? _self.plannedVolume
           : plannedVolume // ignore: cast_nullable_to_non_nullable
               as int,
-      sleepHours: null == sleepHours
+      sleepHours: freezed == sleepHours
           ? _self.sleepHours
           : sleepHours // ignore: cast_nullable_to_non_nullable
-              as double,
-      stepCount: null == stepCount
+              as double?,
+      stepCount: freezed == stepCount
           ? _self.stepCount
           : stepCount // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       weather: null == weather
           ? _self.weather
           : weather // ignore: cast_nullable_to_non_nullable
               as List<Weather>,
-      memo: null == memo
+      memo: freezed == memo
           ? _self.memo
           : memo // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       moodDate: null == moodDate
           ? _self.moodDate
           : moodDate // ignore: cast_nullable_to_non_nullable
@@ -176,10 +176,10 @@ class _MoodPoint implements MoodPoint {
   final int plannedVolume;
 // 睡眠時間
   @override
-  final double sleepHours;
+  final double? sleepHours;
 // 歩数
   @override
-  final int stepCount;
+  final int? stepCount;
 // 天気
   final List<Weather> _weather;
 // 天気
@@ -192,7 +192,7 @@ class _MoodPoint implements MoodPoint {
 
 // メモ
   @override
-  final String memo;
+  final String? memo;
 
   /// 気分日
   @override
@@ -255,10 +255,10 @@ abstract mixin class _$MoodPointCopyWith<$Res>
       {String pointId,
       int point,
       int plannedVolume,
-      double sleepHours,
-      int stepCount,
+      double? sleepHours,
+      int? stepCount,
       List<Weather> weather,
-      String memo,
+      String? memo,
       DateTime moodDate});
 }
 
@@ -277,10 +277,10 @@ class __$MoodPointCopyWithImpl<$Res> implements _$MoodPointCopyWith<$Res> {
     Object? pointId = null,
     Object? point = null,
     Object? plannedVolume = null,
-    Object? sleepHours = null,
-    Object? stepCount = null,
+    Object? sleepHours = freezed,
+    Object? stepCount = freezed,
     Object? weather = null,
-    Object? memo = null,
+    Object? memo = freezed,
     Object? moodDate = null,
   }) {
     return _then(_MoodPoint(
@@ -296,22 +296,22 @@ class __$MoodPointCopyWithImpl<$Res> implements _$MoodPointCopyWith<$Res> {
           ? _self.plannedVolume
           : plannedVolume // ignore: cast_nullable_to_non_nullable
               as int,
-      sleepHours: null == sleepHours
+      sleepHours: freezed == sleepHours
           ? _self.sleepHours
           : sleepHours // ignore: cast_nullable_to_non_nullable
-              as double,
-      stepCount: null == stepCount
+              as double?,
+      stepCount: freezed == stepCount
           ? _self.stepCount
           : stepCount // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       weather: null == weather
           ? _self._weather
           : weather // ignore: cast_nullable_to_non_nullable
               as List<Weather>,
-      memo: null == memo
+      memo: freezed == memo
           ? _self.memo
           : memo // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       moodDate: null == moodDate
           ? _self.moodDate
           : moodDate // ignore: cast_nullable_to_non_nullable

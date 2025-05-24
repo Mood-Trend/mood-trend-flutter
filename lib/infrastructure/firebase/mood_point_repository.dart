@@ -222,10 +222,10 @@ class MoodPointDocument {
   final String pointId;
   final int point;
   final int plannedVolume;
-  final double sleepHours;
-  final int stepCount;
+  final double? sleepHours;
+  final int? stepCount;
   final List<Weather> weather;
-  final String memo;
+  final String? memo;
   final DateTime moodDate;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -236,16 +236,16 @@ class MoodPointDocument {
   ) =>
       MoodPointDocument(
         pointId: uid,
-        point: json['point'] as int,
-        plannedVolume: json['planned_volume'] as int,
-        sleepHours: json['sleep_hours'] as double,
-        stepCount: json['step_count'] is int ? json['step_count'] as int : 0,
+        point: json['point'] as int? ?? 0,
+        plannedVolume: json['planned_volume'] as int? ?? 0,
+        sleepHours: json['sleep_hours'] as double?,
+        stepCount: json['step_count'] as int?,
         weather: json['weather'] is List
             ? (json['weather'] as List<dynamic>)
                 .map((m) => Weather.fromString(m as String))
                 .toList()
-            : [],
-        memo: json['memo'] is String ? json['memo'] as String : '',
+            : <Weather>[],
+        memo: json['memo'] as String?, // デフォルト値を設定
         moodDate: (json['mood_date'] as Timestamp).toDate(),
         createdAt: (json['created_at'] as Timestamp).toDate(),
         updatedAt: (json['updated_at'] as Timestamp).toDate(),

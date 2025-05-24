@@ -17,16 +17,16 @@ abstract class MoodPoint with _$MoodPoint {
     required int plannedVolume,
 
     // 睡眠時間
-    required double sleepHours,
+    required double? sleepHours,
 
     // 歩数
-    required int stepCount,
+    required int? stepCount,
 
     // 天気
     required List<Weather> weather,
 
     // メモ
-    required String memo,
+    required String? memo,
 
     /// 気分日
     required DateTime moodDate,
