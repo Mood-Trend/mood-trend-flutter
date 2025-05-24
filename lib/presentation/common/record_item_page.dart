@@ -1,27 +1,15 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/application/auth/signout_anonymously_usecase.dart';
 import 'package:mood_trend_flutter/application/common/states/app_confs_provider.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
-import 'package:mood_trend_flutter/presentation/auth/onboarding_page.dart';
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/common/error_handler_mixin.dart';
-import 'package:mood_trend_flutter/presentation/auth/root_page.dart';
-import 'package:mood_trend_flutter/presentation/common/navigation/navigation_service.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/table_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
-import 'package:mood_trend_flutter/utils/page_navigator.dart';
-
-import '../../application/common/states/overlay_loading_provider.dart';
-import '../../application/common/url_launcher_service.dart';
-import '../../domain/app_info.dart';
-import 'components/custom_about_dialog.dart';
-import 'components/notification_settings_dialog.dart';
+import 'package:mood_trend_flutter/presentation/common/components/buttons.dart';
+import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
 
 class RecordItemPage extends ConsumerWidget with ErrorHandlerMixin {
   const RecordItemPage({super.key});
@@ -35,13 +23,81 @@ class RecordItemPage extends ConsumerWidget with ErrorHandlerMixin {
         elevation: 0,
         backgroundColor: AppColors.lightGrey,
         centerTitle: true,
-        title: Text(S.of(context).settingSetting),
+        title: Text(S.of(context).settingRecordItem),
       ),
       body: AsyncValueHandler(
         value: asyncValue,
         builder: (appConfs) {
-          return ListView(
-            children: [],
+          return Stack(
+            children: [
+              ListView(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
+                children: [
+                  const SizedBox(height: 28),
+                  AppButtons.outlined(
+                    onPressed: () {},
+                    isSelected: true,
+                    fixedSize: const Size(double.infinity, 100),
+                    child: Text(
+                      '睡眠時間',
+                      style: AppTextStyles.body.copyWith(
+                        fontSize: 22,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 28),
+                  AppButtons.outlined(
+                    onPressed: () {},
+                    isSelected: false,
+                    fixedSize: const Size(double.infinity, 100),
+                    child: Text(
+                      '歩数',
+                      style: AppTextStyles.body.copyWith(fontSize: 22),
+                    ),
+                  ),
+                  const SizedBox(height: 28),
+                  AppButtons.outlined(
+                    onPressed: () {},
+                    isSelected: true,
+                    fixedSize: const Size(double.infinity, 100),
+                    child: Text(
+                      '天気',
+                      style: AppTextStyles.body.copyWith(
+                        fontSize: 22,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 28),
+                  AppButtons.outlined(
+                    onPressed: () {},
+                    isSelected: false,
+                    fixedSize: const Size(double.infinity, 100),
+                    child: Text(
+                      '一言メモ',
+                      style: AppTextStyles.body.copyWith(
+                        fontSize: 22,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 112), // ボタン分のスペースを確保
+                ],
+              ),
+              Positioned(
+                left: 16,
+                right: 16,
+                bottom: 32,
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 64,
+                  child: AppButtons.secondary(
+                    onPressed: () {},
+                    isSelected: true,
+                    child: const Text('保存', style: AppTextStyles.buttonText),
+                  ),
+                ),
+              ),
+            ],
           );
         },
         loading: () => const OverlayLoading(),
