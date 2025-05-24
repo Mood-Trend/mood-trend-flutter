@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/application/diagnosis/register_mood_worksheet_usecase.dart';
+import 'package:mood_trend_flutter/application/diagnosis/states/selected_mood_condition_notifier.dart';
 import 'package:mood_trend_flutter/domain/mood_state.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/components/app_dividers.dart';
@@ -30,7 +31,7 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
         ref.watch(registerManicEntityNotifierProvider);
     final registerDepressionWorksheet =
         ref.watch(registerDepressionEntityNotifierProvider);
-    final selectedMoodState = ref.watch(selectedMoodStateProvider);
+    final selectedMoodState = ref.watch(selectedMoodConditionNotifierProvider);
 
     // 気分状態切り替えボタンを作成
     Widget buildMoodStateButton(MoodState state, String label) {
