@@ -28,6 +28,8 @@ class RecordItemPage extends ConsumerWidget with ErrorHandlerMixin {
       body: AsyncValueHandler(
         value: asyncValue,
         builder: (appConfs) {
+          List<String> items = ['睡眠時間', '歩数', '天気', '一言メモ'];
+          List<bool> selected = [true, false, true, false];
           return Stack(
             children: [
               ListView(
@@ -35,51 +37,18 @@ class RecordItemPage extends ConsumerWidget with ErrorHandlerMixin {
                     const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
                 children: [
                   const SizedBox(height: 28),
-                  AppButtons.outlined(
-                    onPressed: () {},
-                    isSelected: true,
-                    fixedSize: const Size(double.infinity, 100),
-                    child: Text(
-                      '睡眠時間',
-                      style: AppTextStyles.body.copyWith(
-                        fontSize: 22,
+                  for (int i = 0; i < items.length; i++) ...[
+                    AppButtons.outlined(
+                      onPressed: () {},
+                      isSelected: selected[i],
+                      fixedSize: const Size(double.infinity, 100),
+                      child: Text(
+                        items[i],
+                        style: AppTextStyles.body.copyWith(fontSize: 22),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 28),
-                  AppButtons.outlined(
-                    onPressed: () {},
-                    isSelected: false,
-                    fixedSize: const Size(double.infinity, 100),
-                    child: Text(
-                      '歩数',
-                      style: AppTextStyles.body.copyWith(fontSize: 22),
-                    ),
-                  ),
-                  const SizedBox(height: 28),
-                  AppButtons.outlined(
-                    onPressed: () {},
-                    isSelected: true,
-                    fixedSize: const Size(double.infinity, 100),
-                    child: Text(
-                      '天気',
-                      style: AppTextStyles.body.copyWith(
-                        fontSize: 22,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 28),
-                  AppButtons.outlined(
-                    onPressed: () {},
-                    isSelected: false,
-                    fixedSize: const Size(double.infinity, 100),
-                    child: Text(
-                      '一言メモ',
-                      style: AppTextStyles.body.copyWith(
-                        fontSize: 22,
-                      ),
-                    ),
-                  )
+                    if (i != items.length - 1) const SizedBox(height: 28),
+                  ],
                 ],
               ),
               Positioned(
@@ -92,7 +61,8 @@ class RecordItemPage extends ConsumerWidget with ErrorHandlerMixin {
                   child: AppButtons.secondary(
                     onPressed: () {},
                     isSelected: true,
-                    child: const Text('保存', style: AppTextStyles.buttonText),
+                    child: Text(S.of(context).inputSave,
+                        style: AppTextStyles.buttonText),
                   ),
                 ),
               ),
