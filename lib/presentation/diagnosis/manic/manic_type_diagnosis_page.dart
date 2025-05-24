@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/manic/selected_manic_type_notifier.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/self_input_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/navigation_utils.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 import 'entity/manic_worksheet.dart';
 import 'manic_type_table_page.dart';
-
-/// 選択された躁のタイプを提供する [StateProvider]
-final selectedManicTypeProvider = StateProvider.autoDispose<ManicType>(
-  (_) => ManicType.other,
-);
 
 /// 躁のタイプの診断画面
 class ManicTypeDiagnosisPage extends ConsumerWidget {
@@ -20,7 +16,7 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedManicType = ref.watch(selectedManicTypeProvider);
+    final selectedManicType = ref.watch(selectedManicTypeNotifierProvider);
     ButtonStyle buttonStyle(ManicType manicType) {
       return OutlinedButton.styleFrom(
         backgroundColor: selectedManicType == manicType
@@ -65,9 +61,9 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: OutlinedButton(
                     onPressed: () {
-                      ref.read(selectedManicTypeProvider.notifier).update(
-                            (_) => ManicType.idea,
-                          );
+                      ref
+                          .read(selectedManicTypeNotifierProvider.notifier)
+                          .select(ManicType.idea);
                     },
                     style: buttonStyle(ManicType.idea),
                     child: Text(
@@ -83,9 +79,9 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: OutlinedButton(
                       onPressed: () {
-                        ref.read(selectedManicTypeProvider.notifier).update(
-                              (_) => ManicType.elation,
-                            );
+                        ref
+                            .read(selectedManicTypeNotifierProvider.notifier)
+                            .select(ManicType.idea);
                       },
                       style: buttonStyle(ManicType.elation),
                       child: Text(
@@ -105,9 +101,9 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: OutlinedButton(
                       onPressed: () {
-                        ref.read(selectedManicTypeProvider.notifier).update(
-                              (_) => ManicType.activity,
-                            );
+                        ref
+                            .read(selectedManicTypeNotifierProvider.notifier)
+                            .select(ManicType.idea);
                       },
                       style: buttonStyle(ManicType.activity),
                       child: Text(
@@ -122,9 +118,9 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: OutlinedButton(
                     onPressed: () {
-                      ref.read(selectedManicTypeProvider.notifier).update(
-                            (_) => ManicType.other,
-                          );
+                      ref
+                          .read(selectedManicTypeNotifierProvider.notifier)
+                          .select(ManicType.idea);
                     },
                     style: buttonStyle(ManicType.other),
                     child: Text(
@@ -145,7 +141,8 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
                     popCount++;
                     PageNavigator.push(
                       context,
-                      ref.read(selectedManicTypeProvider) == ManicType.other
+                      ref.read(selectedManicTypeNotifierProvider) ==
+                              ManicType.other
                           ? SelfInputPage(isManic: true, uid: uid)
                           : ManicTypeTablePage(uid: uid),
                     ).then((value) => popCount--);
