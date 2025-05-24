@@ -35,7 +35,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
   DateTime date = DateTime.now();
   bool _isModalPop = true;
   final InAppReview _inAppReview = InAppReview.instance;
-  // bool _isContinueSaving = false;
 
   int moodNum = 1;
   void _changeSlider(double e) => setState(() {
@@ -410,7 +409,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
     required String uid,
     required DateTime date,
     required BuildContext parent,
-    // required bool isContinueSaving,
   }) async {
     void loadInterstitialAd() {
       InterstitialAd.load(
@@ -456,11 +454,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                         plannedVolume: _plannedValue.toInt(),
                         moodDate: date,
                       );
-                  // // 続けて保存が選択されている場合はモーダル継続
-                  // if (isContinueSaving) return;
-                  // // 続けて保存が選択されていない場合はモーダルを閉じる
 
-                  // 初回記録時のみ通知設定ダイアログを表示
                   // 初回記録時のみ通知設定ダイアログを表示
                   final prefs = await SharedPreferences.getInstance();
                   final hasShownNotificationDialog =
