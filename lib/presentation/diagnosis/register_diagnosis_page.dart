@@ -10,7 +10,7 @@ import 'package:mood_trend_flutter/presentation/common/error_handler_mixin.dart'
 import 'package:mood_trend_flutter/presentation/common/navigation/navigation_service.dart';
 import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/depression/register_depression_entity_notifier.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/manic/register_manic_entity_provider.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/manic/register_manic_entity_notifier.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/providers/diagnosis_providers.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/table_page.dart';
 
@@ -26,7 +26,8 @@ class RegisterDiagnosisPage extends ConsumerWidget with ErrorHandlerMixin {
   Widget build(BuildContext context, WidgetRef ref) {
     // 登録用のエンティティを取得
     // 取得ロジックは NotifierProvider 内に隠蔽されている
-    final registerManicWorksheet = ref.watch(registerManicEntityProvider);
+    final registerManicWorksheet =
+        ref.watch(registerManicEntityNotifierProvider);
     final registerDepressionWorksheet =
         ref.watch(registerDepressionEntityNotifierProvider);
     final selectedMoodState = ref.watch(selectedMoodStateProvider);
