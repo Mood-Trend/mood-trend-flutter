@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/entity/manic_worksheet.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/manic/selected_manic_type_notifier.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/navigation_utils.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../../common/error_handler_mixin.dart';
 import '../depression/depression_type_diagnosis_page.dart';
-import 'manic_type_diagnosis_page.dart';
 
 /// 躁のタイプを表示するテーブル画面
 class ManicTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
@@ -18,7 +18,7 @@ class ManicTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final worksheet = ManicWorksheetFactory.create(
-      ref.watch(selectedManicTypeProvider),
+      ref.watch(selectedManicTypeNotifierProvider),
     );
 
     return Scaffold(

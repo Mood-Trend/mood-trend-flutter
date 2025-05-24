@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../domain/app_exception.dart';
 import '../../domain/mood_point.dart';
+import '../../domain/weather.dart';
 import 'firebase_provider.dart';
 
 /// [MoodPointRepository] のインスタンスを提供する [Provider]
@@ -42,6 +43,10 @@ class MoodPointRepository {
   Future<void> add({
     required int point,
     required int plannedVolume,
+    required double sleepHours,
+    required int stepCount,
+    required List<Weather> weather,
+    required String memo,
     required DateTime moodDate,
   }) {
     try {
@@ -50,6 +55,10 @@ class MoodPointRepository {
           pointId: '',
           point: point,
           plannedVolume: plannedVolume,
+          sleepHours: sleepHours,
+          stepCount: stepCount,
+          weather: weather,
+          memo: memo,
           moodDate: moodDate,
         ),
       );
@@ -65,12 +74,20 @@ class MoodPointRepository {
     required String pointId,
     required int point,
     required int plannedVolume,
+    required double sleepHours,
+    required List<Weather> weather,
+    required String memo,
+    required int stepCount,
     required DateTime moodDate,
   }) async {
     final moodPointDoc = MoodPointDocument(
       pointId: pointId,
       point: point,
       plannedVolume: plannedVolume,
+      sleepHours: sleepHours,
+      stepCount: stepCount,
+      weather: weather,
+      memo: memo,
       moodDate: moodDate,
     );
     try {
@@ -192,6 +209,10 @@ class MoodPointDocument {
     required this.pointId,
     required this.point,
     required this.plannedVolume,
+    required this.sleepHours,
+    required this.stepCount,
+    required this.weather,
+    required this.memo,
     required this.moodDate,
     DateTime? createdAt,
     DateTime? updatedAt,
@@ -201,6 +222,10 @@ class MoodPointDocument {
   final String pointId;
   final int point;
   final int plannedVolume;
+  final double? sleepHours;
+  final int? stepCount;
+  final List<Weather> weather;
+  final String? memo;
   final DateTime moodDate;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -211,8 +236,16 @@ class MoodPointDocument {
   ) =>
       MoodPointDocument(
         pointId: uid,
-        point: json['point'] as int,
-        plannedVolume: json['planned_volume'] as int,
+        point: json['point'] as int? ?? 0,
+        plannedVolume: json['planned_volume'] as int? ?? 0,
+        sleepHours: json['sleep_hours'] as double?,
+        stepCount: json['step_count'] as int?,
+        weather: json['weather'] is List
+            ? (json['weather'] as List<dynamic>)
+                .map((m) => Weather.fromString(m as String))
+                .toList()
+            : <Weather>[],
+        memo: json['memo'] as String?, // デフォルト値を設定
         moodDate: (json['mood_date'] as Timestamp).toDate(),
         createdAt: (json['created_at'] as Timestamp).toDate(),
         updatedAt: (json['updated_at'] as Timestamp).toDate(),
@@ -221,6 +254,10 @@ class MoodPointDocument {
   Map<String, dynamic> toJson() => {
         'point': point,
         'planned_volume': plannedVolume,
+        'sleep_hours': sleepHours,
+        'step_count': stepCount,
+        'weather': weather.map((m) => m.name).toList(),
+        'memo': memo,
         'mood_date': moodDate,
         'created_at': createdAt,
         'updated_at': FieldValue.serverTimestamp(),
@@ -234,6 +271,10 @@ extension on MoodPointDocument {
         pointId: pointId,
         point: point,
         plannedVolume: plannedVolume,
+        sleepHours: sleepHours,
+        stepCount: stepCount,
+        weather: weather,
+        memo: memo,
         moodDate: moodDate,
       );
 }

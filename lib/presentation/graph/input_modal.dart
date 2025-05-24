@@ -7,7 +7,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:intl/intl.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:mood_trend_flutter/application/graph/add_mood_point_usecase.dart';
-import 'package:mood_trend_flutter/application/graph/states/is_saving_provider.dart';
+import 'package:mood_trend_flutter/application/graph/states/saving_status_notifier.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/utils/get_ad_mob_unit_id.dart';
 import 'package:mood_trend_flutter/presentation/common/components/notification_settings_dialog.dart';
@@ -19,8 +19,7 @@ import '../../utils/page_navigator.dart';
 import '../common/components/snackbars.dart';
 import '../common/error_handler_mixin.dart';
 import '../diagnosis/table_page.dart';
-
-final selectedTermProvider = StateProvider<RewardedAd?>((_) => null);
+import '../../domain/weather.dart';
 
 /// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
@@ -37,13 +36,24 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
   DateTime date = DateTime.now();
   bool _isModalPop = true;
   final InAppReview _inAppReview = InAppReview.instance;
-  // bool _isContinueSaving = false;
 
   int moodNum = 1;
   void _changeSlider(double e) => setState(() {
         _plannedValue = e;
       });
   double _moodValue = 1.0;
+
+  double _sleepHours = 8.0;
+
+  int _stepCount = 1000;
+
+  List<Weather> _weather = [];
+
+  // List<Weather> _weather = ['sunny','cloudy']        // 動作確認用コード
+  //      .map((w) => WeatherExtension.fromString(w))
+  //      .toList();
+
+  String _memo = '';
 
   @override
   void dispose() {
@@ -143,14 +153,16 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                               .execute(
                                 point: _moodValue.toInt(),
                                 plannedVolume: _plannedValue.toInt(),
+                                sleepHours: _sleepHours.toDouble(),
+                                stepCount: _stepCount.toInt(),
+                                weather: _weather.toList(),
+                                memo: _memo.toString(),
                                 moodDate: date,
                               );
 
                           // 同じ日付に既に登録されている場合は上書きされる旨の確認ダイアログを表示
                           if (!result) {
-                            ref
-                                .read(isSavingProvider.notifier)
-                                .update((_) => SavingType.saving);
+                            ref.read(isSavingProvider.notifier).setSaving();
                             return _showConfirmDialog(
                               date: date,
                               uid: widget.uid,
@@ -414,7 +426,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
     required String uid,
     required DateTime date,
     required BuildContext parent,
-    // required bool isContinueSaving,
   }) async {
     void loadInterstitialAd() {
       InterstitialAd.load(
@@ -458,13 +469,13 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       .executeForUpdate(
                         point: _moodValue.toInt(),
                         plannedVolume: _plannedValue.toInt(),
+                        sleepHours: _sleepHours.toDouble(),
+                        stepCount: _stepCount.toInt(),
+                        weather: _weather.toList(),
+                        memo: _memo.toString(),
                         moodDate: date,
                       );
-                  // // 続けて保存が選択されている場合はモーダル継続
-                  // if (isContinueSaving) return;
-                  // // 続けて保存が選択されていない場合はモーダルを閉じる
 
-                  // 初回記録時のみ通知設定ダイアログを表示
                   // 初回記録時のみ通知設定ダイアログを表示
                   final prefs = await SharedPreferences.getInstance();
                   final hasShownNotificationDialog =
@@ -509,6 +520,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
         );
       },
     );
-    ref.read(isSavingProvider.notifier).update((_) => SavingType.none);
+    ref.read(isSavingProvider.notifier).setSaved();
   }
 }

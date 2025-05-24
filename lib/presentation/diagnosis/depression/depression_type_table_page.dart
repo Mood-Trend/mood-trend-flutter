@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/error_handler_mixin.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/depression/entity/depression_worksheet.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/providers/diagnosis_providers.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/depression/selected_depression_type_notifier.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/navigation_utils.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
@@ -18,7 +18,7 @@ class DepressionTypeTablePage extends ConsumerWidget with ErrorHandlerMixin {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final worksheet = DepressionWorksheetFactory.create(
-      ref.watch(selectedDepressionTypeProvider),
+      ref.watch(selectedDepressionTypeNotifierProvider),
     );
 
     return Scaffold(
