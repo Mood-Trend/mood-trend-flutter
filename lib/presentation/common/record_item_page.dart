@@ -79,8 +79,7 @@ class RecordItemPage extends ConsumerWidget with ErrorHandlerMixin {
                         fontSize: 22,
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 112), // ボタン分のスペースを確保
+                  )
                 ],
               ),
               Positioned(
