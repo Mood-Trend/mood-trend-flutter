@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/depression/depression_type_diagnosis_page.dart';
+import 'package:mood_trend_flutter/presentation/diagnosis/depression/self_input_depression_notifier.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/register_manic_entity_provider.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/register_diagnosis_page.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
@@ -9,7 +10,6 @@ import 'package:mood_trend_flutter/utils/navigation_utils.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../common/error_handler_mixin.dart';
-import 'depression/register_depression_entity_provider.dart';
 
 /// 躁・鬱の状態入力で「独自に入力」を選択した場合の画面
 class SelfInputPage extends ConsumerWidget with ErrorHandlerMixin {
@@ -378,15 +378,14 @@ class SelfInputPage extends ConsumerWidget with ErrorHandlerMixin {
                             child: ElevatedButton(
                               onPressed: () async {
                                 ref
-                                    .read(selfInputDepressionProvider.notifier)
+                                    .read(selfInputDepressionNotifierProvider
+                                        .notifier)
                                     .update(
-                                      (_) => (
-                                        minus1TextController.text,
-                                        minus2TextController.text,
-                                        minus3TextController.text,
-                                        minus4TextController.text,
-                                        minus5TextController.text,
-                                      ),
+                                      minus1: minus1TextController.text,
+                                      minus2: minus2TextController.text,
+                                      minus3: minus3TextController.text,
+                                      minus4: minus4TextController.text,
+                                      minus5: minus5TextController.text,
                                     );
                                 popCount++;
                                 PageNavigator.push(context,
