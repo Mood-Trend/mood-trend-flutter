@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/domain/mood_state.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/depression/entity/depression_worksheet.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/entity/manic_worksheet.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/table_page.dart';
 
 /// 選択された気分値目安表の状態を保持する [StateProvider]
 /// 複数の画面で共有される状態

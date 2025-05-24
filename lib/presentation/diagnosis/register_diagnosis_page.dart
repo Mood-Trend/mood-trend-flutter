@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mood_trend_flutter/application/diagnosis/register_mood_worksheet_usecase.dart';
+import 'package:mood_trend_flutter/domain/mood_state.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/components/app_dividers.dart';
 import 'package:mood_trend_flutter/presentation/common/components/buttons.dart';
@@ -12,7 +13,6 @@ import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dar
 import 'package:mood_trend_flutter/presentation/diagnosis/depression/register_depression_entity_notifier.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/manic/register_manic_entity_notifier.dart';
 import 'package:mood_trend_flutter/presentation/diagnosis/providers/diagnosis_providers.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/table_page.dart';
 
 import '../../utils/app_colors.dart';
 import 'components/worksheet_table_cell.dart';
