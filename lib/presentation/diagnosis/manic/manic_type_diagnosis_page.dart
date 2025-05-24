@@ -81,7 +81,7 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
                       onPressed: () {
                         ref
                             .read(selectedManicTypeNotifierProvider.notifier)
-                            .select(ManicType.idea);
+                            .select(ManicType.elation);
                       },
                       style: buttonStyle(ManicType.elation),
                       child: Text(
@@ -103,7 +103,7 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
                       onPressed: () {
                         ref
                             .read(selectedManicTypeNotifierProvider.notifier)
-                            .select(ManicType.idea);
+                            .select(ManicType.activity);
                       },
                       style: buttonStyle(ManicType.activity),
                       child: Text(
@@ -120,7 +120,7 @@ class ManicTypeDiagnosisPage extends ConsumerWidget {
                     onPressed: () {
                       ref
                           .read(selectedManicTypeNotifierProvider.notifier)
-                          .select(ManicType.idea);
+                          .select(ManicType.other);
                     },
                     style: buttonStyle(ManicType.other),
                     child: Text(
