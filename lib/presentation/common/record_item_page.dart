@@ -2,21 +2,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/application/record_item/states/record_item_notifier.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/error_handler_mixin.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/presentation/common/components/buttons.dart';
 import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
+import 'package:mood_trend_flutter/presentation/common/components/record_item_list.dart';
 
 class RecordItemPage extends ConsumerWidget with ErrorHandlerMixin {
   const RecordItemPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final recordItems = ref.watch(recordItemNotifierProvider);
-    final notifier = ref.read(recordItemNotifierProvider.notifier);
-
     return Scaffold(
       backgroundColor: AppColors.lightGrey,
       appBar: AppBar(
@@ -27,20 +24,9 @@ class RecordItemPage extends ConsumerWidget with ErrorHandlerMixin {
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
-        children: [
-          const SizedBox(height: 28),
-          for (int i = 0; i < recordItems.length; i++) ...[
-            AppButtons.outlined(
-              onPressed: () => notifier.toggleSelection(i),
-              isSelected: recordItems[i].selected,
-              fixedSize: const Size(double.infinity, 100),
-              child: Text(
-                recordItems[i].type.label,
-                style: AppTextStyles.body.copyWith(fontSize: 22),
-              ),
-            ),
-            if (i != recordItems.length - 1) const SizedBox(height: 28),
-          ],
+        children: const [
+          SizedBox(height: 28),
+          RecordItemList(),
         ],
       ),
       bottomNavigationBar: Padding(
