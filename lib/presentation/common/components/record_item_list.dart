@@ -4,6 +4,7 @@ import 'package:mood_trend_flutter/application/record_item/states/record_item_no
 import 'package:mood_trend_flutter/presentation/common/components/buttons.dart';
 import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
 
+// 記録する項目の状態をリスト表示するクラス
 class RecordItemList extends ConsumerWidget {
   const RecordItemList({super.key});
 
@@ -11,21 +12,24 @@ class RecordItemList extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final recordItems = ref.watch(recordItemNotifierProvider);
     final notifier = ref.read(recordItemNotifierProvider.notifier);
-    return Column(
-      children: [
-        for (int i = 0; i < recordItems.length; i++) ...[
-          AppButtons.outlined(
-            onPressed: () => notifier.toggleSelection(i),
-            isSelected: recordItems[i].selected,
+    return Padding(
+      padding: const EdgeInsets.only(top: 32, left: 16, right: 16),
+      child: ListView.separated(
+        separatorBuilder: (context, index) => const SizedBox(height: 28),
+        itemCount: recordItems.length,
+        itemBuilder: (context, index) {
+          final item = recordItems[index];
+          return AppButtons.outlined(
+            onPressed: () => notifier.toggleSelection(index),
+            isSelected: item.selected,
             fixedSize: const Size(double.infinity, 100),
             child: Text(
-              recordItems[i].type.label,
+              item.type.label,
               style: AppTextStyles.body.copyWith(fontSize: 22),
             ),
-          ),
-          if (i != recordItems.length - 1) const SizedBox(height: 28),
-        ],
-      ],
+          );
+        },
+      ),
     );
   }
 }

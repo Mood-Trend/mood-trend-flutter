@@ -9,6 +9,7 @@ import 'package:mood_trend_flutter/presentation/common/components/buttons.dart';
 import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
 import 'package:mood_trend_flutter/presentation/common/components/record_item_list.dart';
 
+// 記録する項目を選択するページ
 class RecordItemPage extends ConsumerWidget with ErrorHandlerMixin {
   const RecordItemPage({super.key});
 
@@ -22,13 +23,7 @@ class RecordItemPage extends ConsumerWidget with ErrorHandlerMixin {
         centerTitle: true,
         title: Text(S.of(context).settingRecordItem),
       ),
-      body: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
-        children: const [
-          SizedBox(height: 28),
-          RecordItemList(),
-        ],
-      ),
+      body: RecordItemList(),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
         child: SizedBox(
