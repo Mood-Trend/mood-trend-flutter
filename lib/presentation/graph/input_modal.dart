@@ -163,7 +163,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                               date: date,
                               uid: widget.uid,
                               parent: context,
-                              // isContinueSaving: _isContinueSaving,
                             );
                           }
                           // 初回記録時のみ通知設定ダイアログを表示
