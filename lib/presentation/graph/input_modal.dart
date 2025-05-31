@@ -43,17 +43,13 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
       });
   double _moodValue = 1.0;
 
-  double _sleepHours = 8.0;
+  final double _sleepHours = 8.0;
 
-  int _stepCount = 1000;
+  final int _stepCount = 1000;
 
-  List<Weather> _weather = [];
+  final List<Weather> _weather = [];
 
-  // List<Weather> _weather = ['sunny','cloudy']        // 動作確認用コード
-  //      .map((w) => WeatherExtension.fromString(w))
-  //      .toList();
-
-  String _memo = '';
+  final String _memo = '';
 
   @override
   void dispose() {
@@ -167,7 +163,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                               date: date,
                               uid: widget.uid,
                               parent: context,
-                              // isContinueSaving: _isContinueSaving,
                             );
                           }
                           // 初回記録時のみ通知設定ダイアログを表示
