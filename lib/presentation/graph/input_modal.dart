@@ -421,7 +421,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
     required String uid,
     required DateTime date,
     required BuildContext parent,
-    // required bool isContinueSaving,
   }) async {
     void loadInterstitialAd() {
       InterstitialAd.load(
