@@ -471,11 +471,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                         memo: _memo.toString(),
                         moodDate: date,
                       );
-                  // // 続けて保存が選択されている場合はモーダル継続
-                  // if (isContinueSaving) return;
-                  // // 続けて保存が選択されていない場合はモーダルを閉じる
 
-                  // 初回記録時のみ通知設定ダイアログを表示
                   // 初回記録時のみ通知設定ダイアログを表示
                   final prefs = await SharedPreferences.getInstance();
                   final hasShownNotificationDialog =
