@@ -43,9 +43,9 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
       });
   double _moodValue = 1.0;
 
-  final _sleepHours = 8.0;
+  final double _sleepHours = 8.0;
 
-  final _stepCount = 1000;
+  final int _stepCount = 1000;
 
   final List<Weather> _weather = [];
 
@@ -422,6 +422,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
     required String uid,
     required DateTime date,
     required BuildContext parent,
+    // required bool isContinueSaving,
   }) async {
     void loadInterstitialAd() {
       InterstitialAd.load(
@@ -471,7 +472,11 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                         memo: _memo.toString(),
                         moodDate: date,
                       );
+                  // // 続けて保存が選択されている場合はモーダル継続
+                  // if (isContinueSaving) return;
+                  // // 続けて保存が選択されていない場合はモーダルを閉じる
 
+                  // 初回記録時のみ通知設定ダイアログを表示
                   // 初回記録時のみ通知設定ダイアログを表示
                   final prefs = await SharedPreferences.getInstance();
                   final hasShownNotificationDialog =
