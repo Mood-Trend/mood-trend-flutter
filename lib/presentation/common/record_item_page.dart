@@ -23,7 +23,10 @@ class RecordItemPage extends ConsumerWidget with ErrorHandlerMixin {
         centerTitle: true,
         title: Text(S.of(context).settingRecordItem),
       ),
-      body: RecordItemList(),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 32, left: 16, right: 16),
+        child: const RecordItemList(),
+      ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
         child: SizedBox(
