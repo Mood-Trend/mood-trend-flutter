@@ -10,16 +10,20 @@ class RecordItemNotifier extends Notifier<List<RecordItem>> {
   List<RecordItem> build() {
     return [
       /// 睡眠時間
-      RecordItem(type: RecordItemType.sleep, selected: true),
+      RecordItem(
+          type: RecordItemType.sleep, selected: true), // TODO:selectedは仮置き
 
       /// 歩数
-      RecordItem(type: RecordItemType.steps),
+      RecordItem(
+          type: RecordItemType.steps, selected: true), // TODO:selectedは仮置き
 
       /// 天気
-      RecordItem(type: RecordItemType.weather, selected: true),
+      RecordItem(
+          type: RecordItemType.weather, selected: true), // TODO:selectedは仮置き
 
       /// 一言メモ
-      RecordItem(type: RecordItemType.memo),
+      RecordItem(
+          type: RecordItemType.memo, selected: true), // TODO:selectedは仮置き
     ];
   }
 

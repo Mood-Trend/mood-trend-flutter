@@ -11,7 +11,7 @@ abstract class RecordItem with _$RecordItem {
   /// [selected]: 選択状態（デフォルトはfalse）
   const factory RecordItem({
     required RecordItemType type,
-    @Default(false) bool selected,
+    required bool selected,
   }) = _RecordItem;
 
   factory RecordItem.fromJson(Map<String, dynamic> json) =>
