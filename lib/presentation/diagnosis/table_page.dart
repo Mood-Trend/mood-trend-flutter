@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mood_trend_flutter/application/diagnosis/states/selected_mood_condition_notifier.dart';
+import 'package:mood_trend_flutter/domain/mood_state.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/presentation/common/components/app_dividers.dart';
 import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
@@ -7,21 +9,12 @@ import 'package:mood_trend_flutter/presentation/common/components/buttons.dart';
 import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
 import 'package:mood_trend_flutter/presentation/common/navigation/navigation_service.dart';
 import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/providers/diagnosis_providers.dart';
 import 'package:mood_trend_flutter/utils/app_colors.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
 import '../../application/diagnosis/states/subscribe_mood_work_sheet_provider.dart';
 import 'components/worksheet_table_cell.dart';
 import 'manic/manic_type_diagnosis_page.dart';
-
-/// [MoodState] は、気分値目安表の状態を表す
-enum MoodState {
-  // 鬱状態
-  depression,
-  // 躁状態
-  manic,
-}
 
 /// 気分値目安表を表示するページ
 class TablePage extends ConsumerWidget {
@@ -43,13 +36,16 @@ class TablePage extends ConsumerWidget {
         ),
       ),
       builder: (worksheet) {
-        final selectedMoodState = ref.watch(selectedMoodStateProvider);
+        final selectedMoodState =
+            ref.watch(selectedMoodConditionNotifierProvider);
 
         // 気分状態切り替えボタンを作成
         Widget buildMoodStateButton(MoodState state, String label) {
           return AppButtons.secondary(
             onPressed: () {
-              ref.read(selectedMoodStateProvider.notifier).update((_) => state);
+              ref
+                  .read(selectedMoodConditionNotifierProvider.notifier)
+                  .select(state);
             },
             isSelected: selectedMoodState == state,
             child: Text(label),
