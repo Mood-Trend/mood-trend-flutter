@@ -263,7 +263,7 @@ class HomePage extends ConsumerWidget {
                             value.moodDate.toDateOnly(),
                         yValueMapper: (MoodPoint value, _) =>
                             value.plannedVolume,
-                        color: AppColors.blue.withOpacity(0.5),
+                        color: AppColors.blue.withValues(alpha: 0.5),
                         markerSettings: const MarkerSettings(isVisible: true),
                         yAxisName: 'yAxis',
                         splineType: SplineType.monotonic,
