@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mood_trend_flutter/domain/weather.dart';
+import 'weather.dart';
 
 part 'mood_point.freezed.dart';
 

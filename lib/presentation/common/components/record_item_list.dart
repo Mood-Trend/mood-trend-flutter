@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/application/record_item/states/record_item_notifier.dart';
-import 'package:mood_trend_flutter/presentation/common/components/buttons.dart';
-import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
+import '../../../application/record_item/states/record_item_notifier.dart';
+import 'buttons.dart';
+import '../theme/app_text_styles.dart';
 
 // 記録する項目の状態をリスト表示するクラス
 class RecordItemList extends ConsumerWidget {

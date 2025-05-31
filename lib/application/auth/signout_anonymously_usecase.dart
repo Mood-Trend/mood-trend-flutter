@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/application/usecase_mixin.dart';
-import 'package:mood_trend_flutter/infrastructure/firebase/auth_repository.dart';
+import '../usecase_mixin.dart';
+import '../../infrastructure/firebase/auth_repository.dart';
 
 /// [SignoutAnonymouslyUsecase] のインスタンスを作成するためのプロバイダ
 ///

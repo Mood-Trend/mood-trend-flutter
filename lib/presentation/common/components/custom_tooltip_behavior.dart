@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:mood_trend_flutter/domain/mood_point.dart';
-import 'package:mood_trend_flutter/generated/l10n.dart';
-import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
-import 'package:mood_trend_flutter/utils/app_colors.dart';
+import '../../../domain/mood_point.dart';
+import '../../../generated/l10n.dart';
+import '../theme/app_text_styles.dart';
+import '../../../utils/app_colors.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 TooltipBehavior createCustomTooltipBehavior(BuildContext context) {

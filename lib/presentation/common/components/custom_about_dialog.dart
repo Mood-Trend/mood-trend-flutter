@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mood_trend_flutter/generated/l10n.dart';
+import '../../../generated/l10n.dart';
 import 'package:mood_trend_flutter/utils/page_navigator.dart'; // 適切なパスに置き換えてください。
 
 class CustomAboutDialog extends StatelessWidget {

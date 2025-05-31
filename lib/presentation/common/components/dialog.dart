@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/generated/l10n.dart';
+import '../../../generated/l10n.dart';
 
 /// ダイアログ表示用の [GlobalKey]
 final navigatorKeyProvider = Provider(

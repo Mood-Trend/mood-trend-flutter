@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:mood_trend_flutter/application/graph/states/selected_term_notifier.dart';
-import 'package:mood_trend_flutter/application/graph/states/visible_minimum_notifier.dart';
-import 'package:mood_trend_flutter/domain/mood_point.dart';
-import 'package:mood_trend_flutter/generated/l10n.dart';
-import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
-import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
-import 'package:mood_trend_flutter/presentation/common/setting_page.dart';
-import 'package:mood_trend_flutter/presentation/common/components/custom_tooltip_behavior.dart';
-import 'package:mood_trend_flutter/utils/datetime_extension.dart';
-import 'package:mood_trend_flutter/utils/page_navigator.dart';
+import '../../application/graph/states/selected_term_notifier.dart';
+import '../../application/graph/states/visible_minimum_notifier.dart';
+import '../../domain/mood_point.dart';
+import '../../generated/l10n.dart';
+import '../common/components/async_value_handler.dart';
+import '../common/components/loading.dart';
+import '../common/setting_page.dart';
+import '../common/components/custom_tooltip_behavior.dart';
+import '../../utils/datetime_extension.dart';
+import '../../utils/page_navigator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
@@ -231,7 +231,7 @@ class HomePage extends ConsumerWidget {
                             value.moodDate.toDateOnly(),
                         yValueMapper: (MoodPoint value, _) =>
                             value.plannedVolume,
-                        color: AppColors.blue.withValues(alpha: 0.5),
+                        color: AppColors.blue.withOpacity(0.5),
                         markerSettings: const MarkerSettings(isVisible: true),
                         yAxisName: 'yAxis',
                         splineType: SplineType.monotonic,

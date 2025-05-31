@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/application/graph/states/saving_status_notifier.dart';
+import 'graph/states/saving_status_notifier.dart';
 
 import 'common/states/overlay_loading_notifier.dart';
 
