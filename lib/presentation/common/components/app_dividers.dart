@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mood_trend_flutter/utils/app_colors.dart';
+import '../../../utils/app_colors.dart';
 
 /// アプリ全体で使用される共通の区切り線を提供するクラス
 class AppDividers {

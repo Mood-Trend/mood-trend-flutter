@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mood_trend_flutter/generated/l10n.dart';
+import '../../../generated/l10n.dart';
 import '../../../infrastructure/services/notification_service.dart';
 
 class NotificationSettingsDialog extends StatelessWidget {

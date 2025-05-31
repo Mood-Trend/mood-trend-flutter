@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/domain/mood_state.dart';
+import '../../../domain/mood_state.dart';
 
 /// 現在の気分状態を管理する [Notifier]
 ///

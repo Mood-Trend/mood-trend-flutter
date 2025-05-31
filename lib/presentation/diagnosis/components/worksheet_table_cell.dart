@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mood_trend_flutter/presentation/common/theme/app_text_styles.dart';
+import '../../common/theme/app_text_styles.dart';
 
 /// 気分値目安表のセル
 class WorksheetTableCell extends StatelessWidget {

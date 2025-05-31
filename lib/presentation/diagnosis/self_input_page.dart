@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/generated/l10n.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/depression/depression_type_diagnosis_page.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/depression/self_input_depression_notifier.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/manic/self_input_manic_notifier.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/register_diagnosis_page.dart';
-import 'package:mood_trend_flutter/utils/app_colors.dart';
-import 'package:mood_trend_flutter/utils/navigation_utils.dart';
-import 'package:mood_trend_flutter/utils/page_navigator.dart';
+import '../../generated/l10n.dart';
+import 'depression/depression_type_diagnosis_page.dart';
+import 'depression/self_input_depression_notifier.dart';
+import 'manic/self_input_manic_notifier.dart';
+import 'register_diagnosis_page.dart';
+import '../../utils/app_colors.dart';
+import '../../utils/navigation_utils.dart';
+import '../../utils/page_navigator.dart';
 
 import '../common/error_handler_mixin.dart';
 

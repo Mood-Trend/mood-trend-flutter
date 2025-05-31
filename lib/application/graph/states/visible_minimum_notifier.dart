@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/application/graph/states/selected_term_notifier.dart';
+import 'selected_term_notifier.dart';
 
 /// グラフの最小表示日を計算する [Notifier]
 ///

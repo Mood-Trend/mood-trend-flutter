@@ -1,6 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:mood_trend_flutter/domain/models/record_item.dart';
-import 'package:mood_trend_flutter/domain/models/record_item_type.dart';
+
+import '../../../domain/models/record_item.dart';
+import '../../../domain/models/record_item_type.dart';
 
 /// [RecordItemNotifier] は、記録する項目のリストを管理するクラス。
 ///

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/domain/app_user.dart';
+import '../../domain/app_user.dart';
 
 import '../../domain/app_exception.dart';
 import 'firebase_provider.dart';
