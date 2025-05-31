@@ -26,13 +26,12 @@ class RecordItemNotifier extends Notifier<List<RecordItem>> {
   /// [index] で指定された記録する項目の要否（selected）を切り替えます。
   /// 範囲外のindexが指定された場合は何もしません。
   void toggleSelection(int index) {
-    state = [
-      for (int i = 0; i < state.length; i++)
-        if (i == index)
-          state[i].copyWith(selected: !state[i].selected)
-        else
-          state[i],
-    ];
+    state = List.generate(
+      state.length,
+      (i) => i == index
+          ? state[i].copyWith(selected: !state[i].selected)
+          : state[i],
+    );
   }
 }
 

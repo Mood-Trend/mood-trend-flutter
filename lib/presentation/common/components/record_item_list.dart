@@ -12,21 +12,22 @@ class RecordItemList extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final recordItems = ref.watch(recordItemNotifierProvider);
     final notifier = ref.read(recordItemNotifierProvider.notifier);
-    return ListView.separated(
-      separatorBuilder: (context, index) => const SizedBox(height: 28),
-      itemCount: recordItems.length,
-      itemBuilder: (context, index) {
-        final item = recordItems[index];
-        return AppButtons.outlined(
-          onPressed: () => notifier.toggleSelection(index),
-          isSelected: item.selected,
-          fixedSize: const Size(double.infinity, 100),
-          child: Text(
-            item.type.label,
-            style: AppTextStyles.body.copyWith(fontSize: 22),
-          ),
-        );
-      },
-    );
+    return ListView.builder(
+        itemCount: recordItems.length,
+        itemBuilder: (BuildContext context, int index) {
+          final item = recordItems[index];
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 28),
+            child: AppButtons.outlined(
+              onPressed: () => notifier.toggleSelection(index),
+              isSelected: item.selected,
+              fixedSize: const Size(double.infinity, 100),
+              child: Text(
+                item.type.label,
+                style: AppTextStyles.body.copyWith(fontSize: 22),
+              ),
+            ),
+          );
+        });
   }
 }
