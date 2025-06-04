@@ -4,25 +4,25 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mood_trend_flutter/application/auth/signout_anonymously_usecase.dart';
-import 'package:mood_trend_flutter/application/common/states/app_confs_provider.dart';
-import 'package:mood_trend_flutter/generated/l10n.dart';
-import 'package:mood_trend_flutter/presentation/auth/onboarding_page.dart';
-import 'package:mood_trend_flutter/presentation/common/components/async_value_handler.dart';
-import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
-import 'package:mood_trend_flutter/presentation/common/error_handler_mixin.dart';
-import 'package:mood_trend_flutter/presentation/auth/root_page.dart';
-import 'package:mood_trend_flutter/presentation/common/navigation/navigation_service.dart';
-import 'package:mood_trend_flutter/presentation/diagnosis/table_page.dart';
-import 'package:mood_trend_flutter/presentation/common/record_item_page.dart';
-import 'package:mood_trend_flutter/utils/app_colors.dart';
-import 'package:mood_trend_flutter/utils/page_navigator.dart';
 
+import '../../application/auth/signout_anonymously_usecase.dart';
+import '../../application/common/states/app_confs_provider.dart';
+import '../../../generated/l10n.dart';
+import '../auth/onboarding_page.dart';
+import '../auth/root_page.dart';
+import '../diagnosis/table_page.dart';
+import '../../utils/app_colors.dart';
+import '../../utils/page_navigator.dart';
 import '../../application/common/states/overlay_loading_notifier.dart';
 import '../../application/common/url_launcher_service.dart';
 import '../../domain/app_info.dart';
 import 'components/custom_about_dialog.dart';
 import 'components/notification_settings_dialog.dart';
+import 'record_item_page.dart';
+import 'components/async_value_handler.dart';
+import 'components/loading.dart';
+import 'error_handler_mixin.dart';
+import 'navigation/navigation_service.dart';
 
 class SettingPage extends ConsumerWidget with ErrorHandlerMixin {
   const SettingPage({super.key, required this.uid});

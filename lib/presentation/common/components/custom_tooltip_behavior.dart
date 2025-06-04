@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
+
 import '../../../domain/mood_point.dart';
 import '../../../generated/l10n.dart';
 import '../theme/app_text_styles.dart';
 import '../../../utils/app_colors.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 TooltipBehavior createCustomTooltipBehavior(BuildContext context) {
   return TooltipBehavior(
