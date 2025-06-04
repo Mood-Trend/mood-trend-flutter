@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../utils/datetime_extension.dart';
 
 /// グラフの最大表示日を提供する [Notifier]

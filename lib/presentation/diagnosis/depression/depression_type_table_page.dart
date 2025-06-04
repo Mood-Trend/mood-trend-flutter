@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../generated/l10n.dart';
 import '../../common/error_handler_mixin.dart';
 import 'entity/depression_worksheet.dart';
@@ -7,7 +8,6 @@ import 'selected_depression_type_notifier.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/navigation_utils.dart';
 import '../../../utils/page_navigator.dart';
-
 import '../register_diagnosis_page.dart';
 
 /// 鬱のタイプを表示するテーブル画面

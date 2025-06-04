@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'entity/depression_worksheet.dart';
 
 /// ユーザーが選択した鬱のタイプを管理する [Notifier]

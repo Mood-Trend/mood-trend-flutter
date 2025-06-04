@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
+
 import '../../application/graph/states/selected_term_notifier.dart';
 import '../../application/graph/states/visible_minimum_notifier.dart';
+import '../../application/graph/states/subscribe_mood_points_provider.dart';
 import '../../domain/mood_point.dart';
-import '../../generated/l10n.dart';
+import '../../../generated/l10n.dart';
 import '../common/components/async_value_handler.dart';
 import '../common/components/loading.dart';
 import '../common/setting_page.dart';
 import '../common/components/custom_tooltip_behavior.dart';
 import '../../utils/datetime_extension.dart';
 import '../../utils/page_navigator.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
-
-import '../../application/graph/states/subscribe_mood_points_provider.dart';
 import '../../utils/app_colors.dart';
 import 'input_modal.dart';
 
