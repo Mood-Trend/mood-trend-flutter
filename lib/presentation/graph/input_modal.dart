@@ -57,22 +57,22 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
     super.dispose();
   }
 
-// インタースティシャル広告をロード
-  void loadInterstitialAd() {
-    InterstitialAd.load(
-      adUnitId: getAdMobUnitId(),
-      request: AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (ad) {
-          ad.show();
-        },
-        onAdFailedToLoad: (error) {},
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
+    // インタースティシャル広告をロード
+    void loadInterstitialAd() {
+      InterstitialAd.load(
+        adUnitId: getAdMobUnitId(),
+        request: AdRequest(),
+        adLoadCallback: InterstitialAdLoadCallback(
+          onAdLoaded: (ad) {
+            ad.show();
+          },
+          onAdFailedToLoad: (error) {},
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -422,6 +422,19 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
     required DateTime date,
     required BuildContext parent,
   }) async {
+    void loadInterstitialAd() {
+      InterstitialAd.load(
+        adUnitId: getAdMobUnitId(),
+        request: AdRequest(),
+        adLoadCallback: InterstitialAdLoadCallback(
+          onAdLoaded: (ad) {
+            ad.show();
+          },
+          onAdFailedToLoad: (error) {},
+        ),
+      );
+    }
+
     await showDialog(
       context: parent,
       builder: (context) {
