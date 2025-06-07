@@ -51,7 +51,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
 
   final List<Weather> _weather = [];
 
-  final String _memo = '';
+  String _memo = '';
 
   /// スライダーの値を変更する際に、RecordItemTypeに応じて処理を分岐
   void _changeSliderForRecordItemPoint(double e, RecordItemType type) {
@@ -555,6 +555,9 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       ),
                     ],
                   ),
+                  SizedBox(
+                    height: 48,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -580,6 +583,47 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                     height: 16,
                   ),
                   const WeatherItemList(),
+                  SizedBox(
+                    height: 40,
+                  ), // 一言メモの入力欄
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          "一言メモ", // TODO: ローカライズ
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                      ),
+                      Tooltip(
+                        showDuration: const Duration(seconds: 3),
+                        triggerMode: TooltipTriggerMode.tap,
+                        message: "",
+                        child: Icon(
+                          Icons.help,
+                          color: AppColors.grey,
+                          size: 18,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  TextField(
+                    maxLines: 5,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide(color: AppColors.grey),
+                      ),
+                    ),
+                    onChanged: (value) {
+                      setState(() {
+                        _memo = value;
+                      });
+                    },
+                  ),
                   SizedBox(height: 115), // bottomSheetの高さ分の余白
                 ],
               ),
