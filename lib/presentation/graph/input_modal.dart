@@ -554,6 +554,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       ),
                     ],
                   ),
+                  SizedBox(height: 115), // bottomSheetの高さ分の余白
                 ],
               ),
             ),
