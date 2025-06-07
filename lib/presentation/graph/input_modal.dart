@@ -21,6 +21,7 @@ import '../common/components/snackbars.dart';
 import '../common/error_handler_mixin.dart';
 import '../diagnosis/table_page.dart';
 import '../../domain/weather.dart';
+import '../common/components/weather_item_list.dart';
 
 /// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
@@ -554,6 +555,31 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       ),
                     ],
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          "この日の天気は？", // TODO: ローカライズ
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                      ),
+                      Tooltip(
+                        showDuration: const Duration(seconds: 3),
+                        triggerMode: TooltipTriggerMode.tap,
+                        message: "", // TODO: テキスト追加とローカライズ
+                        child: Icon(
+                          Icons.help,
+                          color: AppColors.grey,
+                          size: 18,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  const WeatherItemList(),
                   SizedBox(height: 115), // bottomSheetの高さ分の余白
                 ],
               ),
