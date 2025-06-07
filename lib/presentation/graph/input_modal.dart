@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:mood_trend_flutter/application/graph/add_mood_point_usecase.dart';
 import 'package:mood_trend_flutter/application/graph/states/saving_status_notifier.dart';
+import 'package:mood_trend_flutter/domain/models/record_item_type.dart';
 import 'package:mood_trend_flutter/generated/l10n.dart';
 import 'package:mood_trend_flutter/utils/get_ad_mob_unit_id.dart';
 import 'package:mood_trend_flutter/presentation/common/components/notification_settings_dialog.dart';
@@ -43,13 +44,45 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
       });
   double _moodValue = 1.0;
 
-  final double _sleepHours = 8.0;
+  double _sleepHours = 8.0;
 
-  final int _stepCount = 1000;
+  int _stepCount = 1000;
 
   final List<Weather> _weather = [];
 
   final String _memo = '';
+
+  /// スライダーの値を変更する際に、RecordItemTypeに応じて処理を分岐
+  void _changeSliderForRecordItemPoint(double e, RecordItemType type) {
+    setState(() {
+      switch (type) {
+        case RecordItemType.sleep:
+          if (e <= 0.0) {
+            _sleepHours = 0.0;
+            break;
+          } else if (e > 16.0) {
+            _sleepHours = 16.0;
+            break;
+          } else {
+            _sleepHours = e;
+            break;
+          }
+        case RecordItemType.steps:
+          if (e <= 0) {
+            _stepCount = 0;
+            break;
+          } else if (e > 20000) {
+            _stepCount = 20000;
+            break;
+          } else {
+            _stepCount = e.toInt();
+            break;
+          }
+        default:
+          break;
+      }
+    });
+  }
 
   @override
   void dispose() {
@@ -398,6 +431,120 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                               child: Center(
                                 child: Text(
                                   _plannedValue.toInt().toString(),
+                                  style: const TextStyle(fontSize: 52),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 48,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          "この日の睡眠時間は何時間？", // TODO: ローカライズ
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                      ),
+                      Tooltip(
+                        showDuration: const Duration(seconds: 3),
+                        triggerMode: TooltipTriggerMode.tap,
+                        message: "", // TODO: テキスト追加とローカライズ
+                        child: Icon(
+                          Icons.help,
+                          color: AppColors.grey,
+                          size: 18,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Slider(
+                    label: null,
+                    min: 0,
+                    max: 16,
+                    value: _sleepHours,
+                    divisions: 16,
+                    onChanged: (value) => _changeSliderForRecordItemPoint(
+                        value, RecordItemType.sleep),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 75,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
+                              child: Center(
+                                child: Text(
+                                  _sleepHours.toInt().toString(),
+                                  style: const TextStyle(fontSize: 52),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 48,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          "この日の歩数は？", // TODO: ローカライズ
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                      ),
+                      Tooltip(
+                        showDuration: const Duration(seconds: 3),
+                        triggerMode: TooltipTriggerMode.tap,
+                        message: "", // TODO: テキスト追加とローカライズ
+                        child: Icon(
+                          Icons.help,
+                          color: AppColors.grey,
+                          size: 18,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Slider(
+                    label: null,
+                    min: 0,
+                    max: 20000,
+                    value: _stepCount.toDouble(), // 歩数は整数なのでdoubleに変換
+                    divisions: 16,
+                    onChanged: (value) => _changeSliderForRecordItemPoint(
+                        value, RecordItemType.steps),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 175,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
+                              child: Center(
+                                child: Text(
+                                  _stepCount.toInt().toString(),
                                   style: const TextStyle(fontSize: 52),
                                 ),
                               ),
