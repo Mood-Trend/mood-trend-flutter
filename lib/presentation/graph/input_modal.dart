@@ -582,7 +582,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   SizedBox(
                     height: 16,
                   ),
-                  const WeatherItemList(),
+                  const WeatherItemList(), // TODO: List<Weather> _weatherに渡せるように変更する必要あり
                   SizedBox(
                     height: 40,
                   ), // 一言メモの入力欄
