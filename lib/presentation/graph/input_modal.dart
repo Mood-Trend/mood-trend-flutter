@@ -473,7 +473,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                     min: 0,
                     max: 16,
                     value: _sleepHours,
-                    divisions: 16,
+                    divisions: 32, // 0.5刻み
                     onChanged: (value) => _changeSliderForRecordItemPoint(
                         value, RecordItemType.sleep),
                   ),
