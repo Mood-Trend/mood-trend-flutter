@@ -2,12 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:mood_trend_flutter/application/auth/wait_until_user_created_future_provider.dart';
-import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
-import 'package:mood_trend_flutter/presentation/graph/home_page.dart';
-import 'package:mood_trend_flutter/presentation/auth/onboarding_page.dart';
 
+import '../../application/auth/wait_until_user_created_future_provider.dart';
+import '../common/components/loading.dart';
+import '../graph/home_page.dart';
 import '../../infrastructure/firebase/auth_repository.dart';
+import 'onboarding_page.dart';
 
 final rootPageKey = Provider((ref) => GlobalKey<NavigatorState>());
 

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../generated/l10n.dart';
+
 import 'entity/manic_worksheet.dart';
 import 'selected_manic_type_notifier.dart';
+import '../../../generated/l10n.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/navigation_utils.dart';
 import '../../../utils/page_navigator.dart';
-
 import '../../common/error_handler_mixin.dart';
 import '../depression/depression_type_diagnosis_page.dart';
 

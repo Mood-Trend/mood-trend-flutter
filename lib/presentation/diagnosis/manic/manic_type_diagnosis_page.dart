@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../generated/l10n.dart';
-import 'selected_manic_type_notifier.dart';
 import '../self_input_page.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/navigation_utils.dart';
 import '../../../utils/page_navigator.dart';
 import 'entity/manic_worksheet.dart';
 import 'manic_type_table_page.dart';
+import 'selected_manic_type_notifier.dart';
 
 /// 躁のタイプの診断画面
 class ManicTypeDiagnosisPage extends ConsumerWidget {
