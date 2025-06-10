@@ -616,16 +616,20 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   ),
                   TextField(
                     maxLines: 5,
+                    maxLength: 300, // 最大文字数300
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
                         borderSide: BorderSide(color: AppColors.grey),
                       ),
+                      counterText: '', // 文字数カウンター非表示
                     ),
                     onChanged: (value) {
-                      setState(() {
-                        _memo = value;
-                      });
+                      if (value.length <= 300) {
+                        setState(() {
+                          _memo = value;
+                        });
+                      }
                     },
                   ),
                   SizedBox(height: 115), // bottomSheetの高さ分の余白
