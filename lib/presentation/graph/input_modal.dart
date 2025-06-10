@@ -93,6 +93,8 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
 
   @override
   Widget build(BuildContext context) {
+    final bottomSpace = MediaQuery.of(context).viewInsets.bottom;
+
     // インタースティシャル広告をロード
     void loadInterstitialAd() {
       InterstitialAd.load(
@@ -108,6 +110,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
     }
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: AppColors.white,
@@ -283,6 +286,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
       backgroundColor: AppColors.white,
       body: SafeArea(
         child: SingleChildScrollView(
+          reverse: bottomSpace == 0 ? false : true,
           child: Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
@@ -625,6 +629,9 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                     },
                   ),
                   SizedBox(height: 115), // bottomSheetの高さ分の余白
+                  Padding(
+                    padding: EdgeInsets.only(bottom: bottomSpace),
+                  ),
                 ],
               ),
             ),
