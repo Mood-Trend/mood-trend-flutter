@@ -487,12 +487,12 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       Row(
                         children: [
                           SizedBox(
-                            width: 75,
+                            width: 120,
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
                               child: Center(
                                 child: Text(
-                                  _sleepHours.toInt().toString(),
+                                  _sleepHours.toString(),
                                   style: const TextStyle(fontSize: 52),
                                 ),
                               ),
