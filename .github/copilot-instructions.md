@@ -6,11 +6,16 @@
 ## レビューに関して
 レビューする際には、以下のprefix(接頭辞)を付けましょう。
 <!-- for GitHub Copilot review rule -->
-[must] → かならず変更してね  
-[imo] → 自分の意見だとこうだけど修正必須ではないよ(in my opinion)  
-[nits] → ささいな指摘(nitpick) 
-[ask] → 質問  
-[fyi] → 参考情報
+- [must] → かならず変更してね  
+  - 例: [must] 変数名が不明瞭です。`isValid` のようにしてください。
+- [imo] → 自分の意見だとこうだけど修正必須ではないよ (in my opinion)  
+  - 例: [imo] `final` にしてもよさそうです
+- [nits] → ささいな指摘 (nitpick)  
+  - 例: [nits] インデントがずれているようです
+- [ask] → 質問  
+  - 例: [ask] なぜこのような実装にされたのか教えてください
+- [fyi] → 参考情報  
+  - 例: [fyi] Dartの公式ではこのような使い方が推奨されています
 <!-- for GitHub Copilot review rule-->
 ## PRのルール
 - まずはDraftでPRを作成する。
