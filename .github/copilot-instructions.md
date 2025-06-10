@@ -21,5 +21,8 @@
 - まずはDraftでPRを作成する。
 - レビューに出せる状態になったらOpenにする。（レビュワーがランダムにアサインされます）
 - レビューなしでのmainブランチへのマージは原則禁止
-- `LGTM`（Looks Good To Me）が1人以上ついたらマージ可
+- `LGTM`（Looks Good To Me）が**1人以上ついたらマージ可**  
+- **ただし以下のいずれかのレビュアーからのLGTMが必須です：**
+  - @IkemotoNanako  
+  - @Ituking
 <!-- I want to review in Japanese. -->
