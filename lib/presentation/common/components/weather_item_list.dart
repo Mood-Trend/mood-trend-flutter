@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'buttons.dart';
 import '../theme/app_text_styles.dart';
 import '../../../domain/weather.dart';
+import '../../../application/graph/states/weather_item_notifier.dart';
 
 // 今日の天気の状態をリスト表示するクラス
 class WeatherItemList extends ConsumerWidget {
@@ -10,6 +11,8 @@ class WeatherItemList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final weatherItems = ref.watch(weatherItemNotifierProvider);
+    final notifier = ref.read(weatherItemNotifierProvider.notifier);
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -18,8 +21,10 @@ class WeatherItemList extends ConsumerWidget {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: AppButtons.outlined(
-              onPressed: () {/* TODO: implement selection logic */},
-              isSelected: false, // TODO: implement selection state
+              onPressed: () {
+                notifier.toggleSelection(weather.index);
+              },
+              isSelected: weatherItems[weather.index].selected,
               fixedSize: const Size(120, 80),
               child: Text(
                 weather.label,

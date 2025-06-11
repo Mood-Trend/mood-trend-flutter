@@ -4,7 +4,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'record_item.dart';
+part of 'weather_item.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,69 +14,69 @@ part of 'record_item.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$RecordItem {
-  RecordItemType get type;
+mixin _$WeatherItem {
+  Weather get weather;
   bool get selected;
 
-  /// Create a copy of RecordItem
+  /// Create a copy of WeatherItem
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $RecordItemCopyWith<RecordItem> get copyWith =>
-      _$RecordItemCopyWithImpl<RecordItem>(this as RecordItem, _$identity);
+  $WeatherItemCopyWith<WeatherItem> get copyWith =>
+      _$WeatherItemCopyWithImpl<WeatherItem>(this as WeatherItem, _$identity);
 
-  /// Serializes this RecordItem to a JSON map.
+  /// Serializes this WeatherItem to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is RecordItem &&
-            (identical(other.type, type) || other.type == type) &&
+            other is WeatherItem &&
+            (identical(other.weather, weather) || other.weather == weather) &&
             (identical(other.selected, selected) ||
                 other.selected == selected));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, type, selected);
+  int get hashCode => Object.hash(runtimeType, weather, selected);
 
   @override
   String toString() {
-    return 'RecordItem(type: $type, selected: $selected)';
+    return 'WeatherItem(weather: $weather, selected: $selected)';
   }
 }
 
 /// @nodoc
-abstract mixin class $RecordItemCopyWith<$Res> {
-  factory $RecordItemCopyWith(
-          RecordItem value, $Res Function(RecordItem) _then) =
-      _$RecordItemCopyWithImpl;
+abstract mixin class $WeatherItemCopyWith<$Res> {
+  factory $WeatherItemCopyWith(
+          WeatherItem value, $Res Function(WeatherItem) _then) =
+      _$WeatherItemCopyWithImpl;
   @useResult
-  $Res call({RecordItemType type, bool selected});
+  $Res call({Weather weather, bool selected});
 }
 
 /// @nodoc
-class _$RecordItemCopyWithImpl<$Res> implements $RecordItemCopyWith<$Res> {
-  _$RecordItemCopyWithImpl(this._self, this._then);
+class _$WeatherItemCopyWithImpl<$Res> implements $WeatherItemCopyWith<$Res> {
+  _$WeatherItemCopyWithImpl(this._self, this._then);
 
-  final RecordItem _self;
-  final $Res Function(RecordItem) _then;
+  final WeatherItem _self;
+  final $Res Function(WeatherItem) _then;
 
-  /// Create a copy of RecordItem
+  /// Create a copy of WeatherItem
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = null,
+    Object? weather = null,
     Object? selected = null,
   }) {
     return _then(_self.copyWith(
-      type: null == type
-          ? _self.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as RecordItemType,
+      weather: null == weather
+          ? _self.weather
+          : weather // ignore: cast_nullable_to_non_nullable
+              as Weather,
       selected: null == selected
           ? _self.selected
           : selected // ignore: cast_nullable_to_non_nullable
@@ -87,27 +87,27 @@ class _$RecordItemCopyWithImpl<$Res> implements $RecordItemCopyWith<$Res> {
 
 /// @nodoc
 @JsonSerializable()
-class _RecordItem implements RecordItem {
-  const _RecordItem({required this.type, required this.selected});
-  factory _RecordItem.fromJson(Map<String, dynamic> json) =>
-      _$RecordItemFromJson(json);
+class _WeatherItem implements WeatherItem {
+  const _WeatherItem({required this.weather, required this.selected});
+  factory _WeatherItem.fromJson(Map<String, dynamic> json) =>
+      _$WeatherItemFromJson(json);
 
   @override
-  final RecordItemType type;
+  final Weather weather;
   @override
   final bool selected;
 
-  /// Create a copy of RecordItem
+  /// Create a copy of WeatherItem
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$RecordItemCopyWith<_RecordItem> get copyWith =>
-      __$RecordItemCopyWithImpl<_RecordItem>(this, _$identity);
+  _$WeatherItemCopyWith<_WeatherItem> get copyWith =>
+      __$WeatherItemCopyWithImpl<_WeatherItem>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$RecordItemToJson(
+    return _$WeatherItemToJson(
       this,
     );
   }
@@ -116,53 +116,53 @@ class _RecordItem implements RecordItem {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RecordItem &&
-            (identical(other.type, type) || other.type == type) &&
+            other is _WeatherItem &&
+            (identical(other.weather, weather) || other.weather == weather) &&
             (identical(other.selected, selected) ||
                 other.selected == selected));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, type, selected);
+  int get hashCode => Object.hash(runtimeType, weather, selected);
 
   @override
   String toString() {
-    return 'RecordItem(type: $type, selected: $selected)';
+    return 'WeatherItem(weather: $weather, selected: $selected)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$RecordItemCopyWith<$Res>
-    implements $RecordItemCopyWith<$Res> {
-  factory _$RecordItemCopyWith(
-          _RecordItem value, $Res Function(_RecordItem) _then) =
-      __$RecordItemCopyWithImpl;
+abstract mixin class _$WeatherItemCopyWith<$Res>
+    implements $WeatherItemCopyWith<$Res> {
+  factory _$WeatherItemCopyWith(
+          _WeatherItem value, $Res Function(_WeatherItem) _then) =
+      __$WeatherItemCopyWithImpl;
   @override
   @useResult
-  $Res call({RecordItemType type, bool selected});
+  $Res call({Weather weather, bool selected});
 }
 
 /// @nodoc
-class __$RecordItemCopyWithImpl<$Res> implements _$RecordItemCopyWith<$Res> {
-  __$RecordItemCopyWithImpl(this._self, this._then);
+class __$WeatherItemCopyWithImpl<$Res> implements _$WeatherItemCopyWith<$Res> {
+  __$WeatherItemCopyWithImpl(this._self, this._then);
 
-  final _RecordItem _self;
-  final $Res Function(_RecordItem) _then;
+  final _WeatherItem _self;
+  final $Res Function(_WeatherItem) _then;
 
-  /// Create a copy of RecordItem
+  /// Create a copy of WeatherItem
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? type = null,
+    Object? weather = null,
     Object? selected = null,
   }) {
-    return _then(_RecordItem(
-      type: null == type
-          ? _self.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as RecordItemType,
+    return _then(_WeatherItem(
+      weather: null == weather
+          ? _self.weather
+          : weather // ignore: cast_nullable_to_non_nullable
+              as Weather,
       selected: null == selected
           ? _self.selected
           : selected // ignore: cast_nullable_to_non_nullable
