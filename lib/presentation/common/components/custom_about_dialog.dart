@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+
 import '../../../generated/l10n.dart';
-import 'package:mood_trend_flutter/utils/page_navigator.dart'; // 適切なパスに置き換えてください。
+import '../../../utils/page_navigator.dart';
 
 class CustomAboutDialog extends StatelessWidget {
   final String applicationName;

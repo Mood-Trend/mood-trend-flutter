@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../usecase_mixin.dart';
+
 import '../../infrastructure/firebase/auth_repository.dart';
+import '../usecase_mixin.dart';
 
 /// [SignoutAnonymouslyUsecase] のインスタンスを作成するためのプロバイダ
 ///

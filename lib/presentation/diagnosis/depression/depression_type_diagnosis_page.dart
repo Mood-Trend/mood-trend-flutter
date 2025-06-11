@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../generated/l10n.dart';
+import '../../../utils/app_colors.dart';
 import '../../common/components/buttons.dart';
 import '../../common/navigation/navigation_service.dart';
 import '../../common/theme/app_text_styles.dart';
-import 'selected_depression_type_notifier.dart';
 import '../self_input_page.dart';
-import '../../../utils/app_colors.dart';
 import 'depression_type_table_page.dart';
 import 'entity/depression_worksheet.dart';
+import 'selected_depression_type_notifier.dart';
 
 /// 鬱のタイプの診断画面
 class DepressionTypeDiagnosisPage extends ConsumerWidget {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../generated/l10n.dart';
 import '../../../infrastructure/services/notification_service.dart';
 

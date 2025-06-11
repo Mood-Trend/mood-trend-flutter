@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../utils/app_colors.dart';
 
 /// アプリ全体で使用される共通のボタンスタイルを提供するクラス

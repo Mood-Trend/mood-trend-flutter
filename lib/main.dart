@@ -4,19 +4,19 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:mood_trend_flutter/firebase_options_dev.dart' as dev;
-import 'package:mood_trend_flutter/firebase_options_prod.dart' as prod;
-import 'package:mood_trend_flutter/generated/l10n.dart';
-import 'package:mood_trend_flutter/infrastructure/firebase/analytics_repository.dart';
-import 'package:mood_trend_flutter/presentation/common/components/dialog.dart';
-import 'package:mood_trend_flutter/presentation/common/components/loading.dart';
-import 'package:mood_trend_flutter/presentation/common/components/snackbars.dart';
-import 'package:mood_trend_flutter/presentation/auth/root_page.dart';
-import 'package:mood_trend_flutter/utils/app_colors.dart';
-import 'package:mood_trend_flutter/utils/constants.dart';
 import 'package:package_info/package_info.dart';
-import 'package:mood_trend_flutter/infrastructure/services/notification_service.dart';
 
+import 'firebase_options_dev.dart' as dev;
+import 'firebase_options_prod.dart' as prod;
+import 'generated/l10n.dart';
+import 'infrastructure/firebase/analytics_repository.dart';
+import 'infrastructure/services/notification_service.dart';
+import 'presentation/common/components/dialog.dart';
+import 'presentation/common/components/loading.dart';
+import 'presentation/common/components/snackbars.dart';
+import 'presentation/auth/root_page.dart';
+import 'utils/app_colors.dart';
+import 'utils/constants.dart';
 import 'application/common/states/overlay_loading_notifier.dart';
 import 'domain/app_info.dart';
 
