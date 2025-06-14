@@ -3,7 +3,6 @@
 import 'package:animated_checkmark/animated_checkmark.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:intl/intl.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,7 +10,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../application/graph/add_mood_point_usecase.dart';
 import '../../application/graph/states/saving_status_notifier.dart';
 import '../../../generated/l10n.dart';
-import '../../utils/get_ad_mob_unit_id.dart';
 import '../common/components/notification_settings_dialog.dart';
 import '../../domain/app_exception.dart';
 import '../../utils/app_colors.dart';
