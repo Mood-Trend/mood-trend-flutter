@@ -592,10 +592,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                       }
                     },
                   ),
-                  SizedBox(height: 115), // bottomSheetの高さ分の余白
-                  Padding(
-                    padding: EdgeInsets.only(bottom: bottomSpace),
-                  ),
+                  SizedBox(height: 115 + bottomSpace), // 画面下部のスペースを確保
                 ],
               ),
             ),
