@@ -8,7 +8,7 @@ part of 'record_item.dart';
 
 _RecordItem _$RecordItemFromJson(Map<String, dynamic> json) => _RecordItem(
       type: $enumDecode(_$RecordItemTypeEnumMap, json['type']),
-      selected: json['selected'] as bool? ?? false,
+      selected: json['selected'] as bool,
     );
 
 Map<String, dynamic> _$RecordItemToJson(_RecordItem instance) =>

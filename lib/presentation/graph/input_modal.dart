@@ -20,6 +20,8 @@ import '../common/components/snackbars.dart';
 import '../common/error_handler_mixin.dart';
 import '../diagnosis/table_page.dart';
 import '../../domain/weather.dart';
+import '../common/components/weather_item_list.dart';
+import '../../domain/models/record_item_type.dart';
 
 /// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
@@ -43,13 +45,45 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
       });
   double _moodValue = 1.0;
 
-  final double _sleepHours = 8.0;
+  double _sleepHours = 8.0;
 
-  final int _stepCount = 1000;
+  int _stepCount = 1000;
 
   final List<Weather> _weather = [];
 
-  final String _memo = '';
+  String _memo = '';
+
+  /// スライダーの値を変更する際に、RecordItemTypeに応じて処理を分岐
+  void _changeSliderForRecordItemPoint(double e, RecordItemType type) {
+    setState(() {
+      switch (type) {
+        case RecordItemType.sleep:
+          if (e <= 0.0) {
+            _sleepHours = 0.0;
+            break;
+          } else if (e > 16.0) {
+            _sleepHours = 16.0;
+            break;
+          } else {
+            _sleepHours = e;
+            break;
+          }
+        case RecordItemType.steps:
+          if (e <= 0) {
+            _stepCount = 0;
+            break;
+          } else if (e > 20000) {
+            _stepCount = 20000;
+            break;
+          } else {
+            _stepCount = e.toInt();
+            break;
+          }
+        default:
+          break;
+      }
+    });
+  }
 
   @override
   void dispose() {
@@ -59,6 +93,8 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
 
   @override
   Widget build(BuildContext context) {
+    final bottomSpace = MediaQuery.of(context).viewInsets.bottom;
+
     // インタースティシャル広告をロード
     void loadInterstitialAd() {
       InterstitialAd.load(
@@ -74,6 +110,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
     }
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: AppColors.white,
@@ -249,6 +286,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
       backgroundColor: AppColors.white,
       body: SafeArea(
         child: SingleChildScrollView(
+          reverse: bottomSpace == 0 ? false : true,
           child: Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
@@ -406,6 +444,157 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                         ],
                       ),
                     ],
+                  ),
+                  SizedBox(
+                    height: 48,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          "この日の睡眠時間は何時間？", // TODO: ローカライズ
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Slider(
+                    label: null,
+                    min: 0,
+                    max: 16,
+                    value: _sleepHours,
+                    divisions: 32, // 0.5刻み
+                    onChanged: (value) => _changeSliderForRecordItemPoint(
+                        value, RecordItemType.sleep),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 120,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
+                              child: Center(
+                                child: Text(
+                                  _sleepHours.toString(),
+                                  style: const TextStyle(fontSize: 52),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 48,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          "この日の歩数は？", // TODO: ローカライズ
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Slider(
+                    label: null,
+                    min: 0,
+                    max: 20000,
+                    value: _stepCount.toDouble(), // 歩数は整数なのでdoubleに変換
+                    divisions: 16,
+                    onChanged: (value) => _changeSliderForRecordItemPoint(
+                        value, RecordItemType.steps),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 175,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
+                              child: Center(
+                                child: Text(
+                                  _stepCount.toInt().toString(),
+                                  style: const TextStyle(fontSize: 52),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 48,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          "この日の天気は？", // TODO: ローカライズ
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  const WeatherItemList(), // TODO: List<Weather> _weatherに渡せるように変更する必要あり
+                  SizedBox(
+                    height: 40,
+                  ), // 一言メモの入力欄
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          "一言メモ", // TODO: ローカライズ
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  TextField(
+                    maxLines: 5,
+                    maxLength: 300, // 最大文字数300
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide(color: AppColors.grey),
+                      ),
+                      counterText: '', // 文字数カウンター非表示
+                    ),
+                    onChanged: (value) {
+                      if (value.length <= 300) {
+                        setState(() {
+                          _memo = value;
+                        });
+                      }
+                    },
+                  ),
+                  SizedBox(height: 115), // bottomSheetの高さ分の余白
+                  Padding(
+                    padding: EdgeInsets.only(bottom: bottomSpace),
                   ),
                 ],
               ),
