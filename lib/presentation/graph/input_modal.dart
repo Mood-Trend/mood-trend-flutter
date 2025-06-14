@@ -21,6 +21,7 @@ import '../../domain/weather.dart';
 import '../common/components/weather_item_list.dart';
 import '../../domain/models/record_item_type.dart';
 import '../../utils/load_interstitial_ad.dart';
+import '../../utils/record_item_utils.dart';
 
 /// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
@@ -57,27 +58,11 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
     setState(() {
       switch (type) {
         case RecordItemType.sleep:
-          if (e <= 0.0) {
-            _sleepHours = 0.0;
-            break;
-          } else if (e > 16.0) {
-            _sleepHours = 16.0;
-            break;
-          } else {
-            _sleepHours = e;
-            break;
-          }
+          _sleepHours = clampSleepHours(e);
+          break;
         case RecordItemType.steps:
-          if (e <= 0) {
-            _stepCount = 0;
-            break;
-          } else if (e > 20000) {
-            _stepCount = 20000;
-            break;
-          } else {
-            _stepCount = e.toInt();
-            break;
-          }
+          _stepCount = clampStepCount(e);
+          break;
         default:
           break;
       }
