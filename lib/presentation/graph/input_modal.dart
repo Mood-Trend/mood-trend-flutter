@@ -457,16 +457,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                           style: const TextStyle(fontSize: 16),
                         ),
                       ),
-                      Tooltip(
-                        showDuration: const Duration(seconds: 3),
-                        triggerMode: TooltipTriggerMode.tap,
-                        message: "", // TODO: テキスト追加とローカライズ
-                        child: Icon(
-                          Icons.help,
-                          color: AppColors.grey,
-                          size: 18,
-                        ),
-                      ),
                     ],
                   ),
                   SizedBox(
@@ -512,16 +502,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                         child: Text(
                           "この日の歩数は？", // TODO: ローカライズ
                           style: const TextStyle(fontSize: 16),
-                        ),
-                      ),
-                      Tooltip(
-                        showDuration: const Duration(seconds: 3),
-                        triggerMode: TooltipTriggerMode.tap,
-                        message: "", // TODO: テキスト追加とローカライズ
-                        child: Icon(
-                          Icons.help,
-                          color: AppColors.grey,
-                          size: 18,
                         ),
                       ),
                     ],
@@ -571,16 +551,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                           style: const TextStyle(fontSize: 16),
                         ),
                       ),
-                      Tooltip(
-                        showDuration: const Duration(seconds: 3),
-                        triggerMode: TooltipTriggerMode.tap,
-                        message: "", // TODO: テキスト追加とローカライズ
-                        child: Icon(
-                          Icons.help,
-                          color: AppColors.grey,
-                          size: 18,
-                        ),
-                      ),
                     ],
                   ),
                   SizedBox(
@@ -597,16 +567,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                         child: Text(
                           "一言メモ", // TODO: ローカライズ
                           style: const TextStyle(fontSize: 16),
-                        ),
-                      ),
-                      Tooltip(
-                        showDuration: const Duration(seconds: 3),
-                        triggerMode: TooltipTriggerMode.tap,
-                        message: "",
-                        child: Icon(
-                          Icons.help,
-                          color: AppColors.grey,
-                          size: 18,
                         ),
                       ),
                     ],
