@@ -26,6 +26,7 @@ import '../../utils/record_item_utils.dart';
 import 'components/mood_value_section.dart';
 import 'components/planned_volume_section.dart';
 import 'components/sleep_hours_section.dart';
+import 'components/step_count_section.dart';
 
 /// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
@@ -278,51 +279,14 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   const SizedBox(
                     height: 48,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          "この日の歩数は？", // TODO: ローカライズ
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  Slider(
-                    label: null,
-                    min: 0,
-                    max: 20000,
-                    value: _stepCount.toDouble(), // 歩数は整数なのでdoubleに変換
-                    divisions: 16,
+                  // stepCountの入力セクション
+                  StepCountSection(
+                    stepCount: _stepCount,
                     onChanged: (value) => _changeSliderForRecordItemPoint(
                         value, RecordItemType.steps),
+                    labelText: "この日の歩数は？", // TODO: ローカライズ
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 175,
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
-                              child: Center(
-                                child: Text(
-                                  _stepCount.toInt().toString(),
-                                  style: const TextStyle(fontSize: 52),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
                   Row(
