@@ -19,6 +19,7 @@ import '../common/error_handler_mixin.dart';
 import '../diagnosis/table_page.dart';
 import '../../domain/weather.dart';
 import '../common/components/weather_item_list.dart';
+import '../common/components/date_picker_title.dart';
 import '../../domain/models/record_item_type.dart';
 import '../../utils/load_interstitial_ad.dart';
 import '../../utils/record_item_utils.dart';
@@ -84,49 +85,13 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: AppColors.white,
-        title: TextButton.icon(
-          onPressed: () async {
-            final selectedDate = await showDatePicker(
-              context: context,
-              initialDate: date,
-              firstDate: DateTime(2000),
-              lastDate: DateTime.now(),
-              builder: (context, child) {
-                return Theme(
-                  data: Theme.of(context).copyWith(
-                    colorScheme: ColorScheme.light(
-                      primary: AppColors.green, // 背景色のテーマや選択時の背景色、キャンセルOKボタンの色
-                      onPrimary: AppColors.white, // 選択時のテキストカラー
-                      surface: AppColors.white, // カレンダーの背景色
-                      onSurface: AppColors.black, // カレンダーのテキストカラー
-                      surfaceTint: Colors.transparent, // カレンダーの背景にうっすらかかる色
-                    ),
-                  ),
-                  child: child!,
-                );
-              },
-            );
-            if (selectedDate != null) {
-              setState(
-                () {
-                  date = selectedDate;
-                },
-              );
-            }
+        title: DatePickerTtileButton(
+          date: date,
+          onDateChanged: (selectedDate) {
+            setState(() {
+              date = selectedDate;
+            });
           },
-          iconAlignment: IconAlignment.end,
-          icon: Icon(
-            Icons.arrow_drop_down,
-            size: 24,
-            color: AppColors.black,
-          ),
-          label: Text(
-            DateFormat('yyyy/MM/dd').format(date),
-            style: TextStyle(
-              color: AppColors.black,
-              fontSize: 16,
-            ),
-          ),
         ),
       ),
       bottomSheet: SizedBox(
