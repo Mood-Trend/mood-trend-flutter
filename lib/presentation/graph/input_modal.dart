@@ -18,7 +18,6 @@ import '../common/components/snackbars.dart';
 import '../common/error_handler_mixin.dart';
 import '../diagnosis/table_page.dart';
 import '../../domain/weather.dart';
-import '../common/components/weather_item_list.dart';
 import '../common/components/date_picker_title.dart';
 import '../../domain/models/record_item_type.dart';
 import '../../utils/load_interstitial_ad.dart';
@@ -27,6 +26,7 @@ import 'components/mood_value_section.dart';
 import 'components/planned_volume_section.dart';
 import 'components/sleep_hours_section.dart';
 import 'components/step_count_section.dart';
+import 'components/weather_section.dart';
 
 /// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
@@ -289,23 +289,18 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   const SizedBox(
                     height: 48,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          "この日の天気は？", // TODO: ローカライズ
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                      ),
-                    ],
+                  // weatherの入力セクション
+                  WeatherSection(
+                    onChanged: (value) {
+                      setState(() {
+                        _weather.clear();
+                        _weather.addAll(value);
+                      });
+                    },
+                    labelText: "この日の天気は？", // TODO: ローカライズ,
                   ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  const WeatherItemList(), // TODO: List<Weather> _weatherに渡せるように変更する必要あり
-                  SizedBox(
-                    height: 40,
+                  const SizedBox(
+                    height: 48,
                   ), // 一言メモの入力欄
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
