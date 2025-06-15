@@ -24,6 +24,7 @@ import '../../domain/models/record_item_type.dart';
 import '../../utils/load_interstitial_ad.dart';
 import '../../utils/record_item_utils.dart';
 import 'components/mood_value_section.dart';
+import 'components/planned_volume_section.dart';
 
 /// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
@@ -255,61 +256,15 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   const SizedBox(
                     height: 48,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          S.of(context).plannedVolumeQuestion,
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                      ),
-                      Tooltip(
-                        showDuration: const Duration(seconds: 3),
-                        triggerMode: TooltipTriggerMode.tap,
-                        message:
-                            S.of(context).plannedVolumeQuestionTooltipMessage,
-                        child: Icon(
-                          Icons.help,
-                          color: AppColors.grey,
-                          size: 18,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  Slider(
-                    label: null,
-                    min: 0,
-                    max: 16,
-                    value: _plannedValue,
-                    divisions: 16,
+                  // plannedValueの入力セクション
+                  PlannedVolumeSection(
+                    plannedValue: _plannedValue,
                     onChanged: _changeSlider,
+                    labelText: S.of(context).plannedVolumeQuestion,
+                    tooltipMessage:
+                        S.of(context).plannedVolumeQuestionTooltipMessage,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 75,
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
-                              child: Center(
-                                child: Text(
-                                  _plannedValue.toInt().toString(),
-                                  style: const TextStyle(fontSize: 52),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
                   Row(
