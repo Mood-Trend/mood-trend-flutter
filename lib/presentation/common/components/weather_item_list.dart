@@ -20,15 +20,15 @@ class WeatherItemList extends ConsumerWidget {
         children: Weather.values.map((weather) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: AppButtons.outlined(
+            child: AppButtons.customOutline(
               onPressed: () {
                 notifier.toggleSelection(weather.index);
               },
               isSelected: weatherItems[weather.index].selected,
-              fixedSize: const Size(120, 80),
+              fixedSize: const Size(100, 40),
               child: Text(
                 weather.label,
-                style: AppTextStyles.body.copyWith(fontSize: 18),
+                style: AppTextStyles.body.copyWith(fontSize: 14),
               ),
             ),
           );
