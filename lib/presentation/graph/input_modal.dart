@@ -23,6 +23,7 @@ import '../common/components/date_picker_title.dart';
 import '../../domain/models/record_item_type.dart';
 import '../../utils/load_interstitial_ad.dart';
 import '../../utils/record_item_utils.dart';
+import 'components/mood_value_section.dart';
 
 /// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
@@ -228,102 +229,30 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          S.of(context).moodValueQuestion,
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                      ),
-                      Tooltip(
-                        showDuration: const Duration(seconds: 3),
-                        triggerMode: TooltipTriggerMode.tap,
-                        message: S.of(context).moodValueQuestionTooltipMessage,
-                        child: Icon(
-                          Icons.help,
-                          color: AppColors.grey,
-                          size: 18,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  Slider(
-                    value: _moodValue,
-                    min: -5.0,
-                    max: 5.0,
-                    divisions: 10,
-                    onChangeStart: (value) {
-                      if (value == 0.0) {
-                        setState(
-                          () {
-                            _moodValue = _moodValue > 0 ? 1.0 : -1.0;
-                          },
-                        );
-                      }
-                    },
-                    label: null,
+                  // moodValueの入力セクション
+                  MoodValueSection(
+                    moodValue: _moodValue,
                     onChanged: (value) {
                       if (value != 0.0) {
-                        setState(
-                          () {
-                            _moodValue = value;
-                          },
-                        );
+                        setState(() {
+                          _moodValue = value;
+                        });
                       }
                     },
-                    onChangeEnd: (value) {
-                      if (value == 0.0) {
-                        setState(
-                          () {
-                            _moodValue = _moodValue > 0 ? 1.0 : -1.0;
-                          },
-                        );
-                      }
+                    labelText: S.of(context).moodValueQuestion,
+                    tooltipMessage:
+                        S.of(context).moodValueQuestionTooltipMessage,
+                    goTableLabel: S.of(context).goTable,
+                    onTablePageTap: () {
+                      PageNavigator.push(
+                        context,
+                        TablePage(
+                          uid: widget.uid,
+                        ),
+                      );
                     },
                   ),
-                  SizedBox(
-                    width: 75,
-                    child: Center(
-                      child: Text(
-                        _moodValue.toInt().toString(),
-                        style: const TextStyle(fontSize: 52),
-                      ),
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      TextButton.icon(
-                        onPressed: () {
-                          PageNavigator.pushWithSlideFromBottom(
-                            context,
-                            TablePage(uid: widget.uid),
-                          );
-                        },
-                        label: Center(
-                          child: Text(
-                            S.of(context).goTable,
-                            style: TextStyle(
-                              color: AppColors.black,
-                              fontSize: 12,
-                            ),
-                          ),
-                        ),
-                        iconAlignment: IconAlignment.end,
-                        icon: Icon(
-                          Icons.arrow_right,
-                          color: AppColors.black,
-                          size: 24,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
                   Row(
