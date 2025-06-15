@@ -27,6 +27,7 @@ import 'components/planned_volume_section.dart';
 import 'components/sleep_hours_section.dart';
 import 'components/step_count_section.dart';
 import 'components/weather_section.dart';
+import 'components/memo_section.dart';
 
 /// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
@@ -301,38 +302,16 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   ),
                   const SizedBox(
                     height: 48,
-                  ), // 一言メモの入力欄
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          "一言メモ", // TODO: ローカライズ
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                      ),
-                    ],
                   ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  TextField(
-                    maxLines: 5,
-                    maxLength: 300, // 最大文字数300
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide(color: AppColors.grey),
-                      ),
-                      counterText: '', // 文字数カウンター非表示
-                    ),
+                  // 一言メモの入力セクション
+                  MemoSection(
                     onChanged: (value) {
-                      if (value.length <= 300) {
-                        setState(() {
-                          _memo = value;
-                        });
-                      }
+                      setState(() {
+                        _memo = value;
+                      });
                     },
+                    labelText: "一言メモ", // TODO: ローカライズ,
+                    memo: _memo,
                   ),
                   SizedBox(height: 115 + bottomSpace), // 画面下部のスペースを確保
                 ],
