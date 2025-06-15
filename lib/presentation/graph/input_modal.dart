@@ -25,6 +25,7 @@ import '../../utils/load_interstitial_ad.dart';
 import '../../utils/record_item_utils.dart';
 import 'components/mood_value_section.dart';
 import 'components/planned_volume_section.dart';
+import 'components/sleep_hours_section.dart';
 
 /// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
@@ -267,51 +268,14 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
                   const SizedBox(
                     height: 48,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          "この日の睡眠時間は何時間？", // TODO: ローカライズ
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  Slider(
-                    label: null,
-                    min: 0,
-                    max: 16,
-                    value: _sleepHours,
-                    divisions: 32, // 0.5刻み
+                  // sleepHoursの入力セクション
+                  SleepHoursSection(
+                    sleepHours: _sleepHours,
                     onChanged: (value) => _changeSliderForRecordItemPoint(
                         value, RecordItemType.sleep),
+                    labelText: "この日の睡眠時間は？", // TODO: ローカライズ
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 120,
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
-                              child: Center(
-                                child: Text(
-                                  _sleepHours.toString(),
-                                  style: const TextStyle(fontSize: 52),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
                   Row(
