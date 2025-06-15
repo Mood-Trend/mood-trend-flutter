@@ -72,6 +72,32 @@ class AppButtons {
     );
   }
 
+  /// カスタムアウトラインボタン（枠線のみ、radius 8, 66x40）
+  static OutlinedButton customOutline({
+    required VoidCallback onPressed,
+    required Widget child,
+    bool isSelected = false,
+    Size? fixedSize,
+  }) {
+    return OutlinedButton(
+      onPressed: onPressed,
+      style: OutlinedButton.styleFrom(
+        backgroundColor: isSelected
+            ? AppColors.green.withValues(alpha: 0.3)
+            : Colors.transparent,
+        side: BorderSide(
+          color: isSelected ? AppColors.green : AppColors.grey,
+          width: 1.5,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        fixedSize: fixedSize,
+      ),
+      child: child,
+    );
+  }
+
   /// フローティングアクションボタン
   static FloatingActionButton floatingAction({
     required VoidCallback onPressed,
