@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../domain/weather.dart';
 import '../../common/components/weather_item_list.dart';
 
-/// [WeatherSection] は、天気の状態をを表示して、調整できるセクションです。
+/// [WeatherSection] は、天気の状態を表示して、調整できるセクションです。
 class WeatherSection extends StatelessWidget {
   final String labelText;
   final ValueChanged<List<Weather>>? onChanged;

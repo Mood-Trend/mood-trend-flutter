@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../utils/app_colors.dart';
 
-/// [MoodValueSection] は,ムード値を表示し、スライダーで調整できるセクションです。
+/// [MoodValueSection] は,気分値を表示し、スライダーで調整できるセクションです。
 class MoodValueSection extends StatelessWidget {
   final double moodValue;
   final ValueChanged<double> onChanged;
