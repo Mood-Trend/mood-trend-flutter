@@ -226,7 +226,7 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
       backgroundColor: AppColors.white,
       body: SafeArea(
         child: SingleChildScrollView(
-          reverse: bottomSpace == 0 ? false : true,
+          reverse: bottomSpace > 0,
           child: Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
