@@ -48,7 +48,7 @@ class AuthRepository {
 - @Effective Dart: Documentation
 - @Effective Dart: DO start doc comments with a single-sentence summary
 
-### enum の配置ルール
+## enum の配置ルール
 - `enum` は  `domain` 配下の `enum` ディレクトリ配下に定義する。
 
 ### 具体例
