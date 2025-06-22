@@ -3,14 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../infrastructure/provider/repository_provider.dart';
 import 'mixin/usecase_mixin.dart';
 
-/// [RegisterMoodWorksheetUsecase] のインスタンスを作成するためのプロバイダ
-///
-/// UI 層にユースケースを注入するために使用され、躁鬱状態を登録する
-final registerMoodWorksheetUsecaseProvider =
-    Provider.family<RegisterMoodWorksheetUsecase, String>(
-  (ref, uid) => RegisterMoodWorksheetUsecase(ref, uid),
-);
-
 /// [RegisterMoodWorksheetUsecase] は、躁鬱状態を登録するプロセスをカプセル化する
 class RegisterMoodWorksheetUsecase with UsecaseMixin {
   final Ref ref;

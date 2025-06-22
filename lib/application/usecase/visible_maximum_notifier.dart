@@ -12,8 +12,3 @@ class VisibleMaximumNotifier extends AutoDisposeNotifier<DateTime> {
   /// 状態を再計算して更新する
   void refresh() => state = build();
 }
-
-final visibleMaximumNotifierProvider =
-    NotifierProvider.autoDispose<VisibleMaximumNotifier, DateTime>(
-  VisibleMaximumNotifier.new,
-);
