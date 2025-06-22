@@ -1,3 +1,5 @@
+<!-- Copilotは日本語でレビューしてください -->
+
 ## 関連する Design Doc (Issue 番号)
 
 close #issue-no
