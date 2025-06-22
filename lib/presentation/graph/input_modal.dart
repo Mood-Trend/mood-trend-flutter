@@ -3,7 +3,6 @@
 import 'package:animated_checkmark/animated_checkmark.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:intl/intl.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,7 +10,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../application/graph/add_mood_point_usecase.dart';
 import '../../application/graph/states/saving_status_notifier.dart';
 import '../../../generated/l10n.dart';
-import '../../utils/get_ad_mob_unit_id.dart';
 import '../common/components/notification_settings_dialog.dart';
 import '../../domain/app_exception.dart';
 import '../../utils/app_colors.dart';
@@ -20,6 +18,16 @@ import '../common/components/snackbars.dart';
 import '../common/error_handler_mixin.dart';
 import '../diagnosis/table_page.dart';
 import '../../domain/weather.dart';
+import '../common/components/date_picker_title.dart';
+import '../../domain/models/record_item_type.dart';
+import '../../utils/load_interstitial_ad.dart';
+import '../../utils/record_item_utils.dart';
+import 'components/mood_value_section.dart';
+import 'components/planned_volume_section.dart';
+import 'components/sleep_hours_section.dart';
+import 'components/step_count_section.dart';
+import 'components/weather_section.dart';
+import 'components/memo_section.dart';
 
 /// グラフ情報入力の画面
 class InputModal extends ConsumerStatefulWidget {
@@ -43,13 +51,29 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
       });
   double _moodValue = 1.0;
 
-  final double _sleepHours = 8.0;
+  double _sleepHours = 8.0;
 
-  final int _stepCount = 1000;
+  int _stepCount = 1000;
 
   final List<Weather> _weather = [];
 
-  final String _memo = '';
+  String _memo = '';
+
+  /// スライダーの値を変更する際に、RecordItemTypeに応じて処理を分岐
+  void _changeSliderForRecordItemPoint(double e, RecordItemType type) {
+    setState(() {
+      switch (type) {
+        case RecordItemType.sleep:
+          _sleepHours = clampSleepHours(e);
+          break;
+        case RecordItemType.steps:
+          _stepCount = clampStepCount(e);
+          break;
+        default:
+          break;
+      }
+    });
+  }
 
   @override
   void dispose() {
@@ -59,67 +83,20 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
 
   @override
   Widget build(BuildContext context) {
-    // インタースティシャル広告をロード
-    void loadInterstitialAd() {
-      InterstitialAd.load(
-        adUnitId: getAdMobUnitId(),
-        request: AdRequest(),
-        adLoadCallback: InterstitialAdLoadCallback(
-          onAdLoaded: (ad) {
-            ad.show();
-          },
-          onAdFailedToLoad: (error) {},
-        ),
-      );
-    }
+    final bottomSpace = MediaQuery.of(context).viewInsets.bottom;
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: AppColors.white,
-        title: TextButton.icon(
-          onPressed: () async {
-            final selectedDate = await showDatePicker(
-              context: context,
-              initialDate: date,
-              firstDate: DateTime(2000),
-              lastDate: DateTime.now(),
-              builder: (context, child) {
-                return Theme(
-                  data: Theme.of(context).copyWith(
-                    colorScheme: ColorScheme.light(
-                      primary: AppColors.green, // 背景色のテーマや選択時の背景色、キャンセルOKボタンの色
-                      onPrimary: AppColors.white, // 選択時のテキストカラー
-                      surface: AppColors.white, // カレンダーの背景色
-                      onSurface: AppColors.black, // カレンダーのテキストカラー
-                      surfaceTint: Colors.transparent, // カレンダーの背景にうっすらかかる色
-                    ),
-                  ),
-                  child: child!,
-                );
-              },
-            );
-            if (selectedDate != null) {
-              setState(
-                () {
-                  date = selectedDate;
-                },
-              );
-            }
+        title: DatePickerTtileButton(
+          date: date,
+          onDateChanged: (selectedDate) {
+            setState(() {
+              date = selectedDate;
+            });
           },
-          iconAlignment: IconAlignment.end,
-          icon: Icon(
-            Icons.arrow_drop_down,
-            size: 24,
-            color: AppColors.black,
-          ),
-          label: Text(
-            DateFormat('yyyy/MM/dd').format(date),
-            style: TextStyle(
-              color: AppColors.black,
-              fontSize: 16,
-            ),
-          ),
         ),
       ),
       bottomSheet: SizedBox(
@@ -249,164 +226,94 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
       backgroundColor: AppColors.white,
       body: SafeArea(
         child: SingleChildScrollView(
+          reverse: bottomSpace > 0,
           child: Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          S.of(context).moodValueQuestion,
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                      ),
-                      Tooltip(
-                        showDuration: const Duration(seconds: 3),
-                        triggerMode: TooltipTriggerMode.tap,
-                        message: S.of(context).moodValueQuestionTooltipMessage,
-                        child: Icon(
-                          Icons.help,
-                          color: AppColors.grey,
-                          size: 18,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  Slider(
-                    value: _moodValue,
-                    min: -5.0,
-                    max: 5.0,
-                    divisions: 10,
-                    onChangeStart: (value) {
-                      if (value == 0.0) {
-                        setState(
-                          () {
-                            _moodValue = _moodValue > 0 ? 1.0 : -1.0;
-                          },
-                        );
-                      }
-                    },
-                    label: null,
+                  // moodValueの入力セクション
+                  MoodValueSection(
+                    moodValue: _moodValue,
                     onChanged: (value) {
                       if (value != 0.0) {
-                        setState(
-                          () {
-                            _moodValue = value;
-                          },
-                        );
+                        setState(() {
+                          _moodValue = value;
+                        });
                       }
                     },
-                    onChangeEnd: (value) {
-                      if (value == 0.0) {
-                        setState(
-                          () {
-                            _moodValue = _moodValue > 0 ? 1.0 : -1.0;
-                          },
-                        );
-                      }
+                    labelText: S.of(context).moodValueQuestion,
+                    tooltipMessage:
+                        S.of(context).moodValueQuestionTooltipMessage,
+                    goTableLabel: S.of(context).goTable,
+                    onTablePageTap: () {
+                      PageNavigator.push(
+                        context,
+                        TablePage(
+                          uid: widget.uid,
+                        ),
+                      );
                     },
                   ),
-                  SizedBox(
-                    width: 75,
-                    child: Center(
-                      child: Text(
-                        _moodValue.toInt().toString(),
-                        style: const TextStyle(fontSize: 52),
-                      ),
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      TextButton.icon(
-                        onPressed: () {
-                          PageNavigator.pushWithSlideFromBottom(
-                            context,
-                            TablePage(uid: widget.uid),
-                          );
-                        },
-                        label: Center(
-                          child: Text(
-                            S.of(context).goTable,
-                            style: TextStyle(
-                              color: AppColors.black,
-                              fontSize: 12,
-                            ),
-                          ),
-                        ),
-                        iconAlignment: IconAlignment.end,
-                        icon: Icon(
-                          Icons.arrow_right,
-                          color: AppColors.black,
-                          size: 24,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          S.of(context).plannedVolumeQuestion,
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                      ),
-                      Tooltip(
-                        showDuration: const Duration(seconds: 3),
-                        triggerMode: TooltipTriggerMode.tap,
-                        message:
-                            S.of(context).plannedVolumeQuestionTooltipMessage,
-                        child: Icon(
-                          Icons.help,
-                          color: AppColors.grey,
-                          size: 18,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  Slider(
-                    label: null,
-                    min: 0,
-                    max: 16,
-                    value: _plannedValue,
-                    divisions: 16,
+                  // plannedValueの入力セクション
+                  PlannedVolumeSection(
+                    plannedValue: _plannedValue,
                     onChanged: _changeSlider,
+                    labelText: S.of(context).plannedVolumeQuestion,
+                    tooltipMessage:
+                        S.of(context).plannedVolumeQuestionTooltipMessage,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 75,
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
-                              child: Center(
-                                child: Text(
-                                  _plannedValue.toInt().toString(),
-                                  style: const TextStyle(fontSize: 52),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                  const SizedBox(
+                    height: 48,
                   ),
+                  // sleepHoursの入力セクション
+                  SleepHoursSection(
+                    sleepHours: _sleepHours,
+                    onChanged: (value) => _changeSliderForRecordItemPoint(
+                        value, RecordItemType.sleep),
+                    labelText: "この日の睡眠時間は？", // TODO: ローカライズ
+                  ),
+                  const SizedBox(
+                    height: 48,
+                  ),
+                  // stepCountの入力セクション
+                  StepCountSection(
+                    stepCount: _stepCount,
+                    onChanged: (value) => _changeSliderForRecordItemPoint(
+                        value, RecordItemType.steps),
+                    labelText: "この日の歩数は？", // TODO: ローカライズ
+                  ),
+                  const SizedBox(
+                    height: 48,
+                  ),
+                  // weatherの入力セクション
+                  WeatherSection(
+                    onChanged: (value) {
+                      setState(() {
+                        _weather.clear();
+                        _weather.addAll(value);
+                      });
+                    },
+                    labelText: "この日の天気は？", // TODO: ローカライズ,
+                  ),
+                  const SizedBox(
+                    height: 48,
+                  ),
+                  // 一言メモの入力セクション
+                  MemoSection(
+                    onChanged: (value) {
+                      setState(() {
+                        _memo = value;
+                      });
+                    },
+                    labelText: "一言メモ", // TODO: ローカライズ,
+                    memo: _memo,
+                  ),
+                  SizedBox(height: 115 + bottomSpace), // 画面下部のスペースを確保
                 ],
               ),
             ),
@@ -422,19 +329,6 @@ class _MyWidgetState extends ConsumerState<InputModal> with ErrorHandlerMixin {
     required DateTime date,
     required BuildContext parent,
   }) async {
-    void loadInterstitialAd() {
-      InterstitialAd.load(
-        adUnitId: getAdMobUnitId(),
-        request: AdRequest(),
-        adLoadCallback: InterstitialAdLoadCallback(
-          onAdLoaded: (ad) {
-            ad.show();
-          },
-          onAdFailedToLoad: (error) {},
-        ),
-      );
-    }
-
     await showDialog(
       context: parent,
       builder: (context) {
