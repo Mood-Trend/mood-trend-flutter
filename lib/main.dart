@@ -6,19 +6,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:package_info/package_info.dart';
 
+import 'application/provider/usecase_provider.dart';
 import 'firebase_options_dev.dart' as dev;
 import 'firebase_options_prod.dart' as prod;
 import 'generated/l10n.dart';
-import 'infrastructure/firebase/analytics_repository.dart';
-import 'infrastructure/services/notification_service.dart';
-import 'presentation/common/components/dialog.dart';
-import 'presentation/common/components/loading.dart';
-import 'presentation/common/components/snackbars.dart';
-import 'presentation/auth/root_page.dart';
-import 'utils/app_colors.dart';
-import 'utils/constants.dart';
-import 'application/common/states/overlay_loading_notifier.dart';
-import 'domain/app_info.dart';
+import 'infrastructure/provider/repository_provider.dart';
+import 'infrastructure/repository/analytics_repository.dart';
+import 'ui/utils/notification_service.dart';
+import 'ui/component/dialog.dart';
+import 'ui/component/loading.dart';
+import 'ui/component/snackbars.dart';
+import 'ui/page/root_page.dart';
+import 'ui/style/app_colors.dart';
+import 'ui/constant/constants.dart';
+import 'domain/model/app_info.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
