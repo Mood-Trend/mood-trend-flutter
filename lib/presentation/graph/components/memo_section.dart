@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../../utils/app_colors.dart';
 
 /// [MemoSection] は、メモを入力できるセクションです。
-class MemoSection extends StatefulWidget {
+class MemoSection extends HookWidget {
   final String labelText;
   final String memo;
   final ValueChanged<String> onChanged;
@@ -17,42 +18,17 @@ class MemoSection extends StatefulWidget {
   });
 
   @override
-  State<MemoSection> createState() => _MemoSectionState();
-}
-
-class _MemoSectionState extends State<MemoSection> {
-  late final TextEditingController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController(text: widget.memo);
-    _controller.addListener(_handleTextChanged);
-  }
-
-  @override
-  void didUpdateWidget(MemoSection oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.memo != widget.memo && _controller.text != widget.memo) {
-      _controller.text = widget.memo;
-    }
-  }
-
-  void _handleTextChanged() {
-    if (_controller.text.length <= widget.maxLength) {
-      widget.onChanged(_controller.text);
-    }
-  }
-
-  @override
-  void dispose() {
-    _controller.removeListener(_handleTextChanged);
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final controller = useTextEditingController(text: memo);
+    useEffect(() {
+      if (controller.text != memo) {
+        controller.text = memo;
+        controller.selection = TextSelection.fromPosition(
+          TextPosition(offset: controller.text.length),
+        );
+      }
+      return null;
+    }, [memo]);
     return Column(
       children: [
         Row(
@@ -60,7 +36,7 @@ class _MemoSectionState extends State<MemoSection> {
           children: [
             Flexible(
               child: Text(
-                widget.labelText,
+                labelText,
                 style: const TextStyle(fontSize: 16),
               ),
             ),
@@ -69,7 +45,7 @@ class _MemoSectionState extends State<MemoSection> {
         const SizedBox(height: 16),
         TextField(
           maxLines: 5,
-          maxLength: widget.maxLength,
+          maxLength: maxLength,
           decoration: InputDecoration(
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
@@ -77,7 +53,8 @@ class _MemoSectionState extends State<MemoSection> {
             ),
             counterText: '',
           ),
-          controller: _controller,
+          controller: controller,
+          onChanged: onChanged,
         ),
       ],
     );
