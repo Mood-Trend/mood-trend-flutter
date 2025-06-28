@@ -1,0 +1,205 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+# クリーンアーキテクチャ階層定義
+
+## ディレクトリ構造
+
+```md
+lib/  
+├── application/  
+│   ├── provider/  
+│   └── usecase/  
+├── domain/  
+│   ├── model/  
+│   └── enum/  
+├── infrastructure/  
+│   ├── provider/  
+│   └── repository/  
+└── ui/  
+    ├── component/  
+    ├── constant/  
+    ├── controller/  
+    ├── page/  
+    ├── router/  
+    ├── state/  
+    └── style/ 
+```
+
+## 全体原則
+
+- **依存関係は単方向**: UI → Application → Domain ← Infrastructure
+- **各層は自身より下位の層のみに依存可能**
+- **循環依存は厳禁**
+
+## 1. Domain層 (`lib/domain/`)
+
+**責任**: ビジネスロジックとエンティティの定義
+
+### `lib/domain/model/`
+
+- **目的**: ビジネスエンティティとドメインモデルの定義
+- **配置対象**:
+  - Freezedクラス（MoodPoint、AppUser、Conf等）
+  - ドメインオブジェクト
+  - ビジネスルールを含むモデル
+- **依存関係**: 他の層に依存しない
+- **例**: MoodPoint、AppUser、AppInfo
+
+### `lib/domain/enum/`
+
+- **目的**: ドメイン固有の列挙型定義
+- **配置対象**:
+  - Weather、Term、RecordItemType等の列挙型
+  - ビジネス概念を表現するenum
+- **依存関係**: 他の層に依存しない
+
+## 2. Application層 (`lib/application/`)
+
+**責任**: ユースケースの実装と状態管理
+
+### `lib/application/usecase/`
+
+- **目的**: ビジネスロジックの実行単位
+- **配置対象**:
+  - UsecaseMixinを使用するユースケースクラス
+  - 複数のRepositoryを組み合わせる処理
+  - トランザクション処理
+- **依存関係**: Domain、Infrastructure層に依存可能
+- **命名規則**: `*Usecase`クラス
+- **例**: AddMoodPointUsecase、SigninAnonymouslyUsecase
+
+### `lib/application/provider/`
+
+- **目的**: アプリケーション層のRiverpodプロバイダー
+- **配置対象**:
+  - Usecaseのプロバイダー
+  - アプリケーション状態のプロバイダー
+  - 複数層にまたがる状態管理
+- **依存関係**: Domain、Infrastructure層に依存可能
+- **命名規則**: `*Provider`、`*UsecaseProvider`
+
+## 3. Infrastructure層 (`lib/infrastructure/`)
+
+**責任**: 外部システムとの連携
+
+### `lib/infrastructure/repository/`
+
+- **目的**: データアクセスの具体的実装
+- **配置対象**:
+  - Firebase Firestoreとの通信
+  - APIクライアント
+  - ローカルストレージアクセス
+- **依存関係**: Domainに依存、UIには依存しない
+- **命名規則**: `*Repository`クラス
+- **例**: MoodPointRepository、UserRepository
+
+### `lib/infrastructure/provider/`
+
+- **目的**: インフラ層のRiverpodプロバイダー
+- **配置対象**:
+  - Firebase接続プロバイダー
+  - 外部サービス接続プロバイダー
+  - Repository生成プロバイダー
+- **依存関係**: Domainに依存
+- **命名規則**: `*Provider`、`*RepositoryProvider`
+
+## 4. UI層 (`lib/ui/`)
+
+**責任**: ユーザーインターフェースとプレゼンテーション
+
+### `lib/ui/page/`
+
+- **目的**: 画面全体の構成
+- **配置対象**:
+  - Scaffoldを含む画面クラス
+  - ページレベルの状態管理
+  - ナビゲーション処理
+- **依存関係**: Application層のUsecaseを呼び出し
+- **命名規則**: `*Page`クラス
+- **禁止事項**: 直接Repository呼び出し禁止
+
+### `lib/ui/component/`
+
+- **目的**: 再利用可能なUIコンポーネント
+- **配置対象**:
+  - カスタムWidget
+  - 共通UIパーツ
+  - フォーム要素
+- **依存関係**: UI層内のみ
+- **命名規則**: `*Widget`、`*Section`、`*Component`
+
+### `lib/ui/controller/`
+
+- **目的**: UI状態とビジネスロジックの橋渡し
+- **配置対象**:
+  - ページ固有のロジック
+  - フォーム管理
+  - UI状態管理
+- **依存関係**: Application層のUsecaseを呼び出し
+- **命名規則**: `*Controller`クラス
+
+### `lib/ui/state/`
+
+- **目的**: UI固有の状態管理
+- **配置対象**:
+  - Controllerが持つ状態
+- **依存関係**: UI層内のみ
+- **命名規則**: `*State`
+
+### `lib/ui/router/`
+
+- **目的**: ナビゲーションとルーティング
+- **配置対象**:
+  - ページ遷移ロジック
+  - ルート定義
+  - ナビゲーションヘルパー
+- **依存関係**: UI層内のみ
+
+### `lib/ui/style/`
+
+- **目的**: デザインシステムとスタイル定義
+- **配置対象**:
+  - 色定義（AppColors）
+  - テーマ設定
+  - 共通スタイル
+- **依存関係**: 他の層に依存しない
+
+### `lib/ui/constant/`
+
+- **目的**: UI固有の定数定義
+- **配置対象**:
+  - 画面サイズ定数
+  - アニメーション定数
+  - UI文字列定数
+- **依存関係**: 他の層に依存しない
+
+## 実装ガイドライン
+
+### ファイル移行順序
+
+1. Domain層（model、enum分離）
+2. Infrastructure層（repository、provider分離）
+3. Application層（usecase、provider分離）
+4. UI層（MVC分離、controller導入）
+
+### 品質チェック項目
+
+- [ ] 循環依存が存在しないか
+- [ ] 各ファイルが適切な層に配置されているか
+- [ ] import文が依存関係ルールに従っているか
+- [ ] 命名規則が統一されているか
+- [ ] 既存機能が正常動作するか
+
+---
+
+このルールファイルが参照されていることを確認するために、返答の最初に「✅ architecture-rule.mdc」と記載してください。
+ファイルの編集を終えた後、変更内容が上記のルールを遵守していることを確認し、遵守されていない箇所があれば修正を行ってください。その後、返答の最後に「💡 architecture-rule.mdc」と記載してください。

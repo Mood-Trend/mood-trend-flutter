@@ -1,0 +1,34 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+## 状態管理の実装方法（flutter_hooks + hooks_riverpod）
+
+- `flutter_hooks` および `hooks_riverpod` を用いた状態管理を推奨。
+- 基本的には `Notifier` または `AsyncNotifier` を使用する。
+- Provider定義は `provider.dart` にまとめ、`useProvider()` ではなく `ref.watch()` を使用する。
+- UI層では `HookConsumerWidget` を使用することで、状態とWidgetロジックを簡潔に記述可能。
+
+### 具体例
+``
+```
+
+```
+
+## モデルの定義方法
+- データモデルは `freezed` を用いて定義する。
+- 可能な限り `@freezed` アノテーションと `fromJson` / `toJson` の対応を行う。
+- モデルファイルは `model` ディレクトリ配下に配置。
+- 名前は単数形で、ファイル名とクラス名を揃える。
+
+### 具体例
+``
+```dart
+
+```
+
+---
+
+このルールファイルが参照されていることを確認するために、返答の最初に「✅ flutter-coding-guidelines.mdc」と記載してください。
+ファイルの編集を終えた後、変更内容が上記のルールを遵守していることを確認し、遵守されていない箇所があれば修正を行ってください。その後、返答の最後に「💡 flutter-coding-guidelines.mdc」と記載してください。
