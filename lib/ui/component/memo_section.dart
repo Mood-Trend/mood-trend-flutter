@@ -20,6 +20,8 @@ class MemoSection extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final controller = useTextEditingController(text: memo);
+
+    // memoの変更を監視してcontrollerを同期
     useEffect(() {
       if (controller.text != memo) {
         controller.text = memo;
@@ -28,7 +30,7 @@ class MemoSection extends HookWidget {
         );
       }
       return null;
-    }, [memo]);
+    }, [memo, controller]);
     return Column(
       children: [
         Row(
